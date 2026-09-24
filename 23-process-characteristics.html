@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic 23 &middot; Process Characteristics | Sensors &amp; Process Control Systems Notes</title>
+<meta name="description" content="Handwritten study notes on Topic 23 &middot; Process Characteristics - Sensors and Process Control Systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&amp;family=Patrick+Hand&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23fdf9ec'/%3E%3Cpath d='M8 20h12l5-10 8 22 6-16 5 10h12' fill='none' stroke='%23123c8c' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 46h48' stroke='%23c62828' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/notes.css">
+</head>
+<body>
+<div class="paper">
+  <div class="topbar">
+    <span class="brand">Sensors &amp; Process Control</span>
+    <button class="btn" onclick="ink('brown')" title="blue-black ink">Blue</button>
+    <button class="btn" onclick="ink('red')" title="red pen">Red</button>
+    <button class="btn" onclick="ink('green')" title="green pen">Green</button>
+    <button class="btn" onclick="window.print()" title="print this note">Print</button>
+    <a class="btn" href="index.html" style="text-decoration:none">Index</a>
+  </div>
+  <span class="unit-tag">Unit III &middot; Fundamentals of Process Automation</span>
+  <h1 class="title">Topic 23 &middot; Process Characteristics<span class="sub">Process Equation, Load, Lag and Self Regulation</span></h1>
+  <div class="rule"></div>
+
+<h2><span class="no">1</span>Introduction</h2>
+<p class="q">Before designing or tuning a controller we must understand the
+<span class="b">character of the process</span> itself &mdash; how it responds when we change the input.
+Every process is described by four important characteristics: the
+<span class="r">process equation</span>, the <span class="r">process load</span>, the
+<span class="r">process lag</span> and <span class="r">self regulation</span>.</p>
+<h2><span class="no">2</span>Process equation</h2>
+<p class="q">The process equation is the <span class="b">mathematical relation between the input and the
+output of the process</span>. It is obtained by writing the mass or energy balance of the process. It tells
+how the process will behave and what type of controller is suitable.</p>
+<div class="def"><span class="cap">Example &mdash; liquid tank</span>
+Let Q<sub>i</sub> be the inflow, Q<sub>o</sub> the outflow, A the cross sectional area and h the level.
+Mass balance gives:<br>
+<b>A (dh/dt) = Q<sub>i</sub> &minus; Q<sub>o</sub></b><br>
+If the outflow is through a valve with resistance R, then Q<sub>o</sub> = h/R, so<br>
+<b>A (dh/dt) + h/R = Q<sub>i</sub></b> &nbsp;&rarr;&nbsp; <b>AR (dh/dt) + h = R Q<sub>i</sub></b><br>
+This is a <b>first order</b> process with time constant &tau; = A R and gain K = R.</div>
+<p class="q">In general the process equation is written as a <span class="b">transfer function</span>:
+G(s) = Output(s) / Input(s). A first order process gives G(s) = K / (1 + &tau;s). Most industrial processes
+(temperature, level, pressure) are first or second order with some dead time.</p>
+<h2><span class="no">3</span>Process load</h2>
+<div class="def"><span class="cap">Definition</span>
+<b>Process load</b> is the <b>rate at which the process consumes or demands the controlled quantity</b>.
+It is also called the <b>demand</b>. A change in load is the most common <b>disturbance</b> to a control
+system.</div>
+<p class="q">Examples: in a water tank the load is the outflow drawn by the consumers; in a boiler the load
+is the steam drawn by the plant; in a temperature controlled oven the load is the heat lost to the
+surroundings plus the cold material put inside; in a generator the load is the electrical power drawn.</p>
+<ul class="dot">
+  <li><span class="b">Constant load</span> &mdash; the demand does not change with time (easy to control).</li>
+  <li><span class="b">Variable load</span> &mdash; the demand changes continuously (needs good controller
+      tuning).</li>
+  <li><span class="b">Shock load</span> &mdash; a sudden large change of demand (needs fast response and
+      derivative action).</li>
+</ul>
+<h2><span class="no">4</span>Process lag</h2>
+<p class="q">No process responds instantly. The delay between the application of the input and the
+appearance of the response is called <span class="b">process lag</span> (dead time or transport lag). There
+are three kinds:</p>
+<div class="tw"><table>
+<tr><th>Type</th><th>Meaning</th><th>Example</th></tr>
+<tr><td><b>Transfer lag (transport lag)</b></td><td>Time taken by the material or signal to travel from one
+point to another</td><td>Long pipe between the valve and the temperature sensor</td></tr>
+<tr><td><b>Capacity lag</b></td><td>Delay due to the storage capacity of the process</td><td>Large tank
+takes long time to change level</td></tr>
+<tr><td><b>Measurement lag</b></td><td>Delay in the sensor or transmitter</td><td>Thermowell protects the
+sensor but slows it down</td></tr>
+</table></div>
+
+<figure class="fig">
+<svg viewBox="0 0 780 310" role="img" aria-label="Fig. 23.1 &#8212; Process lag: dead time and time constant of a first order process" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<path d="M130,220 L130,55" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<path d="M130,220 L710,220" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="420" y="244" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">time</text>
+<text x="118" y="49" font-size="14" fill="#16324f" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">output</text>
+<path d="M140,205 L260,205 L260,90 L700,90" style="fill:none;stroke:#123c8c;stroke-width:2;stroke-linecap:round;stroke-dasharray:7 5"/>
+<text x="175" y="195" font-size="11" fill="#123c8c" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">input step applied</text>
+<path d="M260,205 C330,203 360,175 400,140 C450,100 520,95 690,93" style="fill:none;stroke:#c62828;stroke-width:3;stroke-linecap:round"/>
+<path d="M400,205 L400,140" style="fill:none;stroke:#b45309;stroke-width:1.6;stroke-linecap:round;stroke-dasharray:4 3"/>
+<text x="330" y="218" font-size="11" fill="#b45309" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">dead time (transport lag)</text>
+<path d="M400,140 L400,90" style="fill:none;stroke:#6d28d9;stroke-width:1.4;stroke-linecap:round;stroke-dasharray:3 3"/>
+<text x="470" y="130" font-size="11" fill="#6d28d9" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">63.2 % of final value → τ</text>
+<text x="640" y="80" font-size="11" fill="#123c8c" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">final value</text>
+<text x="415" y="278" font-size="14" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">large process lag → controller must go slow</text>
+</g>
+</svg>
+<figcaption>Fig. 23.1 &#8212; Process lag: dead time and time constant of a first order process</figcaption>
+</figure>
+
+<div class="formula">First order process : &nbsp; y(t) = K &Delta;u (1 &minus; e<sup>&minus;t/&tau;</sup>)
+&nbsp;&nbsp;&nbsp; &tau; = RC (time constant)</div>
+<p class="q">A large lag is bad for control because the controller takes action on the basis of old
+information. Lag is reduced by placing the sensor close to the point of control, using a fast sensor and
+reducing the distance between the valve and the sensor.</p>
+<h2><span class="no">5</span>Self regulation</h2>
+<div class="def"><span class="cap">Definition</span>
+<b>Self regulation</b> is the inherent ability of a process to <b>balance itself at a new steady state
+without any external control action</b>, after a change in input or load.</div>
+<p class="q"><span class="g">Self regulating process:</span> Consider a tank with an inlet and an outlet
+valve. If the inflow is increased, the level rises. As the level rises, the head and therefore the outflow
+also increases. Finally the outflow becomes equal to the new inflow and the level settles at a new higher
+value. The process has <span class="hl">balanced itself</span>. Examples: liquid level tank, heat exchanger,
+RC circuit, gas pressure vessel.</p>
+<p class="q"><span class="g">Non self regulating process:</span> Here the process does not settle by itself;
+the output keeps changing until it reaches a limit. Example: a tank whose outlet is pumped at a
+<span class="b">constant rate</span> independent of the level. If the inflow exceeds the pumped outflow the
+level will keep rising and the tank will overflow. Another example is a
+<span class="b">temperature process with no heat loss</span>. Such processes are called
+<span class="b">integrating processes</span> and always need a controller.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 330" role="img" aria-label="Fig. 23.2 &#8212; Self regulating and non self regulating processes" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<rect x="400" y="35" width="360" height="220" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<rect x="20" y="35" width="350" height="220" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<text x="195" y="57" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">self regulating</text>
+<path d="M60,70 L60,200 L200,200 L200,70" style="fill:none;stroke:#16324f;stroke-width:2.8;stroke-linecap:round"/>
+<path d="M60,140 L200,140" style="fill:none;stroke:#123c8c;stroke-width:2;stroke-linecap:round;stroke-dasharray:6 4"/>
+<path d="M100,55 L100,90" style="fill:none;stroke:#1b7a3d;stroke-width:2.4;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="100" y="46" font-size="12" fill="#1b7a3d" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Qin</text>
+<path d="M200,175 L250,175" style="fill:none;stroke:#c62828;stroke-width:2.4;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="268" y="180" font-size="12" fill="#c62828" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">Qout ∝ h</text>
+<rect x="40" y="210" width="310" height="38" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="195" y="233.08" font-size="12" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">outlet slows as h falls → level settles</text>
+<text x="580" y="57" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">non self regulating</text>
+<path d="M440,70 L440,200 L580,200 L580,70" style="fill:none;stroke:#16324f;stroke-width:2.8;stroke-linecap:round"/>
+<path d="M440,140 L580,140" style="fill:none;stroke:#123c8c;stroke-width:2;stroke-linecap:round;stroke-dasharray:6 4"/>
+<path d="M480,55 L480,90" style="fill:none;stroke:#1b7a3d;stroke-width:2.4;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="480" y="46" font-size="12" fill="#1b7a3d" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Qin</text>
+<path d="M580,175 L630,175" style="fill:none;stroke:#c62828;stroke-width:2.4;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="648" y="180" font-size="12" fill="#c62828" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">Qout = constant</text>
+<rect x="420" y="210" width="320" height="38" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="580" y="233.08" font-size="12" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">constant outflow → level keeps falling / rising</text>
+<rect x="40" y="275" width="330" height="45" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="205" y="301.58" font-size="12" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">self regulating : open loop OK, P gives offset</text>
+<rect x="400" y="275" width="360" height="45" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="580" y="301.58" font-size="12" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">non self regulating : controller compulsory (I action)</text>
+</g>
+</svg>
+<figcaption>Fig. 23.2 &#8212; Self regulating and non self regulating processes</figcaption>
+</figure>
+
+<div class="tip"><span class="cap">Summary of process characteristics</span>
+<b>Process equation</b> tells the mathematical behaviour, <b>process load</b> is the demand (disturbance),
+<b>process lag</b> is the delay, and <b>self regulation</b> tells whether the process can balance itself.
+A good controller is always selected after studying these four characteristics.</div>
+
+<!--EXTRAS-->
+<h2><span class="no">6</span>Worked numericals</h2>
+
+<div class="formula"><span class="b">Problem 1.</span> A well-stirred tank of time constant &tau; = 4 min receives a step disturbance. Find how long until the temperature reaches 63.2 % of its final change, and the % at 2 min.</div>
+<p class="q"><span class="b">Solution.</span> First-order: y(t) = &Delta;y (1 &minus; e<sup>&minus;t/&tau;</sup>). At t = &tau; = 4 min: y = 63.2 % of &Delta;y by definition. At t = 2 min: 1 &minus; e<sup>&minus;0.5</sup> = 1 &minus; 0.607 = 39.3 %. <span class="hl">63.2 % at 4 min; 39.3 % at 2 min.</span></p>
+<h2><span class="no">7</span>Viva questions and answers</h2>
+
+<p class="q"><span class="b">Q1. Define process lag.</span><br><span class="o">A.</span> The exponential delay while the process variable moves toward its new steady value after a disturbance, characterised by time constant &tau; (63.2 % point).</p>
+<p class="q"><span class="b">Q2. What is dead time and why is it the enemy of control?</span><br><span class="o">A.</span> Pure transport or measurement delay with no output movement until it expires; it adds phase lag that forces lower controller gains to stay stable.</p>
+<h2><span class="no">8</span>Summary</h2>
+
+<p class="q">Every process presents its own mix of capacity, dead time, lag and self-regulation. First-order responses reach 63.2 % of the change in one time constant, dead time adds pure delay measured in seconds or minutes, and the ratio &theta;/&tau; indicates how hard the loop will be to tune.</p>
+<h2><span class="no">9</span>Specifications at a glance</h2>
+
+<div class="tw"><table>
+<tr><th>Characteristic</th><th>Symbol / unit</th><th>Effect on control</th></tr>
+<tr><td>Process gain</td><td>K (&Delta;PV/&Delta;manipulated)</td><td>Sets required controller gain</td></tr>
+<tr><td>Dead time</td><td>&theta; (s, min)</td><td>Limits gain; causes oscillation if large</td></tr>
+<tr><td>Time constant</td><td>&tau; (s, min)</td><td>Response speed; 63.2 % at 1&tau;</td></tr>
+</table></div>
+
+<div class="pager">
+<a href="22-process-control-systems.html">&#8592; Prev</a>
+<a class="home" href="index.html">&#8962; Index</a>
+<a href="24-control-system-parameters.html">Next &#8594;</a>
+</div>
+  <p class="sig">~ handwritten notes &middot; Sensors &amp; Process Control Systems &middot; save &amp; revise daily ~</p>
+</div>
+<script>
+/* pen-colour switch: recolours the body text only, diagrams keep their own ink */
+function ink(c){
+  var m = {brown:'#4a3728', red:'#9b1c1c', green:'#155724'};
+  document.body.style.color = m[c] || m.brown;
+  var bs = document.querySelectorAll('.btn');
+  for (var i = 0; i < bs.length; i++) { bs[i].classList.remove('active'); }
+  event.currentTarget.classList.add('active');
+}
+</script>
+</body>
+</html>

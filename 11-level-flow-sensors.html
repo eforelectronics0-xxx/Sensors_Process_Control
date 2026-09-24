@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic 11 &middot; Level and Flow Sensors | Sensors &amp; Process Control Systems Notes</title>
+<meta name="description" content="Handwritten study notes on Topic 11 &middot; Level and Flow Sensors - Sensors and Process Control Systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&amp;family=Patrick+Hand&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23fdf9ec'/%3E%3Cpath d='M8 20h12l5-10 8 22 6-16 5 10h12' fill='none' stroke='%23123c8c' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 46h48' stroke='%23c62828' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/notes.css">
+</head>
+<body>
+<div class="paper">
+  <div class="topbar">
+    <span class="brand">Sensors &amp; Process Control</span>
+    <button class="btn" onclick="ink('brown')" title="blue-black ink">Blue</button>
+    <button class="btn" onclick="ink('red')" title="red pen">Red</button>
+    <button class="btn" onclick="ink('green')" title="green pen">Green</button>
+    <button class="btn" onclick="window.print()" title="print this note">Print</button>
+    <a class="btn" href="index.html" style="text-decoration:none">Index</a>
+  </div>
+  <span class="unit-tag">Unit I &middot; Fundamentals of Sensors</span>
+  <h1 class="title">Topic 11 &middot; Level and Flow Sensors<span class="sub">Float, Capacitive, Ultrasonic, Orifice, Turbine</span></h1>
+  <div class="rule"></div>
+
+<h2><span class="no">1</span>Level Sensors</h2>
+<div class="def"><span class="cap">Definition</span>
+A <b>level sensor</b> measures the <b>height of a liquid (or solid) surface</b> inside a tank, silo or vessel
+and converts it into an electrical signal. Measurement may be <b>point level</b> (liquid present / absent at
+one point) or <b>continuous level</b> (exact height).</div>
+<div class="tw"><table>
+<tr><th>Method</th><th>Principle</th><th>Contact?</th><th>Typical use</th></tr>
+<tr><td><b>Float type</b></td><td>Buoyancy &mdash; float rises with level, moves a magnet / reed switch or a
+potentiometer</td><td>Yes</td><td>Water tanks, sump pumps</td></tr>
+<tr><td><b>Displacer type</b></td><td>Apparent weight of a submerged rod changes with level</td><td>Yes</td>
+<td>Boiler drum level</td></tr>
+<tr><td><b>Hydrostatic (DP)</b></td><td>P = &rho; g h, pressure at the bottom is proportional to height</td>
+<td>Yes</td><td>Tanks, wells, dam monitoring</td></tr>
+<tr><td><b>Capacitive</b></td><td>Liquid acts as dielectric, capacitance changes with level</td><td>Yes / probe</td>
+<td>Conductive and non-conductive liquids</td></tr>
+<tr><td><b>Ultrasonic</b></td><td>Time taken by a sound pulse to return from the surface</td><td>No</td>
+<td>Corrosive liquids, sewage, grains</td></tr>
+<tr><td><b>Radar (guided wave)</b></td><td>Time of flight of microwave</td><td>No</td><td>Oil tanks, high accuracy</td></tr>
+<tr><td><b>Conductivity probe</b></td><td>Two electrodes conduct only when dipped</td><td>Yes</td>
+<td>Pump ON/OFF control of water</td></tr>
+</table></div>
+
+<figure class="fig">
+<svg viewBox="0 0 780 320" role="img" aria-label="Fig. 11.1 &#8212; Float, capacitive and ultrasonic level measuring methods" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<rect x="540" y="30" width="220" height="220" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<rect x="285" y="30" width="230" height="220" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<rect x="20" y="30" width="240" height="220" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<text x="140" y="52" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">float type</text>
+<path d="M60,60 L60,210 L220,210 L220,60" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round"/>
+<path d="M60,150 L220,150" style="fill:none;stroke:#123c8c;stroke-width:2;stroke-linecap:round;stroke-dasharray:6 4"/>
+<rect x="120" y="100" width="70" height="40" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="155" y="124.42" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">float</text>
+<path d="M155,100 L155,74" style="fill:none;stroke:#16324f;stroke-width:2.4;stroke-linecap:round"/>
+<text x="155" y="68" font-size="11" fill="#1b7a3d" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">level → reading</text>
+<text x="140" y="232" font-size="11" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">float moves → switch / pot</text>
+<text x="400" y="52" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">capacitive probe</text>
+<path d="M325,60 L325,210 L475,210 L475,60" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round"/>
+<path d="M325,160 L475,160" style="fill:none;stroke:#123c8c;stroke-width:2;stroke-linecap:round;stroke-dasharray:6 4"/>
+<path d="M370,70 L370,190 M430,70 L430,190" style="fill:none;stroke:#c62828;stroke-width:3;stroke-linecap:round"/>
+<text x="400" y="68" font-size="11" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">probe rods</text>
+<text x="400" y="232" font-size="12" fill="#1b7a3d" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">C ∝ level → to µC</text>
+<text x="650" y="52" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">ultrasonic (non-contact)</text>
+<path d="M575,60 L575,210 L725,210 L725,60" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round"/>
+<path d="M575,165 L725,165" style="fill:none;stroke:#123c8c;stroke-width:2;stroke-linecap:round;stroke-dasharray:6 4"/>
+<rect x="605" y="70" width="90" height="40" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="650" y="94.08" font-size="12" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">transducer</text>
+<path d="M610,120 Q650,140 690,120" style="fill:none;stroke:#6d28d9;stroke-width:2;stroke-linecap:round;marker-end:url(#arw)"/>
+<path d="M610,135 Q650,155 690,135" style="fill:none;stroke:#6d28d9;stroke-width:2;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="650" y="232" font-size="13" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">h = (v × t) / 2</text>
+<text x="390" y="285" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">level sensing : contact and non-contact methods</text>
+</g>
+</svg>
+<figcaption>Fig. 11.1 &#8212; Float, capacitive and ultrasonic level measuring methods</figcaption>
+</figure>
+
+
+<h2><span class="no">2</span>Flow Sensors</h2>
+<div class="def"><span class="cap">Definition</span>
+A <b>flow sensor (flow meter)</b> measures the <b>rate of flow</b> of a liquid or gas through a pipe. It is
+expressed as <b>volumetric flow</b> (litre per minute, m&sup3;/hr) or <b>mass flow</b> (kg/hr).</div>
+<h3>2.1 Orifice plate (differential pressure flow meter)</h3>
+<p class="q">A thin plate with a small concentric hole is inserted in the pipe. The flow velocity increases
+at the constriction, so the pressure there falls (Bernoulli's theorem). The pressure difference
+P&#8321; &minus; P&#8322; across the plate is measured with a differential pressure transmitter and the flow
+is calculated. This is the cheapest and most widely used industrial flow meter.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 320" role="img" aria-label="Fig. 11.2 &#8212; Orifice plate flow meter and other common types" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<rect x="450" y="30" width="310" height="220" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<rect x="20" y="30" width="400" height="220" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<text x="220" y="52" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">orifice plate in a pipe</text>
+<path d="M50,110 L390,110 M50,170 L390,170" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round"/>
+<path d="M210,110 L210,140 M210,160 L210,170" style="fill:none;stroke:#c62828;stroke-width:4;stroke-linecap:round"/>
+<text x="210" y="98" font-size="12" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">orifice plate</text>
+<path d="M170,170 L170,205 M260,170 L260,205" style="fill:none;stroke:#16324f;stroke-width:2.2;stroke-linecap:round"/>
+<path d="M170,205 L260,205" style="fill:none;stroke:#16324f;stroke-width:2.2;stroke-linecap:round"/>
+<rect x="140" y="210" width="160" height="40" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="220" y="234.42" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">DP transmitter</text>
+<text x="120" y="140" font-size="13" fill="#1b7a3d" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">flow</text>
+<path d="M70,140 L115,140" style="fill:none;stroke:#1b7a3d;stroke-width:2.4;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="605" y="52" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">flow relation and other meters</text>
+<text x="605" y="80" font-size="17" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Q = C × A × √(2ΔP/ρ)</text>
+<rect x="470" y="105" width="270" height="140" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="605" y="135.545" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Turbine : rotor speed ∝ flow</text><text x="605" y="153.095" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Magnetic : V induced in liquid</text><text x="605" y="170.645" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Vortex : shedding frequency</text><text x="605" y="188.195" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Ultrasonic : Doppler / transit</text><text x="605" y="205.745" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Rotameter : float in tapered tube</text><text x="605" y="223.295" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Coriolis : true mass flow</text>
+<text x="390" y="290" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">differential pressure family of flow meters</text>
+</g>
+</svg>
+<figcaption>Fig. 11.2 &#8212; Orifice plate flow meter and other common types</figcaption>
+</figure>
+
+<h3>2.2 Turbine flow meter</h3>
+<p class="q">A small multi-blade rotor is placed in the flow. The flowing fluid rotates the rotor and its
+speed is proportional to the flow velocity. A magnetic pickup coil counts the pulses generated by each
+passing blade. Very accurate for clean liquids and gases.</p>
+<h3>2.3 Electromagnetic flow meter</h3>
+<p class="q">The pipe is non-magnetic and lined with an insulator. When a <span class="b">conductive
+liquid</span> flows through a magnetic field, an EMF is induced across two electrodes:
+<span class="b">E = B L v</span>. It has no moving part and no obstruction, so it is used for sewage,
+slurry and chemicals.</p>
+<h3>2.4 Rotameter (variable area meter)</h3>
+<p class="q">A float is kept inside a vertical tapered glass tube. The flow lifts the float until the upward
+drag equals the weight of the float. The height of the float gives the flow directly. It is a simple local
+indicator, no power required.</p>
+<div class="tw"><table>
+<tr><th>Meter</th><th>Output</th><th>Advantage</th><th>Disadvantage</th></tr>
+<tr><td>Orifice + DP</td><td>&Delta;P</td><td>Cheap, no moving part, standard</td><td>Pressure loss, limited turndown</td></tr>
+<tr><td>Turbine</td><td>Pulses</td><td>Very accurate, wide range</td><td>Bearing wear, needs clean fluid</td></tr>
+<tr><td>Magnetic</td><td>mV</td><td>No obstruction, bidirectional</td><td>Only conductive liquids, needs power</td></tr>
+<tr><td>Vortex</td><td>Frequency</td><td>Good for steam, no moving part</td><td>Needs minimum velocity</td></tr>
+<tr><td>Rotameter</td><td>Visual height</td><td>Simple, cheap, no power</td><td>Local indication only, glass breaks</td></tr>
+</table></div>
+<h3>Applications</h3>
+<ul class="arr">
+  <li>Water supply metering, irrigation and sewage flow measurement.</li>
+  <li>Steam, fuel gas and air flow in boilers and furnaces.</li>
+  <li>Chemical dosing, batching and custody transfer of petroleum.</li>
+  <li>Medical &mdash; oxygen flow meter in anaesthesia machines.</li>
+</ul>
+<div class="tip"><span class="cap">One line summary</span>
+<b>Level</b> tells "how much height of material is inside the tank"; <b>flow</b> tells "how much quantity is
+passing through the pipe every second". Both are needed to control a tank &mdash; inflow, outflow and level
+must always be balanced.</div>
+
+<!--EXTRAS-->
+<h2><span class="no">3</span>Worked numericals</h2>
+
+<div class="formula"><span class="b">Problem 1.</span> An orifice plate meter is calibrated so that Q = 0.05 &times; &radic;&Delta;P with &Delta;P in Pa and Q in m&sup3;/h. Find Q at &Delta;P = 400 Pa, and the new &Delta;P if Q doubles.</div>
+<p class="q"><span class="b">Solution.</span> Q = 0.05 &times; &radic;400 = 0.05 &times; 20 = 1.0 m&sup3;/h. Q &prop; &radic;&Delta;P, so doubling Q needs 4&times; &Delta;P. New &Delta;P = 400 &times; 4 = 1600 Pa. <span class="hl">Q = 1.0 m&sup3;/h at 400 Pa; doubled flow needs 1600 Pa.</span></p>
+<h2><span class="no">4</span>Viva questions and answers</h2>
+
+<p class="q"><span class="b">Q1. Why is Q proportional to the square root of &Delta;P in an orifice meter?</span><br><span class="o">A.</span> Bernoulli's equation gives velocity &prop; &radic;&Delta;P and volumetric flow is velocity times area, so the differential pressure must be square-rooted in the transmitter.</p>
+<p class="q"><span class="b">Q2. What fluids can an electromagnetic flow meter handle?</span><br><span class="o">A.</span> Any liquid that conducts at least about 5 &micro;S/cm &mdash; water, acids, slurries &mdash; but not pure solvents or oil.</p>
+<p class="q"><span class="b">Q3. How does a guided radar (TDR) level probe work?</span><br><span class="o">A.</span> A pulse travels down the probe, reflects at the liquid surface, and the time difference gives level regardless of foam or density changes.</p>
+<p class="q"><span class="b">Q4. Why is a bypass rotameter not suitable for billing?</span><br><span class="o">A.</span> It is a variable-area local indicator with modest accuracy; fiscal transfer needs certified meters with traceable calibration.</p>
+<p class="q"><span class="b">Q5. What is totaliser functionality in a flow transmitter?</span><br><span class="o">A.</span> It integrates pulse or flow-rate input over time to display total volume or mass, like an odometer for fluid.</p>
+<p class="q"><span class="b">Q6. What causes a float switch to stick?</span><br><span class="o">A.</span> Scale, wax, sticky residues or mechanical wear; materials must be chosen compatible with the process fluid.</p>
+<h2><span class="no">5</span>Summary</h2>
+
+<p class="q">Level instrumentation determines how much is in the tank, flow instrumentation determines how fast it moves, and both feed inventory control and billing. Ultrasonic, radar, float and differential-pressure methods cover level; orifice, turbine, electromagnetic and variable-area methods cover flow. Every selection must match fluid properties and required accuracy, and every meter needs periodic verification against a known volume.</p>
+<h2><span class="no">6</span>Specifications at a glance</h2>
+
+<div class="tw"><table>
+<tr><th>Parameter</th><th>Ultrasonic level</th><th>Orifice + dP</th><th>Electromagnetic flow</th></tr>
+<tr><td>Principle</td><td>Echo time of sound</td><td>Bernoulli differential</td><td>Faraday's law</td></tr>
+<tr><td>Range</td><td>0.5&ndash;15 m typical</td><td>Depends on transmitter span</td><td>10 mm &ndash; 3 m bore</td></tr>
+<tr><td>Accuracy</td><td>&plusmn;0.25&ndash;0.5 %</td><td>&plusmn;1&ndash;2 % of reading</td><td>&plusmn;0.2&ndash;0.5 %</td></tr>
+<tr><td>Output</td><td>4&ndash;20 mA, HART</td><td>4&ndash;20 mA (&radic; extracted)</td><td>Pulse / 4&ndash;20 mA</td></tr>
+<tr><td>Fluid limits</td><td>Clean liquids, some foam ok</td><td>Cleanish liquids, single phase</td><td>Needs conductivity</td></tr>
+</table></div>
+
+<div class="pager">
+<a href="10-position-motion-sensors.html">&#8592; Prev</a>
+<a class="home" href="index.html">&#8962; Index</a>
+<a href="12-humidity-ph-sensors.html">Next &#8594;</a>
+</div>
+  <p class="sig">~ handwritten notes &middot; Sensors &amp; Process Control Systems &middot; save &amp; revise daily ~</p>
+</div>
+<script>
+/* pen-colour switch: recolours the body text only, diagrams keep their own ink */
+function ink(c){
+  var m = {brown:'#4a3728', red:'#9b1c1c', green:'#155724'};
+  document.body.style.color = m[c] || m.brown;
+  var bs = document.querySelectorAll('.btn');
+  for (var i = 0; i < bs.length; i++) { bs[i].classList.remove('active'); }
+  event.currentTarget.classList.add('active');
+}
+</script>
+</body>
+</html>

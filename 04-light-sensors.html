@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic 4 &middot; Light Sensors | Sensors &amp; Process Control Systems Notes</title>
+<meta name="description" content="Handwritten study notes on Topic 4 &middot; Light Sensors - Sensors and Process Control Systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&amp;family=Patrick+Hand&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23fdf9ec'/%3E%3Cpath d='M8 20h12l5-10 8 22 6-16 5 10h12' fill='none' stroke='%23123c8c' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 46h48' stroke='%23c62828' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/notes.css">
+</head>
+<body>
+<div class="paper">
+  <div class="topbar">
+    <span class="brand">Sensors &amp; Process Control</span>
+    <button class="btn" onclick="ink('brown')" title="blue-black ink">Blue</button>
+    <button class="btn" onclick="ink('red')" title="red pen">Red</button>
+    <button class="btn" onclick="ink('green')" title="green pen">Green</button>
+    <button class="btn" onclick="window.print()" title="print this note">Print</button>
+    <a class="btn" href="index.html" style="text-decoration:none">Index</a>
+  </div>
+  <span class="unit-tag">Unit I &middot; Fundamentals of Sensors</span>
+  <h1 class="title">Topic 4 &middot; Light Sensors<span class="sub">LDR and Photodiode</span></h1>
+  <div class="rule"></div>
+
+<h2><span class="no">1</span>Introduction</h2>
+<p class="q">A light sensor converts the <span class="b">intensity of light</span> falling on it into an
+electrical quantity (resistance, current or voltage). The three most used devices are the
+<span class="r">LDR</span> (photoresistor), the <span class="r">photodiode</span> and the
+<span class="r">phototransistor</span>. Solar cells and opto-couplers also belong to this family.</p>
+
+<h2><span class="no">2</span>LDR &mdash; Light Dependent Resistor</h2>
+<h3>2.1 Construction</h3>
+<p class="q">An LDR is made of a thin layer of <span class="b">high resistance semiconductor</span> such as
+<span class="b">cadmium sulphide (CdS)</span> or cadmium selenide deposited on a ceramic insulating substrate.
+On this layer a <span class="b">metallic contact</span> is deposited in a zig-zag (comb like) pattern so that
+a long conducting path is obtained in a small area. The whole assembly is sealed inside a transparent glass
+or plastic envelope. Two leads come out of it, so the LDR is a <span class="b">two terminal, non-polar</span>
+device &mdash; it can be connected in any direction.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 260" role="img" aria-label="Fig. 4.1 &#8212; LDR symbol, construction and principle" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<rect x="540" y="30" width="220" height="200" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<rect x="260" y="30" width="260" height="200" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<rect x="20" y="30" width="220" height="200" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<text x="130" y="52" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">LDR symbol</text>
+<g transform="translate(90,110) rotate(0,50,50) translate(0,0) scale(1)"><circle cx="50" cy="50" r="30" fill="#fffdf3" stroke="#16324f" stroke-width="3"/><path d="M50,0 L50,20 M50,80 L50,100" fill="none" stroke="#16324f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M32,60 L40,60 L44,46 L50,70 L56,42 L62,64 L66,54 L72,54" fill="none" stroke="#16324f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M6,20 L28,40 M18,6 L42,28" fill="none" stroke="#c62828" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M28,40 L18,38 M28,40 L25,29 M42,28 L32,26 M42,28 L39,17" fill="none" stroke="#c62828" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="130" y="215" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">light dependent resistor</text>
+<text x="390" y="52" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">construction</text>
+<rect x="290" y="70" width="200" height="60" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="390" y="95.645" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">CdS layer on ceramic</text><text x="390" y="113.195" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">zig-zag metal contacts</text>
+<path d="M310,130 L310,175 M470,130 L470,175" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round"/>
+<path d="M300,175 L330,175 M450,175 L480,175" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round"/>
+<path d="M295,60 L335,95 M285,48 L345,88" style="fill:none;stroke:#c62828;stroke-width:2.2;stroke-linecap:round"/>
+<path d="M335,95 L325,93 M335,95 L332,85 M345,88 L335,86 M345,88 L342,78" style="fill:none;stroke:#c62828;stroke-width:2;stroke-linecap:round"/>
+<text x="380" y="205" font-size="13" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">photo-conductive effect</text>
+<text x="650" y="52" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">working</text>
+<rect x="552" y="62" width="196" height="148" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="650" y="105.32" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Dark : few free carriers</text><text x="650" y="122.87" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">→ R very high (MΩ)</text><text x="650" y="140.42" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Light : photons free</text><text x="650" y="157.97" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">electrons → R falls</text><text x="650" y="175.52" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">(hundreds of Ω)</text>
+</g>
+</svg>
+<figcaption>Fig. 4.1 &#8212; LDR symbol, construction and principle</figcaption>
+</figure>
+
+<h3>2.2 Working</h3>
+<p class="q">The working of an LDR is based on the <span class="b">photo-conductive effect</span>. When
+photons of light having energy greater than the band gap of the semiconductor strike the layer,
+electron-hole pairs are created. These extra charge carriers increase the conductivity, so the
+<span class="b">resistance falls</span> as the light intensity increases. In complete darkness the resistance
+is called the <span class="b">dark resistance</span> (about 1 M&#937; to 10 M&#937;) and in bright light it
+falls to a few hundred ohms.</p>
+<p class="q">Because the LDR is a passive device, it is used in a <span class="b">potential divider</span>
+circuit to obtain a varying voltage.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 370" role="img" aria-label="Fig. 4.2 &#8212; LDR voltage divider (light to voltage converter)" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<polyline points="40,60 740,60" style="fill:none;stroke:#c62828;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="390" y="86" font-size="15" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">+5 V</text>
+<polyline points="40,290 740,290" style="fill:none;stroke:#123c8c;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="390" y="316" font-size="15" fill="#123c8c" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">0 V rail</text>
+<g transform="translate(150,90) rotate(0,50,50) translate(0,0) scale(1)"><path d="M50,0 L50,20 L32,26 L68,36 L32,46 L68,56 L32,66 L68,74 L50,80 L50,100" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="234" y="145.6" font-size="16" fill="#c62828" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">R = 10 kΩ</text>
+<g transform="translate(150,190) rotate(0,50,50) translate(0,0) scale(1)"><circle cx="50" cy="50" r="30" fill="#fffdf3" stroke="#16324f" stroke-width="3"/><path d="M50,0 L50,20 M50,80 L50,100" fill="none" stroke="#16324f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M32,60 L40,60 L44,46 L50,70 L56,42 L62,64 L66,54 L72,54" fill="none" stroke="#16324f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M6,20 L28,40 M18,6 L42,28" fill="none" stroke="#c62828" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M28,40 L18,38 M28,40 L25,29 M42,28 L32,26 M42,28 L39,17" fill="none" stroke="#c62828" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="142" y="245.6" font-size="16" fill="#c62828" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">LDR</text>
+<g transform="translate(390,150) rotate(0,50,50) translate(0,0) scale(1)"><rect x="10" y="22" width="80" height="56" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="3"/><text x="50" y="55.95" font-size="17" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">ADC</text><path d="M0,50 L10,50 M90,50 L100,50" fill="none" stroke="#16324f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<polyline points="200,60 200,90" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="200" cy="60" r="5.5" fill="#16324f"/>
+<circle cx="200" cy="190" r="5.5" fill="#16324f"/>
+<polyline points="200,190 390,190 390,200" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="200" cy="290" r="5.5" fill="#16324f"/>
+<text x="250" y="178" font-size="13" fill="#1b7a3d" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Vout</text>
+<text x="390" y="346" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Bright light → R falls → Vout falls</text>
+</g>
+</svg>
+<figcaption>Fig. 4.2 &#8212; LDR voltage divider (light to voltage converter)</figcaption>
+</figure>
+
+<h3>2.3 Applications</h3>
+<ul class="arr">
+  <li><span class="b">Automatic street lights</span> &mdash; lamp ON at night, OFF in day.</li>
+  <li>Camera exposure (light meter) control.</li>
+  <li>Burglar alarm using a light beam which is interrupted.</li>
+  <li>Smoke detectors (light scattering type), flame detectors.</li>
+  <li>Contrast and brightness control in photocopiers.</li>
+</ul>
+<div class="tw"><table>
+<tr><th>Property</th><th>Value / Remark</th></tr>
+<tr><td>Dark resistance</td><td>1 M&#937; &ndash; 10 M&#937;</td></tr>
+<tr><td>Bright light resistance</td><td>100 &#937; &ndash; 1 k&#937;</td></tr>
+<tr><td>Response time</td><td>Slow (10 ms to 100 ms)</td></tr>
+<tr><td>Peak sensitivity</td><td>CdS ~ 550 nm (green), CdSe ~ 720 nm (infra red)</td></tr>
+<tr><td>Advantages</td><td>Cheap, high sensitivity, easy to use, no polarity</td></tr>
+<tr><td>Disadvantages</td><td>Slow, temperature sensitive, contains cadmium (hazardous), non-linear</td></tr>
+</table></div>
+
+<h2><span class="no">3</span>Photodiode and Phototransistor (brief)</h2>
+<p class="q">A <span class="b">photodiode</span> is a PN junction diode operated in
+<span class="b">reverse bias</span>. Light creates electron-hole pairs which are swept across the junction
+and produce a small reverse current proportional to light intensity. It is <span class="hl">very fast</span>
+(nano-seconds) and is used in optical communication, barcode readers and encoders. A
+<span class="b">phototransistor</span> is the same idea but with transistor amplification built in, so it
+gives a much larger current (100 times) but is slightly slower.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 370" role="img" aria-label="Fig. 4.3 &#8212; Photodiode in reverse bias (photoconductive mode)" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<polyline points="40,60 740,60" style="fill:none;stroke:#c62828;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="390" y="86" font-size="15" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">+5 V</text>
+<polyline points="40,290 740,290" style="fill:none;stroke:#123c8c;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="390" y="316" font-size="15" fill="#123c8c" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">0 V</text>
+<g transform="translate(150,90) rotate(0,50,50) translate(0,0) scale(1)"><path d="M50,0 L50,20 L32,26 L68,36 L32,46 L68,56 L32,66 L68,74 L50,80 L50,100" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="234" y="145.6" font-size="16" fill="#c62828" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">Rₒ 10 kΩ</text>
+<g transform="translate(150,190) rotate(180,50,50) translate(0,0) scale(1)"><path d="M32,30 L68,30 L50,64 Z" fill="#16324f" stroke="#16324f" stroke-width="2"/><path d="M50,0 L50,30 M30,66 L70,66 M50,66 L50,100" fill="none" stroke="#16324f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6,20 L26,40 M18,8 L40,28" fill="none" stroke="#c62828" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M26,40 L17,38 M26,40 L23,30 M40,28 L31,26 M40,28 L37,18" fill="none" stroke="#c62828" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="166" y="245.6" font-size="16" fill="#c62828" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">photodiode</text>
+<g transform="translate(390,150) rotate(0,50,50) translate(0,0) scale(1)"><rect x="10" y="22" width="80" height="56" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="3"/><text x="50" y="55.95" font-size="17" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">ADC</text><path d="M0,50 L10,50 M90,50 L100,50" fill="none" stroke="#16324f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<polyline points="200,60 200,90" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="200" cy="60" r="5.5" fill="#16324f"/>
+<circle cx="200" cy="190" r="5.5" fill="#16324f"/>
+<polyline points="200,190 390,190 390,200" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="200" cy="290" r="5.5" fill="#16324f"/>
+<text x="305" y="213" font-size="13" fill="#1b7a3d" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">to comparator</text>
+<text x="390" y="346" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">reverse biased : current ≡ light intensity</text>
+</g>
+</svg>
+<figcaption>Fig. 4.3 &#8212; Photodiode in reverse bias (photoconductive mode)</figcaption>
+</figure>
+
+<div class="note"><span class="cap">Exam tip</span>
+If the question is only "LDR", draw Fig. 4.1 and Fig. 4.2, write the construction, the photo-conductive
+principle, the dark/bright resistance values and 4 applications. If the question is "light sensors" in
+general, add photodiode, phototransistor and solar cell in one line each.</div>
+
+<!--EXTRAS-->
+<h2><span class="no">4</span>Worked numericals</h2>
+
+<div class="formula"><span class="b">Problem 1.</span> An LDR has 1 k&Omega; in bright light and 200 k&Omega; in darkness. It is used with a 10 k&Omega; series resistor across a 5 V supply. Find V<sub>out</sub> in both cases (voltage across the LDR).</div>
+<p class="q"><span class="b">Solution.</span> Bright: V<sub>out</sub> = 5 &times; 1 / (1 + 10) = 0.45 V. Dark: V<sub>out</sub> = 5 &times; 200 / (200 + 10) = 4.76 V. A comparator with threshold near 2.5 V therefore gives a clean light/dark digital output. <span class="hl">V<sub>bright</sub> = 0.45 V, V<sub>dark</sub> = 4.76 V.</span></p>
+<div class="formula"><span class="b">Problem 2.</span> A photodiode with responsivity R = 0.55 A/W at 850 nm is illuminated with 200 &micro;W of laser power. Find the photocurrent and the voltage across a 10 k&Omega; load resistor.</div>
+<p class="q"><span class="b">Solution.</span> I<sub>ph</sub> = R &times; P = 0.55 &times; 200&times;10<sup>&minus;6</sup> = 110 &micro;A. V<sub>out</sub> = I<sub>ph</sub> &times; R<sub>L</sub> = 110&times;10<sup>&minus;6</sup> &times; 10&times;10<sup>3</sup> = 1.1 V Response time of a reverse-biased diode is in nanoseconds, much faster than an LDR. <span class="hl">I<sub>ph</sub> = 110 &micro;A, V<sub>out</sub> = 1.1 V.</span></p>
+<h2><span class="no">5</span>Viva questions and answers</h2>
+
+<p class="q"><span class="b">Q1. Why is a photodiode operated in reverse bias?</span><br><span class="o">A.</span> Reverse bias widens the depletion layer, reduces junction capacitance and makes the response much faster; photocurrent is then almost linear with light power.</p>
+<p class="q"><span class="b">Q2. What is the dark current?</span><br><span class="o">A.</span> The small current that flows with no light, caused by thermal generation; it sets the lowest detectable light level.</p>
+<p class="q"><span class="b">Q3. Why does an LDR response depend on light history?</span><br><span class="o">A.</span> CdS has a memory effect &mdash; resistance rises and falls slowly, so it is slow to recover after bright light, which makes it unsuitable for fast signals.</p>
+<p class="q"><span class="b">Q4. How does a phototransistor differ from a photodiode?</span><br><span class="o">A.</span> Base light current is amplified by the transistor action, giving 100&times; more sensitivity but slower speed and less linearity.</p>
+<p class="q"><span class="b">Q5. Name an application where a photodiode array is used.</span><br><span class="o">A.</span> Position-sensing, barcode readers, optical encoders and short-range fibre-optic links.</p>
+<p class="q"><span class="b">Q6. What is the photovoltaic mode?</span><br><span class="o">A.</span> The diode is left unbiased and generates a voltage like a small solar cell; it is very linear but slower than reverse-biased operation.</p>
+<h2><span class="no">6</span>Summary</h2>
+
+<p class="q">Light measurement uses either a photoconductor whose resistance falls with illumination (LDR) or junction devices that generate a photocurrent (photodiode, phototransistor). Linearity, speed and spectral response decide which family fits the job: LDRs for simple switching, photodiodes for fast and proportional measurement. Dark current, load resistance and bias conditions together set the smallest light level the circuit can reliably see.</p>
+<h2><span class="no">7</span>Specifications at a glance</h2>
+
+<div class="tw"><table>
+<tr><th>Parameter</th><th>LDR (CdS)</th><th>Silicon photodiode</th></tr>
+<tr><td>Dark resistance</td><td>0.2&ndash;2 M&Omega;</td><td>Dark current 1&ndash;20 nA</td></tr>
+<tr><td>Light resistance</td><td>few k&Omega; at 10 lux</td><td>&mdash; photocurrent instead</td></tr>
+<tr><td>Response time</td><td>20&ndash;100 ms (slow)</td><td>ns to &micro;s</td></tr>
+<tr><td>Spectral peak</td><td>about 540 nm</td><td>about 900 nm (near IR)</td></tr>
+<tr><td>Sensitivity</td><td>resistance vs lux</td><td>0.4&ndash;0.65 A/W</td></tr>
+<tr><td>Typical use</td><td>Street-light switch, camera exposure</td><td>Encoders, comms, detectors</td></tr>
+</table></div>
+
+<div class="pager">
+<a href="03-stress-strain-load-cells.html">&#8592; Prev</a>
+<a class="home" href="index.html">&#8962; Index</a>
+<a href="05-chemical-sensors.html">Next &#8594;</a>
+</div>
+  <p class="sig">~ handwritten notes &middot; Sensors &amp; Process Control Systems &middot; save &amp; revise daily ~</p>
+</div>
+<script>
+/* pen-colour switch: recolours the body text only, diagrams keep their own ink */
+function ink(c){
+  var m = {brown:'#4a3728', red:'#9b1c1c', green:'#155724'};
+  document.body.style.color = m[c] || m.brown;
+  var bs = document.querySelectorAll('.btn');
+  for (var i = 0; i < bs.length; i++) { bs[i].classList.remove('active'); }
+  event.currentTarget.classList.add('active');
+}
+</script>
+</body>
+</html>

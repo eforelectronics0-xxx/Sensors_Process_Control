@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic 7 &middot; Vibration Sensors | Sensors &amp; Process Control Systems Notes</title>
+<meta name="description" content="Handwritten study notes on Topic 7 &middot; Vibration Sensors - Sensors and Process Control Systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&amp;family=Patrick+Hand&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23fdf9ec'/%3E%3Cpath d='M8 20h12l5-10 8 22 6-16 5 10h12' fill='none' stroke='%23123c8c' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 46h48' stroke='%23c62828' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/notes.css">
+</head>
+<body>
+<div class="paper">
+  <div class="topbar">
+    <span class="brand">Sensors &amp; Process Control</span>
+    <button class="btn" onclick="ink('brown')" title="blue-black ink">Blue</button>
+    <button class="btn" onclick="ink('red')" title="red pen">Red</button>
+    <button class="btn" onclick="ink('green')" title="green pen">Green</button>
+    <button class="btn" onclick="window.print()" title="print this note">Print</button>
+    <a class="btn" href="index.html" style="text-decoration:none">Index</a>
+  </div>
+  <span class="unit-tag">Unit I &middot; Fundamentals of Sensors</span>
+  <h1 class="title">Topic 7 &middot; Vibration Sensors<span class="sub">Accelerometer, Piezo and Vibration Switch</span></h1>
+  <div class="rule"></div>
+
+<h2><span class="no">1</span>Introduction and need</h2>
+<p class="q">Vibration is the to-and-fro oscillatory motion of a machine part about its mean position.
+Every rotating machine vibrates, but when the vibration crosses a limit it means that something is wrong
+&mdash; imbalance, misalignment, loose bearing, bent shaft or cavitation. A <span class="b">vibration
+sensor</span> measures this oscillation so that the fault can be detected
+<span class="hl">before the machine fails</span>. This is called <span class="b">condition monitoring</span>
+or predictive maintenance.</p>
+<p class="q">Vibration is described by three quantities: <span class="b">displacement</span> (micron),
+<span class="b">velocity</span> (mm/s) and <span class="b">acceleration</span> (g or m/s&sup2;), together
+with its <span class="b">frequency</span> in Hz.</p>
+
+<h2><span class="no">2</span>Piezoelectric Accelerometer &mdash; Construction</h2>
+<p class="q">It is the most common industrial vibration sensor. A <span class="b">seismic mass</span> is
+placed on a <span class="b">piezoelectric crystal</span> (quartz or PZT ceramic). The crystal is sandwiched
+between two electrodes and the whole assembly is sealed in a steel case. When the case vibrates, the mass
+presses the crystal with a varying force and the crystal generates a <span class="b">charge</span>.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 300" role="img" aria-label="Fig. 7.1 &#8212; Piezoelectric accelerometer: construction and working" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<rect x="430" y="30" width="330" height="220" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<rect x="20" y="30" width="380" height="220" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<text x="210" y="52" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">construction</text>
+<path d="M70,70 L70,210 L300,210 L300,70" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round"/>
+<path d="M70,70 Q185,40 300,70" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round"/>
+<text x="185" y="72" font-size="12" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">base + steel case</text>
+<rect x="140" y="85" width="120" height="40" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="200" y="109.42" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">seismic mass (m)</text>
+<rect x="130" y="140" width="140" height="40" rx="8" fill="#fffdf3" stroke="#c62828" stroke-width="2.6"/><text x="200" y="164.42" font-size="13" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">piezo crystal (PZT)</text>
+<path d="M120,140 L120,180 M280,140 L280,180" style="fill:none;stroke:#123c8c;stroke-width:2.4;stroke-linecap:round"/>
+<path d="M100,150 L120,150 M100,170 L120,170" style="fill:none;stroke:#123c8c;stroke-width:2.4;stroke-linecap:round"/>
+<text x="95" y="164" font-size="12" fill="#123c8c" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">C</text>
+<text x="310" y="160" font-size="12" fill="#16324f" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">to charge amp</text>
+<text x="595" y="52" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">working</text>
+<rect x="450" y="62" width="290" height="170" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="595" y="113.96" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">machine surface vibrates</text><text x="595" y="132.86" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">F = m × a  acts on the crystal</text><text x="595" y="151.76" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Q = d × F   (d = piezo constant)</text><text x="595" y="170.66" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">V = Q / C</text><text x="595" y="189.56" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">charge ≡ acceleration</text>
+<text x="390" y="280" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">piezoelectric accelerometer = vibration to voltage</text>
+</g>
+</svg>
+<figcaption>Fig. 7.1 &#8212; Piezoelectric accelerometer: construction and working</figcaption>
+</figure>
+
+<h2><span class="no">3</span>Working</h2>
+<p class="q">The piezoelectric effect states that when a mechanical force is applied on certain crystals,
+electric charges appear on their faces. The generated charge Q = d &times; F, where d is the piezoelectric
+constant and F is the applied force. Since the force on the mass is F = m &times; a, the
+<span class="b">charge produced is directly proportional to the acceleration</span> of the vibration. This
+very small charge must be converted by a <span class="b">charge amplifier</span> or the built-in IEPE
+amplifier into a usable voltage (typically 100 mV/g).</p>
+<h2><span class="no">4</span>Other vibration sensors</h2>
+<h3>4.1 Vibration switch (SW-18020P / ball type)</h3>
+<p class="q">It is a simple digital sensor. A small metal ball is kept inside a cylindrical spring or cavity.
+When vibration occurs the ball touches the walls and the contacts close, giving a LOW or HIGH signal. It is
+used where only "vibration present / absent" information is needed.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 330" role="img" aria-label="Fig. 7.2 &#8212; Simple vibration switch circuit with pull-up resistor" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<polyline points="40,60 740,60" style="fill:none;stroke:#c62828;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="390" y="86" font-size="15" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">5 V</text>
+<polyline points="40,270 740,270" style="fill:none;stroke:#123c8c;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="390" y="296" font-size="15" fill="#123c8c" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">0 V</text>
+<g transform="translate(70,90) rotate(0,50,50) translate(0,0) scale(1)"><path d="M50,0 L50,20 L32,26 L68,36 L32,46 L68,56 L32,66 L68,74 L50,80 L50,100" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="154" y="145.6" font-size="16" fill="#c62828" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">10 kΩ</text>
+<polyline points="120,60 120,90" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="120" cy="60" r="5.5" fill="#16324f"/>
+<rect x="170" y="190" width="160" height="65" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="250" y="218.145" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">metal ball</text><text x="250" y="235.695" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">inside cavity</text>
+<path d="M205,218 Q240,204 275,218 Q295,232 275,242 Q240,250 205,240 Q188,228 205,218" style="fill:none;stroke:#b45309;stroke-width:2.4;stroke-linecap:round"/>
+<polyline points="120,190 360,190" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="240" cy="190" r="5.5" fill="#16324f"/>
+<circle cx="360" cy="190" r="5.5" fill="#16324f"/>
+<polyline points="240,255 240,270" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="240" cy="270" r="5.5" fill="#16324f"/>
+<rect x="400" y="120" width="220" height="85" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="510" y="157.475" font-size="15" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">µC input</text><text x="510" y="177.725" font-size="15" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">(internal pull-up)</text>
+<polyline points="360,190 360,162 400,162" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="330" y="112" font-size="13" fill="#b45309" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">pull-up holds the node HIGH</text>
+<text x="300" y="176" font-size="13" fill="#1b7a3d" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">vibration → contact → 0</text>
+<text x="390" y="318" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">ball touches → output LOW → µC alarm</text>
+</g>
+</svg>
+<figcaption>Fig. 7.2 &#8212; Simple vibration switch circuit with pull-up resistor</figcaption>
+</figure>
+
+<h3>4.2 MEMS accelerometer (ADXL335 / MPU-6050)</h3>
+<p class="q">A tiny silicon cantilever with a proof mass is made by micro-machining. Its capacitance changes
+with movement and the on-chip circuit converts it to an analog voltage (ADXL335) or to I&sup2;C digital data
+(MPU-6050). Used in mobile phones, drones, car airbags and step counting watches.</p>
+<div class="tw"><table>
+<tr><th>Sensor</th><th>Type</th><th>Output</th><th>Typical use</th></tr>
+<tr><td>Piezoelectric accelerometer</td><td>Active</td><td>Charge / mV per g</td><td>Machine condition monitoring</td></tr>
+<tr><td>MEMS accelerometer</td><td>Passive, IC type</td><td>Analog V or I&sup2;C digital</td><td>Mobile, drone, airbag</td></tr>
+<tr><td>Velocity transducer</td><td>Moving coil</td><td>mm/s</td><td>Large machines, ISO 10816 limits</td></tr>
+<tr><td>Proximity (eddy current) probe</td><td>Non-contact</td><td>micron displacement</td><td>Shaft vibration of turbines</td></tr>
+<tr><td>Vibration switch</td><td>Digital contact</td><td>ON / OFF</td><td>Simple alarm, theft alarm</td></tr>
+</table></div>
+<h2><span class="no">5</span>Applications</h2>
+<ul class="arr">
+  <li><span class="b">Predictive maintenance</span> of motors, pumps, fans, gear boxes, compressors.</li>
+  <li>Bearing fault detection and shaft imbalance analysis.</li>
+  <li>Earthquake and structural health monitoring of bridges and buildings.</li>
+  <li>Vehicle crash detection (airbag), anti-theft alarms, mobile screen rotation.</li>
+  <li>Washing machine unbalance detection and drone stabilisation.</li>
+</ul>
+
+<!--EXTRAS-->
+<h2><span class="no">6</span>Worked numericals</h2>
+
+<div class="formula"><span class="b">Problem 1.</span> A piezoelectric accelerometer has sensitivity 100 pC/g and is connected to a charge amplifier with C<sub>f</sub> = 1000 pF. Find the amplifier output at 10 g.</div>
+<p class="q"><span class="b">Solution.</span> Charge Q = 100 pC/g &times; 10 g = 1000 pC. V<sub>out</sub> = Q / C<sub>f</sub> = 1000 pC / 1000 pF = 1.0 V. Charge amplifiers are preferred because cable capacitance does not change the gain. <span class="hl">V<sub>out</sub> = 1.0 V.</span></p>
+<div class="formula"><span class="b">Problem 2.</span> An accelerometer with 500 mV/g output is sampled while the machine vibrates at 0.4 g. The controller alarms above 1.0 g. Find the ADC counts at 0.4 g with a 3.3 V, 12-bit ADC.</div>
+<p class="q"><span class="b">Solution.</span> V = 0.5 V/g &times; 0.4 g = 0.2 V. Counts = 0.2 / 3.3 &times; 4095 = 248. Alarm level 1.0 g = 0.5 V &rArr; 620 counts &mdash; threshold can be set directly in counts. <span class="hl">ADC code &asymp; 248 at 0.4 g.</span></p>
+<h2><span class="no">7</span>Viva questions and answers</h2>
+
+<p class="q"><span class="b">Q1. What does an accelerometer actually measure?</span><br><span class="o">A.</span> It measures the force needed to accelerate its own proof mass; by Newton's law that force divided by mass equals the vibration acceleration.</p>
+<p class="q"><span class="b">Q2. Why do piezo accelerometers need a charge or IEPE amplifier?</span><br><span class="o">A.</span> The crystal generates charge but almost no current; a charge amplifier or built-in IEPE conditioning converts it to a usable voltage before the cable.</p>
+<p class="q"><span class="b">Q3. What is the resonant frequency of a vibration sensor?</span><br><span class="o">A.</span> The mounting-structure natural frequency; measurements are only trusted well below it, usually below one third.</p>
+<p class="q"><span class="b">Q4. Why are MEMS accelerometers popular in modern machines?</span><br><span class="o">A.</span> They are tiny, cheap, low power and put X, Y, Z plus temperature on one digital interface straight into a microcontroller.</p>
+<p class="q"><span class="b">Q5. What is a vibration switch used for?</span><br><span class="o">A.</span> It gives a simple trip output when vibration crosses a set level &mdash; cheap protection for pumps, fans and washers without full spectrum analysis.</p>
+<p class="q"><span class="b">Q6. How does sampling rate relate to vibration analysis?</span><br><span class="o">A.</span> The sample rate must be at least twice the highest frequency of interest (Nyquist); bearing faults often need several kilohertz sampling.</p>
+<h2><span class="no">8</span>Summary</h2>
+
+<p class="q">Vibration sensors convert mechanical oscillation into an electrical signal: piezoelectric accelerometers for wide bandwidth and harsh duty, MEMS devices for compact three-axis digital sensing, and simple vibration switches for alarm duty. The sensor output is a charge or voltage proportional to acceleration, the mounting must be mechanically stiff, and the electronics must resolve the tiny signals before cable noise takes over.</p>
+<h2><span class="no">9</span>Specifications at a glance</h2>
+
+<div class="tw"><table>
+<tr><th>Parameter</th><th>Piezo accelerometer</th><th>MEMS (e.g. ADXL335)</th></tr>
+<tr><td>Principle</td><td>Piezoelectric charge</td><td>Capacitive silicon proof mass</td></tr>
+<tr><td>Sensitivity</td><td>10&ndash;1000 pC/g</td><td>100&ndash;1000 mV/g (scaled to range)</td></tr>
+<tr><td>Frequency range</td><td>1 Hz &ndash; 10 kHz+</td><td>DC &ndash; a few hundred Hz</td></tr>
+<tr><td>Axes</td><td>Single axis</td><td>1, 2 or 3 axes</td></tr>
+<tr><td>Output</td><td>Charge / IEPE voltage</td><td>Analog or I&#178;C / SPI digital</td></tr>
+<tr><td>Supply</td><td>2&ndash;20 mA IEPE constant current</td><td>1.7&ndash;3.6 V low voltage</td></tr>
+<tr><td>Typical use</td><td>Bearing analysis, balancing</td><td>Tilt, impact, appliance monitoring</td></tr>
+</table></div>
+
+<div class="pager">
+<a href="06-gas-sensors-mq2.html">&#8592; Prev</a>
+<a class="home" href="index.html">&#8962; Index</a>
+<a href="08-displacement-force-sensors.html">Next &#8594;</a>
+</div>
+  <p class="sig">~ handwritten notes &middot; Sensors &amp; Process Control Systems &middot; save &amp; revise daily ~</p>
+</div>
+<script>
+/* pen-colour switch: recolours the body text only, diagrams keep their own ink */
+function ink(c){
+  var m = {brown:'#4a3728', red:'#9b1c1c', green:'#155724'};
+  document.body.style.color = m[c] || m.brown;
+  var bs = document.querySelectorAll('.btn');
+  for (var i = 0; i < bs.length; i++) { bs[i].classList.remove('active'); }
+  event.currentTarget.classList.add('active');
+}
+</script>
+</body>
+</html>

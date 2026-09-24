@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic 22 &middot; Process Control Systems | Sensors &amp; Process Control Systems Notes</title>
+<meta name="description" content="Handwritten study notes on Topic 22 &middot; Process Control Systems - Sensors and Process Control Systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&amp;family=Patrick+Hand&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23fdf9ec'/%3E%3Cpath d='M8 20h12l5-10 8 22 6-16 5 10h12' fill='none' stroke='%23123c8c' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 46h48' stroke='%23c62828' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/notes.css">
+</head>
+<body>
+<div class="paper">
+  <div class="topbar">
+    <span class="brand">Sensors &amp; Process Control</span>
+    <button class="btn" onclick="ink('brown')" title="blue-black ink">Blue</button>
+    <button class="btn" onclick="ink('red')" title="red pen">Red</button>
+    <button class="btn" onclick="ink('green')" title="green pen">Green</button>
+    <button class="btn" onclick="window.print()" title="print this note">Print</button>
+    <a class="btn" href="index.html" style="text-decoration:none">Index</a>
+  </div>
+  <span class="unit-tag">Unit III &middot; Fundamentals of Process Automation</span>
+  <h1 class="title">Topic 22 &middot; Process Control Systems<span class="sub">Continuous, Discrete and Composite Control</span></h1>
+  <div class="rule"></div>
+
+<h2><span class="no">1</span>What is a process and what is process control?</h2>
+<div class="def"><span class="cap">Definitions</span>
+A <b>process</b> is any operation or series of operations in which <b>energy or material is transformed</b>
+&mdash; for example heating water, distilling alcohol, grinding cement or filling bottles.<br>
+<b>Process control</b> is the technique of <b>maintaining the output of a process at the desired value</b>
+by continuously measuring it, comparing it with the desired value and correcting the difference
+automatically.</div>
+<h2><span class="no">2</span>Elements of a process control system</h2>
+
+<figure class="fig">
+<svg viewBox="0 0 780 360" role="img" aria-label="Fig. 22.1 &#8212; Block diagram of a closed loop process control system" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<rect x="20" y="95" width="70" height="50" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="55" y="125.1" font-size="15" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">SP</text>
+<g transform="translate(110,70) rotate(0,50,50) translate(0,0) scale(1)"><circle cx="50" cy="50" r="32" fill="#fffdf3" stroke="#16324f" stroke-width="3"/><text x="50" y="61" font-size="28" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">&#931;</text><path d="M0,50 L18,50 M82,50 L100,50 M50,82 L50,100" fill="none" stroke="#16324f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<rect x="250" y="85" width="150" height="80" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="325" y="120.645" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">CONTROLLER</text><text x="325" y="138.195" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">(P, I, PI, PID)</text>
+<rect x="440" y="85" width="160" height="80" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="520" y="120.645" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">FINAL CONTROL</text><text x="520" y="138.195" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">ELEMENT (valve)</text>
+<rect x="640" y="85" width="120" height="80" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="700" y="120.645" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">PROCESS</text><text x="700" y="138.195" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">(plant)</text>
+<polyline points="90,120 110,120" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<polyline points="210,120 250,120" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<polyline points="400,120 440,120" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<polyline points="600,120 640,120" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<rect x="540" y="235" width="220" height="60" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="650" y="269.76" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">SENSOR / TRANSMITTER</text>
+<polyline points="700,165 700,205 760,205 760,265" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<polyline points="540,265 480,265 480,305 160,305 160,170" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="230" y="105" font-size="12" fill="#b45309" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">error e</text>
+<text x="420" y="105" font-size="12" fill="#1b7a3d" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">m.v.</text>
+<text x="650" y="318" font-size="12" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">controlled variable (measured)</text>
+<text x="330" y="340" font-size="13" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">feedback closes the loop</text>
+</g>
+</svg>
+<figcaption>Fig. 22.1 &#8212; Block diagram of a closed loop process control system</figcaption>
+</figure>
+
+<div class="tw"><table>
+<tr><th>Element</th><th>Function</th><th>Example (boiler water level control)</th></tr>
+<tr><td><b>Process</b></td><td>The plant where the transformation takes place</td><td>The boiler</td></tr>
+<tr><td><b>Controlled variable (PV)</b></td><td>The quantity to be controlled</td><td>Water level</td></tr>
+<tr><td><b>Set point (SP)</b></td><td>The desired value of the controlled variable</td><td>70 % level</td></tr>
+<tr><td><b>Manipulated variable (MV)</b></td><td>The quantity adjusted by the controller</td><td>Feed water flow</td></tr>
+<tr><td><b>Measuring element</b></td><td>Measures the PV and sends the signal</td><td>DP level transmitter</td></tr>
+<tr><td><b>Error detector</b></td><td>Finds e = SP &minus; PV</td><td>Comparator in the controller</td></tr>
+<tr><td><b>Controller</b></td><td>Decides the corrective action</td><td>PID controller</td></tr>
+<tr><td><b>Final control element</b></td><td>Actually changes the process</td><td>Control valve</td></tr>
+<tr><td><b>Disturbance</b></td><td>Any unwanted input that upsets the process</td><td>Sudden change of steam demand</td></tr>
+</table></div>
+<h2><span class="no">3</span>Types of process control</h2>
+<h3>3.1 Continuous (analog) process control</h3>
+<p class="q">Here the controlled variable changes <span class="b">continuously over a range</span> of values
+and the controller output is also continuous. The objective is to hold the variable at the set point in
+spite of disturbances. Examples: temperature of a furnace, level of a tank, pressure of a boiler, flow rate,
+pH of an effluent, speed of a motor. Instruments used: transmitters, PID controllers, control valves,
+recorders. This is the classical field of <span class="b">process control / instrumentation</span>.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 300" role="img" aria-label="Fig. 22.2 &#8212; Continuous control versus discrete control output" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<rect x="400" y="35" width="360" height="210" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<rect x="20" y="35" width="350" height="210" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<text x="195" y="57" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">continuous control</text>
+<path d="M70,200 L70,75" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<path d="M70,200 L345,200" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="207.5" y="226" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">time</text>
+<text x="58" y="69" font-size="14" fill="#16324f" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">PV</text>
+<path d="M78,170 C140,168 190,120 250,110 C290,104 320,102 340,102" style="fill:none;stroke:#c62828;stroke-width:3;stroke-linecap:round"/>
+<path d="M78,102 L340,102" style="fill:none;stroke:#123c8c;stroke-width:1.8;stroke-linecap:round;stroke-dasharray:6 4"/>
+<text x="300" y="92" font-size="12" fill="#123c8c" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">SP</text>
+<text x="210" y="140" font-size="11" fill="#1b7a3d" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">PV follows SP smoothly</text>
+<text x="580" y="57" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">discrete (ON/OFF) control</text>
+<path d="M450,200 L450,75" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<path d="M450,200 L730,200" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="590" y="226" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">time</text>
+<text x="438" y="69" font-size="14" fill="#16324f" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">output</text>
+<path d="M458,120 L540,120 L540,175 L630,175 L630,120 L720,120" style="fill:none;stroke:#c62828;stroke-width:3;stroke-linecap:round"/>
+<text x="490" y="110" font-size="12" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">ON</text>
+<text x="585" y="165" font-size="12" fill="#123c8c" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">OFF</text>
+<text x="590" y="252" font-size="11" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">only two states, nothing in between</text>
+<text x="390" y="278" font-size="14" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">continuous : every value in range · discrete : ON and OFF only</text>
+</g>
+</svg>
+<figcaption>Fig. 22.2 &#8212; Continuous control versus discrete control output</figcaption>
+</figure>
+
+<h3>3.2 Discrete state (sequential / logic) control</h3>
+<p class="q">Here the process variables and the controller outputs can take only a
+<span class="b">finite number of distinct states</span> &mdash; normally ON or OFF, open or closed, high or
+low. The control action follows a <span class="b">sequence of steps</span> which depends on logic conditions
+(AND, OR, NOT) and on timers and counters. Examples: bottle filling machine, washing machine cycle, traffic
+light, elevator, conveyor sequence, machine tool cycle. The device used is the
+<span class="b">PLC (Programmable Logic Controller)</span>.</p>
+<h3>3.3 Composite discrete / continuous control</h3>
+<p class="q">Most real plants need <span class="b">both</span>. In a bottling plant the
+<span class="b">level of the liquid in the tank is controlled continuously</span> by a PID controller and a
+control valve, while the <span class="b">bottle handling, capping and labelling is controlled
+discretely</span> by a PLC using proximity switches and timers. The modern solution is a single
+<span class="b">hybrid PLC / DCS</span> which has both analog (PID) and digital (ladder logic) capability.
+Examples: batch reactors, boiler control, water treatment plant, packaging lines, automobile assembly.</p>
+<div class="tw"><table>
+<tr><th>Feature</th><th>Continuous control</th><th>Discrete control</th></tr>
+<tr><td>Variable</td><td>Analog, varies over a range</td><td>Digital, two or few states</td></tr>
+<tr><td>Controller</td><td>PID controller, DCS</td><td>PLC, relay logic, timers, counters</td></tr>
+<tr><td>Final element</td><td>Control valve (throttling)</td><td>Solenoid valve, contactor, relay (ON/OFF)</td></tr>
+<tr><td>Goal</td><td>Regulation &mdash; hold the value at set point</td><td>Sequence &mdash; do the steps in order</td></tr>
+<tr><td>Programming</td><td>Tuning of P, I, D</td><td>Ladder logic / function block</td></tr>
+<tr><td>Example</td><td>Boiler drum level</td><td>Washing machine cycle</td></tr>
+</table></div>
+<h2><span class="no">4</span>Open loop versus closed loop</h2>
+<p class="q">In an <span class="b">open loop</span> system the output is not measured and no correction is
+made &mdash; for example an immersion heater switched ON for 10 minutes by a timer. It is simple and cheap
+but cannot correct for disturbances. In a <span class="b">closed loop</span> (feedback) system the output is
+measured, compared with the set point and the error is used to correct the input &mdash; for example a
+thermostat controlled water heater. Closed loop control is more accurate and can reject disturbances, but it
+can become unstable if not tuned properly.</p>
+<div class="tip"><span class="cap">Supervisory levels of automation</span>
+<b>Field level</b> (sensors and actuators) &rarr; <b>Control level</b> (PLC / DCS / PID controllers) &rarr;
+<b>Supervisory level</b> (SCADA, HMI) &rarr; <b>Management level</b> (MES / ERP).</div>
+
+<!--EXTRAS-->
+<h2><span class="no">5</span>Worked numericals</h2>
+
+<div class="formula"><span class="b">Problem 1.</span> A level loop has set point 50 %, process variable 47 % and a proportional-only controller with gain K<sub>c</sub> = 2.5 %/% and bias of 40 %. Find controller output.</div>
+<p class="q"><span class="b">Solution.</span> Error e = SP &minus; PV = 50 &minus; 47 = +3 %. u = bias + K<sub>c</sub> e = 40 + 2.5 &times; 3 = 47.5 %. Output drives valve to 47.5 % open (4&ndash;20 mA equivalent). <span class="hl">u = 47.5 %.</span></p>
+<h2><span class="no">6</span>Viva questions and answers</h2>
+
+<p class="q"><span class="b">Q1. What are the four elements of a process control loop?</span><br><span class="o">A.</span> Measurement (sensor/transmitter), comparison (controller), final control element (valve, drive), and the process itself.</p>
+<p class="q"><span class="b">Q2. Difference between continuous and discrete state control?</span><br><span class="o">A.</span> Continuous manipulates a variable proportionally over a range; discrete changes between fixed states (on/off, step sequences).</p>
+<p class="q"><span class="b">Q3. What is open-loop control?</span><br><span class="o">A.</span> Output is set without reference to the measured result &mdash; no correction of disturbances, used where the process is very predictable.</p>
+<p class="q"><span class="b">Q4. Why is feedback control preferred in plants?</span><br><span class="o">A.</span> It automatically corrects unmeasured disturbances and model errors by acting on the measured error.</p>
+<p class="q"><span class="b">Q5. Name the signals carried on a typical analog loop.</span><br><span class="o">A.</span> 4&ndash;20 mA or 1&ndash;5 V measurement in, 4&ndash;20 mA output out, plus Hart or fieldbus digital overlay where used.</p>
+<p class="q"><span class="b">Q6. What is an interlock?</span><br><span class="o">A.</span> A logic condition that prevents an unsafe action until safety criteria are satisfied &mdash; the discrete twin of feedback control.</p>
+<h2><span class="no">7</span>Summary</h2>
+
+<p class="q">Process control systems close the loop between measurement, decision and action using sensors, controllers and final control elements. Continuous control handles smoothly varying quantities with feedback, discrete control handles states and sequences with logic, and composite systems combine both. Open loop is simpler but blind to disturbances; closed loop is the default wherever the process wanders.</p>
+<h2><span class="no">8</span>Specifications at a glance</h2>
+
+<div class="tw"><table>
+<tr><th>Parameter</th><th>Typical loop element</th><th>Standard value</th></tr>
+<tr><td>Measurement</td><td>Transmitter to controller</td><td>4&ndash;20 mA / HART, fieldbus</td></tr>
+<tr><td>Controller</td><td>PLC / DCS analog task</td><td>Scan 0.1&ndash;1 s per loop</td></tr>
+<tr><td>Output</td><td>To final control element</td><td>4&ndash;20 mA, 0&ndash;10 V, discrete</td></tr>
+<tr><td>Final element</td><td>Control valve, drive, heater</td><td>Sized for max demand + margin</td></tr>
+<tr><td>Feedback</td><td>PV compared with SP each scan</td><td>Error drives corrective action</td></tr>
+<tr><td>Alarm layer</td><td>High/low deviation alerts</td><td>Independent of continuous action</td></tr>
+</table></div>
+
+<div class="pager">
+<a href="21-electromechanical-motors.html">&#8592; Prev</a>
+<a class="home" href="index.html">&#8962; Index</a>
+<a href="23-process-characteristics.html">Next &#8594;</a>
+</div>
+  <p class="sig">~ handwritten notes &middot; Sensors &amp; Process Control Systems &middot; save &amp; revise daily ~</p>
+</div>
+<script>
+/* pen-colour switch: recolours the body text only, diagrams keep their own ink */
+function ink(c){
+  var m = {brown:'#4a3728', red:'#9b1c1c', green:'#155724'};
+  document.body.style.color = m[c] || m.brown;
+  var bs = document.querySelectorAll('.btn');
+  for (var i = 0; i < bs.length; i++) { bs[i].classList.remove('active'); }
+  event.currentTarget.classList.add('active');
+}
+</script>
+</body>
+</html>

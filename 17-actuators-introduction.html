@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic 17 &middot; Introduction to Actuators | Sensors &amp; Process Control Systems Notes</title>
+<meta name="description" content="Handwritten study notes on Topic 17 &middot; Introduction to Actuators - Sensors and Process Control Systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&amp;family=Patrick+Hand&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23fdf9ec'/%3E%3Cpath d='M8 20h12l5-10 8 22 6-16 5 10h12' fill='none' stroke='%23123c8c' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 46h48' stroke='%23c62828' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/notes.css">
+</head>
+<body>
+<div class="paper">
+  <div class="topbar">
+    <span class="brand">Sensors &amp; Process Control</span>
+    <button class="btn" onclick="ink('brown')" title="blue-black ink">Blue</button>
+    <button class="btn" onclick="ink('red')" title="red pen">Red</button>
+    <button class="btn" onclick="ink('green')" title="green pen">Green</button>
+    <button class="btn" onclick="window.print()" title="print this note">Print</button>
+    <a class="btn" href="index.html" style="text-decoration:none">Index</a>
+  </div>
+  <span class="unit-tag">Unit II &middot; Actuators</span>
+  <h1 class="title">Topic 17 &middot; Introduction to Actuators<span class="sub">Definition, Principle, Sensor vs Transducer vs Actuator</span></h1>
+  <div class="rule"></div>
+
+<h2><span class="no">1</span>Introduction</h2>
+<p class="q">In Unit I we studied devices which <span class="b">take information from</span> the process.
+Now we study the devices which <span class="b">give action to</span> the process. These are the
+<span class="r">actuators</span> &mdash; the hands and legs of the control system. The controller decides
+what to do, but the actuator is the one which actually does it.</p>
+<div class="def"><span class="cap">Definition &mdash; Actuator</span>
+An <b>actuator</b> is a device that converts a <b>control signal</b> (usually electrical, pneumatic or
+hydraulic) into <b>mechanical motion or physical action</b> such as rotation, linear movement, opening of a
+valve, heating, or generation of light and sound.</div>
+<div class="def"><span class="cap">Principle of an actuator</span>
+An actuator works on the principle of <b>energy conversion</b>: it takes energy from a source (electric
+supply, compressed air, hydraulic oil) and, under the command of a small control signal, releases that
+energy in a controlled manner to produce the required mechanical action. The control signal is
+<b>low power</b> (a few mA or a few volts) while the output action is <b>high power</b>, so the actuator
+also acts as a <b>power amplifier</b>.</div>
+
+<figure class="fig">
+<svg viewBox="0 0 780 320" role="img" aria-label="Fig. 17.1 &#8212; Position of the actuator in a closed loop control system" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<rect x="20" y="95" width="90" height="60" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="65" y="129.76" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">command</text>
+<path d="M110,125 L156,125" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="133" y="109" font-size="12" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">set point</text>
+<rect x="160" y="85" width="140" height="80" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="230" y="120.31" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Controller</text><text x="230" y="139.21" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">(decision)</text>
+<path d="M300,125 L346,125" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="323" y="109" font-size="12" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">control signal</text>
+<rect x="350" y="85" width="150" height="80" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="425" y="120.31" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">ACTUATOR</text><text x="425" y="139.21" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">signal → action</text>
+<path d="M500,125 L546,125" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="523" y="109" font-size="12" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">power / motion</text>
+<rect x="550" y="85" width="190" height="80" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="645" y="120.31" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">PROCESS</text><text x="645" y="139.21" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">(plant, tank, motor)</text>
+<rect x="400" y="225" width="220" height="60" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="510" y="259.76" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Sensor (measures)</text>
+<path d="M645,165 L645,225" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<path d="M400,255 L230,255" style="fill:none;stroke:#6d28d9;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="315" y="239" font-size="12" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">feedback (measurement)</text>
+<path d="M230,255 L230,165" style="fill:none;stroke:#6d28d9;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="668" y="200" font-size="11" fill="#1b7a3d" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">measured</text>
+<text x="390" y="308" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">actuator completes the closed loop: signal → action</text>
+</g>
+</svg>
+<figcaption>Fig. 17.1 &#8212; Position of the actuator in a closed loop control system</figcaption>
+</figure>
+
+<h2><span class="no">2</span>Difference between Sensor, Transducer and Actuator</h2>
+<div class="tw"><table>
+<tr><th>Basis</th><th>Sensor</th><th>Transducer</th><th>Actuator</th></tr>
+<tr><td>Definition</td><td>Detects a physical quantity and gives a signal</td><td>Converts one form of energy
+into another</td><td>Converts a control signal into mechanical action</td></tr>
+<tr><td>Direction of energy</td><td>Process &rarr; signal (input device)</td><td>Either direction</td>
+<td>Signal &rarr; process (output device)</td></tr>
+<tr><td>Position in loop</td><td>Feedback path (measuring element)</td><td>Both paths</td>
+<td>Final control element</td></tr>
+<tr><td>Power</td><td>Very low (signal level)</td><td>Low</td><td>High (drives the load)</td></tr>
+<tr><td>Example</td><td>Thermocouple, LDR, DHT11, load cell</td><td>Microphone, loudspeaker, LVDT</td>
+<td>Relay, solenoid valve, servo motor, heater</td></tr>
+<tr><td>Human body analogy</td><td>Sense organs (eye, skin)</td><td>Nerves</td><td>Muscles and hands</td></tr>
+</table></div>
+<div class="note"><span class="cap">Important relation</span>
+A sensor is always a transducer, and an actuator is also a transducer (electrical &rarr; mechanical).
+So <b>transducer</b> is the widest word. A loudspeaker is an actuator and a transducer, but not a sensor.
+A thermocouple is a sensor and a transducer, but not an actuator.</div>
+<h2><span class="no">3</span>Classification of actuators</h2>
+<div class="tw"><table>
+<tr><th>Basis</th><th>Types</th><th>Examples</th></tr>
+<tr><td>Energy source</td><td>Electrical, pneumatic, hydraulic, thermal, magnetic</td>
+<td>Motor, diaphragm valve, hydraulic cylinder, heater, relay</td></tr>
+<tr><td>Motion produced</td><td>Rotary or linear</td><td>DC motor (rotary), solenoid (linear)</td></tr>
+<tr><td>Control action</td><td>Two position (ON/OFF) or proportional</td><td>Relay (ON/OFF), control valve
+(proportional)</td></tr>
+<tr><td>Function</td><td>Pressure control, flow control, power control, motion control</td>
+<td>Pressure controller, valve, SCR / TRIAC, servo motor</td></tr>
+</table></div>
+<h2><span class="no">4</span>Selection of an actuator</h2>
+<ul class="arr">
+  <li><span class="b">Force or torque</span> required and the speed of movement.</li>
+  <li><span class="b">Type of motion</span> &mdash; rotary or linear, and the stroke length.</li>
+  <li><span class="b">Available energy</span> &mdash; is compressed air available in the plant?</li>
+  <li><span class="b">Fail-safe action</span> &mdash; on failure should it open or close?
+      (air to open / air to close)</li>
+  <li><span class="b">Accuracy, response time, cost, size and environment</span> (explosive, wet, hot).</li>
+</ul>
+<div class="tip"><span class="cap">Examples around us</span>
+The <b>vibrator of a mobile phone</b> is an actuator. The <b>printer head</b> is moved by a stepper motor
+(actuator) while the <b>paper sensor</b> is a sensor. In a <b>washing machine</b>, the water inlet valve is
+an actuator and the water level switch is a sensor.</div>
+
+<!--EXTRAS-->
+<h2><span class="no">5</span>Worked numericals</h2>
+
+<div class="formula"><span class="b">Problem 1.</span> A pneumatic actuator has an effective piston area of 40 cm&sup2; and supply pressure of 6 bar. Find the force available at full stroke.</div>
+<p class="q"><span class="b">Solution.</span> P = 6 bar = 6&times;10<sup>5</sup> Pa; A = 40 cm&sup2; = 4&times;10<sup>&minus;3</sup> m&sup2;. F = P &times; A = 6&times;10<sup>5</sup> &times; 4&times;10<sup>&minus;3</sup> = 2400 N. Derate about 15 % for friction and spring opposition &rArr; about 2040 N useful. <span class="hl">F &asymp; 2400 N (about 2 kN before derating).</span></p>
+<div class="formula"><span class="b">Problem 2.</span> A 24 V DC motor draws 0.5 A at no load (R<sub>a</sub> = 1.2 &Omega;) and 4 A at rated load. Torque constant k<sub>t</sub> = 0.075 Nm/A. Find no-load back-emf, armature voltage drop at rated load, and developed torque.</div>
+<p class="q"><span class="b">Solution.</span> E<sub>no-load</sub> = V &minus; I<sub>0</sub> R<sub>a</sub> = 24 &minus; 0.5 &times; 1.2 = 23.4 V. Rated drop = I R<sub>a</sub> = 4 &times; 1.2 = 4.8 V, so E = 19.2 V and speed falls about 18 % below no load. T = k<sub>t</sub> I = 0.075 &times; 4 = 0.30 Nm developed at rated load. <span class="hl">E<sub>0</sub> = 23.4 V, drop = 4.8 V, T = 0.30 Nm.</span></p>
+<h2><span class="no">6</span>Viva questions and answers</h2>
+
+<p class="q"><span class="b">Q1. What is meant by fail-safe action of an actuator?</span><br><span class="o">A.</span> The position the valve or damper takes when power, signal or instrument air is lost &mdash; typically fail-close or fail-open.</p>
+<p class="q"><span class="b">Q2. Why is a spring-and-yoke actuator common on control valves?</span><br><span class="o">A.</span> The spring returns the stem to the fail position without air, and the yoke gives a stiff, aligned mounting for the stem and positioner.</p>
+<p class="q"><span class="b">Q3. Differentiate on-off and modulating actuators.</span><br><span class="o">A.</span> On-off actuators only energise fully one way or the other; modulating actuators hold any intermediate position proportional to the controller signal.</p>
+<p class="q"><span class="b">Q4. What is stroke time and why is it specified?</span><br><span class="o">A.</span> Time for full travel open-to-close; it must be much less than the process time constant for stable control and less than safety time for protection.</p>
+<p class="q"><span class="b">Q5. How are electric actuators protected outdoors?</span><br><span class="o">A.</span> Through enclosure ratings (IP65/67), corrosion-resistant coatings and heaters to stop condensation in the gearbox.</p>
+<p class="q"><span class="b">Q6. Give two reasons to prefer pneumatic over electric actuation.</span><br><span class="o">A.</span> Intrinsic safety in hazardous areas, and very high force-to-weight with simple, reliable fail-safe springs.</p>
+<h2><span class="no">7</span>Summary</h2>
+
+<p class="q">Actuators convert controller output into motion: pneumatic, hydraulic, electric and manual drives each covering a different corner of force, speed and environment. Selection proceeds from process force or torque through stroke time, duty cycle and fail-safe position to the final rating plate. Control valves add flow characteristics and trim options; every installation must document where the actuator goes when everything fails.</p>
+<h2><span class="no">8</span>Specifications at a glance</h2>
+
+<div class="tw"><table>
+<tr><th>Parameter</th><th>Pneumatic linear</th><th>Electric rotary</th><th>Hydraulic</th></tr>
+<tr><td>Typical force</td><td>0.5&ndash;50 kN</td><td>Torque 5&ndash;500 Nm</td><td>10&ndash;500 kN</td></tr>
+<tr><td>Supply</td><td>3&ndash;7 bar air</td><td>24 V DC / 230 V AC</td><td>70&ndash;350 bar oil</td></tr>
+<tr><td>Fail-safe</td><td>Spring return (choose FC/FO)</td><td>Motor / spring brake</td><td>Accumulator or lock</td></tr>
+<tr><td>Stroke time</td><td>1&ndash;60 s</td><td>5&ndash;60 s</td><td>0.5&ndash;10 s</td></tr>
+<tr><td>Hazardous area</td><td>Inherently safe option</td><td>Certified enclosure needed</td><td>Special enclosures</td></tr>
+<tr><td>Typical use</td><td>Control valves, dampers</td><td>Quarter-turn valves, louvres</td><td>Heavy presses, rams</td></tr>
+</table></div>
+
+<div class="pager">
+<a href="16-performance-parameters.html">&#8592; Prev</a>
+<a class="home" href="index.html">&#8962; Index</a>
+<a href="18-control-valves.html">Next &#8594;</a>
+</div>
+  <p class="sig">~ handwritten notes &middot; Sensors &amp; Process Control Systems &middot; save &amp; revise daily ~</p>
+</div>
+<script>
+/* pen-colour switch: recolours the body text only, diagrams keep their own ink */
+function ink(c){
+  var m = {brown:'#4a3728', red:'#9b1c1c', green:'#155724'};
+  document.body.style.color = m[c] || m.brown;
+  var bs = document.querySelectorAll('.btn');
+  for (var i = 0; i < bs.length; i++) { bs[i].classList.remove('active'); }
+  event.currentTarget.classList.add('active');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic 3 &middot; Stress, Strain and Load Cells | Sensors &amp; Process Control Systems Notes</title>
+<meta name="description" content="Handwritten study notes on Topic 3 &middot; Stress, Strain and Load Cells - Sensors and Process Control Systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&amp;family=Patrick+Hand&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23fdf9ec'/%3E%3Cpath d='M8 20h12l5-10 8 22 6-16 5 10h12' fill='none' stroke='%23123c8c' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 46h48' stroke='%23c62828' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/notes.css">
+</head>
+<body>
+<div class="paper">
+  <div class="topbar">
+    <span class="brand">Sensors &amp; Process Control</span>
+    <button class="btn" onclick="ink('brown')" title="blue-black ink">Blue</button>
+    <button class="btn" onclick="ink('red')" title="red pen">Red</button>
+    <button class="btn" onclick="ink('green')" title="green pen">Green</button>
+    <button class="btn" onclick="window.print()" title="print this note">Print</button>
+    <a class="btn" href="index.html" style="text-decoration:none">Index</a>
+  </div>
+  <span class="unit-tag">Unit I &middot; Fundamentals of Sensors</span>
+  <h1 class="title">Topic 3 &middot; Stress, Strain and Load Cells<span class="sub">Strain Gauge, Wheatstone Bridge, Load Cell</span></h1>
+  <div class="rule"></div>
+
+<h2><span class="no">1</span>Stress, strain and the basic idea</h2>
+<p class="q">When a force is applied on a body, the internal resisting force per unit area is called
+<span class="b">stress</span> and the deformation produced (change in length per original length) is called
+<span class="b">strain</span>. Strain is a ratio of two lengths, so it has <span class="hl">no unit</span>
+and is expressed in microstrain (&micro;&epsilon;).</p>
+<div class="formula">&sigma; = F / A &nbsp;&nbsp;(N/m&sup2; = Pa) &nbsp;&nbsp;&nbsp;&nbsp;
+&epsilon; = &Delta;L / L &nbsp;&nbsp;&nbsp;&nbsp; &sigma; = E &times; &epsilon; &nbsp;(Hooke's law)</div>
+<p class="q">Here <span class="b">E</span> is the modulus of elasticity (Young's modulus) of the material.
+The sensor which measures strain is the <span class="r">strain gauge</span>, and a strain gauge mounted on a
+properly shaped metal element becomes a <span class="r">load cell</span>.</p>
+
+<h2><span class="no">2</span>Strain Gauge &mdash; Construction</h2>
+<p class="q">A strain gauge consists of a very thin <span class="b">metallic foil or fine wire</span>
+(constantan, nichrome or karma alloy) arranged in a zig-zag grid pattern and bonded between two thin insulating
+backing sheets. The grid is bonded to the test surface with a special adhesive (epoxy or cyanoacrylate).
+Two copper lead wires are soldered to the ends of the grid. The whole gauge is only a few millimetres square
+and its nominal resistance is 120 &#937;, 350 &#937; or 1000 &#937;.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 260" role="img" aria-label="Fig. 3.1 &#8212; Strain gauge, its mounting and the resistance change mechanism" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<rect x="450" y="30" width="310" height="200" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<rect x="20" y="30" width="410" height="200" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<text x="225" y="52" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">mounted on the test surface</text>
+<rect x="70" y="150" width="320" height="45" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="230" y="177.26" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">metal bar / specimen</text>
+<path d="M110,150 L110,125 L150,125 L150,140 L190,140 L190,125 L230,125 L230,140 L270,140 L270,125 L310,125 L310,150" style="fill:none;stroke:#c62828;stroke-width:2.6;stroke-linecap:round"/>
+<path d="M110,140 L110,150 M310,140 L310,150" style="fill:none;stroke:#c62828;stroke-width:2.6;stroke-linecap:round"/>
+<rect x="120" y="78" width="180" height="40" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="210" y="102.42" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">strain gauge (foil grid)</text>
+<text x="80" y="132" font-size="16" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">F</text>
+<text x="355" y="132" font-size="16" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">F</text>
+<path d="M60,100 L60,140" style="fill:none;stroke:#c62828;stroke-width:2.4;stroke-linecap:round;marker-end:url(#arw)"/>
+<path d="M365,100 L365,140" style="fill:none;stroke:#c62828;stroke-width:2.4;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="230" y="215" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">gauge bonded with epoxy adhesive</text>
+<text x="605" y="52" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">working</text>
+<rect x="470" y="62" width="270" height="148" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="605" y="102.96" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Tension : grid lengthens → wire</text><text x="605" y="121.86" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">area falls → R INCREASES</text><text x="605" y="140.76" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Compression : R decreases</text><text x="605" y="159.66" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">ΔR / R = G × ε   (G = gauge factor)</text><text x="605" y="178.56" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">output → bridge → amplifier</text>
+</g>
+</svg>
+<figcaption>Fig. 3.1 &#8212; Strain gauge, its mounting and the resistance change mechanism</figcaption>
+</figure>
+
+<h2><span class="no">3</span>Working of the strain gauge</h2>
+<p class="q">When the surface stretches, the grid also stretches. Its length increases and its cross-section
+decreases, so the <span class="b">resistance increases</span>. When the surface is compressed, the
+resistance decreases. The sensitivity is expressed by the <span class="b">gauge factor</span>:</p>
+<div class="formula">G = (&Delta;R / R) / &epsilon; &nbsp;&nbsp; (about 2 for metal foil gauges)</div>
+<p class="q">The problem is that the change is <span class="hl">very small</span>. For example a 120 &#937;
+gauge at 1000 &micro;&epsilon; changes only by 0.24 &#937;. Such a tiny change can never be measured with an
+ordinary multimeter, so the gauge is always connected in a <span class="b">Wheatstone bridge</span>.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 480" role="img" aria-label="Fig. 3.2 &#8212; Wheatstone bridge with strain gauges and instrumentation amplifier" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<polyline points="40,60 740,60" style="fill:none;stroke:#c62828;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="390" y="86" font-size="15" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">+V excitation (5 V)</text>
+<polyline points="40,360 740,360" style="fill:none;stroke:#123c8c;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="390" y="386" font-size="15" fill="#123c8c" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">0 V</text>
+<g transform="translate(150,90) rotate(0,50,50) translate(0,0) scale(1)"><path d="M50,0 L50,20 L32,26 L68,36 L32,46 L68,56 L32,66 L68,74 L50,80 L50,100" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="166" y="145.6" font-size="16" fill="#c62828" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">R₁</text>
+<g transform="translate(150,190) rotate(0,50,50) translate(0,0) scale(1)"><path d="M50,0 L50,20 L32,26 L68,36 L32,46 L68,56 L32,66 L68,74 L50,80 L50,100" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="166" y="245.6" font-size="16" fill="#c62828" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">R₂</text>
+<g transform="translate(310,90) rotate(0,50,50) translate(0,0) scale(1)"><path d="M50,0 L50,20 L32,26 L68,36 L32,46 L68,56 L32,66 L68,74 L50,80 L50,100" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="394" y="145.6" font-size="16" fill="#c62828" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">R₃</text>
+<g transform="translate(310,190) rotate(0,50,50) translate(0,0) scale(1)"><path d="M50,0 L50,20 L32,26 L68,36 L32,46 L68,56 L32,66 L68,74 L50,80 L50,100" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="394" y="245.6" font-size="16" fill="#c62828" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">R₄</text>
+<g transform="translate(510,150) rotate(0,50,50) translate(0,0) scale(1)"><path d="M14,12 L86,50 L14,88 Z" fill="#fffdf3" stroke="#16324f" stroke-width="3.2" stroke-linejoin="round"/><path d="M86,50 L100,50 M0,32 L14,32 M0,68 L14,68" fill="none" stroke="#16324f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><text x="26" y="38" font-size="20" fill="#123c8c" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">+</text><text x="26" y="76" font-size="22" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">&#8211;</text></g>
+<text x="560" y="152" font-size="16" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">instrumentation amplifier</text>
+<g transform="translate(630,150) rotate(0,50,50) translate(0,0) scale(1)"><rect x="10" y="22" width="80" height="56" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="3"/><text x="50" y="55.95" font-size="17" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">ADC</text><path d="M0,50 L10,50 M90,50 L100,50" fill="none" stroke="#16324f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<polyline points="200,60 200,90" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="200" cy="60" r="5.5" fill="#16324f"/>
+<polyline points="360,60 360,90" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="360" cy="60" r="5.5" fill="#16324f"/>
+<circle cx="200" cy="190" r="5.5" fill="#16324f"/>
+<circle cx="200" cy="190" r="5.5" fill="#16324f"/>
+<circle cx="360" cy="190" r="5.5" fill="#16324f"/>
+<circle cx="360" cy="190" r="5.5" fill="#16324f"/>
+<polyline points="200,290 200,360" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="200" cy="360" r="5.5" fill="#16324f"/>
+<polyline points="360,290 360,360" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="360" cy="360" r="5.5" fill="#16324f"/>
+<polyline points="360,190 460,190 460,150 500,150 500,182 510,182" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<polyline points="200,190 140,190 140,330 470,330 470,218 510,218" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="170" y="178" font-size="13" fill="#b45309" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">A</text>
+<text x="390" y="178" font-size="13" fill="#b45309" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">B</text>
+<polyline points="610,200 630,200" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="390" y="412" font-size="14" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Balanced bridge : R₁/R₂ = R₃/R₄  →  Vout = 0</text>
+<text x="390" y="444" font-size="14" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">With strain : Vout ≈ (V/4) × (ΔR/R) × n</text>
+</g>
+</svg>
+<figcaption>Fig. 3.2 &#8212; Wheatstone bridge with strain gauges and instrumentation amplifier</figcaption>
+</figure>
+
+
+<h2><span class="no">4</span>Load Cell &mdash; Construction and Working</h2>
+<p class="q">A <span class="b">load cell</span> is a complete transducer assembly in which
+<span class="b">four strain gauges</span> are bonded on a properly designed elastic metal element
+(alloy steel or aluminium) called the <span class="b">flexure / proof body</span>. Common shapes are
+<span class="b">cantilever beam</span> (bending type, used in platform weighing),
+<span class="b">S-type / tension-compression</span>, <span class="b">shear beam</span> and
+<span class="b">column / pancake type</span> (used for very large loads).</p>
+<p class="q">The four gauges are connected in a full Wheatstone bridge. When load is applied, two gauges are
+in tension (R increases) and two are in compression (R decreases). This gives
+<span class="hl">four times more output</span> than a single gauge and also cancels temperature error.
+The output is a few millivolts per volt of excitation (for example 2 mV/V) which is amplified by an
+<span class="b">HX711 / instrumentation amplifier</span> and then converted to digital by the ADC.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 320" role="img" aria-label="Fig. 3.3 &#8212; Cantilever beam load cell with four strain gauges and HX711" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<rect x="20" y="30" width="450" height="200" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<text x="245" y="52" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">cantilever load cell</text>
+<rect x="60" y="140" width="240" height="45" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="180" y="166.92" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">cantilever beam (alloy steel)</text>
+<path d="M60,120 L60,200 L75,200 L75,120 Z" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round"/>
+<text x="66" y="112" font-size="12" fill="#16324f" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">fixed end</text>
+<path d="M360,70 L360,130" style="fill:none;stroke:#c62828;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="372" y="60" font-size="14" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Load W (kg)</text>
+<rect x="130" y="96" width="50" height="34" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="155" y="117.42" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">R1 R3</text>
+<rect x="200" y="190" width="50" height="34" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="225" y="211.42" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">R2 R4</text>
+<text x="245" y="252" font-size="12" fill="#1b7a3d" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">R1,R3 tension  ·  R2,R4 compression</text>
+<text x="360" y="165" font-size="13" fill="#b45309" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">beam bends</text>
+<text x="360" y="185" font-size="13" fill="#b45309" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">by ΔL</text>
+<path d="M470,130 L530,130" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="500" y="121" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">mV</text>
+<rect x="530" y="90" width="170" height="80" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="615" y="125.31" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">HX711 amplifier</text><text x="615" y="144.21" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">+ 24-bit ADC</text>
+<path d="M700,130 L740,130" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="720" y="114" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">digital</text>
+<rect x="530" y="200" width="170" height="50" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="615" y="229.76" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">µC reads weight</text>
+<path d="M615,170 L615,200" style="fill:none;stroke:#16324f;stroke-width:2.4;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="390" y="285" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">F → strain → ΔR → bridge → digital weight</text>
+</g>
+</svg>
+<figcaption>Fig. 3.3 &#8212; Cantilever beam load cell with four strain gauges and HX711</figcaption>
+</figure>
+
+<h3>Applications of load cells</h3>
+<ul class="arr">
+  <li><span class="b">Electronic weighing machines</span> &mdash; kitchen scale, platform scale, weigh bridge
+      for trucks.</li>
+  <li>Hopper and silo weighing in cement, sugar and food industries.</li>
+  <li>Force measurement in <span class="b">universal testing machines</span> (tensile / compression testing).</li>
+  <li>Crane overload protection, torque wrenches, dynamometers.</li>
+  <li>Medical bed weighing, baggage weighing at airports.</li>
+</ul>
+<div class="tip"><span class="cap">Important points for viva</span>
+(i) Strain gauge is a <b>passive</b> transducer. (ii) Gauge factor G &asymp; 2. (iii) Bridge output is
+<b>millivolts</b>, so amplification is compulsory. (iv) Four-gauge (full bridge) arrangement gives maximum
+output and <b>automatic temperature compensation</b>. (v) Load cell is a <b>secondary</b> transducer because
+it converts force &rarr; strain &rarr; resistance &rarr; voltage.</div>
+
+<!--EXTRAS-->
+<h2><span class="no">5</span>Worked numericals</h2>
+
+<div class="formula"><span class="b">Problem 1.</span> A strain gauge of 120 &Omega; with gauge factor GF = 2.0 is bonded to a beam. The strain is 500 &micro;&epsilon; (500&times;10<sup>&minus;6</sup>). Find the change in resistance and the bridge output if the supply is 5 V.</div>
+<p class="q"><span class="b">Solution.</span> &Delta;R/R = GF &times; &epsilon; = 2.0 &times; 500&times;10<sup>&minus;6</sup> = 1.0&times;10<sup>&minus;3</sup> &Delta;R = 120 &times; 10<sup>&minus;3</sup> = 0.12 &Omega; For a quarter bridge, V<sub>out</sub> &asymp; (V<sub>s</sub>/4) &times; &Delta;R/R = 5/4 &times; 0.001 = 1.25 mV <span class="hl">&Delta;R = 0.12 &Omega;; bridge output &asymp; 1.25 mV.</span></p>
+<h2><span class="no">6</span>Viva questions and answers</h2>
+
+<p class="q"><span class="b">Q1. Define gauge factor.</span><br><span class="o">A.</span> GF = (&Delta;R/R) / &epsilon;, the fractional resistance change per unit strain; metal gauges are near 2, semiconductor gauges can exceed 100.</p>
+<p class="q"><span class="b">Q2. Why is a Wheatstone bridge used with strain gauges?</span><br><span class="o">A.</span> The resistance change is tiny; the bridge converts it into a differential voltage and cancels common effects such as temperature drift.</p>
+<p class="q"><span class="b">Q3. What does a quarter, half and full bridge mean?</span><br><span class="o">A.</span> One, two or four active gauges in the bridge arms; more active arms give more sensitivity and better temperature compensation.</p>
+<p class="q"><span class="b">Q4. How does a load cell actually work?</span><br><span class="o">A.</span> Applied force strains a calibrated elastic body; bonded gauges read that strain, which is proportional to force within the elastic limit.</p>
+<p class="q"><span class="b">Q5. Why do we need four load cells on a tank?</span><br><span class="o">A.</span> To support each leg, sum the weights, and remain accurate when the centre of gravity shifts off centre.</p>
+<h2><span class="no">7</span>Summary</h2>
+
+<p class="q">Stress and strain describe how a material deforms under load, a strain gauge turns that deformation into a fractional resistance change through the gauge factor, and a bridge plus amplifier lifts the millivolt signal to a usable level. Load cells package the same principle into calibrated force bodies used in weighing systems.</p>
+<h2><span class="no">8</span>Specifications at a glance</h2>
+
+<div class="tw"><table>
+<tr><th>Parameter</th><th>Foil strain gauge</th><th>Load cell (0&ndash;500 kg)</th></tr>
+<tr><td>Nominal resistance</td><td>120 &Omega; or 350 &Omega;</td><td>Bridge inside the package</td></tr>
+<tr><td>Gauge factor</td><td>about 2 (metal)</td><td>Fixed by factory calibration</td></tr>
+<tr><td>Sensitivity</td><td>1.25 mV/V (quarter bridge)</td><td>2 mV/V typical</td></tr>
+</table></div>
+
+<div class="pager">
+<a href="02-temperature-sensors.html">&#8592; Prev</a>
+<a class="home" href="index.html">&#8962; Index</a>
+<a href="04-light-sensors.html">Next &#8594;</a>
+</div>
+  <p class="sig">~ handwritten notes &middot; Sensors &amp; Process Control Systems &middot; save &amp; revise daily ~</p>
+</div>
+<script>
+/* pen-colour switch: recolours the body text only, diagrams keep their own ink */
+function ink(c){
+  var m = {brown:'#4a3728', red:'#9b1c1c', green:'#155724'};
+  document.body.style.color = m[c] || m.brown;
+  var bs = document.querySelectorAll('.btn');
+  for (var i = 0; i < bs.length; i++) { bs[i].classList.remove('active'); }
+  event.currentTarget.classList.add('active');
+}
+</script>
+</body>
+</html>

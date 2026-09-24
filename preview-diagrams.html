@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sample circuit &#8212; LM35 (corrected)</title>
+<link rel="stylesheet" href="css/notes.css">
+<style>
+  body{margin:0;background:#f4efe4;color:#2b2b2b;
+       font-family:'Segoe Print','Bradley Hand','Comic Sans MS',cursive;line-height:1.65}
+  .wrap{max-width:900px;margin:0 auto;padding:26px 20px 60px}
+  h1{font-size:1.6rem;margin:0 0 6px}
+  .sub{color:#5b7a5b;margin:0 0 20px}
+  .figbox{background:#fffdf7;border:2px solid #d8cba8;border-radius:10px;padding:14px 14px 6px;
+       box-shadow:0 2px 10px rgba(0,0,0,.08)}
+  .figbox svg{width:100%;height:auto;display:block}
+  .figbox figcaption{font-size:.95rem;color:#5b7a5b;text-align:center;margin:6px 0 8px}
+  .pin{width:100%;border-collapse:collapse;margin:18px 0 6px;font-size:.98rem}
+  .pin th,.pin td{border:1.5px solid #cdbf9d;padding:8px 10px;text-align:left}
+  .pin th{background:#f0e8d4}
+  .ok{color:#2e7d32;font-weight:bold}
+  .bad{color:#c0392b;font-weight:bold}
+  ul{margin:8px 0 18px 22px}
+  li{margin:5px 0}
+  code{background:#f0e8d4;padding:1px 5px;border-radius:4px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Sample circuit diagram &#8212; corrected</h1>
+  <p class="sub">Drawn by <code>circuit.py</code> and checked by <code>circuit_test.py</code>:
+     geometry NONE, connectivity NONE, parses as strict XML.
+     The figure below is embedded in this page, so it shows even offline.</p>
+
+  <div class="figbox">
+    <figure class="fig">
+<svg viewBox="0 0 760 380" role="img" aria-label="Fig. 2.3 &#8212; LM35: pin 1 = Vcc, pin 2 = Vout, pin 3 = GND" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<text x="380" y="22" font-size="19" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">LM35 temperature sensor — pin 1 Vcc, pin 2 Vout, pin 3 GND</text>
+<polyline points="40,60 640,60" style="fill:none;stroke:#c62828;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="340" y="86" font-size="15" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">+5 V</text>
+<polyline points="40,300 640,300" style="fill:none;stroke:#123c8c;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="340" y="326" font-size="15" fill="#123c8c" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">0 V (GND)</text>
+<g transform="translate(190,90) rotate(0,50,50) translate(0,0) scale(1)"><rect x="10" y="17" width="80" height="92" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="3"/><text x="14" y="34" font-size="14" fill="#c62828" text-anchor="start" font-family="Caveat,cursive" font-weight="bold">1 Vcc</text><text x="86" y="54" font-size="14" fill="#1b7a3d" text-anchor="end" font-family="Caveat,cursive" font-weight="bold">2 Vout</text><text x="14" y="74" font-size="14" fill="#123c8c" text-anchor="start" font-family="Caveat,cursive" font-weight="bold">3 GND</text><text x="50" y="96" font-size="18" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">LM35</text><path d="M0,30 L10,30 M0,70 L10,70 M90,50 L100,50" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g transform="translate(490,90) rotate(0,50,50) translate(0,0) scale(1)"><rect x="10" y="22" width="80" height="56" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="3"/><text x="50" y="55.95" font-size="17" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">ADC</text><path d="M0,50 L10,50 M90,50 L100,50" fill="none" stroke="#16324f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<polyline points="190,120 190,60" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="190" cy="60" r="5.5" fill="#16324f"/>
+<polyline points="190,160 190,300" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="190" cy="300" r="5.5" fill="#16324f"/>
+<polyline points="290,140 490,140" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="380" cy="140" r="5.5" fill="#16324f"/>
+<g transform="translate(330,170) rotate(0,50,50) translate(0,0) scale(1)"><path d="M50,0 L50,20 L32,26 L68,36 L32,46 L68,56 L32,66 L68,74 L50,80 L50,100" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="414" y="225.6" font-size="16" fill="#c62828" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">10 kΩ</text>
+<polyline points="380,140 380,170" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<polyline points="380,270 380,300" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="380" cy="300" r="5.5" fill="#16324f"/>
+<text x="380" y="358" font-size="16" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Vout = 10 mV per °C   →   25 °C gives 250 mV</text>
+</g>
+</svg>
+<figcaption>Fig. 2.3 &#8212; LM35: pin 1 = Vcc, pin 2 = Vout, pin 3 = GND</figcaption>
+</figure>
+  </div>
+
+  <table class="pin">
+    <tr><th>TO-92 pin</th><th>Signal</th><th>Where it goes here</th></tr>
+    <tr><td>Pin 1 (left)</td><td><span class="ok">V<sub>CC</sub></span> &#8212; +4 V to +30 V</td><td>+5 V rail (red)</td></tr>
+    <tr><td>Pin 2 (middle)</td><td><span class="ok">V<sub>OUT</sub></span> &#8212; 10 mV/&#176;C</td><td>to the ADC input, and through 10 k&#8486; to ground</td></tr>
+    <tr><td>Pin 3 (right)</td><td><span class="ok">GND</span></td><td>0 V rail (blue)</td></tr>
+  </table>
+
+  <p><b>What was wrong in my first two attempts, and how each is now fixed:</b></p>
+  <ul>
+    <li><span class="bad">Middle pin wired to ground.</span> The pins were drawn 1 = Vcc,
+        2 = GND, 3 = Vout. It is now drawn 1 = V<sub>CC</sub>, 2 = V<sub>OUT</sub>,
+        3 = GND, and the pin number is printed beside each lead inside the chip.</li>
+    <li><span class="bad">Vout wire started inside the body.</span> The chip pin was
+        declared at y = 0 while the lead was only drawn to y = 4, so every wire began
+        17 units inside the chip. Stubs are now drawn the full length to the declared pin,
+        so the wire starts exactly on the block edge.</li>
+    <li><span class="bad">Ground wire did not reach the ground symbol.</span> One wire ended
+        50 units short of its pin. That cannot happen now: every wire is written
+        <code>pin(&#8230;) &#8594; pin(&#8230;)</code> and <code>check_pins()</code> rejects any
+        wire end more than 1.5 units from a pin, junction or power rail.</li>
+    <li><span class="bad">Wire across a resistor body.</span> Component footprints are
+        reserved solid, so <code>check()</code> reports any wire passing through a part.</li>
+  </ul>
+
+  <p>Once you are happy with this style I will redraw all 55 figures this way
+     &#8212; and the LM35 figure in topic 02 will be regenerated from this file.</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sample circuit &#8212; LM35 (corrected)</title>
+<link rel="stylesheet" href="css/notes.css">
+<style>
+  body{margin:0;background:#f4efe4;color:#2b2b2b;
+       font-family:'Segoe Print','Bradley Hand','Comic Sans MS',cursive;line-height:1.65}
+  .wrap{max-width:900px;margin:0 auto;padding:26px 20px 60px}
+  h1{font-size:1.6rem;margin:0 0 6px}
+  .sub{color:#5b7a5b;margin:0 0 20px}
+  .figbox{background:#fffdf7;border:2px solid #d8cba8;border-radius:10px;padding:14px 14px 6px;
+       box-shadow:0 2px 10px rgba(0,0,0,.08)}
+  .figbox svg{width:100%;height:auto;display:block}
+  .figbox figcaption{font-size:.95rem;color:#5b7a5b;text-align:center;margin:6px 0 8px}
+  .pin{width:100%;border-collapse:collapse;margin:18px 0 6px;font-size:.98rem}
+  .pin th,.pin td{border:1.5px solid #cdbf9d;padding:8px 10px;text-align:left}
+  .pin th{background:#f0e8d4}
+  .ok{color:#2e7d32;font-weight:bold}
+  .bad{color:#c0392b;font-weight:bold}
+  ul{margin:8px 0 18px 22px}
+  li{margin:5px 0}
+  code{background:#f0e8d4;padding:1px 5px;border-radius:4px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Sample circuit diagram &#8212; corrected</h1>
+  <p class="sub">Drawn by <code>circuit.py</code> and checked by <code>circuit_test.py</code>:
+     geometry NONE, connectivity NONE, parses as strict XML.
+     The figure below is embedded in this page, so it shows even offline.</p>
+
+  <div class="figbox">
+    <!--SVG-->
+  </div>
+
+  <table class="pin">
+    <tr><th>TO-92 pin</th><th>Signal</th><th>Where it goes here</th></tr>
+    <tr><td>Pin 1 (left)</td><td><span class="ok">V<sub>CC</sub></span> &#8212; +4 V to +30 V</td><td>+5 V rail (red)</td></tr>
+    <tr><td>Pin 2 (middle)</td><td><span class="ok">V<sub>OUT</sub></span> &#8212; 10 mV/&#176;C</td><td>to the ADC input, and through 10 k&#8486; to ground</td></tr>
+    <tr><td>Pin 3 (right)</td><td><span class="ok">GND</span></td><td>0 V rail (blue)</td></tr>
+  </table>
+
+  <p><b>What was wrong in my first two attempts, and how each is now fixed:</b></p>
+  <ul>
+    <li><span class="bad">Middle pin wired to ground.</span> The pins were drawn 1 = Vcc,
+        2 = GND, 3 = Vout. It is now drawn 1 = V<sub>CC</sub>, 2 = V<sub>OUT</sub>,
+        3 = GND, and the pin number is printed beside each lead inside the chip.</li>
+    <li><span class="bad">Vout wire started inside the body.</span> The chip pin was
+        declared at y = 0 while the lead was only drawn to y = 4, so every wire began
+        17 units inside the chip. Stubs are now drawn the full length to the declared pin,
+        so the wire starts exactly on the block edge.</li>
+    <li><span class="bad">Ground wire did not reach the ground symbol.</span> One wire ended
+        50 units short of its pin. That cannot happen now: every wire is written
+        <code>pin(&#8230;) &#8594; pin(&#8230;)</code> and <code>check_pins()</code> rejects any
+        wire end more than 1.5 units from a pin, junction or power rail.</li>
+    <li><span class="bad">Wire across a resistor body.</span> Component footprints are
+        reserved solid, so <code>check()</code> reports any wire passing through a part.</li>
+  </ul>
+
+  <p>Once you are happy with this style I will redraw all 55 figures this way
+     &#8212; and the LM35 figure in topic 02 will be regenerated from this file.</p>
+</div>
+</body>
+</html>

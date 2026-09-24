@@ -1,0 +1,30 @@
+
+<figure class="fig">
+<svg viewBox="0 0 760 380" role="img" aria-label="Fig. 2.3 &#8212; LM35: pin 1 = Vcc, pin 2 = Vout, pin 3 = GND" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<text x="380" y="22" font-size="19" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">LM35 temperature sensor — pin 1 Vcc, pin 2 Vout, pin 3 GND</text>
+<polyline points="40,60 640,60" style="fill:none;stroke:#c62828;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="340" y="86" font-size="15" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">+5 V</text>
+<polyline points="40,300 640,300" style="fill:none;stroke:#123c8c;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="340" y="326" font-size="15" fill="#123c8c" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">0 V (GND)</text>
+<g transform="translate(190,90) rotate(0,50,50) translate(0,0) scale(1)"><rect x="10" y="17" width="80" height="92" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="3"/><text x="14" y="34" font-size="14" fill="#c62828" text-anchor="start" font-family="Caveat,cursive" font-weight="bold">1 Vcc</text><text x="86" y="54" font-size="14" fill="#1b7a3d" text-anchor="end" font-family="Caveat,cursive" font-weight="bold">2 Vout</text><text x="14" y="74" font-size="14" fill="#123c8c" text-anchor="start" font-family="Caveat,cursive" font-weight="bold">3 GND</text><text x="50" y="96" font-size="18" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">LM35</text><path d="M0,30 L10,30 M0,70 L10,70 M90,50 L100,50" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g transform="translate(490,90) rotate(0,50,50) translate(0,0) scale(1)"><rect x="10" y="22" width="80" height="56" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="3"/><text x="50" y="55.95" font-size="17" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">ADC</text><path d="M0,50 L10,50 M90,50 L100,50" fill="none" stroke="#16324f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<polyline points="190,120 190,60" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="190" cy="60" r="5.5" fill="#16324f"/>
+<polyline points="190,160 190,300" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="190" cy="300" r="5.5" fill="#16324f"/>
+<polyline points="290,140 490,140" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="380" cy="140" r="5.5" fill="#16324f"/>
+<g transform="translate(330,170) rotate(0,50,50) translate(0,0) scale(1)"><path d="M50,0 L50,20 L32,26 L68,36 L32,46 L68,56 L32,66 L68,74 L50,80 L50,100" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="414" y="225.6" font-size="16" fill="#c62828" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">10 kΩ</text>
+<polyline points="380,140 380,170" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<polyline points="380,270 380,300" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="380" cy="300" r="5.5" fill="#16324f"/>
+<text x="380" y="358" font-size="16" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Vout = 10 mV per °C   →   25 °C gives 250 mV</text>
+</g>
+</svg>
+<figcaption>Fig. 2.3 &#8212; LM35: pin 1 = Vcc, pin 2 = Vout, pin 3 = GND</figcaption>
+</figure>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic 27 &middot; Composite Controller Modes | Sensors &amp; Process Control Systems Notes</title>
+<meta name="description" content="Handwritten study notes on Topic 27 &middot; Composite Controller Modes - Sensors and Process Control Systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&amp;family=Patrick+Hand&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23fdf9ec'/%3E%3Cpath d='M8 20h12l5-10 8 22 6-16 5 10h12' fill='none' stroke='%23123c8c' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 46h48' stroke='%23c62828' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/notes.css">
+</head>
+<body>
+<div class="paper">
+  <div class="topbar">
+    <span class="brand">Sensors &amp; Process Control</span>
+    <button class="btn" onclick="ink('brown')" title="blue-black ink">Blue</button>
+    <button class="btn" onclick="ink('red')" title="red pen">Red</button>
+    <button class="btn" onclick="ink('green')" title="green pen">Green</button>
+    <button class="btn" onclick="window.print()" title="print this note">Print</button>
+    <a class="btn" href="index.html" style="text-decoration:none">Index</a>
+  </div>
+  <span class="unit-tag">Unit IV &middot; Controller Modes</span>
+  <h1 class="title">Topic 27 &middot; Composite Controller Modes<span class="sub">PI, PD and PID Control</span></h1>
+  <div class="rule"></div>
+
+<h2><span class="no">1</span>Why composite modes?</h2>
+<p class="q">Each basic mode has one strong point and one weakness. P is fast but leaves an offset, I removes
+the offset but is slow and overshoots, D improves the stability but does nothing for a constant error.
+By <span class="b">combining</span> them we get a controller which has the good points of all three. These
+combinations are called <span class="b">composite modes</span>.</p>
+
+<h2><span class="no">2</span>Proportional-Integral (PI) control</h2>
+<div class="formula">m = K<sub>p</sub> [ e + (1/T<sub>i</sub>) &int; e dt ] + m<sub>0</sub></div>
+<p class="q"><span class="g">Working:</span> The proportional part gives an <span class="b">immediate</span>
+response to the error and the integral part slowly builds up additional output until the error becomes zero.
+So PI control gives a <span class="b">fast response and zero offset</span>. It is the
+<span class="hl">most widely used controller mode</span> in industry (about 75 % of the loops).</p>
+<p class="q"><span class="g">Effect of tuning:</span> Increasing K<sub>p</sub> makes the response faster but
+increases the overshoot. Decreasing T<sub>i</sub> (stronger integral action) removes the offset faster but
+can cause oscillation and wind-up. PI control is used where the process lag is small and offset is not
+acceptable &mdash; <span class="b">flow control and level control</span> are the classic examples.</p>
+
+<h2><span class="no">3</span>Proportional-Derivative (PD) control</h2>
+<div class="formula">m = K<sub>p</sub> [ e + T<sub>d</sub> (de/dt) ] + m<sub>0</sub></div>
+<p class="q"><span class="g">Working:</span> The proportional part responds to the present error and the
+derivative part adds an output proportional to the rate at which the error is changing. This
+<span class="b">anticipatory action</span> applies the brake in advance, so the
+<span class="b">overshoot is reduced, the response is faster and the stability margin increases</span>.
+It is very useful in processes with a <span class="b">large lag or a large time constant</span>.</p>
+<p class="q"><span class="g">Limitation:</span> PD control still <span class="b">cannot remove the
+offset</span> because there is no integral term. It also amplifies noise, so the measured signal must be
+filtered. PD control is used in <span class="b">position control of servos, robotics and temperature
+control</span> where a small offset is acceptable.</p>
+
+<h2><span class="no">4</span>Proportional-Integral-Derivative (PID) control</h2>
+<div class="def"><span class="cap">Definition</span>
+A <b>PID controller</b> is a continuous controller whose output is the sum of three terms &mdash;
+<b>proportional to the error, proportional to the integral of the error and proportional to the derivative of
+the error</b>. It is the most complete and most used controller in process industry.</div>
+<div class="formula">m(t) = K<sub>p</sub> [ e(t) + (1/T<sub>i</sub>) &int;<sub>0</sub><sup>t</sup> e dt +
+T<sub>d</sub> (de/dt) ] + m<sub>0</sub></div>
+
+<figure class="fig">
+<svg viewBox="0 0 780 360" role="img" aria-label="Fig. 27.1 &#8212; Block diagram of a PID controller" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<rect x="20" y="95" width="70" height="50" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="55" y="125.1" font-size="15" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">SP</text>
+<g transform="translate(110,70) rotate(0,50,50) translate(0,0) scale(1)"><circle cx="50" cy="50" r="32" fill="#fffdf3" stroke="#16324f" stroke-width="3"/><text x="50" y="61" font-size="28" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">&#931;</text><path d="M0,50 L18,50 M82,50 L100,50 M50,82 L50,100" fill="none" stroke="#16324f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<rect x="250" y="70" width="220" height="110" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="360" y="103.095" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">PID CONTROLLER</text><text x="360" y="120.645" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Kₚ e</text><text x="360" y="138.195" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Kₚ/Tᵢ ∫e dt</text><text x="360" y="155.745" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">KₚTᵀ de/dt</text>
+<rect x="510" y="85" width="160" height="80" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="590" y="120.645" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">FINAL CONTROL</text><text x="590" y="138.195" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">ELEMENT</text>
+<polyline points="90,120 110,120" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<polyline points="210,120 250,120" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<polyline points="470,120 510,120" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="230" y="105" font-size="13" fill="#b45309" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">e</text>
+<text x="490" y="110" font-size="13" fill="#1b7a3d" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">m</text>
+<rect x="560" y="220" width="200" height="80" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="660" y="264.76" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">process (plant)</text>
+<polyline points="670,120 720,120 720,190 660,190 660,220" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<polyline points="560,260 500,260 500,315 160,315 160,170" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="330" y="300" font-size="12" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">feedback from sensor (PV)</text>
+<text x="415" y="348" font-size="14" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">P speed + I accuracy + D stability in one controller</text>
+</g>
+</svg>
+<figcaption>Fig. 27.1 &#8212; Block diagram of a PID controller</figcaption>
+</figure>
+
+<h3>4.1 Working of PID control</h3>
+<p class="q">When a disturbance occurs, the error appears. The <span class="b">P term</span> immediately
+changes the output in proportion to the size of the error. If the error persists, the
+<span class="b">I term</span> keeps adding to the output until the error is driven to zero, thus removing the
+offset. If the PV starts moving towards the set point too fast, the <span class="b">D term</span> opposes the
+output and prevents the overshoot. The three actions together give a response which is
+<span class="hl">fast, accurate and stable</span>.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 320" role="img" aria-label="Fig. 27.2 &#8212; Step response comparison of P, PI and PID control" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<path d="M130,230 L130,50" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<path d="M130,230 L700,230" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="415" y="254" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">time</text>
+<text x="118" y="44" font-size="14" fill="#16324f" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">PV</text>
+<path d="M140,95 L690,95" style="fill:none;stroke:#123c8c;stroke-width:2;stroke-linecap:round;stroke-dasharray:7 5"/>
+<text x="685" y="85" font-size="12" fill="#123c8c" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">SP</text>
+<path d="M140,215 C200,170 260,110 330,105 C420,99 520,128 690,130" style="fill:none;stroke:#c62828;stroke-width:2.6;stroke-linecap:round"/>
+<path d="M140,215 C220,185 320,120 430,100 C520,86 600,96 690,95" style="fill:none;stroke:#b45309;stroke-width:2.6;stroke-linecap:round"/>
+<path d="M140,215 C190,165 250,100 310,95 C400,88 480,96 690,95" style="fill:none;stroke:#6d28d9;stroke-width:3.4;stroke-linecap:round"/>
+<text x="355" y="145" font-size="11" fill="#c62828" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">P only — fast, leaves offset</text>
+<text x="470" y="115" font-size="11" fill="#b45309" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">PI — no offset</text>
+<text x="300" y="80" font-size="11" fill="#6d28d9" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">PID — fast, no offset</text>
+<text x="415" y="285" font-size="14" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">P speed · I accuracy · D stability — PID has all three</text>
+</g>
+</svg>
+<figcaption>Fig. 27.2 &#8212; Step response comparison of P, PI and PID control</figcaption>
+</figure>
+
+<h3>4.2 Comparison of all composite modes</h3>
+<div class="tw"><table>
+<tr><th>Mode</th><th>Equation</th><th>Offset</th><th>Overshoot</th><th>Response</th><th>Typical use</th></tr>
+<tr><td><b>P</b></td><td>K<sub>p</sub> e</td><td>Yes</td><td>Small</td><td>Fast</td><td>Level, pressure, flow
+(offset acceptable)</td></tr>
+<tr><td><b>PI</b></td><td>K<sub>p</sub> e + K<sub>i</sub>&int;e</td><td>No</td><td>Moderate</td><td>Moderate</td>
+<td>Flow, level, pressure (75 % of loops)</td></tr>
+<tr><td><b>PD</b></td><td>K<sub>p</sub> e + K<sub>d</sub> de/dt</td><td>Yes</td><td>Very small</td><td>Fast</td>
+<td>Servo position, robotics, temperature</td></tr>
+<tr><td><b>PID</b></td><td>K<sub>p</sub> e + K<sub>i</sub>&int;e + K<sub>d</sub> de/dt</td><td>No</td>
+<td>Small</td><td>Fastest</td><td>Temperature, composition, pH &mdash; where accuracy is critical</td></tr>
+</table></div>
+<h3>4.3 Tuning of a PID controller</h3>
+<p class="q">Tuning means selecting the three constants K<sub>p</sub>, T<sub>i</sub> and T<sub>d</sub> so that
+the loop is fast, stable and accurate. Common methods are:</p>
+<ul class="dot">
+  <li><span class="b">Trial and error</span> &mdash; start with I and D off, increase K<sub>p</sub> till
+      slight oscillation, then add integral to remove the offset, and finally add a little derivative to
+      reduce the overshoot.</li>
+  <li><span class="b">Ziegler-Nichols (ultimate gain) method</span> &mdash; with only P action, increase
+      K<sub>p</sub> until sustained oscillation occurs. Note the ultimate gain K<sub>u</sub> and the ultimate
+      period T<sub>u</sub>. Then use the table below.</li>
+  <li><span class="b">Process reaction curve (step test) method</span> &mdash; find the dead time L and the
+      time constant &tau; from the open loop response and calculate the settings.</li>
+  <li><span class="b">Auto-tuning</span> &mdash; modern digital controllers and PLCs do this automatically.</li>
+</ul>
+<div class="tw"><table>
+<tr><th>Controller</th><th>K<sub>p</sub></th><th>T<sub>i</sub> (integral time)</th><th>T<sub>d</sub> (derivative
+time)</th></tr>
+<tr><td>P</td><td>0.50 K<sub>u</sub></td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr><td>PI</td><td>0.45 K<sub>u</sub></td><td>T<sub>u</sub> / 1.2</td><td>&mdash;</td></tr>
+<tr><td>PID</td><td>0.60 K<sub>u</sub></td><td>T<sub>u</sub> / 2</td><td>T<sub>u</sub> / 8</td></tr>
+</table></div>
+<h2><span class="no">5</span>Applications</h2>
+<ul class="arr">
+  <li><span class="b">PI</span> &mdash; flow and level control loops in every plant.</li>
+  <li><span class="b">PD</span> &mdash; position control of servo and stepper drives, drone stabilisation.</li>
+  <li><span class="b">PID</span> &mdash; temperature of a furnace or reactor, pH control, pressure of a
+      boiler, speed of a DC drive, altitude hold of a drone, 3D printer hot end.</li>
+  <li>Digital PID is available in every <b>PLC, DCS, SCADA and even in Arduino libraries</b>
+      (PID_v1 library).</li>
+</ul>
+<div class="tip"><span class="cap">Final exam line</span>
+<b>P</b> gives speed, <b>I</b> gives accuracy and <b>D</b> gives stability. A
+<b>PID controller</b> therefore gives all three together and is the standard controller of the process
+industry.</div>
+
+<!--EXTRAS-->
+<h2><span class="no">6</span>Worked numericals</h2>
+
+<div class="formula"><span class="b">Problem 1.</span> A loop oscillates with period P<sub>u</sub> = 40 s at K<sub>u</sub> = 6 (ultimate gain). Find P, PI and PID settings.</div>
+<p class="q"><span class="b">Solution.</span> P-only: K<sub>c</sub> = K<sub>u</sub>/2 = 3. PI: K<sub>c</sub> = 0.45 K<sub>u</sub> = 2.7, T<sub>i</sub> = P<sub>u</sub>/1.2 = 33.3 s. PID: K<sub>c</sub> = 0.6 K<sub>u</sub> = 3.6, T<sub>i</sub> = P<sub>u</sub>/2 = 20 s, T<sub>d</sub> = P<sub>u</sub>/8 = 5 s. <span class="hl">P: 3; PI: 2.7, 33 s; PID: 3.6, T<sub>i</sub> 20 s, T<sub>d</sub> 5 s.</span></p>
+<h2><span class="no">7</span>Viva questions and answers</h2>
+
+<p class="q"><span class="b">Q1. Why prefer PI over P for most process loops?</span><br><span class="o">A.</span> Integral eliminates the offset of P-only action so the process lands on set point after load changes.</p>
+<p class="q"><span class="b">Q2. When would you choose PD instead of PID?</span><br><span class="o">A.</span> When integral is unnecessary or risky (windup) but damping is needed &mdash; fast position and pressure loops.</p>
+<h2><span class="no">8</span>Summary</h2>
+
+<p class="q">PI, PD and PID combine the three continuous actions to give offset-free, well-damped control of real processes. </p>
+<h2><span class="no">9</span>Specifications at a glance</h2>
+
+<div class="tw"><table>
+<tr><th>Mode</th><th>Best suited to</th><th>Typical T<sub>i</sub></th><th>Typical T<sub>d</sub></th></tr>
+<tr><td>PI</td><td>Most process loops: flow, level, pressure, temperature</td><td>0.2&ndash;5 min</td><td>&mdash;</td></tr>
+<tr><td>PID</td><td>Large lag, moderate dead time (temp, batch)</td><td>0.5&ndash;3 &times; &theta; or P<sub>u</sub>/2</td><td>P<sub>u</sub>/8 or &theta;/4</td></tr>
+</table></div>
+
+<div class="pager">
+<a href="26-continuous-controller-modes.html">&#8592; Prev</a>
+<a class="home" href="index.html">&#8962; Index</a>
+<span></span>
+</div>
+  <p class="sig">~ handwritten notes &middot; Sensors &amp; Process Control Systems &middot; save &amp; revise daily ~</p>
+</div>
+<script>
+/* pen-colour switch: recolours the body text only, diagrams keep their own ink */
+function ink(c){
+  var m = {brown:'#4a3728', red:'#9b1c1c', green:'#155724'};
+  document.body.style.color = m[c] || m.brown;
+  var bs = document.querySelectorAll('.btn');
+  for (var i = 0; i < bs.length; i++) { bs[i].classList.remove('active'); }
+  event.currentTarget.classList.add('active');
+}
+</script>
+</body>
+</html>

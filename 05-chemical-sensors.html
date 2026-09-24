@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic 5 &middot; Chemical Sensors | Sensors &amp; Process Control Systems Notes</title>
+<meta name="description" content="Handwritten study notes on Topic 5 &middot; Chemical Sensors - Sensors and Process Control Systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&amp;family=Patrick+Hand&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23fdf9ec'/%3E%3Cpath d='M8 20h12l5-10 8 22 6-16 5 10h12' fill='none' stroke='%23123c8c' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 46h48' stroke='%23c62828' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/notes.css">
+</head>
+<body>
+<div class="paper">
+  <div class="topbar">
+    <span class="brand">Sensors &amp; Process Control</span>
+    <button class="btn" onclick="ink('brown')" title="blue-black ink">Blue</button>
+    <button class="btn" onclick="ink('red')" title="red pen">Red</button>
+    <button class="btn" onclick="ink('green')" title="green pen">Green</button>
+    <button class="btn" onclick="window.print()" title="print this note">Print</button>
+    <a class="btn" href="index.html" style="text-decoration:none">Index</a>
+  </div>
+  <span class="unit-tag">Unit I &middot; Fundamentals of Sensors</span>
+  <h1 class="title">Topic 5 &middot; Chemical Sensors<span class="sub">Principle, Types, Working and Applications</span></h1>
+  <div class="rule"></div>
+
+<h2><span class="no">1</span>Definition and Need</h2>
+<div class="def"><span class="cap">Definition</span>
+A <b>chemical sensor</b> is a device that converts <b>chemical information</b> (concentration of a specific
+chemical component or species in a sample) into an <b>analytical signal</b> which is usually electrical.
+The chemical information may be composition, concentration, presence of a particular ion or gas.</div>
+<p class="q">Chemical sensors are needed wherever we have to know <span class="b">what is inside a
+substance</span> and not merely its physical condition &mdash; for example the pH of water, the oxygen
+content of blood, the sugar in juice, the alcohol in breath, or the carbon monoxide in a room. Physical
+sensors cannot answer these questions.</p>
+<h2><span class="no">2</span>Construction (general structure)</h2>
+<p class="q">Almost every chemical sensor has two main parts. The first is the
+<span class="b">receptor (recognition) element</span>, which selectively reacts with the chemical species to
+be measured. The second is the <span class="b">transducer element</span>, which converts that chemical
+reaction into an electrical signal. Between them we often need a <span class="b">selective membrane</span>
+which allows only the wanted species to pass, so that other substances do not disturb the reading.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 320" role="img" aria-label="Fig. 5.1 &#8212; Block diagram of a chemical sensor" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<rect x="40" y="70" width="125.4" height="64" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="102.7" y="97.645" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Sample</text><text x="102.7" y="115.195" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">(process fluid)</text>
+<rect x="205.4" y="70" width="110" height="64" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="260.4" y="97.645" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Receptor</text><text x="260.4" y="115.195" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">membrane</text>
+<path d="M169.4,102 L201.4,102" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<rect x="355.4" y="70" width="110" height="64" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="410.4" y="97.645" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Receptor</text><text x="410.4" y="115.195" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">element</text>
+<path d="M319.4,102 L351.4,102" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<rect x="505.4" y="70" width="110" height="64" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="560.4" y="97.645" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Transducer</text><text x="560.4" y="115.195" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">chem → elec</text>
+<path d="M469.4,102 L501.4,102" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<rect x="655.4" y="70" width="110" height="64" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="710.4" y="97.645" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Display /</text><text x="710.4" y="115.195" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">controller</text>
+<path d="M619.4,102 L651.4,102" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<path d="M169.4,102 L201.4,102" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="185.4" y="60" font-size="12" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">only the wanted ion</text>
+<path d="M319.4,102 L351.4,102" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="335.4" y="60" font-size="12" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">chemical reaction</text>
+<path d="M469.4,102 L501.4,102" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="485.4" y="60" font-size="12" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">electrical signal</text>
+<path d="M619.4,102 L651.4,102" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<rect x="40" y="175" width="310" height="60" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="195" y="200.645" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">receptor (recognition) +</text><text x="195" y="218.195" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">transducer (conversion)</text>
+<rect x="390" y="175" width="350" height="60" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="565" y="200.645" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">selective membrane lets only</text><text x="565" y="218.195" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">the wanted species pass</text>
+<text x="390" y="285" font-size="17" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">General structure of a chemical sensor</text>
+</g>
+</svg>
+<figcaption>Fig. 5.1 &#8212; Block diagram of a chemical sensor</figcaption>
+</figure>
+
+<h2><span class="no">3</span>Types of Chemical Sensors</h2>
+<div class="tw"><table>
+<tr><th>Type</th><th>Principle / Output</th><th>Example</th></tr>
+<tr><td><b>Electrochemical</b></td><td>Chemical reaction produces voltage, current or change of conductivity</td>
+<td>pH (potentiometric), dissolved oxygen (amperometric), glucose sensor</td></tr>
+<tr><td><b>Optical</b></td><td>Change in light absorption, emission or colour intensity</td>
+<td>Colorimeter, infra-red CO&#8322; sensor, spectrophotometer</td></tr>
+<tr><td><b>Semiconductor / MOS</b></td><td>Gas adsorption changes the resistance of a metal oxide layer</td>
+<td>MQ-2, MQ-3, MQ-135 gas sensors, SnO&#8322; sensors</td></tr>
+<tr><td><b>Catalytic (pellistor)</b></td><td>Combustible gas burns on a catalyst and raises its temperature</td>
+<td>Combustible gas detector in mines</td></tr>
+<tr><td><b>Thermal / calorimetric</b></td><td>Heat of reaction is measured</td><td>Thermistor based gas sensor</td></tr>
+<tr><td><b>Piezoelectric / QCM</b></td><td>Mass deposited on a crystal changes its resonant frequency</td>
+<td>Quartz crystal microbalance, humidity sensor</td></tr>
+<tr><td><b>Biosensor</b></td><td>Biological element (enzyme, antibody) plus transducer</td>
+<td>Glucometer, DNA sensor</td></tr>
+</table></div>
+
+<h2><span class="no">4</span>Working of two important examples</h2>
+<h3>4.1 Potentiometric sensor (pH electrode)</h3>
+<p class="q">A thin glass membrane separates two solutions of different hydrogen ion concentration. A
+potential difference develops across this membrane which depends on the pH of the test solution. This
+voltage is measured against a stable <span class="b">reference electrode</span> and is about
+<span class="b">59.16 mV per pH unit</span> at 25 &deg;C.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 300" role="img" aria-label="Fig. 5.2 &#8212; Potentiometric (glass electrode) chemical sensor" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<rect x="40" y="70" width="110" height="100" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="95" y="115.31" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">test</text><text x="95" y="134.21" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">solution</text>
+<path d="M95,70 L95,40 M95,40 L175,40" style="fill:none;stroke:#16324f;stroke-width:2.4;stroke-linecap:round"/>
+<path d="M60,55 L130,55" style="fill:none;stroke:#123c8c;stroke-width:2.4;stroke-linecap:round;stroke-dasharray:6 4"/>
+<text x="95" y="32" font-size="12" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">beaker</text>
+<path d="M200,60 L200,150 L215,175 L245,175 L260,150 L260,60" style="fill:none;stroke:#16324f;stroke-width:2.8;stroke-linecap:round"/>
+<path d="M215,175 Q230,190 245,175" style="fill:none;stroke:#c62828;stroke-width:2.6;stroke-linecap:round"/>
+<rect x="168" y="88" width="124" height="48" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="230" y="107.98" font-size="12" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">glass electrode</text><text x="230" y="124.18" font-size="12" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">(0.1 mm membrane)</text>
+<text x="230" y="205" font-size="12" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">sensitive to H⁺</text>
+<path d="M320,60 L320,175" style="fill:none;stroke:#16324f;stroke-width:2.8;stroke-linecap:round"/>
+<path d="M310,175 L330,175" style="fill:none;stroke:#16324f;stroke-width:2.8;stroke-linecap:round"/>
+<rect x="302" y="88" width="120" height="48" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="362" y="107.98" font-size="12" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">reference</text><text x="362" y="124.18" font-size="12" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">electrode (KCl)</text>
+<rect x="460" y="85" width="180" height="80" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="550" y="120.31" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">high impedance buffer</text><text x="550" y="139.21" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Zin &#62; 10¹² Ω</text>
+<path d="M414,125 L456,125" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<path d="M640,125 L700,125" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="670" y="109" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">to ADC</text>
+<text x="550" y="205" font-size="14" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">pH scale</text>
+<rect x="450" y="220" width="63.92" height="32" rx="8" fill="#fffdf3" stroke="#c62828" stroke-width="2.6"/><text x="481.96" y="240.08" font-size="12" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">0 acidic</text>
+<rect x="517.92" y="220" width="20.24" height="32" rx="8" fill="#fffdf3" stroke="#b45309" stroke-width="2.6"/><text x="528.04" y="240.08" font-size="12" fill="#b45309" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">4</text>
+<rect x="542.16" y="220" width="70.16" height="32" rx="8" fill="#fffdf3" stroke="#1b7a3d" stroke-width="2.6"/><text x="577.24" y="240.08" font-size="12" fill="#1b7a3d" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">7 neutral</text>
+<rect x="616.32" y="220" width="26.48" height="32" rx="8" fill="#fffdf3" stroke="#123c8c" stroke-width="2.6"/><text x="629.56" y="240.08" font-size="12" fill="#123c8c" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">11</text>
+<rect x="646.8" y="220" width="82.64" height="32" rx="8" fill="#fffdf3" stroke="#6d28d9" stroke-width="2.6"/><text x="688.12" y="240.08" font-size="12" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">14 alkaline</text>
+<text x="330" y="285" font-size="16" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">E = 59.16 mV per pH unit at 25 °C</text>
+</g>
+</svg>
+<figcaption>Fig. 5.2 &#8212; Potentiometric (glass electrode) chemical sensor</figcaption>
+</figure>
+
+<h3>4.2 Amperometric sensor (Clark dissolved oxygen electrode)</h3>
+<p class="q">Oxygen diffuses through a membrane and is reduced at a platinum cathode. The resulting
+<span class="b">current is directly proportional to the oxygen concentration</span>. Used in water treatment
+and blood gas analysis.</p>
+<h2><span class="no">5</span>Applications</h2>
+<ul class="arr">
+  <li><span class="b">Water quality monitoring</span> &mdash; pH, chlorine, dissolved oxygen, turbidity.</li>
+  <li><span class="b">Medical</span> &mdash; blood glucose meter, blood gas analyser, breath analyser.</li>
+  <li><span class="b">Environmental safety</span> &mdash; CO, CO&#8322;, H&#8322;S, NH&#8323;, toxic gas
+      alarms in mines and chemical plants.</li>
+  <li><span class="b">Food industry</span> &mdash; freshness, ripeness, alcohol and sugar content.</li>
+  <li><span class="b">Automobile</span> &mdash; oxygen (lambda) sensor in the exhaust for fuel control.</li>
+</ul>
+<div class="tip"><span class="cap">Two words to remember</span>
+<b>Selectivity</b> &mdash; the sensor must respond only to the wanted species.
+<b>Drift</b> &mdash; the slow change of reading with time, which makes frequent calibration necessary.
+Both these problems are the biggest drawbacks of chemical sensors.</div>
+
+<!--EXTRAS-->
+<h2><span class="no">6</span>Worked numericals</h2>
+
+<div class="formula"><span class="b">Problem 1.</span> A pH electrode follows E = E<sub>0</sub> + 0.05916 &times; pH at 25 &deg;C. A process sample reads pH 7.00 on the reference and pH 10.00 on the process side. Find the electrode voltage difference.</div>
+<p class="q"><span class="b">Solution.</span> &Delta;pH = 10.00 &minus; 7.00 = 3.00 pH units. &Delta;E = 0.05916 &times; 3.00 = 0.1775 V = 177.5 mV. The sign is negative for rising pH on a standard glass electrode (about &minus;59.16 mV per pH unit). <span class="hl">|&Delta;E| = 177.5 mV (&minus;59.16 mV per pH at 25 &deg;C).</span></p>
+<div class="formula"><span class="b">Problem 2.</span> A dissolved-oxygen probe gives 8.2 &micro;A at saturation (9.2 mg/L) and 3.1 &micro;A in the sample. Find the oxygen concentration.</div>
+<p class="q"><span class="b">Solution.</span> Assume current is linear with concentration: C = C<sub>sat</sub> &times; I / I<sub>sat</sub> C = 9.2 &times; 3.1 / 8.2 = 3.49 mg/L Temperature compensation corrects saturation value if the sample is not at the calibration temperature. <span class="hl">Dissolved oxygen &asymp; 3.5 mg/L.</span></p>
+<h2><span class="no">7</span>Viva questions and answers</h2>
+
+<p class="q"><span class="b">Q1. What is a reference electrode?</span><br><span class="o">A.</span> A stable electrode of known potential (e.g. Ag/AgCl) that provides a fixed baseline so the sensing electrode voltage can be interpreted absolutely.</p>
+<p class="q"><span class="b">Q2. Why does a pH electrode need a high-impedance amplifier?</span><br><span class="o">A.</span> Glass electrodes can source almost no current; any load would collapse the millivolt signal, so input impedance must be 10<sup>12</sup> &Omega; or higher.</p>
+<p class="q"><span class="b">Q3. Distinguish potentiometric and amperometric sensors.</span><br><span class="o">A.</span> Potentiometric measures an open-circuit voltage (no current, logarithmic in concentration); amperometric measures a current at fixed bias (linear in concentration).</p>
+<p class="q"><span class="b">Q4. What is the Clark electrode used for?</span><br><span class="o">A.</span> Measuring dissolved oxygen in water and blood through a membrane-covered cathode that reduces oxygen and produces a proportional current.</p>
+<p class="q"><span class="b">Q5. How do you calibrate a pH sensor?</span><br><span class="o">A.</span> Two-point buffer calibration, usually pH 4.0 and 7.0 (or 7.0 and 10.0), setting slope and offset.</p>
+<p class="q"><span class="b">Q6. Name one hazard when chemical sensors foul.</span><br><span class="o">A.</span> Drift and false readings; membranes coated by oil, scale or biological film stop responding and must be cleaned or replaced.</p>
+<h2><span class="no">8</span>Summary</h2>
+
+<p class="q">Chemical sensors convert concentration or activity into an electrical quantity by one of two routes: a selective membrane that develops a voltage (potentiometric, e.g. pH electrode) or a controlled reaction that draws a current (amperometric, e.g. Clark cell). Both need stable references, careful calibration and clean sensing surfaces. Choosing the right interface circuit &mdash; high-impedance amplifier for voltage-type sensors, transimpedance amplifier for current-type sensors &mdash; is half the design job.</p>
+<h2><span class="no">9</span>Specifications at a glance</h2>
+
+<div class="tw"><table>
+<tr><th>Parameter</th><th>pH (glass electrode)</th><th>Dissolved O&#8322; (Clark)</th></tr>
+<tr><td>Principle</td><td>Potentiometric</td><td>Amperometric</td></tr>
+<tr><td>Output</td><td>&plusmn;59 mV per pH at 25 &deg;C</td><td>0&ndash;100 nA / ppm class currents</td></tr>
+<tr><td>Range</td><td>0&ndash;14 pH</td><td>0&ndash;20 mg/L</td></tr>
+<tr><td>Accuracy</td><td>&plusmn;0.01&ndash;0.1 pH</td><td>&plusmn;0.1&ndash;0.5 mg/L</td></tr>
+<tr><td>Response time</td><td>seconds to a minute</td><td>60&ndash;90 s (T<sub>90</sub>)</td></tr>
+<tr><td>Calibration</td><td>Two buffer points</td><td>Water-saturated air / zero solution</td></tr>
+<tr><td>Typical use</td><td>Effluent, fermentation, pools</td><td>Aquaculture, boilers, blood gas</td></tr>
+</table></div>
+
+<div class="pager">
+<a href="04-light-sensors.html">&#8592; Prev</a>
+<a class="home" href="index.html">&#8962; Index</a>
+<a href="06-gas-sensors-mq2.html">Next &#8594;</a>
+</div>
+  <p class="sig">~ handwritten notes &middot; Sensors &amp; Process Control Systems &middot; save &amp; revise daily ~</p>
+</div>
+<script>
+/* pen-colour switch: recolours the body text only, diagrams keep their own ink */
+function ink(c){
+  var m = {brown:'#4a3728', red:'#9b1c1c', green:'#155724'};
+  document.body.style.color = m[c] || m.brown;
+  var bs = document.querySelectorAll('.btn');
+  for (var i = 0; i < bs.length; i++) { bs[i].classList.remove('active'); }
+  event.currentTarget.classList.add('active');
+}
+</script>
+</body>
+</html>

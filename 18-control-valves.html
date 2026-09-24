@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic 18 &middot; Pressure &amp; Flow Control Actuators | Sensors &amp; Process Control Systems Notes</title>
+<meta name="description" content="Handwritten study notes on Topic 18 &middot; Pressure &amp; Flow Control Actuators - Sensors and Process Control Systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&amp;family=Patrick+Hand&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23fdf9ec'/%3E%3Cpath d='M8 20h12l5-10 8 22 6-16 5 10h12' fill='none' stroke='%23123c8c' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 46h48' stroke='%23c62828' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/notes.css">
+</head>
+<body>
+<div class="paper">
+  <div class="topbar">
+    <span class="brand">Sensors &amp; Process Control</span>
+    <button class="btn" onclick="ink('brown')" title="blue-black ink">Blue</button>
+    <button class="btn" onclick="ink('red')" title="red pen">Red</button>
+    <button class="btn" onclick="ink('green')" title="green pen">Green</button>
+    <button class="btn" onclick="window.print()" title="print this note">Print</button>
+    <a class="btn" href="index.html" style="text-decoration:none">Index</a>
+  </div>
+  <span class="unit-tag">Unit II &middot; Actuators</span>
+  <h1 class="title">Topic 18 &middot; Pressure &amp; Flow Control Actuators<span class="sub">Control Valves and Positioners</span></h1>
+  <div class="rule"></div>
+
+<h2><span class="no">1</span>What is a control valve?</h2>
+<div class="def"><span class="cap">Definition</span>
+A <b>control valve</b> is the <b>final control element</b> of a process control loop. It receives the
+control signal from the controller and changes the <b>flow area</b> in a pipe, thereby controlling the
+<b>flow rate, pressure, level or temperature</b> of the process fluid.</div>
+<p class="q">A control valve has two main parts: the <span class="b">valve body</span> (which contains the
+plug, seat and the fluid passage) and the <span class="b">actuator</span> (which provides the force to move
+the plug). Common actuators are the <span class="b">pneumatic diaphragm</span> (most popular),
+<span class="b">pneumatic piston</span>, <span class="b">electric motor operated</span> and
+<span class="b">hydraulic</span> actuators.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 340" role="img" aria-label="Fig. 18.1 &#8212; Control valve with positioner and I/P converter" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<rect x="20" y="35" width="310" height="230" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<text x="175" y="57" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">globe control valve</text>
+<path d="M55,195 L105,170 L105,220 Z" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round"/>
+<path d="M105,195 L155,170 L155,220 Z" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round"/>
+<path d="M40,195 L55,195 M155,195 L200,195" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round"/>
+<path d="M130,145 L130,195" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round"/>
+<path d="M100,120 L160,120 L160,145 L100,145 Z" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round"/>
+<text x="130" y="110" font-size="11" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">diaphragm actuator</text>
+<text x="130" y="245" font-size="11" fill="#1b7a3d" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">plug moves → flow changes</text>
+<text x="50" y="185" font-size="11" fill="#123c8c" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">air</text>
+<rect x="370" y="60" width="170" height="70" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="455" y="90.645" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">I / P converter</text><text x="455" y="108.195" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">4–20 mA → 3–15 psi</text>
+<rect x="580" y="60" width="170" height="70" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="665" y="90.645" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Positioner</text><text x="665" y="108.195" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">(feedback)</text>
+<path d="M540,95 L576,95" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<path d="M665,130 L665,178" style="fill:none;stroke:#123c8c;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="690" y="160" font-size="11" fill="#123c8c" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">air</text>
+<path d="M455,175 L455,245 L300,245 L300,215" style="fill:none;stroke:#6d28d9;stroke-width:2;stroke-linecap:round;stroke-dasharray:6 4;marker-end:url(#arw)"/>
+<text x="375" y="262" font-size="11" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">stem position feedback</text>
+<rect x="370" y="285" width="380" height="45" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="560" y="311.92" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Controller → I/P → positioner → actuator → plug → flow</text>
+</g>
+</svg>
+<figcaption>Fig. 18.1 &#8212; Control valve with positioner and I/P converter</figcaption>
+</figure>
+
+<h2><span class="no">2</span>Flow control actuators (types of valves)</h2>
+<div class="tw"><table>
+<tr><th>Valve</th><th>Construction</th><th>Use</th></tr>
+<tr><td><b>Globe valve</b></td><td>Plug moves perpendicular to the seat, S-shaped body</td>
+<td>Throttling (flow control), good control over wide range</td></tr>
+<tr><td><b>Gate valve</b></td><td>Flat gate slides up and down</td><td>ON / OFF service only, full flow, low
+pressure drop</td></tr>
+<tr><td><b>Ball valve</b></td><td>Ball with a hole, quarter turn</td><td>Quick ON / OFF, some throttling</td></tr>
+<tr><td><b>Butterfly valve</b></td><td>Disc rotates in the middle of the pipe</td><td>Large pipes, low cost,
+low pressure</td></tr>
+<tr><td><b>Needle valve</b></td><td>Long tapered needle plug</td><td>Very fine flow control, instrumentation
+lines</td></tr>
+<tr><td><b>Diaphragm valve</b></td><td>Flexible diaphragm pinches the flow</td><td>Slurry, corrosive and
+sterile fluids</td></tr>
+<tr><td><b>Pinch valve</b></td><td>Rubber sleeve is pinched</td><td>Slurry and abrasive fluids</td></tr>
+<tr><td><b>Three way valve</b></td><td>Three ports, mixing or diverting</td><td>Temperature control by mixing
+hot and cold streams</td></tr>
+</table></div>
+<h2><span class="no">3</span>Working</h2>
+<p class="q">The controller compares the measured variable with the set point and sends an output signal of
+<span class="b">4&ndash;20 mA</span>. The <span class="b">I/P converter</span> changes this current into a
+<span class="b">3&ndash;15 psi</span> air pressure. This air pressure is applied on the diaphragm of the
+actuator. The diaphragm pushes the spring and moves the valve stem and the plug. When the plug moves away
+from the seat, the flow area increases and the flow increases. A <span class="b">positioner</span> compares
+the actual stem position with the demanded position and corrects any error caused by friction or fluid
+force.</p>
+<div class="formula">Flow through a valve : &nbsp; Q = C<sub>v</sub> &times; &radic;(&Delta;P / SG)</div>
+<p class="q">Here C<sub>v</sub> is the valve coefficient (flow in US gallons per minute at 1 psi drop) and SG
+is the specific gravity of the fluid. C<sub>v</sub> tells the size of the valve.</p>
+<h2><span class="no">4</span>Pressure control actuators</h2>
+<ul class="dot">
+  <li><span class="b">Pressure control valve (PCV)</span> &mdash; keeps the downstream pressure constant by
+      throttling; used on steam headers and gas lines.</li>
+  <li><span class="b">Pressure reducing valve (PRV)</span> &mdash; self operated, reduces a high inlet
+      pressure to a fixed lower outlet pressure.</li>
+  <li><span class="b">Safety / relief valve</span> &mdash; opens automatically when the pressure exceeds the
+      set limit; a mechanical actuator for safety.</li>
+  <li><span class="b">Back pressure regulator</span> &mdash; maintains the upstream pressure.</li>
+  <li><span class="b">Air filter regulator</span> &mdash; supplies clean air at a set pressure to pneumatic
+      instruments (1.4 bar typical).</li>
+</ul>
+<h2><span class="no">5</span>Fail-safe action (very important)</h2>
+<div class="tw"><table>
+<tr><th>Action</th><th>Meaning</th><th>Chosen when</th></tr>
+<tr><td><b>Air to Open (ATO) / Fail Close (FC)</b></td><td>Valve opens when air is applied; on air failure it
+closes</td><td>It is safe to stop the flow (fuel line to a burner)</td></tr>
+<tr><td><b>Air to Close (ATC) / Fail Open (FO)</b></td><td>Valve closes when air is applied; on air failure
+it opens</td><td>It is safe to keep the flow (cooling water to a reactor)</td></tr>
+</table></div>
+<h2><span class="no">6</span>Applications</h2>
+<ul class="arr">
+  <li>Flow, level, pressure and temperature control in every chemical, sugar, cement and power plant.</li>
+  <li>Steam pressure control in boilers and process headers.</li>
+  <li>Water distribution networks and pumping stations.</li>
+  <li>Oil and gas pipelines, refineries and LPG bottling plants.</li>
+  <li>HVAC control of chilled water and air handling units.</li>
+</ul>
+
+<!--EXTRAS-->
+<h2><span class="no">7</span>Worked numericals</h2>
+
+<div class="formula"><span class="b">Problem 1.</span> A valve has C<sub>v</sub> = 25 and passes water (&rho; = 1000 kg/m&sup3;, SG = 1) with &Delta;P = 1 bar (100 kPa). Find flow in m&sup3;/h.</div>
+<p class="q"><span class="b">Solution.</span> Q (US gpm) = C<sub>v</sub> &times; &radic;(&Delta;P / SG) = 25 &times; &radic;100 Q = 25 &times; 10 = 250 gpm Convert: 1 gpm = 0.2271 m&sup3;/h &rArr; Q = 250 &times; 0.2271 = 56.8 m&sup3;/h <span class="hl">Q &asymp; 56.8 m&sup3;/h (250 gpm).</span></p>
+<div class="formula"><span class="b">Problem 2.</span> An air-to-open valve fails ______ on loss of air; state the position and one application where fail-open is chosen instead.</div>
+<p class="q"><span class="b">Solution.</span> Air pressure pushes against the spring to open; loss of air lets the spring close the valve. Fail-closed suits fuel, feed or product lines that must stop. Fail-open suits cooling water, quench or relief-assist duties where losing flow is dangerous. <span class="hl">Fails closed; use fail-open for cooling or utility lines that must keep flowing.</span></p>
+<h2><span class="no">8</span>Viva questions and answers</h2>
+
+<p class="q"><span class="b">Q1. What is the valve coefficient C<sub>v</sub>?</span><br><span class="o">A.</span> US gallons per minute of water at 60 &deg;F passing with 1 psi pressure drop &mdash; the sizing number for a valve.</p>
+<p class="q"><span class="b">Q2. Compare quick-opening, linear and equal percentage trims.</span><br><span class="o">A.</span> Quick-opening gives most flow early (on-off duty); linear is proportional to travel; equal percentage gives equal flow change per equal percent travel, suitable when process gain varies strongly.</p>
+<p class="q"><span class="b">Q3. What is a positioner and why is it needed?</span><br><span class="o">A.</span> A local controller that forces valve position to match the signal despite friction and unbalance &mdash; it fixes stiction and improves stroking speed.</p>
+<p class="q"><span class="b">Q4. Why is valve sizing in terms of &Delta;P important?</span><br><span class="o">A.</span> If available &Delta;P across the valve is small at high demand, the valve cavitates or simply cannot pass required flow even at full open.</p>
+<p class="q"><span class="b">Q5. What is cavitation and how is it avoided?</span><br><span class="o">A.</span> Liquid flashes to vapour then collapses, pitting trim; avoided with pressure recovery trim, lower &Delta;P per stage, or operating above vapour pressure.</p>
+<p class="q"><span class="b">Q6. What tests are done during valve commissioning?</span><br><span class="o">A.</span> Stroke travel, verify fail position, check travel vs mA linearity, tightness test, and travel time measurement.</p>
+<h2><span class="no">9</span>Summary</h2>
+
+<p class="q">Control valves act as the final control element: actuator, positioner and internals working together to place flow exactly where the controller demands. Correct C<sub>v</sub> sizing, matched flow characteristic, explicit fail-safe action and healthy stroking mechanics are the four pillars. Without them the best tuning in the world cannot hold the process steady.</p>
+<h2><span class="no">10</span>Specifications at a glance</h2>
+
+<div class="tw"><table>
+<tr><th>Parameter</th><th>Typical specification</th><th>Remark</th></tr>
+<tr><td>Body size</td><td>1/2" to 12" DN15&ndash;DN300</td><td>Match line velocity and C<sub>v</sub></td></tr>
+<tr><td>C<sub>v</sub> range</td><td>0.1 &ndash; 1000+</td><td>From sizing equation and &Delta;P</td></tr>
+<tr><td>Characteristic</td><td>Linear / equal % / quick</td><td>Equal % most common in liquid service</td></tr>
+<tr><td>Actuation</td><td>Spring-and-yoke pneumatic</td><td>Air-to-open / air-to-close</td></tr>
+</table></div>
+
+<div class="pager">
+<a href="17-actuators-introduction.html">&#8592; Prev</a>
+<a class="home" href="index.html">&#8962; Index</a>
+<a href="19-power-control-devices.html">Next &#8594;</a>
+</div>
+  <p class="sig">~ handwritten notes &middot; Sensors &amp; Process Control Systems &middot; save &amp; revise daily ~</p>
+</div>
+<script>
+/* pen-colour switch: recolours the body text only, diagrams keep their own ink */
+function ink(c){
+  var m = {brown:'#4a3728', red:'#9b1c1c', green:'#155724'};
+  document.body.style.color = m[c] || m.brown;
+  var bs = document.querySelectorAll('.btn');
+  for (var i = 0; i < bs.length; i++) { bs[i].classList.remove('active'); }
+  event.currentTarget.classList.add('active');
+}
+</script>
+</body>
+</html>

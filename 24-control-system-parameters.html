@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic 24 &middot; Control System Parameters | Sensors &amp; Process Control Systems Notes</title>
+<meta name="description" content="Handwritten study notes on Topic 24 &middot; Control System Parameters - Sensors and Process Control Systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&amp;family=Patrick+Hand&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23fdf9ec'/%3E%3Cpath d='M8 20h12l5-10 8 22 6-16 5 10h12' fill='none' stroke='%23123c8c' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 46h48' stroke='%23c62828' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/notes.css">
+</head>
+<body>
+<div class="paper">
+  <div class="topbar">
+    <span class="brand">Sensors &amp; Process Control</span>
+    <button class="btn" onclick="ink('brown')" title="blue-black ink">Blue</button>
+    <button class="btn" onclick="ink('red')" title="red pen">Red</button>
+    <button class="btn" onclick="ink('green')" title="green pen">Green</button>
+    <button class="btn" onclick="window.print()" title="print this note">Print</button>
+    <a class="btn" href="index.html" style="text-decoration:none">Index</a>
+  </div>
+  <span class="unit-tag">Unit III &middot; Fundamentals of Process Automation</span>
+  <h1 class="title">Topic 24 &middot; Control System Parameters<span class="sub">Error, Variable Range, Control Time and Cycling</span></h1>
+  <div class="rule"></div>
+
+<h2><span class="no">1</span>Introduction</h2>
+<p class="q">To specify, design or tune a controller we must be able to describe its working in numbers. The
+important control system parameters are: <span class="b">error, variable range (span), control parameter
+range, control time and cycling</span>. Let us understand each one with a common example &mdash; a water
+tank whose level is to be controlled between 40 % and 60 % by a transmitter of range 0 to 100 %.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 330" role="img" aria-label="Fig. 24.1 &#8212; Error, control band, control time and cycling in one response curve" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<path d="M120,230 L120,50" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<path d="M120,230 L720,230" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="420" y="254" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">time</text>
+<text x="108" y="44" font-size="14" fill="#16324f" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">level (%)</text>
+<path d="M130,120 L710,120" style="fill:none;stroke:#123c8c;stroke-width:2;stroke-linecap:round;stroke-dasharray:7 5"/>
+<text x="700" y="110" font-size="12" fill="#123c8c" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">set point (SP) 50 %</text>
+<path d="M130,100 L710,100" style="fill:none;stroke:#b45309;stroke-width:1.4;stroke-linecap:round;stroke-dasharray:3 3"/>
+<path d="M130,140 L710,140" style="fill:none;stroke:#b45309;stroke-width:1.4;stroke-linecap:round;stroke-dasharray:3 3"/>
+<text x="140" y="92" font-size="11" fill="#b45309" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">control band (proportional band)</text>
+<path d="M130,185 C200,150 260,105 330,100 C400,96 450,135 520,140 C590,144 640,112 705,108" style="fill:none;stroke:#c62828;stroke-width:3;stroke-linecap:round"/>
+<text x="330" y="175" font-size="11" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">initial error e = SP − PV</text>
+<text x="560" y="165" font-size="11" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">cycling (oscillation)</text>
+<path d="M330,215 L520,215" style="fill:none;stroke:#1b7a3d;stroke-width:1.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="425" y="208" font-size="11" fill="#1b7a3d" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">settling / control time</text>
+<text x="415" y="298" font-size="14" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">error, control band, control time and cycling in one plot</text>
+</g>
+</svg>
+<figcaption>Fig. 24.1 &#8212; Error, control band, control time and cycling in one response curve</figcaption>
+</figure>
+
+<h2><span class="no">2</span>Error</h2>
+<div class="def"><span class="cap">Definition</span>
+<b>Error</b> is the <b>difference between the set point and the measured value</b> of the controlled
+variable.<br>
+<b>e = SP &minus; PV</b> (for direct acting) &nbsp; or &nbsp; <b>e = PV &minus; SP</b> (for reverse acting).</div>
+<ul class="dot">
+  <li><span class="b">Positive error</span> &mdash; the PV is below the SP, so the controller must increase
+      the output.</li>
+  <li><span class="b">Negative error</span> &mdash; the PV is above the SP, so the output must be
+      decreased.</li>
+  <li><span class="b">Offset (steady state error)</span> &mdash; the small permanent error that remains
+      even after the process has settled. It is produced by proportional control and is removed by integral
+      action.</li>
+  <li><span class="b">Dynamic error</span> &mdash; the error during the transient period while the process is
+      still changing.</li>
+</ul>
+<div class="formula">Error in % = [(SP &minus; PV) / span of the variable] &times; 100</div>
+<h2><span class="no">3</span>Variable range and span</h2>
+<div class="def"><span class="cap">Definition</span>
+<b>Variable range</b> (measurement range) is the <b>minimum and maximum values of the controlled variable
+that the transmitter can measure</b>. <b>Span</b> is the difference between the maximum and minimum
+values.</div>
+<p class="q">Example: a level transmitter is calibrated for 0 to 200 cm. Then the variable range is
+0&ndash;200 cm and the span is 200 cm. If the range is changed to 50&ndash;200 cm the span becomes 150 cm.
+The <span class="b">control range</span> (or operating range) is the smaller portion of the variable range
+within which we actually want to control, for example 80 to 120 cm.</p>
+<h2><span class="no">4</span>Control parameter range (proportional band)</h2>
+<div class="def"><span class="cap">Definition</span>
+<b>Control parameter range</b>, more commonly called the <b>proportional band (PB)</b>, is the <b>range of
+change in the controlled variable that is needed to drive the controller output through its full range
+(0 to 100 %)</b>. It is the reciprocal of the proportional gain.</div>
+<div class="formula">PB (%) = (1 / K<sub>p</sub>) &times; 100 &nbsp;&nbsp;&nbsp; K<sub>p</sub> = 100 / PB</div>
+<p class="q">If a tank level of span 0 to 100 % has a proportional band of 50 %, then a level change of
+50 % is needed to move the valve from fully closed to fully open. A <span class="b">narrow PB (high
+gain)</span> gives a fast and sensitive response but may cause oscillation. A <span class="b">wide PB (low
+gain)</span> gives a slow and stable response but a large offset.</p>
+<h2><span class="no">5</span>Control time</h2>
+<p class="q">Control time is the time related quantity of a control loop. The following terms are used:</p>
+<div class="tw"><table>
+<tr><th>Term</th><th>Definition</th></tr>
+<tr><td><b>Response time</b></td><td>Time taken by the PV to reach the new steady state after a change in
+set point or load.</td></tr>
+<tr><td><b>Rise time</b></td><td>Time taken to go from 10 % to 90 % of the final value.</td></tr>
+<tr><td><b>Settling time</b></td><td>Time taken for the PV to enter and stay within a specified band
+(usually &plusmn;2 % or &plusmn;5 %) of the final value.</td></tr>
+<tr><td><b>Dead time (t&#8320;)</b></td><td>Time before any response is seen after the input is changed.</td></tr>
+<tr><td><b>Time constant (&tau;)</b></td><td>Time to reach 63.2 % of the final change.</td></tr>
+<tr><td><b>Integral time (T<sub>i</sub>)</b></td><td>Time in which the integral action repeats the
+proportional action (reset time, minutes per repeat).</td></tr>
+<tr><td><b>Derivative time (T<sub>d</sub>)</b></td><td>Time by which the derivative action anticipates the
+proportional action (rate time).</td></tr>
+</table></div>
+<h2><span class="no">6</span>Cycling</h2>
+<div class="def"><span class="cap">Definition</span>
+<b>Cycling</b> is the <b>repeated oscillation of the controlled variable about the set point</b>. The
+variable goes up and down continuously instead of settling. The number of oscillations per unit time is the
+<b>cycling frequency</b> and the peak difference is the <b>amplitude of cycling</b>.</div>
+<p class="q">Cycling is caused by: (i) too narrow a proportional band (too much gain), (ii) too much
+integral action, (iii) large dead time or lag in the process, (iv) hunting of the final control element
+(sticky valve), and (v) a wrong controller action (direct instead of reverse). Small cycling around the set
+point is normal in two position (ON/OFF) control and is called <span class="b">hunting</span>; large and
+growing cycling means the loop is <span class="b">unstable</span> and must be detuned.</p>
+<div class="tw"><table>
+<tr><th>Parameter</th><th>Unit</th><th>Good design value</th></tr>
+<tr><td>Error (offset)</td><td>% of span</td><td>Zero (use I action)</td></tr>
+<tr><td>Overshoot</td><td>% of final value</td><td>10 to 30 %</td></tr>
+<tr><td>Settling time</td><td>seconds / minutes</td><td>As short as stability allows</td></tr>
+<tr><td>Cycling amplitude</td><td>% of span</td><td>Less than &plusmn;1 % for good control</td></tr>
+<tr><td>Dead time to time constant ratio</td><td>&mdash;</td><td>t&#8320;/&tau; &lt; 0.3 for easy control</td></tr>
+</table></div>
+<div class="tip"><span class="cap">Quick revision</span>
+<b>Error</b> = SP &minus; PV &nbsp;|&nbsp; <b>Span</b> = max &minus; min of the variable &nbsp;|&nbsp;
+<b>PB</b> = 100/K<sub>p</sub> &nbsp;|&nbsp; <b>Control time</b> = rise / settling / dead time &nbsp;|&nbsp;
+<b>Cycling</b> = oscillation about the set point.</div>
+
+<!--EXTRAS-->
+<h2><span class="no">7</span>Worked numericals</h2>
+
+<div class="formula"><span class="b">Problem 1.</span> A temperature transmitter spans 0&ndash;200 &deg;C with 4&ndash;20 mA output. Find the mA at 75 &deg;C and the temperature represented by 13.6 mA.</div>
+<p class="q"><span class="b">Solution.</span> % span = (75 &minus; 0)/(200 &minus; 0) &times; 100 = 37.5 %. I = 4 + 0.16 &times; 75 = 4 + 12 = 16? No: 16 mA per 200 &deg;C &rArr; 16 &times; 0.375 = 6; I = 4 + 6 = 10 mA. Reverse: &theta; = (13.6 &minus; 4)/16 &times; 200 = 120 &deg;C. <span class="hl">75 &deg;C &rArr; 10 mA; 13.6 mA &rArr; 120 &deg;C.</span></p>
+<h2><span class="no">8</span>Viva questions and answers</h2>
+
+<p class="q"><span class="b">Q1. Define error in a feedback loop.</span><br><span class="o">A.</span> The algebraic difference between set point and process variable; conventionally e = SP &minus; PV so positive error calls for more output in heating/flow loops.</p>
+<p class="q"><span class="b">Q2. Differentiate range and span.</span><br><span class="o">A.</span> Range is the complete set of values the instrument measures; span is URV minus LRV &mdash; e.g. range 0&ndash;200 &deg;C has span 200 &deg;C, but a range &minus;50 to +150 also has span 200.</p>
+<h2><span class="no">9</span>Summary</h2>
+
+<p class="q">Error, range, span, proportional band, cycling and control time are the quantities used to describe loop performance in words and numbers. Percentage definitions must always name their denominator (span or reading), 4&ndash;20 mA scaling converts engineering values linearly, and cycling amplitude plus period provides the first diagnostic fingerprint when a loop misbehaves.</p>
+<h2><span class="no">10</span>Specifications at a glance</h2>
+
+<div class="tw"><table>
+<tr><th>Parameter</th><th>Definition</th><th>Typical note</th></tr>
+<tr><td>Error e</td><td>SP &minus; PV (or opposite &mdash; fix convention)</td><td>Sign sets action direction</td></tr>
+<tr><td>Range</td><td>Min to max measurable</td><td>0&ndash;200 &deg;C, &minus;1 to 1 bar...</td></tr>
+<tr><td>Span</td><td>URV &minus; LRV</td><td>Denominator of % span error</td></tr>
+</table></div>
+
+<div class="pager">
+<a href="23-process-characteristics.html">&#8592; Prev</a>
+<a class="home" href="index.html">&#8962; Index</a>
+<a href="25-discontinuous-controller-modes.html">Next &#8594;</a>
+</div>
+  <p class="sig">~ handwritten notes &middot; Sensors &amp; Process Control Systems &middot; save &amp; revise daily ~</p>
+</div>
+<script>
+/* pen-colour switch: recolours the body text only, diagrams keep their own ink */
+function ink(c){
+  var m = {brown:'#4a3728', red:'#9b1c1c', green:'#155724'};
+  document.body.style.color = m[c] || m.brown;
+  var bs = document.querySelectorAll('.btn');
+  for (var i = 0; i < bs.length; i++) { bs[i].classList.remove('active'); }
+  event.currentTarget.classList.add('active');
+}
+</script>
+</body>
+</html>

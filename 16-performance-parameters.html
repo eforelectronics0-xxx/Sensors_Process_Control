@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic 16 &middot; Specifications &amp; Performance Parameters | Sensors &amp; Process Control Systems Notes</title>
+<meta name="description" content="Handwritten study notes on Topic 16 &middot; Specifications &amp; Performance Parameters - Sensors and Process Control Systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&amp;family=Patrick+Hand&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23fdf9ec'/%3E%3Cpath d='M8 20h12l5-10 8 22 6-16 5 10h12' fill='none' stroke='%23123c8c' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 46h48' stroke='%23c62828' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/notes.css">
+</head>
+<body>
+<div class="paper">
+  <div class="topbar">
+    <span class="brand">Sensors &amp; Process Control</span>
+    <button class="btn" onclick="ink('brown')" title="blue-black ink">Blue</button>
+    <button class="btn" onclick="ink('red')" title="red pen">Red</button>
+    <button class="btn" onclick="ink('green')" title="green pen">Green</button>
+    <button class="btn" onclick="window.print()" title="print this note">Print</button>
+    <a class="btn" href="index.html" style="text-decoration:none">Index</a>
+  </div>
+  <span class="unit-tag">Unit I &middot; Fundamentals of Sensors</span>
+  <h1 class="title">Topic 16 &middot; Specifications &amp; Performance Parameters<span class="sub">Accuracy, Resolution, Hysteresis, Linearity, Bandwidth ...</span></h1>
+  <div class="rule"></div>
+
+<h2><span class="no">1</span>Why specifications are needed</h2>
+<p class="q">Two sensors may look the same and measure the same quantity, yet one may cost ten times the
+other. The reason lies in their <span class="b">performance parameters</span>. Before selecting a sensor we
+must know what these words mean, because the question paper always asks for definitions of any four or five
+of them. They are divided into <span class="b">static characteristics</span> (when the input is steady) and
+<span class="b">dynamic characteristics</span> (when the input is changing with time).</p>
+
+<h2><span class="no">2</span>The input &ndash; output characteristic</h2>
+
+<figure class="fig">
+<svg viewBox="0 0 780 310" role="img" aria-label="Fig. 16.1 &#8212; Input-output characteristic showing linearity, dead zone, range and sensitivity" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<path d="M130,230 L130,55" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<path d="M130,230 L700,230" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="415" y="254" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">input</text>
+<text x="118" y="49" font-size="14" fill="#16324f" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">output</text>
+<path d="M130,230 L700,75" style="fill:none;stroke:#123c8c;stroke-width:2;stroke-linecap:round;stroke-dasharray:7 5"/>
+<path d="M130,230 L190,224 L640,100 L700,67" style="fill:none;stroke:#c62828;stroke-width:3;stroke-linecap:round"/>
+<text x="175" y="208" font-size="12" fill="#b45309" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">dead zone</text>
+<text x="455" y="87" font-size="12" fill="#123c8c" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">ideal line</text>
+<text x="500" y="130" font-size="12" fill="#c62828" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">actual curve</text>
+<text x="415" y="176" font-size="12" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">max deviation = non-linearity</text>
+<text x="415" y="286" font-size="14" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">range (span) · sensitivity = slope</text>
+</g>
+</svg>
+<figcaption>Fig. 16.1 &#8212; Input-output characteristic showing linearity, dead zone, range and sensitivity</figcaption>
+</figure>
+
+<h2><span class="no">3</span>Definitions of each parameter</h2>
+<div class="def"><span class="cap">1. Accuracy</span>
+<b>Accuracy</b> is the closeness of the measured value to the <b>true value</b> of the quantity. It is
+expressed as a percentage of full scale or as a plus-minus band. Example: a thermometer of range 0 to
+100 &deg;C with &plusmn;1 % accuracy can be wrong by 1 &deg;C anywhere in the range.
+<i>Note: a sensor can be precise but not accurate.</i></div>
+<div class="def"><span class="cap">2. Resolution</span>
+<b>Resolution</b> is the <b>smallest change of input</b> that the sensor can detect and show in its output.
+If a digital thermometer displays up to 0.1 &deg;C, its resolution is 0.1 &deg;C. For a digital sensor,
+resolution = full scale range / 2<sup>n</sup>, where n is the number of ADC bits
+(10 bit &rarr; 1024 steps).</div>
+<div class="def"><span class="cap">3. Threshold</span>
+<b>Threshold</b> is the <b>minimum value of input</b> below which no output change is observed at all, when
+the input is increased from zero. Example: a flow meter may not show anything below 0.5 litre per minute.
+The related term <b>dead zone (dead band)</b> is the range of input over which the output does not change in
+either direction.</div>
+<div class="def"><span class="cap">4. Impedance</span>
+<b>Impedance</b> is the total opposition offered by the sensor to the flow of alternating current
+(Z = R + jX). The <b>input impedance</b> of a sensor should be <b>high</b> and the <b>output impedance</b>
+should be <b>low</b>, otherwise the measuring instrument will load the sensor and give a wrong reading
+(loading error). Example: a pH electrode has a very high output impedance, so a buffer amplifier is needed.</div>
+<div class="def"><span class="cap">5. Sensitivity</span>
+<b>Sensitivity</b> is the <b>ratio of the change in output to the change in input</b> that caused it &mdash;
+it is the slope of the input-output curve. Sensitivity S = &Delta;output / &Delta;input. Example: LM35 has a
+sensitivity of 10 mV/&deg;C. A high sensitivity sensor gives a large signal for a small change.</div>
+<div class="def"><span class="cap">6. Hysteresis</span>
+<b>Hysteresis</b> is the difference in the output when the same input is reached by
+<b>increasing</b> the input and by <b>decreasing</b> the input. It is caused by friction, backlash, magnetic
+retentivity or elastic lag in the sensing element. It is expressed as a percentage of full scale.</div>
+
+<figure class="fig">
+<svg viewBox="0 0 780 300" role="img" aria-label="Fig. 16.2 &#8212; Hysteresis loop of a sensor" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<path d="M130,225 L130,55" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<path d="M130,225 L700,225" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="415" y="249" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">input</text>
+<text x="118" y="49" font-size="14" fill="#16324f" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">output</text>
+<path d="M200,195 C330,75 470,80 630,200" style="fill:none;stroke:#c62828;stroke-width:3;stroke-linecap:round"/>
+<path d="M200,170 C330,100 470,105 630,175" style="fill:none;stroke:#123c8c;stroke-width:3;stroke-linecap:round"/>
+<text x="255" y="85" font-size="12" fill="#c62828" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">increasing</text>
+<text x="470" y="189" font-size="12" fill="#123c8c" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">decreasing</text>
+<path d="M415,97 L415,183" style="fill:none;stroke:#6d28d9;stroke-width:2;stroke-linecap:round;stroke-dasharray:5 4"/>
+<text x="415" y="89" font-size="12" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">hysteresis</text>
+<text x="415" y="177" font-size="12" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">error</text>
+<text x="415" y="286" font-size="14" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">output differs for the same input — max error</text>
+</g>
+</svg>
+<figcaption>Fig. 16.2 &#8212; Hysteresis loop of a sensor</figcaption>
+</figure>
+
+<div class="def"><span class="cap">7. Linearity</span>
+<b>Linearity</b> tells how close the actual input-output curve is to a <b>straight line</b>. It is expressed
+as the maximum deviation from the best fit straight line, as a percentage of full scale.
+<b>Non-linearity</b> makes calculation difficult, so most sensors are linearised in hardware or software.</div>
+<div class="def"><span class="cap">8. Range (Span)</span>
+<b>Range</b> is the region between the <b>minimum and maximum</b> values of the input that can be measured.
+<b>Span</b> = maximum value &minus; minimum value. Example: a pressure sensor of range 0 to 10 bar has a
+span of 10 bar. A sensor of range &minus;10 to +60 &deg;C has a span of 70 &deg;C.</div>
+<div class="def"><span class="cap">9. Reliability</span>
+<b>Reliability</b> is the ability of the sensor to give the <b>same performance consistently over a long
+period</b> without failure. It is expressed by <b>MTBF</b> (Mean Time Between Failures) and by
+<b>drift</b> (slow change of reading with time). High reliability means less maintenance and less
+downtime.</div>
+<div class="def"><span class="cap">10. Selectivity (Specificity)</span>
+<b>Selectivity</b> is the ability of the sensor to respond <b>only to the wanted quantity</b> and to ignore
+all other quantities. Example: a CO sensor should not respond to alcohol vapour; a pH electrode should not
+be affected by the colour of the solution. Poor selectivity gives a false reading.</div>
+<div class="def"><span class="cap">11. Bandwidth</span>
+<b>Bandwidth</b> is the range of frequencies over which the sensor can follow the input signal without a
+significant loss of output (usually within &minus;3 dB of the mid-band gain). It tells how
+<b>fast</b> the sensor can respond to a changing input. A sensor with a 1 kHz bandwidth cannot correctly
+measure a vibration of 5 kHz.</div>
+
+<figure class="fig">
+<svg viewBox="0 0 780 300" role="img" aria-label="Fig. 16.3 &#8212; Dynamic response and bandwidth of a sensor" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<rect x="405" y="35" width="355" height="210" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<rect x="20" y="35" width="360" height="210" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<text x="200" y="57" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">step response</text>
+<path d="M70,200 L70,75" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<path d="M70,200 L350,200" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="210" y="226" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">t</text>
+<text x="58" y="69" font-size="14" fill="#16324f" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">output</text>
+<path d="M78,192 C130,190 170,150 210,115 L340,105" style="fill:none;stroke:#c62828;stroke-width:3;stroke-linecap:round"/>
+<path d="M70,105 L345,105" style="fill:none;stroke:#123c8c;stroke-width:1.8;stroke-linecap:round;stroke-dasharray:6 4"/>
+<text x="250" y="95" font-size="11" fill="#123c8c" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">final value</text>
+<path d="M150,192 L150,115" style="fill:none;stroke:#b45309;stroke-width:1.6;stroke-linecap:round;stroke-dasharray:4 3"/>
+<text x="160" y="168" font-size="11" fill="#b45309" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">rise time / τ</text>
+<text x="582.5" y="57" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">frequency response</text>
+<path d="M455,200 L455,75" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<path d="M455,200 L730,200" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="592.5" y="226" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">f (Hz)</text>
+<text x="443" y="69" font-size="14" fill="#16324f" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">gain</text>
+<path d="M463,105 L600,105 C640,105 655,130 668,165 L720,195" style="fill:none;stroke:#c62828;stroke-width:3;stroke-linecap:round"/>
+<path d="M463,140 L720,140" style="fill:none;stroke:#123c8c;stroke-width:1.6;stroke-linecap:round;stroke-dasharray:6 4"/>
+<text x="675" y="132" font-size="11" fill="#123c8c" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">−3 dB</text>
+<path d="M668,75 L668,200" style="fill:none;stroke:#6d28d9;stroke-width:1.6;stroke-linecap:round;stroke-dasharray:4 3"/>
+<text x="660" y="85" font-size="11" fill="#6d28d9" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">bandwidth</text>
+<text x="390" y="278" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">dynamic response : how fast and up to what frequency</text>
+</g>
+</svg>
+<figcaption>Fig. 16.3 &#8212; Dynamic response and bandwidth of a sensor</figcaption>
+</figure>
+
+<h2><span class="no">4</span>Other important terms</h2>
+<div class="tw"><table>
+<tr><th>Term</th><th>Meaning</th></tr>
+<tr><td><b>Precision (repeatability)</b></td><td>Closeness of repeated readings of the same input. A precise
+sensor gives the same reading every time, even if it is wrong.</td></tr>
+<tr><td><b>Reproducibility</b></td><td>Closeness of readings when measured by different persons or
+instruments.</td></tr>
+<tr><td><b>Drift</b></td><td>Slow unwanted change of output with time at constant input (zero drift,
+sensitivity drift).</td></tr>
+<tr><td><b>Response time</b></td><td>Time taken to reach the final value (usually 90 % or 63.2 %) after a
+step change of input.</td></tr>
+<tr><td><b>Time constant (&tau;)</b></td><td>Time to reach 63.2 % of the final value in a first order
+sensor.</td></tr>
+<tr><td><b>Turndown ratio</b></td><td>Maximum range &divide; minimum range over which accuracy is
+maintained.</td></tr>
+<tr><td><b>Stability</b></td><td>Ability to keep the same calibration over a period.</td></tr>
+<tr><td><b>Input / output impedance</b></td><td>Opposition offered at the input / output terminals.</td></tr>
+</table></div>
+<div class="tip"><span class="cap">Accuracy vs Precision (very common question)</span>
+<b>Accuracy</b> = how near the reading is to the true value.
+<b>Precision</b> = how near the readings are to each other.
+If a scale reads 50.2, 50.3, 50.2 kg for a true weight of 60 kg, it is <b>precise but not accurate</b>.</div>
+
+<!--EXTRAS-->
+<h2><span class="no">5</span>Worked numericals</h2>
+
+<div class="formula"><span class="b">Problem 1.</span> A 0&ndash;20 bar transmitter with accuracy &plusmn;0.5 % of span reads 14.0 bar. Find the possible true value.</div>
+<p class="q"><span class="b">Solution.</span> Span = 20 bar; error = 0.5 &times; 20 / 100 = 0.1 bar. True value lies in 14.0 &minus; 0.1 to 14.0 + 0.1 = 13.9 to 14.1 bar. <span class="hl">13.9&ndash;14.1 bar (&plusmn;0.1 bar).</span></p>
+<h2><span class="no">6</span>Viva questions and answers</h2>
+
+<p class="q"><span class="b">Q1. Distinguish accuracy, precision and resolution.</span><br><span class="o">A.</span> Accuracy is closeness to true value; precision is repeatability; resolution is the smallest displayable change.</p>
+<p class="q"><span class="b">Q2. What is hysteresis error?</span><br><span class="o">A.</span> The maximum difference between ascending and descending outputs at the same input, caused by mechanical or magnetic lag.</p>
+<h2><span class="no">7</span>Summary</h2>
+
+<p class="q">Range, span, accuracy, uncertainty, linearity, hysteresis, repeatability, resolution and response time together describe what an instrument can honestly deliver. </p>
+<h2><span class="no">8</span>Specifications at a glance</h2>
+
+<div class="tw"><table>
+<tr><th>Parameter</th><th>Typical good value (process)</th><th>Notes</th></tr>
+<tr><td>Range</td><td>Match process min&ndash;max with margin</td><td>Never operate above URV</td></tr>
+<tr><td>Accuracy</td><td>&plusmn;0.075&ndash;0.5 % of span</td><td>Classified by standard like 0.5</td></tr>
+</table></div>
+
+<div class="pager">
+<a href="15-smart-sensors.html">&#8592; Prev</a>
+<a class="home" href="index.html">&#8962; Index</a>
+<a href="17-actuators-introduction.html">Next &#8594;</a>
+</div>
+  <p class="sig">~ handwritten notes &middot; Sensors &amp; Process Control Systems &middot; save &amp; revise daily ~</p>
+</div>
+<script>
+/* pen-colour switch: recolours the body text only, diagrams keep their own ink */
+function ink(c){
+  var m = {brown:'#4a3728', red:'#9b1c1c', green:'#155724'};
+  document.body.style.color = m[c] || m.brown;
+  var bs = document.querySelectorAll('.btn');
+  for (var i = 0; i < bs.length; i++) { bs[i].classList.remove('active'); }
+  event.currentTarget.classList.add('active');
+}
+</script>
+</body>
+</html>

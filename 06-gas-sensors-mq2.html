@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic 6 &middot; Gas Sensors | Sensors &amp; Process Control Systems Notes</title>
+<meta name="description" content="Handwritten study notes on Topic 6 &middot; Gas Sensors - Sensors and Process Control Systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&amp;family=Patrick+Hand&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23fdf9ec'/%3E%3Cpath d='M8 20h12l5-10 8 22 6-16 5 10h12' fill='none' stroke='%23123c8c' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 46h48' stroke='%23c62828' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/notes.css">
+</head>
+<body>
+<div class="paper">
+  <div class="topbar">
+    <span class="brand">Sensors &amp; Process Control</span>
+    <button class="btn" onclick="ink('brown')" title="blue-black ink">Blue</button>
+    <button class="btn" onclick="ink('red')" title="red pen">Red</button>
+    <button class="btn" onclick="ink('green')" title="green pen">Green</button>
+    <button class="btn" onclick="window.print()" title="print this note">Print</button>
+    <a class="btn" href="index.html" style="text-decoration:none">Index</a>
+  </div>
+  <span class="unit-tag">Unit I &middot; Fundamentals of Sensors</span>
+  <h1 class="title">Topic 6 &middot; Gas Sensors<span class="sub">MQ-2 Gas / Smoke Sensor</span></h1>
+  <div class="rule"></div>
+
+<h2><span class="no">1</span>Introduction</h2>
+<p class="q">A gas sensor detects the presence or concentration of a gas in the air. The most popular and
+cheapest family for student projects and domestic alarms is the <span class="b">MQ series of semiconductor
+(MOS) gas sensors</span> &mdash; MQ-2 (smoke, LPG, propane), MQ-3 (alcohol), MQ-4 (methane, CNG),
+MQ-6 (LPG), MQ-7 (carbon monoxide), MQ-135 (air quality, NH&#8323;, CO&#8322;). In this topic we study the
+<span class="r">MQ-2</span> in detail.</p>
+<div class="tw"><table>
+<tr><th>Part</th><th>Material / Detail</th></tr>
+<tr><td>Sensing layer</td><td>Tin dioxide (SnO&#8322;) &mdash; semiconductor ceramic</td></tr>
+<tr><td>Heater</td><td>Ni-Cr alloy coil, about 0.8 W, keeps layer at 200&ndash;300 &deg;C</td></tr>
+<tr><td>Electrodes</td><td>Platinum, 6 pins (4 for signal, 2 for heater)</td></tr>
+<tr><td>Body</td><td>Stainless steel mesh (protects and lets gas diffuse)</td></tr>
+<tr><td>Supply</td><td>5 V DC (heater needs 5 V), signal 0.1&ndash;4.5 V</td></tr>
+</table></div>
+
+<h2><span class="no">2</span>Construction of MQ-2</h2>
+<p class="q">Inside the steel mesh there is a small <span class="b">alumina (Al&#8322;O&#8323;) ceramic
+tube</span>. On the outer surface of this tube a layer of <span class="b">tin dioxide</span> is deposited;
+this is the sensing layer. A <span class="b">heating coil</span> is placed inside the tube to keep the
+sensing layer at a high temperature, because the chemical reaction takes place only when it is hot. Two
+platinum electrodes collect the current from the sensing layer. The heater and the sensor are electrically
+separate, so the MQ-2 has <span class="b">six pins</span> &mdash; two heater pins (H) and four sensing pins
+(A and B, internally connected in pairs).</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 300" role="img" aria-label="Fig. 6.1 &#8212; MQ-2 construction and semiconductor sensing principle" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<rect x="410" y="30" width="350" height="210" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<rect x="20" y="30" width="360" height="210" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<text x="200" y="52" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">construction</text>
+<path d="M100,70 L100,170 M260,70 L260,170" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round"/>
+<path d="M100,70 L260,70 M100,170 L260,170" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round"/>
+<path d="M108,85 L252,85 M108,100 L252,100" style="fill:none;stroke:#123c8c;stroke-width:2;stroke-linecap:round"/>
+<path d="M130,70 L130,170 M170,70 L170,170 M210,70 L210,170 M250,70 L250,170" style="fill:none;stroke:#123c8c;stroke-width:1.6;stroke-linecap:round"/>
+<path d="M140,120 L220,120 M140,120 L155,135 L185,105 L215,135 L220,120" style="fill:none;stroke:#c62828;stroke-width:2.4;stroke-linecap:round"/>
+<text x="272" y="84" font-size="12" fill="#123c8c" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">steel mesh cover</text>
+<text x="180" y="155" font-size="12" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">heater coil inside</text>
+<rect x="105" y="175" width="150" height="35" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="180" y="196.92" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">SnO₂ on alumina tube</text>
+<path d="M140,210 L140,235 M220,210 L220,235" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round"/>
+<text x="120" y="232" font-size="12" fill="#16324f" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">pins A, B, H</text>
+<text x="585" y="52" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">working principle</text>
+<rect x="430" y="62" width="310" height="170" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="585" y="107.545" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Clean air : oxygen ions on the</text><text x="585" y="125.095" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">surface trap electrons → R high</text><text x="585" y="142.645" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Gas present : gas reacts with</text><text x="585" y="160.195" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">adsorbed oxygen → electrons free</text><text x="585" y="177.745" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">→ R falls</text><text x="585" y="195.295" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Rs (gas) / R₀ (air) → ppm</text>
+<text x="390" y="275" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Rₛ decreases as gas ppm increases</text>
+</g>
+</svg>
+<figcaption>Fig. 6.1 &#8212; MQ-2 construction and semiconductor sensing principle</figcaption>
+</figure>
+
+<h2><span class="no">3</span>Working</h2>
+<p class="q">When the sensor is heated in clean air, oxygen molecules from the air get adsorbed on the
+surface of SnO&#8322; and capture free electrons to form O&#8315; and O&#8322;&#8315; ions. Because the
+electrons are trapped, the <span class="b">resistance of the sensing layer is high</span> (about 10 k&#937;
+or more, this is called R&#8320;).</p>
+<p class="q">When a <span class="b">reducing gas</span> such as LPG, smoke or propane comes in contact with
+the hot surface, it reacts with the adsorbed oxygen ions. The trapped electrons are released back into the
+tin dioxide, so the number of free electrons increases and the <span class="b">resistance falls</span>.
+The higher the gas concentration, the lower the resistance. In a potential divider circuit this fall of
+resistance gives a <span class="b">rise in output voltage</span>, which the microcontroller reads through the
+ADC. If the voltage crosses the set limit, the controller switches ON the buzzer, the exhaust fan or the
+relay.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 390" role="img" aria-label="Fig. 6.2 &#8212; MQ-2 interfacing circuit with load resistor and ADC" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<polyline points="40,60 740,60" style="fill:none;stroke:#c62828;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="390" y="86" font-size="15" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">5 V</text>
+<polyline points="40,310 740,310" style="fill:none;stroke:#123c8c;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="390" y="336" font-size="15" fill="#123c8c" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">0 V</text>
+<rect x="150" y="95" width="100" height="80" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="200" y="130.31" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">MQ-2</text><text x="200" y="149.21" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Rs (gas)</text>
+<polyline points="200,60 200,95" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="200" cy="60" r="5.5" fill="#16324f"/>
+<g transform="translate(150,210) rotate(0,50,50) translate(0,0) scale(1)"><path d="M50,0 L50,20 L32,26 L68,36 L32,46 L68,56 L32,66 L68,74 L50,80 L50,100" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="234" y="265.6" font-size="16" fill="#c62828" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">RL = 10 kΩ</text>
+<polyline points="200,175 200,210" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="200" cy="175" r="5.5" fill="#16324f"/>
+<circle cx="200" cy="310" r="5.5" fill="#16324f"/>
+<g transform="translate(390,170) rotate(0,50,50) translate(0,0) scale(1)"><rect x="10" y="22" width="80" height="56" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="3"/><text x="50" y="55.95" font-size="17" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">ADC</text><path d="M0,50 L10,50 M90,50 L100,50" fill="none" stroke="#16324f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<polyline points="200,210 390,210 390,220" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="200" cy="210" r="5.5" fill="#16324f"/>
+<text x="305" y="198" font-size="13" fill="#1b7a3d" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Vout</text>
+<text x="420" y="105" font-size="13" fill="#b45309" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Heater pins H1, H2 also need 5 V</text>
+<text x="390" y="366" font-size="16" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Vout = 5 × RL / (Rs + RL)</text>
+</g>
+</svg>
+<figcaption>Fig. 6.2 &#8212; MQ-2 interfacing circuit with load resistor and ADC</figcaption>
+</figure>
+
+<div class="formula">ppm is found from the curve : &nbsp; Rs/R&#8320; &nbsp;versus&nbsp; ppm (log-log graph)
+&nbsp;&nbsp; Rs = (5 V &minus; Vout)/Vout &times; RL</div>
+<h2><span class="no">4</span>Applications</h2>
+<ul class="arr">
+  <li><span class="b">LPG leakage alarm</span> in domestic kitchens and cylinder stores.</li>
+  <li>Smoke detector combined with fire alarm systems.</li>
+  <li>Air quality monitoring in offices, laboratories and smart homes.</li>
+  <li>Portable gas leak detector for pipeline checking.</li>
+  <li>Automated exhaust fan / gas valve shut-off systems.</li>
+</ul>
+<div class="warn"><span class="cap">Care while using MQ-2</span>
+The sensor needs a <b>pre-heat (burn-in) time of 24 to 48 hours for the first use</b> and 2 to 3 minutes for
+normal use, otherwise the reading drifts. The heater makes the sensor hot, so do not touch it and do not use
+it in a very dusty or silicon-vapour atmosphere.</div>
+
+<!--EXTRAS-->
+<h2><span class="no">5</span>Worked numericals</h2>
+
+<div class="formula"><span class="b">Problem 1.</span> An MQ-2 is wired with R<sub>L</sub> = 10 k&Omega; across 5 V and reads V<sub>out</sub> = 2.0 V in clean air where R<sub>0</sub> gives V<sub>out0</sub> = 1.0 V. Find R<sub>s</sub> / R<sub>0</sub>.</div>
+<p class="q"><span class="b">Solution.</span> Divider: V<sub>out</sub> = V<sub>cc</sub> &times; R<sub>L</sub> / (R<sub>s</sub> + R<sub>L</sub>) Clean air: 1.0 = 5 &times; 10 / (R<sub>0</sub> + 10) &rArr; R<sub>0</sub> = 40 k&Omega; Gas present: 2.0 = 5 &times; 10 / (R<sub>s</sub> + 10) &rArr; R<sub>s</sub> = 15 k&Omega; Ratio R<sub>s</sub>/R<sub>0</sub> = 15/40 = 0.375 &mdash; read it off the log-log curve for the gas in question. <span class="hl">R<sub>s</sub>/R<sub>0</sub> = 0.375 (concentration comes from the datasheet curve).</span></p>
+<h2><span class="no">6</span>Viva questions and answers</h2>
+
+<p class="q"><span class="b">Q1. What material is the sensing element of MQ-2?</span><br><span class="o">A.</span> Tin dioxide (SnO&#8322;), an n-type semiconductor whose surface resistance changes when combustible gases adsorb on it.</p>
+<p class="q"><span class="b">Q2. Why is a heater coil inside the can?</span><br><span class="o">A.</span> The sensing reaction needs a controlled high surface temperature, roughly 200 to 400 &deg;C, supplied by the internal nichrome heater.</p>
+<p class="q"><span class="b">Q3. Does MQ-2 consume oxygen?</span><br><span class="o">A.</span> Yes &mdash; it needs fresh air reference oxygen at the surface, so it should not be sealed in a tiny volume without ventilation.</p>
+<p class="q"><span class="b">Q4. Is the sensor output linear in gas concentration?</span><br><span class="o">A.</span> No. The relationship is log-log; the datasheet curve of R<sub>s</sub>/R<sub>0</sub> against ppm is used, or a microcontroller fits that curve.</p>
+<p class="q"><span class="b">Q5. How is selectivity improved in a gas sensor array?</span><br><span class="o">A.</span> Several sensors with different dopants (Sn, Pd, Al) are combined and their pattern is classified by a small algorithm.</p>
+<p class="q"><span class="b">Q6. What safety rating do LPG sensors often carry?</span><br><span class="o">A.</span> Many MQ-2 modules are advertised as explosion-proof and flameproof for domestic LPG leak alarm use, but the module still needs certified installation.</p>
+<h2><span class="no">7</span>Summary</h2>
+
+<p class="q">The MQ-2 is a resistive SnO&#8322; gas sensor: combustible gas on the heated surface changes the semiconductor resistance, and a simple load resistor converts that change into a voltage the ADC can read. Accurate work depends on knowing R&#8320; at baseline, following the log-log response curve rather than assuming linearity, respecting heater temperature and burn-in, and never trapping the sensor away from fresh air.</p>
+<h2><span class="no">8</span>Specifications at a glance</h2>
+
+<div class="tw"><table>
+<tr><th>Parameter</th><th>MQ-2 specification</th><th>Remark</th></tr>
+<tr><td>Detectable gases</td><td>LPG, propane, hydrogen, smoke, alcohol</td><td>Combustible range</td></tr>
+<tr><td>Supply (heater)</td><td>5 V AC/DC, about 450 mW</td><td>Keep temperature stable</td></tr>
+<tr><td>Sensor supply</td><td>5 V</td><td>Divider powered from same rail</td></tr>
+<tr><td>R&#8320; in clean air</td><td>10&ndash;60 k&Omega; (device spread)</td><td>Store this as baseline</td></tr>
+<tr><td>Sensitivity</td><td>R<sub>s</sub>/R&#8320; &lt; 0.6 at 200 ppm LPG</td><td>From datasheet curve</td></tr>
+<tr><td>Response / recovery</td><td>about 10 s / 30 s</td><td>T<sub>90</sub> values</td></tr>
+<tr><td>Pre-heat (burn-in)</td><td>24&ndash;48 h first use</td><td>Then periodic calibration</td></tr>
+</table></div>
+
+<div class="pager">
+<a href="05-chemical-sensors.html">&#8592; Prev</a>
+<a class="home" href="index.html">&#8962; Index</a>
+<a href="07-vibration-sensors.html">Next &#8594;</a>
+</div>
+  <p class="sig">~ handwritten notes &middot; Sensors &amp; Process Control Systems &middot; save &amp; revise daily ~</p>
+</div>
+<script>
+/* pen-colour switch: recolours the body text only, diagrams keep their own ink */
+function ink(c){
+  var m = {brown:'#4a3728', red:'#9b1c1c', green:'#155724'};
+  document.body.style.color = m[c] || m.brown;
+  var bs = document.querySelectorAll('.btn');
+  for (var i = 0; i < bs.length; i++) { bs[i].classList.remove('active'); }
+  event.currentTarget.classList.add('active');
+}
+</script>
+</body>
+</html>

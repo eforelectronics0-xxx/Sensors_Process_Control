@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic 15 &middot; Smart Sensors | Sensors &amp; Process Control Systems Notes</title>
+<meta name="description" content="Handwritten study notes on Topic 15 &middot; Smart Sensors - Sensors and Process Control Systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&amp;family=Patrick+Hand&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23fdf9ec'/%3E%3Cpath d='M8 20h12l5-10 8 22 6-16 5 10h12' fill='none' stroke='%23123c8c' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 46h48' stroke='%23c62828' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/notes.css">
+</head>
+<body>
+<div class="paper">
+  <div class="topbar">
+    <span class="brand">Sensors &amp; Process Control</span>
+    <button class="btn" onclick="ink('brown')" title="blue-black ink">Blue</button>
+    <button class="btn" onclick="ink('red')" title="red pen">Red</button>
+    <button class="btn" onclick="ink('green')" title="green pen">Green</button>
+    <button class="btn" onclick="window.print()" title="print this note">Print</button>
+    <a class="btn" href="index.html" style="text-decoration:none">Index</a>
+  </div>
+  <span class="unit-tag">Unit I &middot; Fundamentals of Sensors</span>
+  <h1 class="title">Topic 15 &middot; Smart Sensors<span class="sub">Architecture, Functions and Networks</span></h1>
+  <div class="rule"></div>
+
+<h2><span class="no">1</span>Definition</h2>
+<div class="def"><span class="cap">Definition</span>
+A <b>smart sensor (intelligent sensor)</b> is a sensor in which the <b>sensing element, signal conditioning
+circuit, microprocessor, memory and a communication interface</b> are combined in a single package, so that
+the sensor can <b>process, store, self-check and communicate</b> its own data.</div>
+<p class="q">A conventional sensor only gives a raw analog signal which must be amplified, filtered and
+converted outside the sensor. A smart sensor does all this inside itself and talks to the controller over a
+<span class="b">digital network</span> such as I&sup2;C, SPI, 1-Wire, HART, Profibus, Foundation Fieldbus or
+wireless. Examples: DHT11, BME280, MPU-6050, MAX31855, smart pressure transmitters.</p>
+<h2><span class="no">2</span>Architecture (block diagram)</h2>
+
+<figure class="fig">
+<svg viewBox="0 0 780 320" role="img" aria-label="Fig. 15.1 &#8212; Block diagram (architecture) of a smart sensor" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<rect x="30" y="40" width="720" height="210" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<text x="390" y="62" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">SMART SENSOR PACKAGE</text>
+<rect x="40" y="95" width="110" height="70" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="95" y="125.645" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Sensing</text><text x="95" y="143.195" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">element</text>
+<rect x="194" y="95" width="110" height="70" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="249" y="125.645" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Signal</text><text x="249" y="143.195" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">conditioning</text>
+<path d="M154,130 L190,130" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<rect x="348" y="95" width="110" height="70" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="403" y="134.42" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">ADC</text>
+<path d="M308,130 L344,130" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<rect x="502" y="95" width="110" height="70" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="557" y="125.645" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">µProcessor</text><text x="557" y="143.195" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">+ memory</text>
+<path d="M462,130 L498,130" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<rect x="656" y="95" width="111.88" height="70" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="711.94" y="125.645" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Communication</text><text x="711.94" y="143.195" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">I²C / HART</text>
+<path d="M616,130 L652,130" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<path d="M154,130 L190,130" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<path d="M308,130 L344,130" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<path d="M462,130 L498,130" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<path d="M616,130 L652,130" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<rect x="90" y="190" width="270" height="50" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="225" y="219.08" font-size="12" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">calibration data, ID, alarm limits</text>
+<rect x="400" y="190" width="290" height="50" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="545" y="219.08" font-size="12" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">self calibration, compensation, diagnostics</text>
+<path d="M225,165 L225,190" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<path d="M545,165 L545,190" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="390" y="285" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">smart sensor = sensor + conditioner + ADC + CPU + bus</text>
+</g>
+</svg>
+<figcaption>Fig. 15.1 &#8212; Block diagram (architecture) of a smart sensor</figcaption>
+</figure>
+
+<h2><span class="no">3</span>Working</h2>
+<p class="q">The physical quantity is first converted into an electrical signal by the sensing element. This
+signal is amplified and filtered by the conditioning circuit and then digitised by the ADC. The
+microprocessor performs the following jobs on the digital data:</p>
+<ol>
+  <li><span class="b">Linearisation</span> &mdash; the non-linear sensor curve is converted into a straight
+      line by using a look-up table or a polynomial stored in memory.</li>
+  <li><span class="b">Temperature compensation</span> &mdash; an inbuilt temperature sensor gives the
+      correction so that the reading does not change with ambient temperature.</li>
+  <li><span class="b">Auto-zero and span adjustment</span> &mdash; the sensor can be told to take the
+      present reading as zero or full scale.</li>
+  <li><span class="b">Self diagnosis</span> &mdash; the sensor checks its own wires, supply and signal and
+      sends a "sensor fault" message instead of a wrong reading.</li>
+  <li><span class="b">Alarm and scaling</span> &mdash; high and low limits are compared inside the sensor and
+      a flag is sent.</li>
+  <li><span class="b">Digital communication</span> &mdash; the result is sent as digital data with the sensor
+      ID, unit, tag name and time stamp.</li>
+</ol>
+<h2><span class="no">4</span>Advantages and disadvantages</h2>
+<div class="tw"><table>
+<tr><th>Advantages</th><th>Disadvantages</th></tr>
+<tr><td>High accuracy because of internal compensation and linearisation</td><td>Costlier than a conventional sensor</td></tr>
+<tr><td>Long wiring not a problem &mdash; digital data does not pick up noise</td><td>Needs programming and configuration</td></tr>
+<tr><td>Self diagnosis increases reliability and reduces maintenance</td><td>Internal electronics can fail in very hot places</td></tr>
+<tr><td>Easy replacement &mdash; calibration data is inside the sensor</td><td>Response can be slower due to internal averaging</td></tr>
+<tr><td>Many sensors can share one communication bus (multi-drop)</td><td>Needs a compatible controller / protocol</td></tr>
+</table></div>
+<h2><span class="no">5</span>Applications</h2>
+<ul class="arr">
+  <li>Smart pressure and temperature transmitters in DCS based chemical plants.</li>
+  <li>Automobile &mdash; tyre pressure, air bag, engine management (all smart MEMS sensors).</li>
+  <li>Mobile phones, smart watches, drones (accelerometer, gyro, compass, barometer).</li>
+  <li>Industrial Internet of Things (IIoT) and wireless sensor networks.</li>
+  <li>Smart home and smart agriculture nodes.</li>
+</ul>
+<div class="note"><span class="cap">Exam line</span>
+<b>Sensor</b> measures, <b>transducer</b> converts, <b>transmitter</b> standardises the signal
+(4&ndash;20 mA), and a <b>smart sensor</b> measures + processes + communicates.</div>
+
+<!--EXTRAS-->
+<p class="q">A smart sensor is best understood as a measuring device plus a small engineering office on the same chip. The raw element still does the physics, but conversion, linearisation, temperature compensation, alarm limits and digital comms all happen inside the package. For the system designer this shortens the signal path &mdash; fewer analogue metres of cable for noise to enter &mdash; and moves complexity from hardware debugging into configuration registers that can be changed over software.</p>
+<h2><span class="no">6</span>Worked numericals</h2>
+
+<div class="formula"><span class="b">Problem 1.</span> A smart RTD sensor returns 16-bit count 0x13C0. The datasheet formula is T = count &times; 0.0625 &minus; 256. Find the temperature.</div>
+<p class="q"><span class="b">Solution.</span> 0x13C0 = 1&times;4096 + 3&times;256 + 12&times;16 = 5056 decimal. Scaled value = 5056 &times; 0.0625 = 316.0. T = 316.0 &minus; 256 = 60.0 &deg;C. <span class="hl">T = 60.0 &deg;C.</span></p>
+<div class="formula"><span class="b">Problem 2.</span> An accelerometer smart sensor reports peak 16384 counts at &plusmn;4 g full scale on a signed 16-bit output (&minus;32768 to +32767). Find g at count 4096.</div>
+<p class="q"><span class="b">Solution.</span> Full scale counts = 32767 for +4 g. Scale = 4 / 32767 = 1.2206&times;10<sup>&minus;4</sup> g/count. At 4096: a = 4096 &times; 1.2206&times;10<sup>&minus;4</sup> = 0.50 g. <span class="hl">a = 0.50 g.</span></p>
+<div class="formula"><span class="b">Problem 3.</span> A smart flow sensor on Modbus RTU returns 0x0A2C = 2604 counts on a scaled register where 4000 counts = 100.0 m&sup3;/h. Find the flow.</div>
+<p class="q"><span class="b">Solution.</span> Scale = 100.0 / 4000 = 0.025 m&sup3;/h per count. Flow = 2604 &times; 0.025 = 65.1 m&sup3;/h. Hex is used on the wire; engineers usually work in decimal. <span class="hl">Q = 65.1 m&sup3;/h.</span></p>
+<h2><span class="no">7</span>Viva questions and answers</h2>
+
+<p class="q"><span class="b">Q1. What makes a sensor 'smart'?</span><br><span class="o">A.</span> On-board signal processing plus a digital communication interface &mdash; self-calibration, diagnostics and configuration are possible, not just raw measurement.</p>
+<p class="q"><span class="b">Q2. Name typical digital buses used by smart sensors.</span><br><span class="o">A.</span> I&#178;C, SPI, 1-Wire, HART superimposed on 4&ndash;20 mA, Profibus PA, Foundation Fieldbus, IO-Link.</p>
+<p class="q"><span class="b">Q3. What is a blob or pre-calibrated module?</span><br><span class="o">A.</span> A factory-calibrated sensor-plus-ASIC sealed as one unit; the OEM drops it in without individual calibration.</p>
+<p class="q"><span class="b">Q4. Why is scaling information as important as the raw count?</span><br><span class="o">A.</span> The controller multiplies the count by scale and offset; a wrong register scaling silently corrupts every engineering unit downstream.</p>
+<p class="q"><span class="b">Q5. What diagnostics do smart transmitters offer?</span><br><span class="o">A.</span> Open sensor, shorted input, out-of-range, calibration due, power supply low and stuck-at-fault detection on the loop.</p>
+<p class="q"><span class="b">Q6. How does self-diagnostics improve plant reliability?</span><br><span class="o">A.</span> Failures are announced with an error code instead of passing as a plausible wrong value, so maintenance is triggered before the loop miscontrols.</p>
+<h2><span class="no">8</span>Summary</h2>
+
+<p class="q">Smart sensors integrate element, converter, compensation and digital communication into one package, shifting work from analogue conditioning to register configuration. Correct interpretation of scaled counts, use of the documented formula, and reliance on built-in diagnostics are the skills needed to exploit them. In return the system gains noise immunity, remote reconfiguration and early fault announcement.</p>
+<h2><span class="no">9</span>Specifications at a glance</h2>
+
+<div class="tw"><table>
+<tr><th>Parameter</th><th>Typical smart sensor feature</th><th>Benefit</th></tr>
+<tr><td>Interface</td><td>I&#178;C / SPI / HART / IO-Link</td><td>Direct digital connection to MCU or PLC</td></tr>
+<tr><td>Resolution</td><td>12&ndash;24 bit internal ADC</td><td>Finer steps than 4&ndash;20 mA loop</td></tr>
+<tr><td>Compensation</td><td>Temperature, linearisation, drift</td><td>Better accuracy over ambient</td></tr>
+<tr><td>Diagnostics</td><td>Open, short, over-range, due-cal</td><td>Failures announce themselves</td></tr>
+<tr><td>Configuration</td><td>Address, range, filter, alarms</td><td>Change without rewiring</td></tr>
+<tr><td>Power</td><td>1.8&ndash;3.6 V core, bus powered</td><td>Suitable for battery and IoT nodes</td></tr>
+<tr><td>Example devices</td><td>BME280, TMP117, XENSIVDLM</td><td>Humidity, precision temperature, presence</td></tr>
+</table></div>
+
+<div class="pager">
+<a href="14-sound-sensors.html">&#8592; Prev</a>
+<a class="home" href="index.html">&#8962; Index</a>
+<a href="16-performance-parameters.html">Next &#8594;</a>
+</div>
+  <p class="sig">~ handwritten notes &middot; Sensors &amp; Process Control Systems &middot; save &amp; revise daily ~</p>
+</div>
+<script>
+/* pen-colour switch: recolours the body text only, diagrams keep their own ink */
+function ink(c){
+  var m = {brown:'#4a3728', red:'#9b1c1c', green:'#155724'};
+  document.body.style.color = m[c] || m.brown;
+  var bs = document.querySelectorAll('.btn');
+  for (var i = 0; i < bs.length; i++) { bs[i].classList.remove('active'); }
+  event.currentTarget.classList.add('active');
+}
+</script>
+</body>
+</html>

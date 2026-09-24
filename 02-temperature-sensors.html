@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic 2 &middot; Temperature Sensors | Sensors &amp; Process Control Systems Notes</title>
+<meta name="description" content="Handwritten study notes on Topic 2 &middot; Temperature Sensors - Sensors and Process Control Systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&amp;family=Patrick+Hand&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23fdf9ec'/%3E%3Cpath d='M8 20h12l5-10 8 22 6-16 5 10h12' fill='none' stroke='%23123c8c' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 46h48' stroke='%23c62828' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/notes.css">
+</head>
+<body>
+<div class="paper">
+  <div class="topbar">
+    <span class="brand">Sensors &amp; Process Control</span>
+    <button class="btn" onclick="ink('brown')" title="blue-black ink">Blue</button>
+    <button class="btn" onclick="ink('red')" title="red pen">Red</button>
+    <button class="btn" onclick="ink('green')" title="green pen">Green</button>
+    <button class="btn" onclick="window.print()" title="print this note">Print</button>
+    <a class="btn" href="index.html" style="text-decoration:none">Index</a>
+  </div>
+  <span class="unit-tag">Unit I &middot; Fundamentals of Sensors</span>
+  <h1 class="title">Topic 2 &middot; Temperature Sensors<span class="sub">Thermistor and LM35</span></h1>
+  <div class="rule"></div>
+
+<h2><span class="no">1</span>Introduction to temperature measurement</h2>
+<p class="q">Temperature is the most commonly measured quantity in any process industry &mdash; boilers,
+distillation columns, plastic moulding, food processing, incubators and even our mobile phone battery.
+The sensors used are broadly of two families: <span class="b">contact type</span> (thermocouple, RTD,
+thermistor, IC sensor) which touch the body, and <span class="b">non-contact type</span> (infrared pyrometer)
+which measures the radiated heat. In this topic we study the two most important ones for our syllabus:
+the <span class="r">Thermistor</span> and the <span class="r">LM35</span>.</p>
+
+<h2><span class="no">2</span>Thermistor (Thermally Sensitive Resistor)</h2>
+<h3>2.1 Construction</h3>
+<p class="q">A thermistor is made by sintering (baking at high temperature) a mixture of
+<span class="b">semiconducting metal oxides</span> such as manganese, nickel, cobalt, copper and iron oxides
+with a binder. The baked ceramic pellet is only a few millimetres in size. Two platinum or silver leads are
+attached to it and the whole assembly is sealed inside a <span class="b">glass or epoxy coating</span> to
+protect it from moisture and chemicals. Because the sensing bead is very small, the thermistor responds
+<span class="hl">very fast</span> to a temperature change.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 275" role="img" aria-label="Fig. 2.1 &#8212; Thermistor symbol, construction and its R&#8211;T characteristic" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<rect x="540" y="30" width="220" height="200" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<rect x="260" y="30" width="260" height="200" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<rect x="20" y="30" width="220" height="200" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<text x="130" y="52" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">symbol</text>
+<g transform="translate(90,110) rotate(0,50,50) translate(0,0) scale(1)"><path d="M50,0 L50,20 L32,26 L68,36 L32,46 L68,56 L32,66 L68,74 L50,80 L50,100" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M16,88 L84,14" fill="none" stroke="#c62828" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M16,88 L30,84 M16,88 L20,74" fill="none" stroke="#c62828" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><text x="24" y="22" font-size="16" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">&#8211;t&#176;</text></g>
+<text x="130" y="221" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">NTC thermistor</text>
+<text x="390" y="52" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">construction</text>
+<path d="M320,75 L320,112 M440,75 L440,112" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round"/>
+<path d="M320,158 L320,195 M440,158 L440,195" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round"/>
+<rect x="300" y="112" width="160" height="46" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="380" y="139.76" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">metal oxide bead</text>
+<text x="316" y="68" font-size="12" fill="#16324f" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">Pt lead</text>
+<text x="444" y="68" font-size="12" fill="#16324f" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">Pt lead</text>
+<text x="380" y="212" font-size="12" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">glass / epoxy seal</text>
+<text x="650" y="52" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">R–T characteristic</text>
+<path d="M570,190 L570,70" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<path d="M570,190 L740,190" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="655" y="214" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">temperature T</text>
+<text x="558" y="64" font-size="14" fill="#16324f" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">R</text>
+<path d="M578,82 C630,92 700,140 732,180" style="fill:none;stroke:#c62828;stroke-width:3;stroke-linecap:round"/>
+<text x="655" y="252" font-size="12" fill="#1b7a3d" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">NTC : R falls when T rises</text>
+</g>
+</svg>
+<figcaption>Fig. 2.1 &#8212; Thermistor symbol, construction and its R&#8211;T characteristic</figcaption>
+</figure>
+
+<h3>2.2 Types</h3>
+<ul class="dot">
+  <li><span class="b">NTC thermistor</span> (Negative Temperature Coefficient) &mdash; resistance
+      <span class="r">decreases</span> when temperature increases. Most common type.</li>
+  <li><span class="b">PTC thermistor</span> (Positive Temperature Coefficient) &mdash; resistance
+      <span class="r">increases</span> when temperature increases. Used for over-current protection and
+      motor starting.</li>
+</ul>
+<h3>2.3 Working</h3>
+<p class="q">In a semiconductor the number of free charge carriers increases when it is heated. Therefore in
+an NTC thermistor, more heat &rarr; more free electrons &rarr; <span class="b">lower resistance</span>.
+The relation between resistance and temperature is exponential, not linear:</p>
+<div class="formula">R<sub>T</sub> = R<sub>0</sub> &middot; e<sup>&beta;(1/T &minus; 1/T<sub>0</sub>)</sup>
+&nbsp;&nbsp; where T is in kelvin and &beta; is the material constant (3000 &ndash; 5000 K)</div>
+<p class="q">A thermistor is a <span class="b">passive device</span>, so it must be connected in a
+<span class="b">voltage divider</span> with a fixed resistor and excited from a stable DC supply. The output
+voltage at the junction changes with temperature and is read by the ADC of a microcontroller.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 380" role="img" aria-label="Fig. 2.2 &#8212; Thermistor in a voltage divider: the practical measuring circuit" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<polyline points="40,60 740,60" style="fill:none;stroke:#c62828;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="390" y="86" font-size="15" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">+5 V</text>
+<polyline points="40,290 740,290" style="fill:none;stroke:#123c8c;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="390" y="316" font-size="15" fill="#123c8c" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">GND (0 V)</text>
+<g transform="translate(150,90) rotate(0,50,50) translate(0,0) scale(1)"><path d="M50,0 L50,20 L32,26 L68,36 L32,46 L68,56 L32,66 L68,74 L50,80 L50,100" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="234" y="145.6" font-size="16" fill="#c62828" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">R₁ = 10 kΩ</text>
+<g transform="translate(150,190) rotate(0,50,50) translate(0,0) scale(1)"><path d="M50,0 L50,20 L32,26 L68,36 L32,46 L68,56 L32,66 L68,74 L50,80 L50,100" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M16,88 L84,14" fill="none" stroke="#c62828" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M16,88 L30,84 M16,88 L20,74" fill="none" stroke="#c62828" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><text x="24" y="22" font-size="16" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">&#8211;t&#176;</text></g>
+<text x="150" y="245.6" font-size="16" fill="#c62828" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">NTC thermistor R₂</text>
+<g transform="translate(230,190) rotate(0,50,50) translate(0,0) scale(1)"><path d="M50,0 L50,38 M22,38 L78,38 M22,62 L78,62 M50,62 L50,100" fill="none" stroke="#16324f" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="322" y="245.6" font-size="16" fill="#c62828" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">0.1 µF</text>
+<g transform="translate(390,150) rotate(0,50,50) translate(0,0) scale(1)"><rect x="10" y="22" width="80" height="56" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="3"/><text x="50" y="55.95" font-size="17" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">ADC</text><path d="M0,50 L10,50 M90,50 L100,50" fill="none" stroke="#16324f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<polyline points="200,60 200,90" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="200" cy="60" r="5.5" fill="#16324f"/>
+<circle cx="200" cy="190" r="5.5" fill="#16324f"/>
+<polyline points="200,190 280,190" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="280" cy="190" r="5.5" fill="#16324f"/>
+<polyline points="280,190 390,190 390,200" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="200" cy="290" r="5.5" fill="#16324f"/>
+<circle cx="280" cy="290" r="5.5" fill="#16324f"/>
+<text x="240" y="178" font-size="13" fill="#1b7a3d" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Vout</text>
+<text x="390" y="356" font-size="16" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Vout = 5 × R₂ / (R₁ + R₂)</text>
+</g>
+</svg>
+<figcaption>Fig. 2.2 &#8212; Thermistor in a voltage divider: the practical measuring circuit</figcaption>
+</figure>
+
+<h3>2.4 Applications of thermistor</h3>
+<ul class="arr">
+  <li>Temperature measurement in <span class="b">battery chargers, inverters and SMPS</span>.</li>
+  <li><span class="b">Inrush current limiting</span> &mdash; PTC thermistor in series with the supply.</li>
+  <li>Thermal protection of motors, transformers and power amplifiers.</li>
+  <li>Digital thermometers, incubators, green-house controllers, air-conditioners.</li>
+  <li>Cold-junction compensation of thermocouples and hot-wire anemometers (flow of air).</li>
+</ul>
+<div class="tw"><table>
+<tr><th>Point</th><th>Thermistor</th></tr>
+<tr><td>Sensitivity</td><td>Very high (about &minus;4 %/&deg;C, much more than RTD)</td></tr>
+<tr><td>Range</td><td>&minus;50 &deg;C to +150 &deg;C (glass type up to 300 &deg;C)</td></tr>
+<tr><td>Output</td><td>Resistance (non-linear)</td></tr>
+<tr><td>Advantages</td><td>Cheap, small, very fast response, large output signal</td></tr>
+<tr><td>Disadvantages</td><td>Non-linear, needs linearising circuit, limited range, self heating error</td></tr>
+</table></div>
+
+<h2><span class="no">3</span>LM35 Temperature Sensor IC</h2>
+<h3>3.1 Introduction and Construction</h3>
+<p class="q">The LM35 is a <span class="b">precision integrated-circuit temperature sensor</span> made in
+silicon. Its output voltage is <span class="hl">directly proportional to the Celsius temperature</span>, so
+no external calibration and no mathematics of subtraction is needed. It is available in three packages:
+TO-92 (plastic, 3 pins &mdash; most common), TO-46 (metal can) and SOIC (surface mount). Inside the chip
+there is a temperature sensing junction, a buffer amplifier and a reference circuit, all on one silicon die.</p>
+<div class="tw"><table>
+<tr><th>Pin (TO-92, flat side towards us)</th><th>Name</th><th>Function</th></tr>
+<tr><td>Pin 1 (left)</td><td>V<sub>CC</sub></td><td>Supply +4 V to +30 V (normally +5 V)</td></tr>
+<tr><td>Pin 2 (middle)</td><td>V<sub>OUT</sub></td><td>Analog output, 10 mV per &deg;C</td></tr>
+<tr><td>Pin 3 (right)</td><td>GND</td><td>Ground / 0 V</td></tr>
+</table></div>
+<h3>3.2 Working</h3>
+<p class="q">The forward voltage of a silicon junction falls by about 2 mV for every 1 &deg;C rise. The LM35
+uses two matched junctions and an internal amplifier to produce a very clean output of exactly
+<span class="b">10 mV/&deg;C</span>. That is, at 25 &deg;C the output is 250 mV and at 100 &deg;C it is 1 V.
+The device draws only about 60 &micro;A, so self heating is less than 0.1 &deg;C in still air.</p>
+<div class="formula">V<sub>OUT</sub> = 10 mV &times; T (&deg;C) &nbsp;&rarr;&nbsp; T = V<sub>OUT</sub> / 0.010 &deg;C</div>
+
+<figure class="fig">
+<svg viewBox="0 0 760 380" role="img" aria-label="Fig. 2.3 &#8212; LM35 connection diagram with ADC interface" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<text x="380" y="22" font-size="19" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">LM35 temperature sensor — pin 1 Vcc, pin 2 Vout, pin 3 GND</text>
+<polyline points="40,60 640,60" style="fill:none;stroke:#c62828;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="340" y="86" font-size="15" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">+5 V</text>
+<polyline points="40,300 640,300" style="fill:none;stroke:#123c8c;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="340" y="326" font-size="15" fill="#123c8c" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">0 V (GND)</text>
+<g transform="translate(190,90) rotate(0,50,50) translate(0,0) scale(1)"><rect x="10" y="17" width="80" height="92" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="3"/><text x="14" y="34" font-size="14" fill="#c62828" text-anchor="start" font-family="Caveat,cursive" font-weight="bold">1 Vcc</text><text x="86" y="54" font-size="14" fill="#1b7a3d" text-anchor="end" font-family="Caveat,cursive" font-weight="bold">2 Vout</text><text x="14" y="74" font-size="14" fill="#123c8c" text-anchor="start" font-family="Caveat,cursive" font-weight="bold">3 GND</text><text x="50" y="96" font-size="18" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">LM35</text><path d="M0,30 L10,30 M0,70 L10,70 M90,50 L100,50" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g transform="translate(490,90) rotate(0,50,50) translate(0,0) scale(1)"><rect x="10" y="22" width="80" height="56" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="3"/><text x="50" y="55.95" font-size="17" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">ADC</text><path d="M0,50 L10,50 M90,50 L100,50" fill="none" stroke="#16324f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<polyline points="190,120 190,60" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="190" cy="60" r="5.5" fill="#16324f"/>
+<polyline points="190,160 190,300" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="190" cy="300" r="5.5" fill="#16324f"/>
+<polyline points="290,140 490,140" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="380" cy="140" r="5.5" fill="#16324f"/>
+<g transform="translate(330,170) rotate(0,50,50) translate(0,0) scale(1)"><path d="M50,0 L50,20 L32,26 L68,36 L32,46 L68,56 L32,66 L68,74 L50,80 L50,100" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="414" y="225.6" font-size="16" fill="#c62828" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">10 kΩ</text>
+<polyline points="380,140 380,170" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<polyline points="380,270 380,300" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="380" cy="300" r="5.5" fill="#16324f"/>
+<text x="380" y="358" font-size="16" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Vout = 10 mV per °C   →   25 °C gives 250 mV</text>
+</g>
+</svg>
+<figcaption>Fig. 2.3 &#8212; LM35 connection diagram with ADC interface</figcaption>
+</figure>
+
+<h3>3.3 Applications of LM35</h3>
+<ul class="arr">
+  <li>Digital thermometers and temperature display panels.</li>
+  <li>Temperature control of incubators, green houses, water heaters, CPU cooling fans.</li>
+  <li>Cold junction compensation and battery management systems.</li>
+  <li>Any student project with Arduino / 8051 because the interfacing is very simple.</li>
+</ul>
+<div class="tw"><table>
+<tr><th>Parameter</th><th>Thermistor</th><th>LM35</th></tr>
+<tr><td>Output</td><td>Resistance (non-linear)</td><td>Voltage, 10 mV/&deg;C (linear)</td></tr>
+<tr><td>Range</td><td>&minus;50 to +150 &deg;C</td><td>&minus;55 to +150 &deg;C (0 to 100 &deg;C normally)</td></tr>
+<tr><td>Accuracy</td><td>&plusmn;1 &deg;C to &plusmn;2 &deg;C</td><td>&plusmn;0.5 &deg;C at 25 &deg;C</td></tr>
+<tr><td>Calibration</td><td>Needed (2 point)</td><td>Not needed (factory calibrated)</td></tr>
+<tr><td>Supply</td><td>Needs divider supply</td><td>+4 V to +30 V</td></tr>
+<tr><td>Cost / use</td><td>Very cheap, rugged</td><td>Cheap, easy to interface</td></tr>
+</table></div>
+<div class="warn"><span class="cap">Practical mistake to avoid</span>
+Do not connect the LM35 pins wrongly. If V<sub>CC</sub> and GND are interchanged the chip becomes
+<b>very hot within seconds</b> and gets damaged. Always keep the flat face towards you while soldering.</div>
+
+<!--EXTRAS-->
+<h2><span class="no">4</span>Worked numericals</h2>
+
+<div class="formula"><span class="b">Problem 1.</span> An NTC thermistor has &beta; = 4000 K and R = 10 k&Omega; at T<sub>0</sub> = 298 K (25 &deg;C). Find its resistance at T = 308 K (35 &deg;C).</div>
+<p class="q"><span class="b">Solution.</span> R<sub>T</sub> = R<sub>0</sub> &middot; e<sup>&beta;(1/T &minus; 1/T<sub>0</sub>)</sup> 1/T &minus; 1/T<sub>0</sub> = 1/308 &minus; 1/298 = 3.247&times;10<sup>&minus;3</sup> &minus; 3.356&times;10<sup>&minus;3</sup> = &minus;1.088&times;10<sup>&minus;4</sup> K<sup>&minus;1</sup> Exponent = 4000 &times; (&minus;1.088&times;10<sup>&minus;4</sup>) = &minus;0.435 R<sub>T</sub> = 10 &times; e<sup>&minus;0.435</sup> = 10 &times; 0.647 = 6.47 k&Omega; <span class="hl">R<sub>35&deg;C</sub> &asymp; 6.47 k&Omega; (resistance falls as temperature rises).</span></p>
+<h2><span class="no">5</span>Viva questions and answers</h2>
+
+<p class="q"><span class="b">Q1. Why is an NTC called negative temperature coefficient?</span><br><span class="o">A.</span> Its resistance decreases when temperature increases, unlike a metal RTD which shows a small positive coefficient.</p>
+<p class="q"><span class="b">Q2. Give the LM35 sensitivity and supply range.</span><br><span class="o">A.</span> Sensitivity is 10 mV/&deg;C (0 V at 0 &deg;C); supply is +4 V to +30 V, typically +5 V.</p>
+<h2><span class="no">6</span>Summary</h2>
+
+<p class="q">Temperature measurement offers three workhorse devices: the thermistor for a large, cheap, non-linear resistance change over a short range; the RTD for stable, nearly linear precision; and integrated sensors like the LM35 that deliver a ready-made 10 mV/&deg;C voltage.</p>
+<h2><span class="no">7</span>Specifications at a glance</h2>
+
+<div class="tw"><table>
+<tr><th>Parameter</th><th>NTC thermistor</th><th>LM35</th></tr>
+<tr><td>Range</td><td>&minus;40 to +125 &deg;C (device dependent)</td><td>+4 to +30 V supply</td></tr>
+<tr><td>Output</td><td>Resistance (needs bridge)</td><td>10 mV/&deg;C, voltage</td></tr>
+<tr><td>Typical accuracy</td><td>&plusmn;0.2 to &plusmn;1 &deg;C</td><td>&plusmn;0.5 &deg;C at 25 &deg;C</td></tr>
+</table></div>
+
+<div class="pager">
+<a href="01-fundamentals-of-sensors.html">&#8592; Prev</a>
+<a class="home" href="index.html">&#8962; Index</a>
+<a href="03-stress-strain-load-cells.html">Next &#8594;</a>
+</div>
+  <p class="sig">~ handwritten notes &middot; Sensors &amp; Process Control Systems &middot; save &amp; revise daily ~</p>
+</div>
+<script>
+/* pen-colour switch: recolours the body text only, diagrams keep their own ink */
+function ink(c){
+  var m = {brown:'#4a3728', red:'#9b1c1c', green:'#155724'};
+  document.body.style.color = m[c] || m.brown;
+  var bs = document.querySelectorAll('.btn');
+  for (var i = 0; i < bs.length; i++) { bs[i].classList.remove('active'); }
+  event.currentTarget.classList.add('active');
+}
+</script>
+</body>
+</html>

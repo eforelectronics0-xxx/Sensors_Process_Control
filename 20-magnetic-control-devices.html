@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic 20 &middot; Magnetic Control Devices | Sensors &amp; Process Control Systems Notes</title>
+<meta name="description" content="Handwritten study notes on Topic 20 &middot; Magnetic Control Devices - Sensors and Process Control Systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&amp;family=Patrick+Hand&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23fdf9ec'/%3E%3Cpath d='M8 20h12l5-10 8 22 6-16 5 10h12' fill='none' stroke='%23123c8c' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 46h48' stroke='%23c62828' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/notes.css">
+</head>
+<body>
+<div class="paper">
+  <div class="topbar">
+    <span class="brand">Sensors &amp; Process Control</span>
+    <button class="btn" onclick="ink('brown')" title="blue-black ink">Blue</button>
+    <button class="btn" onclick="ink('red')" title="red pen">Red</button>
+    <button class="btn" onclick="ink('green')" title="green pen">Green</button>
+    <button class="btn" onclick="window.print()" title="print this note">Print</button>
+    <a class="btn" href="index.html" style="text-decoration:none">Index</a>
+  </div>
+  <span class="unit-tag">Unit II &middot; Actuators</span>
+  <h1 class="title">Topic 20 &middot; Magnetic Control Devices<span class="sub">Relay and Solenoid</span></h1>
+  <div class="rule"></div>
+
+<h2><span class="no">1</span>Introduction</h2>
+<p class="q"><span class="b">Magnetic control devices</span> use the magnetic field produced by an
+electromagnet (a coil carrying current) to produce mechanical movement. The two most common devices are the
+<span class="r">relay</span> and the <span class="r">solenoid</span>. Both work on the same principle:
+<span class="b">when current flows through a coil, a magnetic field is produced which attracts a movable iron
+part</span>.</p>
+
+<h2><span class="no">2</span>Relay</h2>
+<h3>2.1 Definition and Construction</h3>
+<div class="def"><span class="cap">Definition</span>
+A <b>relay</b> is an <b>electromagnetically operated switch</b>. A small current in its coil produces a
+magnetic field which moves an armature and opens or closes one or more sets of contacts, thereby controlling
+a separate, usually high power, circuit.</div>
+<p class="q">A relay has four main parts: (1) the <span class="b">coil (electromagnet)</span> wound on a soft
+iron core, (2) the <span class="b">armature</span> &mdash; a movable soft iron lever, (3) a
+<span class="b">return spring</span> which brings the armature back when the coil is de-energised, and
+(4) the <span class="b">contacts</span> &mdash; normally open (NO), normally closed (NC) and common (C).
+Relays are available for 5 V, 6 V, 12 V and 24 V DC coils with contact ratings of 5 A to 30 A.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 470" role="img" aria-label="Fig. 20.1 &#8212; Relay driver circuit with base resistor and flyback diode" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<polyline points="40,60 230,60" style="fill:none;stroke:#c62828;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="135" y="86" font-size="15" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">+5 V</text>
+<polyline points="40,400 740,400" style="fill:none;stroke:#123c8c;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="390" y="426" font-size="15" fill="#123c8c" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">0 V</text>
+<g transform="translate(110,90) rotate(0,50,50) translate(0,0) scale(1)"><rect x="18" y="16" width="64" height="68" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="3"/><path d="M32,66 A9,9 0 0 1 50,66 A9,9 0 0 1 68,66" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="50" y="44" font-size="20" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">K</text><path d="M50,0 L50,16 M50,84 L50,100" fill="none" stroke="#16324f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M100,26 L85,26 M85,74 L100,74" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="80" cy="26" r="5" fill="#fffdf3" stroke="#16324f" stroke-width="2.4"/><circle cx="80" cy="74" r="5" fill="#fffdf3" stroke="#16324f" stroke-width="2.4"/><path d="M80,30 L60,70" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g transform="translate(110,190) rotate(0,50,50) translate(0,0) scale(1)"><circle cx="50" cy="50" r="34" fill="#fffdf3" stroke="#16324f" stroke-width="3"/><path d="M0,50 L36,50" fill="none" stroke="#16324f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M40,28 L40,72" fill="none" stroke="#16324f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M40,38 L70,16 L70,0" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M40,62 L70,84 L70,100" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M56,74 L70,84 L58,88 Z" fill="#16324f"/><text x="80" y="20" font-size="16" fill="#123c8c" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">C</text><text x="80" y="92" font-size="16" fill="#123c8c" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">E</text><text x="14" y="42" font-size="16" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">B</text></g>
+<g transform="translate(30,90) rotate(180,50,50) translate(0,0) scale(1)"><path d="M32,30 L68,30 L50,64 Z" fill="#16324f" stroke="#16324f" stroke-width="2"/><path d="M50,0 L50,30 M30,66 L70,66 M50,66 L50,100" fill="none" stroke="#16324f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="80" y="214" font-size="16" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">1N4007</text>
+<polyline points="160,60 160,90" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="160" cy="60" r="5.5" fill="#16324f"/>
+<polyline points="80,90 80,60" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="80" cy="60" r="5.5" fill="#16324f"/>
+<polyline points="160,190 180,190" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="180" cy="190" r="5.5" fill="#16324f"/>
+<polyline points="80,190 180,190" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="160" cy="190" r="5.5" fill="#16324f"/>
+<polyline points="180,290 380,290 380,400" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="380" cy="400" r="5.5" fill="#16324f"/>
+<g transform="translate(30,230) rotate(0,50,50) translate(0,0) scale(1)"><path d="M50,0 L50,20 L32,26 L68,36 L32,46 L68,56 L32,66 L68,74 L50,80 L50,100" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="45" y="250" font-size="16" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Rb 1 kΩ</text>
+<polyline points="80,230 80,200 110,200 110,240" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<rect x="140" y="345" width="200" height="45" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="240" y="363.145" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">microcontroller</text><text x="240" y="380.695" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">digital pin</text>
+<polyline points="80,330 80,345 160,345" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<rect x="430" y="55" width="130" height="80" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="495" y="90.645" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">230 V AC</text><text x="495" y="108.195" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">mains</text>
+<polyline points="560,95 600,95 600,40 250,40 250,116 210,116" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<g transform="translate(270,90) rotate(0,50,50) translate(0,0) scale(1)"><circle cx="50" cy="50" r="28" fill="#fffdf3" stroke="#16324f" stroke-width="3"/><path d="M30,30 L70,70 M70,30 L30,70" fill="none" stroke="#16324f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M50,0 L50,22 M50,78 L50,100" fill="none" stroke="#16324f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<polyline points="210,164 260,164 260,50 320,50 320,90" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<polyline points="320,190 320,230 495,230 495,135" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="245" y="140" font-size="11" fill="#b45309" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">NO / NC contact</text>
+<text x="390" y="455" font-size="14" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">low power coil circuit controls the high power mains circuit</text>
+</g>
+</svg>
+<figcaption>Fig. 20.1 &#8212; Relay driver circuit with base resistor and flyback diode</figcaption>
+</figure>
+
+<h3>2.2 Working</h3>
+<p class="q">When the coil is energised, the magnetic field attracts the armature against the spring force.
+The armature carries the moving contact, so the NO contact closes and the NC contact opens. The load
+connected to the contacts is therefore switched ON. When the coil current is removed, the spring returns the
+armature and the contacts come back to their normal position. Because the coil circuit and the contact
+circuit are <span class="hl">electrically isolated</span>, a 5 V microcontroller can safely switch 230 V
+mains. The diode connected across the coil is compulsory &mdash; it absorbs the high voltage spike produced
+by the collapsing magnetic field and protects the transistor or the microcontroller.</p>
+<h3>2.3 Types and applications</h3>
+<div class="tw"><table>
+<tr><th>Type</th><th>Feature</th><th>Use</th></tr>
+<tr><td>Electromechanical relay (EMR)</td><td>Moving contacts, 5&ndash;30 A</td><td>General switching</td></tr>
+<tr><td>Solid state relay (SSR)</td><td>Opto-coupler + TRIAC, no moving part</td><td>Heater control, fast
+switching, long life</td></tr>
+<tr><td>Reed relay</td><td>Contacts sealed in a glass tube</td><td>Test equipment, fast, low power</td></tr>
+<tr><td>Latching relay</td><td>Stays in position after a pulse</td><td>Energy saving, meters</td></tr>
+<tr><td>Protective relay</td><td>Operates on over current / earth fault</td><td>Power system protection</td></tr>
+<tr><td>Contactor</td><td>Large relay for motors, 10 A to 1000 A</td><td>Motor starters</td></tr>
+</table></div>
+<ul class="arr">
+  <li>Switching of motors, heaters, pumps and lights by low voltage control signals.</li>
+  <li>Isolation between the control circuit and the power circuit.</li>
+  <li>Automatic transfer switch, star-delta starter, protection schemes.</li>
+  <li>Home automation and relay modules with Arduino.</li>
+</ul>
+
+<h2><span class="no">3</span>Solenoid</h2>
+<div class="def"><span class="cap">Definition</span>
+A <b>solenoid</b> is a coil of wire which, when energised, produces a magnetic field that pulls a movable
+iron <b>plunger</b> and converts <b>electrical energy into short linear mechanical motion</b>.</div>
+<p class="q"><span class="g">Construction:</span> It has a hollow coil wound on a former, a
+<span class="b">fixed iron core (stop)</span> at one end and a movable <span class="b">soft iron
+plunger</span> inside. A spring pushes the plunger out when the coil is de-energised. The plunger is connected
+to the mechanism to be operated.</p>
+<p class="q"><span class="g">Working:</span> When the coil is energised the magnetic flux tries to travel
+through the shortest path, so the plunger is pulled into the centre of the coil against the spring force.
+The force is proportional to the square of the current and inversely proportional to the square of the air
+gap, so the force is maximum at the end of the stroke. When the supply is removed the spring returns the
+plunger. The stroke is short (2 to 50 mm) but the force is high and the speed is very fast (a few
+milliseconds).</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 320" role="img" aria-label="Fig. 20.2 &#8212; Solenoid and the solenoid operated valve" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<rect x="395" y="35" width="365" height="220" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<rect x="20" y="35" width="350" height="220" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<text x="195" y="57" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">solenoid with plunger</text>
+<path d="M80,80 L80,170 M150,80 L150,170" style="fill:none;stroke:#123c8c;stroke-width:3;stroke-linecap:round"/>
+<path d="M80,95 L150,95" style="fill:none;stroke:#123c8c;stroke-width:2;stroke-linecap:round"/>
+<path d="M80,115 L150,115" style="fill:none;stroke:#123c8c;stroke-width:2;stroke-linecap:round"/>
+<path d="M80,135 L150,135" style="fill:none;stroke:#123c8c;stroke-width:2;stroke-linecap:round"/>
+<path d="M80,155 L150,155" style="fill:none;stroke:#123c8c;stroke-width:2;stroke-linecap:round"/>
+<path d="M115,60 L115,200" style="fill:none;stroke:#b45309;stroke-width:5;stroke-linecap:round"/>
+<path d="M100,200 L130,200 L130,225 L100,225 Z" style="fill:none;stroke:#b45309;stroke-width:2.6;stroke-linecap:round"/>
+<text x="60" y="70" font-size="12" fill="#123c8c" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">coil</text>
+<text x="175" y="78" font-size="11" fill="#16324f" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">fixed core</text>
+<text x="175" y="215" font-size="11" fill="#b45309" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">movable plunger</text>
+<text x="195" y="145" font-size="11" fill="#16324f" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">leads</text>
+<path d="M150,125 L190,125" style="fill:none;stroke:#16324f;stroke-width:2;stroke-linecap:round"/>
+<text x="577.5" y="57" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">solenoid operated valve (actuator)</text>
+<path d="M440,170 L500,140 L500,200 Z" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round"/>
+<path d="M500,170 L560,140 L560,200 Z" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round"/>
+<path d="M420,170 L440,170 M560,170 L620,170" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round"/>
+<path d="M530,100 L530,155" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round"/>
+<path d="M505,75 L555,75 L555,100 L505,100 Z" style="fill:none;stroke:#123c8c;stroke-width:2.6;stroke-linecap:round"/>
+<text x="585" y="90" font-size="11" fill="#123c8c" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">solenoid</text>
+<path d="M640,170 L700,170" style="fill:none;stroke:#1b7a3d;stroke-width:3;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="670" y="152" font-size="12" fill="#1b7a3d" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">flow</text>
+<text x="530" y="232" font-size="11" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">coil ON → plunger lifts → valve opens</text>
+<text x="390" y="285" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">used in water inlet, irrigation, door locks, car starting motor</text>
+</g>
+</svg>
+<figcaption>Fig. 20.2 &#8212; Solenoid and the solenoid operated valve</figcaption>
+</figure>
+
+<div class="tw"><table>
+<tr><th>Basis</th><th>Relay</th><th>Solenoid</th></tr>
+<tr><td>Main purpose</td><td>To switch an electrical circuit</td><td>To produce linear mechanical motion</td></tr>
+<tr><td>Moving part</td><td>Armature carrying contacts</td><td>Iron plunger connected to a mechanism</td></tr>
+<tr><td>Stroke</td><td>Very small (1&ndash;2 mm)</td><td>Larger (5&ndash;50 mm)</td></tr>
+<tr><td>Output</td><td>Electrical (closing of contacts)</td><td>Mechanical force and displacement</td></tr>
+<tr><td>Example</td><td>12 V relay module</td><td>Solenoid valve, car starter, door lock, pinball kicker</td></tr>
+</table></div>
+
+<!--EXTRAS-->
+<h2><span class="no">4</span>Worked numericals</h2>
+
+<div class="formula"><span class="b">Problem 1.</span> A 24 V DC relay coil draws 60 mA. Find coil resistance, power consumption, and the flyback energy stored in a 100 mH coil at steady current.</div>
+<p class="q"><span class="b">Solution.</span> R = V/I = 24/0.06 = 400 &Omega;. P = V &times; I = 24 &times; 0.06 = 1.44 W. E = ½ L I&sup2; = 0.5 &times; 0.1 &times; 0.06&sup2; = 180 &micro;J &mdash; small but enough to damage an unclamped transistor. <span class="hl">R = 400 &Omega;, P = 1.44 W, stored energy = 180 &micro;J.</span></p>
+<h2><span class="no">5</span>Viva questions and answers</h2>
+
+<p class="q"><span class="b">Q1. Why is a diode connected across a DC relay coil?</span><br><span class="o">A.</span> It clips the high-voltage inductive spike when the coil is switched off, protecting the transistor driver.</p>
+<p class="q"><span class="b">Q2. What does '10 A resistive, 1 A inductive' contact rating mean?</span><br><span class="o">A.</span> Inductive loads arc far more at break, so the same contacts must be derated heavily for solenoid, motor or transformer loads.</p>
+<p class="q"><span class="b">Q3. Difference between latching and non-latching relays?</span><br><span class="o">A.</span> Non-latching returns to original state when coil de-energises; latching holds position with permanent or mechanical lock until a pulse of opposite polarity.</p>
+<p class="q"><span class="b">Q4. How does a solenoid produce linear motion?</span><br><span class="o">A.</span> Current in the coil magnetises the core; the gap field pulls the plunger to reduce reluctance, converting electrical power into stroke force.</p>
+<p class="q"><span class="b">Q5. What is drop-out voltage of a relay?</span><br><span class="o">A.</span> Coil voltage below which the armature releases &mdash; typically 70&ndash;80 % of nominal; a sagging supply can cause chatter.</p>
+<h2><span class="no">6</span>Summary</h2>
+
+<p class="q">Relays provide galvanically isolated contact switching and solenoids provide direct linear or rotary actuation, both from magnetic circuits. Coil resistance, pull-in and drop-out voltages, contact ratings for the actual load type, and spike suppression are the numbers that decide reliability. Mounted clean, driven with proper flyback protection and derated for inrush, these simple devices run for millions of operations.</p>
+<h2><span class="no">7</span>Specifications at a glance</h2>
+
+<div class="tw"><table>
+<tr><th>Parameter</th><th>General purpose relay</th><th>DC solenoid valve</th></tr>
+<tr><td>Coil</td><td>5&ndash;240 V AC/DC, 0.1&ndash;2 W</td><td>12/24 V DC, 5&ndash;30 W typical</td></tr>
+<tr><td>Pull-in / drop-out</td><td>70&ndash;100 % / 10&ndash;40 % of V<sub>nom</sub></td><td>Pull-in rated, drop-out &lt; 70 %</td></tr>
+<tr><td>Contacts</td><td>SPDT/DPDT, 8&ndash;10 A resistive</td><td>&mdash; (valve is the load)</td></tr>
+</table></div>
+
+<div class="pager">
+<a href="19-power-control-devices.html">&#8592; Prev</a>
+<a class="home" href="index.html">&#8962; Index</a>
+<a href="21-electromechanical-motors.html">Next &#8594;</a>
+</div>
+  <p class="sig">~ handwritten notes &middot; Sensors &amp; Process Control Systems &middot; save &amp; revise daily ~</p>
+</div>
+<script>
+/* pen-colour switch: recolours the body text only, diagrams keep their own ink */
+function ink(c){
+  var m = {brown:'#4a3728', red:'#9b1c1c', green:'#155724'};
+  document.body.style.color = m[c] || m.brown;
+  var bs = document.querySelectorAll('.btn');
+  for (var i = 0; i < bs.length; i++) { bs[i].classList.remove('active'); }
+  event.currentTarget.classList.add('active');
+}
+</script>
+</body>
+</html>

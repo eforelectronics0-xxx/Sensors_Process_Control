@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic 8 &middot; Displacement and Force Sensors | Sensors &amp; Process Control Systems Notes</title>
+<meta name="description" content="Handwritten study notes on Topic 8 &middot; Displacement and Force Sensors - Sensors and Process Control Systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&amp;family=Patrick+Hand&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23fdf9ec'/%3E%3Cpath d='M8 20h12l5-10 8 22 6-16 5 10h12' fill='none' stroke='%23123c8c' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 46h48' stroke='%23c62828' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/notes.css">
+</head>
+<body>
+<div class="paper">
+  <div class="topbar">
+    <span class="brand">Sensors &amp; Process Control</span>
+    <button class="btn" onclick="ink('brown')" title="blue-black ink">Blue</button>
+    <button class="btn" onclick="ink('red')" title="red pen">Red</button>
+    <button class="btn" onclick="ink('green')" title="green pen">Green</button>
+    <button class="btn" onclick="window.print()" title="print this note">Print</button>
+    <a class="btn" href="index.html" style="text-decoration:none">Index</a>
+  </div>
+  <span class="unit-tag">Unit I &middot; Fundamentals of Sensors</span>
+  <h1 class="title">Topic 8 &middot; Displacement and Force Sensors<span class="sub">LVDT, Capacitive, Optical and Load based</span></h1>
+  <div class="rule"></div>
+
+<h2><span class="no">1</span>Displacement Sensors</h2>
+<div class="def"><span class="cap">Definition</span>
+A <b>displacement sensor</b> measures the <b>change of position</b> (linear or angular movement) of an object
+from a reference point and converts it into an electrical signal.</div>
+<p class="q">Displacement sensors are classified as <span class="b">resistive</span> (potentiometer),
+<span class="b">inductive</span> (LVDT, eddy current), <span class="b">capacitive</span>,
+<span class="b">optical</span> (encoder, laser) and <span class="b">ultrasonic</span>.</p>
+<h3>1.1 LVDT &mdash; Linear Variable Differential Transformer</h3>
+<p class="q"><span class="g">Construction:</span> It consists of one <span class="b">primary winding</span>
+in the centre and two identical <span class="b">secondary windings</span> (S1 and S2) wound on a hollow
+cylindrical former. A <span class="b">soft iron core</span> is placed inside the former and is free to move
+along the axis; the core is attached to the object whose displacement is to be measured. The two secondaries
+are connected in <span class="b">series opposition</span> (differential).</p>
+<p class="q"><span class="g">Working:</span> An AC supply (1 to 10 kHz, 3 to 15 V) is given to the primary.
+When the core is exactly in the middle (null position) the voltages induced in S1 and S2 are equal and
+opposite, so the net output is <span class="b">zero</span>. When the core moves to one side, the coupling
+with that secondary increases, so the differential output voltage rises and its
+<span class="b">phase</span> tells the direction of movement. The output is linear over a range of
+&plusmn;10 mm to &plusmn;250 mm.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 300" role="img" aria-label="Fig. 8.1 &#8212; LVDT construction and its linear output characteristic" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<rect x="450" y="30" width="310" height="220" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<rect x="20" y="30" width="400" height="220" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<text x="220" y="52" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">LVDT construction</text>
+<path d="M60,100 L60,160 M360,100 L360,160" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round"/>
+<path d="M60,100 L360,100 M60,160 L360,160" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round"/>
+<rect x="165" y="108" width="90" height="44" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="210" y="134.42" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">primary P</text>
+<rect x="70" y="108" width="85" height="44" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="112.5" y="134.42" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">S1</text>
+<rect x="265" y="108" width="85" height="44" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="307.5" y="134.42" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">S2</text>
+<path d="M120,185 L300,185" style="fill:none;stroke:#b45309;stroke-width:6;stroke-linecap:round"/>
+<path d="M300,185 L340,185" style="fill:none;stroke:#b45309;stroke-width:3;stroke-linecap:round"/>
+<text x="210" y="215" font-size="13" fill="#b45309" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">movable core (x)</text>
+<path d="M140,235 L280,235" style="fill:none;stroke:#b45309;stroke-width:2;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="210" y="72" font-size="12" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">primary P with secondary S1 / S2</text>
+<text x="605" y="52" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">output characteristic</text>
+<path d="M500,190 L500,70" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<path d="M500,190 L730,190" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="615" y="214" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">core position x</text>
+<text x="488" y="64" font-size="14" fill="#16324f" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">Vout</text>
+<path d="M510,175 L615,90 L720,175" style="fill:none;stroke:#c62828;stroke-width:3;stroke-linecap:round"/>
+<text x="615" y="80" font-size="12" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">null</text>
+<text x="560" y="145" font-size="12" fill="#1b7a3d" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">slope = sensitivity</text>
+<text x="390" y="280" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Vout = |V(S1) − V(S2)| ; slope gives direction</text>
+</g>
+</svg>
+<figcaption>Fig. 8.1 &#8212; LVDT construction and its linear output characteristic</figcaption>
+</figure>
+
+<h3>1.2 Capacitive displacement sensor</h3>
+<p class="q">Two parallel plates form a capacitor. If the distance between them (or the overlapping area)
+changes due to the movement of one plate, the capacitance changes as <span class="b">C = &epsilon;A/d</span>.
+This change is converted to voltage by an oscillator or a bridge circuit. Very high resolution (nanometre)
+but very sensitive to dust and humidity.</p>
+<h3>1.3 Optical encoder</h3>
+<p class="q">A disc with alternate transparent and opaque slots rotates with the shaft. An LED and a
+photodiode on either side produce pulses as the slots pass. Counting the pulses gives the angular
+displacement and the pulse rate gives the speed. Two channels 90&deg; apart give the direction.</p>
+<div class="tw"><table>
+<tr><th>Sensor</th><th>Range</th><th>Advantage</th><th>Disadvantage</th></tr>
+<tr><td>Potentiometer</td><td>few cm</td><td>Cheap, simple, large output</td><td>Wear, noise, limited life</td></tr>
+<tr><td>LVDT</td><td>&plusmn;10 mm to 250 mm</td><td>Frictionless, infinite resolution, rugged</td><td>Needs AC supply, sensitive to stray magnetic field</td></tr>
+<tr><td>Capacitive</td><td>micron</td><td>Very high resolution, non-contact</td><td>Needs clean environment, complex electronics</td></tr>
+<tr><td>Optical encoder</td><td>360&deg;</td><td>Digital, accurate, fast</td><td>Dust affects, costlier</td></tr>
+</table></div>
+
+<h2><span class="no">2</span>Force Sensors</h2>
+<div class="def"><span class="cap">Definition</span>
+A <b>force sensor</b> measures a push or pull force and gives an output proportional to it. In practice the
+force is first converted into a <b>deflection</b> of an elastic element and the deflection is then measured
+by a strain gauge, LVDT or piezoelectric crystal.</div>
+<p class="q">The elastic element is called the <span class="b">force summing device</span> or proof body.
+Common shapes are the <span class="b">proving ring</span>, the <span class="b">cantilever beam</span>, the
+<span class="b">column</span> and the <span class="b">diaphragm</span>. The complete assembly of proof body
+plus strain gauges plus bridge circuit is the <span class="b">load cell</span> studied in Topic 3.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 260" role="img" aria-label="Fig. 8.2 &#8212; How a force sensor works (measuring chain)" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<rect x="40" y="75" width="110" height="60" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="95" y="109.76" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Force F</text>
+<rect x="190" y="75" width="110" height="60" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="245" y="100.31" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Elastic</text><text x="245" y="119.21" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">element</text>
+<path d="M154,105 L186,105" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<rect x="340" y="75" width="111.36" height="60" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="395.68" y="100.31" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Strain gauge</text><text x="395.68" y="119.21" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">(bridge)</text>
+<path d="M304,105 L336,105" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<rect x="491.36" y="75" width="110" height="60" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="546.36" y="109.76" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Amplifier</text>
+<path d="M455.36,105 L487.36,105" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<rect x="641.36" y="75" width="110" height="60" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="696.36" y="109.76" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Display</text>
+<path d="M605.36,105 L637.36,105" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<path d="M154,105 L186,105" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="170" y="61" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">ΔL</text>
+<path d="M304,105 L336,105" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="320" y="61" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">ΔR</text>
+<path d="M455.36,105 L487.36,105" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="471.36" y="61" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">voltage</text>
+<path d="M605.36,105 L637.36,105" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<path d="M8,105 L36,105" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="22" y="61" font-size="14" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">F</text>
+<text x="390" y="190" font-size="16" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">F → strain → ΔR → bridge → display</text>
+<rect x="140" y="215" width="500" height="33" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="390" y="235.92" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">dynamic / impact forces use a piezoelectric sensor</text>
+</g>
+</svg>
+<figcaption>Fig. 8.2 &#8212; How a force sensor works (measuring chain)</figcaption>
+</figure>
+
+<h3>Applications</h3>
+<ul class="arr">
+  <li>Weighing scales, weigh bridges, hopper and tank weighing.</li>
+  <li>Universal testing machines, press force monitoring, torque wrenches.</li>
+  <li>Robot gripper force control, tactile sensors.</li>
+  <li>Touch screens and force feedback joysticks (piezoelectric).</li>
+</ul>
+<div class="tip"><span class="cap">Difference to remember</span>
+<b>Displacement</b> sensor tells "how much it moved", <b>force</b> sensor tells "how hard it was pushed".
+Both often use the same elastic element &mdash; a load cell measures the <i>displacement</i> of a beam
+caused by the <i>force</i>.</div>
+
+<!--EXTRAS-->
+<h2><span class="no">3</span>Worked numericals</h2>
+
+<div class="formula"><span class="b">Problem 1.</span> An LVDT with sensitivity 40 mV/mm/V has an excitation of 5 V. The core moves 3 mm from null. Find the output voltage.</div>
+<p class="q"><span class="b">Solution.</span> Sensitivity referred to 5 V = 40 &times; 5 = 200 mV/mm. V<sub>out</sub> = 200 mV/mm &times; 3 mm = 600 mV (phase indicates direction). <span class="hl">V<sub>out</sub> = 600 mV (0.6 V, sign/phase gives direction).</span></p>
+<div class="formula"><span class="b">Problem 2.</span> A capacitive gap sensor has C = 100 pF at nominal gap d = 1 mm with area A fixed. Find C when the gap changes to 1.05 mm, and the fractional change.</div>
+<p class="q"><span class="b">Solution.</span> C &prop; 1/d, so C' = C &times; d/d' = 100 &times; 1/1.05 = 95.2 pF. &Delta;C/C = &minus;&Delta;d/d = &minus;0.05/1 = &minus;0.05 = &minus;5 %. Half the fractional gap change appears as output in a simple differential arrangement. <span class="hl">C' = 95.2 pF, &Delta;C/C = &minus;5 %.</span></p>
+<h2><span class="no">4</span>Viva questions and answers</h2>
+
+<p class="q"><span class="b">Q1. How does an LVDT work?</span><br><span class="o">A.</span> A movable core changes the mutual inductance of two secondary coils; the difference of the two secondary voltages is a signed measure of core position.</p>
+<p class="q"><span class="b">Q2. Why is there no wear in an LVDT?</span><br><span class="o">A.</span> The core never touches the coils &mdash; coupling is purely magnetic, so life is practically unlimited.</p>
+<p class="q"><span class="b">Q3. What is the principle of a capacitive displacement sensor?</span><br><span class="o">A.</span> Capacitance varies inversely with electrode gap; a bridge or C-to-V converter detects sub-nanometre changes.</p>
+<p class="q"><span class="b">Q4. How does an incremental encoder differ from an absolute encoder?</span><br><span class="o">A.</span> Incremental counts steps from power-on and loses position at power-off; absolute gives a unique code for every shaft angle at any time.</p>
+<p class="q"><span class="b">Q5. Where is torque measured on a rotating shaft?</span><br><span class="o">A.</span> With strain-gauge torque flanges that transmit data wirelessly, avoiding slip rings and their maintenance.</p>
+<p class="q"><span class="b">Q6. Give two industrial uses of force sensors.</span><br><span class="o">A.</span> Weighing platforms and material-testing machines (tensile/compression rigs).</p>
+<h2><span class="no">5</span>Summary</h2>
+
+<p class="q">This topic covered the measurement of how far something moves, how hard it is pushed and how strongly it is twisted. LVDTs, capacitive probes and encoders cover position and displacement with different resolutions and contact arrangements, while force and torque almost always rest on strain-gauge bridges in elastic bodies. All of them must be mounted stiffly enough that the sensor actually sees the motion or load it is supposed to measure.</p>
+<h2><span class="no">6</span>Specifications at a glance</h2>
+
+<div class="tw"><table>
+<tr><th>Parameter</th><th>LVDT</th><th>Capacitive probe</th><th>Incremental encoder</th></tr>
+<tr><td>Measuring principle</td><td>Mutual inductance</td><td>Gap capacitance</td><td>Optical / magnetic slots</td></tr>
+<tr><td>Resolution</td><td>0.1 &micro;m typical</td><td>0.01 &micro;m possible</td><td>1 pulse (e.g. 1024/rev)</td></tr>
+<tr><td>Range</td><td>&plusmn;0.5 to &plusmn;500 mm</td><td>0.1&ndash;10 mm gap</td><td>Continuous counting</td></tr>
+<tr><td>Contact</td><td>Non-contact core</td><td>Non-contact field</td><td>Non-contact light path</td></tr>
+<tr><td>Output</td><td>Analog AC-bridge or 4&ndash;20 mA</td><td>Capacitance / voltage</td><td>A & B phase pulses</td></tr>
+<tr><td>Typical use</td><td>Valve position, gauging</td><td>Run-out, film thickness</td><td>Motor speed, CNC axes</td></tr>
+</table></div>
+
+<div class="pager">
+<a href="07-vibration-sensors.html">&#8592; Prev</a>
+<a class="home" href="index.html">&#8962; Index</a>
+<a href="09-torque-pressure-sensors.html">Next &#8594;</a>
+</div>
+  <p class="sig">~ handwritten notes &middot; Sensors &amp; Process Control Systems &middot; save &amp; revise daily ~</p>
+</div>
+<script>
+/* pen-colour switch: recolours the body text only, diagrams keep their own ink */
+function ink(c){
+  var m = {brown:'#4a3728', red:'#9b1c1c', green:'#155724'};
+  document.body.style.color = m[c] || m.brown;
+  var bs = document.querySelectorAll('.btn');
+  for (var i = 0; i < bs.length; i++) { bs[i].classList.remove('active'); }
+  event.currentTarget.classList.add('active');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic 9 &middot; Torque and Pressure Sensors | Sensors &amp; Process Control Systems Notes</title>
+<meta name="description" content="Handwritten study notes on Topic 9 &middot; Torque and Pressure Sensors - Sensors and Process Control Systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&amp;family=Patrick+Hand&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23fdf9ec'/%3E%3Cpath d='M8 20h12l5-10 8 22 6-16 5 10h12' fill='none' stroke='%23123c8c' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 46h48' stroke='%23c62828' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/notes.css">
+</head>
+<body>
+<div class="paper">
+  <div class="topbar">
+    <span class="brand">Sensors &amp; Process Control</span>
+    <button class="btn" onclick="ink('brown')" title="blue-black ink">Blue</button>
+    <button class="btn" onclick="ink('red')" title="red pen">Red</button>
+    <button class="btn" onclick="ink('green')" title="green pen">Green</button>
+    <button class="btn" onclick="window.print()" title="print this note">Print</button>
+    <a class="btn" href="index.html" style="text-decoration:none">Index</a>
+  </div>
+  <span class="unit-tag">Unit I &middot; Fundamentals of Sensors</span>
+  <h1 class="title">Topic 9 &middot; Torque and Pressure Sensors<span class="sub">Shaft Torque, Bourdon, Strain Gauge, Piezoresistive</span></h1>
+  <div class="rule"></div>
+
+<h2><span class="no">1</span>Torque Sensors</h2>
+<div class="def"><span class="cap">Definition</span>
+<b>Torque</b> is the turning (twisting) effect of a force applied at some distance from the axis of rotation.
+Torque T = F &times; r (N-m). A <b>torque sensor</b> measures this twisting action on a rotating shaft.</div>
+<h3>1.1 Construction and working (strain gauge torque sensor)</h3>
+<p class="q">When a shaft transmits power it twists slightly. This twist produces
+<span class="b">shear stress</span> on the surface of the shaft. The maximum shear stress occurs on planes
+inclined at <span class="b">45&deg;</span> to the shaft axis. Therefore <span class="b">four strain
+gauges</span> are bonded on the shaft at &plusmn;45&deg; and connected as a full Wheatstone bridge &mdash; two
+in tension and two in compression. When the shaft twists, the bridge unbalances and gives an output voltage
+proportional to the applied torque.</p>
+<p class="q">Because the shaft is rotating, the small bridge signal must be transferred to the stationary
+side. This is done by <span class="b">slip rings and brushes</span>, by <span class="b">rotary transformers</span>
+or, in modern sensors, by <span class="b">telemetry (wireless) or magneto-elastic</span> coupling.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 340" role="img" aria-label="Fig. 9.1 &#8212; Strain gauge torque sensor on a rotating shaft" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<rect x="20" y="30" width="450" height="220" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<text x="245" y="52" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">on the rotating shaft</text>
+<path d="M60,120 L400,120 M60,170 L400,170" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round"/>
+<text x="330" y="100" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">rotating shaft</text>
+<rect x="125" y="78" width="130" height="34" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="190" y="99.08" font-size="12" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">4 gauges at ±45°</text>
+<path d="M150,170 L185,120 M200,170 L235,120 M255,170 L290,120 M305,170 L340,120" style="fill:none;stroke:#c62828;stroke-width:2.4;stroke-linecap:round"/>
+<text x="230" y="195" font-size="13" fill="#b45309" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">torque T twists the shaft</text>
+<path d="M80,60 L80,40" style="fill:none;stroke:#c62828;stroke-width:2.4;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="80" y="55" font-size="15" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">T</text>
+<path d="M400,110 L430,110 M400,180 L430,180" style="fill:none;stroke:#16324f;stroke-width:2.4;stroke-linecap:round"/>
+<text x="428" y="100" font-size="12" fill="#16324f" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">slip rings</text>
+<rect x="500" y="60" width="200" height="70" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="600" y="100.1" font-size="15" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">bridge + amplifier</text>
+<path d="M432,130 L496,95" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="464" y="130.5" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">mV</text>
+<rect x="500" y="170" width="200" height="70" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="600" y="210.1" font-size="15" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">ADC + µC</text>
+<path d="M600,132 L600,166" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="600" y="149" font-size="12" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">digital</text>
+<text x="390" y="295" font-size="16" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">T ∝ bridge output voltage</text>
+</g>
+</svg>
+<figcaption>Fig. 9.1 &#8212; Strain gauge torque sensor on a rotating shaft</figcaption>
+</figure>
+
+<div class="formula">T = (&pi; &times; d&sup3; &times; &tau;) / 16 &nbsp;&nbsp; and &nbsp;&nbsp;
+Power P = 2&pi;NT / 60 &nbsp; watt</div>
+<h3>Other torque sensors</h3>
+<ul class="dot">
+  <li><span class="b">Magneto-elastic / magnetostrictive</span> &mdash; twist changes the magnetic
+      permeability of the shaft; contactless.</li>
+  <li><span class="b">Optical torque sensor</span> &mdash; two encoder discs on the shaft, twist changes the
+      phase between the two pulse trains.</li>
+  <li><span class="b">Reaction torque sensor</span> &mdash; measures the torque on the stationary housing of
+      a motor (used in dynamometers).</li>
+</ul>
+<h3>Applications of torque sensors</h3>
+<ul class="arr">
+  <li>Engine and motor dynamometers, brake testing.</li>
+  <li>Power measurement of pumps, compressors, gear boxes, turbines.</li>
+  <li>Electric power steering and tightening tools (torque wrench).</li>
+  <li>Conveyor and crane drive monitoring.</li>
+</ul>
+
+<h2><span class="no">2</span>Pressure Sensors</h2>
+<div class="def"><span class="cap">Definition</span>
+<b>Pressure</b> is the force acting per unit area, P = F/A, measured in Pa, bar, psi or mm of Hg.
+A <b>pressure sensor</b> converts this pressure into an electrical signal, usually by first converting it
+into a <b>deflection</b> of an elastic element.</div>
+<h3>2.1 Bourdon tube pressure gauge</h3>
+<p class="q">A C-shaped (or spiral) hollow tube of elliptical cross-section is used. When pressure is applied
+inside the tube it tends to become circular, so the free end of the C <span class="b">straightens out</span>.
+This movement is amplified by a link and pinion and moves a pointer over a calibrated dial. It is a purely
+mechanical device, very rugged and cheap.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 330" role="img" aria-label="Fig. 9.2 &#8212; Pressure sensing elements: Bourdon tube, bellows and diaphragm" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<rect x="540" y="30" width="220" height="220" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<rect x="285" y="30" width="230" height="220" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<rect x="20" y="30" width="240" height="220" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<text x="140" y="52" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">C-type Bourdon tube</text>
+<path d="M60,85 L60,105 Q60,180 150,180 Q210,180 210,130" style="fill:none;stroke:#123c8c;stroke-width:4;stroke-linecap:round"/>
+<path d="M210,130 L210,105" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round"/>
+<text x="95" y="74" font-size="12" fill="#123c8c" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">pressure in</text>
+<text x="150" y="210" font-size="12" fill="#1b7a3d" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">tube straightens</text>
+<text x="150" y="232" font-size="12" fill="#1b7a3d" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">→ tip moves</text>
+<text x="400" y="52" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">bellows (low pressure)</text>
+<path d="M330,80 L330,175 M330,80 Q360,70 390,80 Q420,90 450,80 L450,175" style="fill:none;stroke:#123c8c;stroke-width:3;stroke-linecap:round"/>
+<path d="M330,100 L450,100 M330,120 L450,120 M330,140 L450,140 M330,160 L450,160" style="fill:none;stroke:#123c8c;stroke-width:2;stroke-linecap:round"/>
+<path d="M450,125 L490,125" style="fill:none;stroke:#16324f;stroke-width:2.4;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="390" y="205" font-size="13" fill="#1b7a3d" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Δx ∝ pressure</text>
+<text x="390" y="228" font-size="12" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">for vacuum / low P</text>
+<text x="650" y="52" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">diaphragm + gauges</text>
+<path d="M580,85 Q650,115 720,85" style="fill:none;stroke:#123c8c;stroke-width:3.4;stroke-linecap:round"/>
+<path d="M580,175 Q650,145 720,175" style="fill:none;stroke:#123c8c;stroke-width:3.4;stroke-linecap:round"/>
+<text x="650" y="72" font-size="13" fill="#123c8c" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">P / ΔP</text>
+<rect x="560" y="190" width="180" height="50" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="650" y="210.98" font-size="12" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">strain gauges on diaphragm</text><text x="650" y="227.18" font-size="12" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">→ bridge → mV out</text>
+<text x="390" y="285" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">pressure transmitter : element + bridge + amplifier</text>
+</g>
+</svg>
+<figcaption>Fig. 9.2 &#8212; Pressure sensing elements: Bourdon tube, bellows and diaphragm</figcaption>
+</figure>
+
+<h3>2.2 Strain gauge / diaphragm pressure sensor</h3>
+<p class="q">Pressure is applied on one side of a thin stainless steel diaphragm. Four strain gauges bonded
+on the diaphragm form a Wheatstone bridge. The deflection is proportional to pressure, so the bridge output
+(in mV) is proportional to pressure. Such sensors are used inside
+<span class="b">pressure transmitters</span> which give a 4&ndash;20 mA output.</p>
+<h3>2.3 Piezoresistive pressure sensor</h3>
+<p class="q">Here a silicon diaphragm is micro-machined and piezoresistors are diffused into it. The
+resistance of silicon changes directly with stress, so no bonding is needed. Very small, cheap and used in
+mobile phones, medical devices and car MAP sensors.</p>
+<div class="tw"><table>
+<tr><th>Type</th><th>Element</th><th>Range</th><th>Use</th></tr>
+<tr><td>Bourdon tube</td><td>C tube, spiral</td><td>1 bar to 1000 bar</td><td>Local gauge indication</td></tr>
+<tr><td>Bellows</td><td>Convolution tube</td><td>vacuum to 5 bar</td><td>Low pressure, actuators</td></tr>
+<tr><td>Diaphragm</td><td>Metal capsule</td><td>vacuum to 25 bar</td><td>Differential pressure, transmitters</td></tr>
+<tr><td>Strain gauge</td><td>Diaphragm + gauges</td><td>wide</td><td>4&ndash;20 mA transmitters</td></tr>
+<tr><td>Piezoresistive</td><td>Silicon diaphragm</td><td>wide</td><td>Compact electronic sensors</td></tr>
+<tr><td>Capacitive</td><td>Diaphragm as plate</td><td>very low</td><td>High accuracy, DP flow</td></tr>
+</table></div>
+<h3>Applications of pressure sensors</h3>
+<ul class="arr">
+  <li>Boiler, steam line, hydraulic and pneumatic system pressure monitoring.</li>
+  <li>Blood pressure measurement (medical), tyre pressure monitoring (TPMS).</li>
+  <li>Level measurement by hydrostatic head (P = &rho;gh).</li>
+  <li>Flow measurement using differential pressure across an orifice.</li>
+  <li>Altitude measurement in aircraft (barometric pressure).</li>
+</ul>
+
+<!--EXTRAS-->
+<h2><span class="no">3</span>Worked numericals</h2>
+
+<div class="formula"><span class="b">Problem 1.</span> A diaphragm pressure sensor of area 2 cm&sup2; sees 15 bar gauge. Find the force on the diaphragm (1 bar = 10<sup>5</sup> Pa).</div>
+<p class="q"><span class="b">Solution.</span> A = 2 cm&sup2; = 2 &times; 10<sup>&minus;4</sup> m&sup2;. P = 15 bar = 1.5 &times; 10<sup>6</sup> Pa. F = P &times; A = 1.5&times;10<sup>6</sup> &times; 2&times;10<sup>&minus;4</sup> = 300 N. <span class="hl">F = 300 N on the diaphragm.</span></p>
+<h2><span class="no">4</span>Viva questions and answers</h2>
+
+<p class="q"><span class="b">Q1. Distinguish gauge, absolute and differential pressure.</span><br><span class="o">A.</span> Gauge is referenced to atmosphere, absolute to vacuum, differential is the difference between two process points (e.g. across an orifice).</p>
+<p class="q"><span class="b">Q2. How does a Bourdon tube work?</span><br><span class="o">A.</span> A curved hollow tube tends to straighten as internal pressure rises; the tip motion drives a gear and pointer.</p>
+<p class="q"><span class="b">Q3. What is overpressure rating?</span><br><span class="o">A.</span> The maximum pressure a sensor survives without calibration shift, often 2&ndash;3 times full scale.</p>
+<p class="q"><span class="b">Q4. Why do pressure transmitters show a small static zero error?</span><br><span class="o">A.</span> Sealed systems, temperature effects on fill fluid, or installing a gauge reference where absolute was specified.</p>
+<p class="q"><span class="b">Q5. What is impulse piping?</span><br><span class="o">A.</span> The tube that connects the process tap to the transmitter; it must be lagged, valved and free of trapped gas or liquid that would distort the reading.</p>
+<p class="q"><span class="b">Q6. Where are piezoresistive sensors commonly used?</span><br><span class="o">A.</span> Manifold absolute-pressure (MAP) sensors in engines, tyre-pressure monitors and medical devices &mdash; where size and cost dominate.</p>
+<h2><span class="no">5</span>Summary</h2>
+
+<p class="q">Pressure sensors all measure the force of a fluid on a defined area, but they differ in the elastic element used &mdash; Bourdon tube, corrugated diaphragm or silicon bridge &mdash; and in the electrical readout. Range, reference (gauge/absolute/differential), overpressure margin and 4&ndash;20 mA scaling are the four decisions that determine whether a pressure installation measures correctly on day one and keeps measuring after water hammer and blockage events.</p>
+<h2><span class="no">6</span>Specifications at a glance</h2>
+
+<div class="tw"><table>
+<tr><th>Parameter</th><th>Bourdon gauge</th><th>Strain-gauge transmitter</th><th>Piezoresistive (MEMS)</th></tr>
+<tr><td>Range</td><td>0&ndash;1000 bar possible</td><td>0&ndash;0.4 to 0&ndash;400 bar</td><td>0&ndash;1 to 0&ndash;35 bar</td></tr>
+<tr><td>Output</td><td>Pointer angle</td><td>4&ndash;20 mA / 1&ndash;5 V</td><td>mV-level bridge / digital</td></tr>
+<tr><td>Accuracy</td><td>&plusmn;1 % of span</td><td>&plusmn;0.075&ndash;0.25 % of span</td><td>&plusmn;0.25&ndash;1 % FS</td></tr>
+<tr><td>Overpressure</td><td>Mechanical stop</td><td>2&times; to 5&times; FS</td><td>1&times; to 3&times; FS</td></tr>
+<tr><td>Reference</td><td>Gauge</td><td>Gauge / abs / diff</td><td>Gauge or absolute</td></tr>
+<tr><td>Typical use</td><td>Local indication, steam lines</td><td>Process control loops</td><td>Automotive, tyres, medical</td></tr>
+</table></div>
+
+<div class="pager">
+<a href="08-displacement-force-sensors.html">&#8592; Prev</a>
+<a class="home" href="index.html">&#8962; Index</a>
+<a href="10-position-motion-sensors.html">Next &#8594;</a>
+</div>
+  <p class="sig">~ handwritten notes &middot; Sensors &amp; Process Control Systems &middot; save &amp; revise daily ~</p>
+</div>
+<script>
+/* pen-colour switch: recolours the body text only, diagrams keep their own ink */
+function ink(c){
+  var m = {brown:'#4a3728', red:'#9b1c1c', green:'#155724'};
+  document.body.style.color = m[c] || m.brown;
+  var bs = document.querySelectorAll('.btn');
+  for (var i = 0; i < bs.length; i++) { bs[i].classList.remove('active'); }
+  event.currentTarget.classList.add('active');
+}
+</script>
+</body>
+</html>

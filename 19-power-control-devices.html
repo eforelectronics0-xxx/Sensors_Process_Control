@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic 19 &middot; Power Control Devices | Sensors &amp; Process Control Systems Notes</title>
+<meta name="description" content="Handwritten study notes on Topic 19 &middot; Power Control Devices - Sensors and Process Control Systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&amp;family=Patrick+Hand&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23fdf9ec'/%3E%3Cpath d='M8 20h12l5-10 8 22 6-16 5 10h12' fill='none' stroke='%23123c8c' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 46h48' stroke='%23c62828' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/notes.css">
+</head>
+<body>
+<div class="paper">
+  <div class="topbar">
+    <span class="brand">Sensors &amp; Process Control</span>
+    <button class="btn" onclick="ink('brown')" title="blue-black ink">Blue</button>
+    <button class="btn" onclick="ink('red')" title="red pen">Red</button>
+    <button class="btn" onclick="ink('green')" title="green pen">Green</button>
+    <button class="btn" onclick="window.print()" title="print this note">Print</button>
+    <a class="btn" href="index.html" style="text-decoration:none">Index</a>
+  </div>
+  <span class="unit-tag">Unit II &middot; Actuators</span>
+  <h1 class="title">Topic 19 &middot; Power Control Devices<span class="sub">SCR, TRIAC and MOSFET</span></h1>
+  <div class="rule"></div>
+
+<h2><span class="no">1</span>Introduction</h2>
+<p class="q">A <span class="b">power control device</span> (also called a power semiconductor switch)
+controls a <span class="b">large amount of power</span> in the load by using a <span class="b">very small
+control signal</span>. It works as a switch &mdash; fully ON or fully OFF &mdash; and not as a linear
+amplifier, so the power loss inside the device is small and the efficiency is high. The three most important
+devices are the <span class="r">SCR</span>, the <span class="r">TRIAC</span> and the
+<span class="r">MOSFET</span>.</p>
+
+<h2><span class="no">2</span>SCR &mdash; Silicon Controlled Rectifier</h2>
+<h3>2.1 Construction</h3>
+<p class="q">An SCR is a <span class="b">four layer (P-N-P-N), three junction, three terminal</span>
+semiconductor device. The three terminals are the <span class="b">Anode (A)</span>, the
+<span class="b">Cathode (K)</span> and the <span class="b">Gate (G)</span>. The gate terminal is taken from
+the P layer near the cathode. The silicon chip is mounted on a stud or a disc package with a heat sink
+because it handles large currents (from 1 A to more than 1000 A).</p>
+<h3>2.2 Working</h3>
+<p class="q">An SCR is a <span class="b">latching device</span>. In the forward blocking state (anode
+positive) only a tiny leakage current flows. When a small positive current pulse is applied to the gate, the
+SCR turns ON and behaves like a closed switch. Once it is ON, <span class="hl">the gate loses control</span>
+&mdash; even if the gate signal is removed, the SCR stays ON as long as the anode current is greater than
+the <span class="b">holding current</span>. To turn it OFF the anode current must be reduced below the
+holding current (commutation). Therefore an SCR can be turned ON by the gate but
+<span class="b">cannot be turned OFF by the gate</span>.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 400" role="img" aria-label="Fig. 19.1 &#8212; SCR symbol and a latching lamp control circuit" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<polyline points="40,60 740,60" style="fill:none;stroke:#c62828;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="390" y="86" font-size="15" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">+ V (AC or DC)</text>
+<polyline points="40,340 740,340" style="fill:none;stroke:#123c8c;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="390" y="366" font-size="15" fill="#123c8c" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">0 V</text>
+<g transform="translate(70,90) rotate(0,50,50) translate(0,0) scale(1)"><circle cx="50" cy="50" r="28" fill="#fffdf3" stroke="#16324f" stroke-width="3"/><path d="M30,30 L70,70 M70,30 L30,70" fill="none" stroke="#16324f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M50,0 L50,22 M50,78 L50,100" fill="none" stroke="#16324f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="78" y="145.6" font-size="16" fill="#c62828" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">lamp</text>
+<g transform="translate(70,190) rotate(0,50,50) translate(0,0) scale(1)"><path d="M50,0 L50,26 M50,74 L50,100" fill="none" stroke="#16324f" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M26,26 L74,26 M26,74 L74,74" fill="none" stroke="#16324f" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M32,26 L32,74 L68,50 Z" fill="none" stroke="#16324f" stroke-width="3" stroke-linejoin="round"/><path d="M68,62 L92,62 L92,86" fill="none" stroke="#c62828" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><text x="16" y="20" font-size="17" fill="#123c8c" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">A</text><text x="16" y="92" font-size="17" fill="#123c8c" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">K</text><text x="88" y="98" font-size="17" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">G</text></g>
+<polyline points="120,60 120,90" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="120" cy="60" r="5.5" fill="#16324f"/>
+<circle cx="120" cy="190" r="5.5" fill="#16324f"/>
+<polyline points="120,290 120,340" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="120" cy="340" r="5.5" fill="#16324f"/>
+<g transform="translate(230,70) rotate(0,50,50) translate(0,0) scale(1)"><path d="M50,0 L50,20 L32,26 L68,36 L32,46 L68,56 L32,66 L68,74 L50,80 L50,100" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="314" y="125.6" font-size="16" fill="#c62828" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">Rₘ gate</text>
+<g transform="translate(230,170) rotate(90,50,50) translate(0,0) scale(1)"><path d="M0,50 L30,50 M70,50 L100,50" fill="none" stroke="#16324f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="50" r="5" fill="#fffdf3" stroke="#16324f" stroke-width="2.4"/><circle cx="68" cy="50" r="5" fill="#fffdf3" stroke="#16324f" stroke-width="2.4"/><path d="M28,38 L72,32" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M50,22 L50,34" fill="none" stroke="#c62828" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="50" cy="18" r="6" fill="none" stroke="#c62828" stroke-width="2.6"/></g>
+<polyline points="280,60 280,70" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="280" cy="60" r="5.5" fill="#16324f"/>
+<circle cx="280" cy="170" r="5.5" fill="#16324f"/>
+<polyline points="280,270 280,276 162,276" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="280" cy="276" r="5.5" fill="#16324f"/>
+<text x="390" y="392" font-size="14" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">gate pulse → lamp ON and stays ON until current &#60; holding</text>
+</g>
+</svg>
+<figcaption>Fig. 19.1 &#8212; SCR symbol and a latching lamp control circuit</figcaption>
+</figure>
+
+<div class="tw"><table>
+<tr><th>State</th><th>Condition</th></tr>
+<tr><td>Forward blocking</td><td>Anode positive, no gate current &rarr; OFF</td></tr>
+<tr><td>Forward conduction</td><td>Gate pulse applied &rarr; ON, V<sub>AK</sub> &asymp; 1 to 2 V</td></tr>
+<tr><td>Reverse blocking</td><td>Anode negative &rarr; OFF (like a reverse biased diode)</td></tr>
+</table></div>
+
+<h2><span class="no">3</span>TRIAC</h2>
+<p class="q">A TRIAC is equivalent to <span class="b">two SCRs connected in anti-parallel with a common
+gate</span>. It has three terminals: <span class="b">MT1, MT2 and Gate</span>. Because it conducts in
+<span class="hl">both directions</span>, it can control AC power with a single device. It is used in
+<span class="b">light dimmers, fan speed regulators and AC motor speed control</span>.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 430" role="img" aria-label="Fig. 19.2 &#8212; TRIAC symbol and the classic TRIAC-DIAC dimmer circuit" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<polyline points="40,60 740,60" style="fill:none;stroke:#c62828;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="390" y="86" font-size="15" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">230 V AC (L)</text>
+<polyline points="40,370 740,370" style="fill:none;stroke:#123c8c;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="390" y="396" font-size="15" fill="#123c8c" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">neutral</text>
+<g transform="translate(70,90) rotate(0,50,50) translate(0,0) scale(1)"><circle cx="50" cy="50" r="28" fill="#fffdf3" stroke="#16324f" stroke-width="3"/><path d="M30,30 L70,70 M70,30 L30,70" fill="none" stroke="#16324f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M50,0 L50,22 M50,78 L50,100" fill="none" stroke="#16324f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="78" y="145.6" font-size="16" fill="#c62828" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">lamp</text>
+<g transform="translate(70,190) rotate(0,50,50) translate(0,0) scale(1)"><path d="M50,0 L50,24 M50,76 L50,100" fill="none" stroke="#16324f" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M24,24 L76,24 M24,76 L76,76" fill="none" stroke="#16324f" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M32,24 L32,58 L68,24 Z" fill="none" stroke="#16324f" stroke-width="3" stroke-linejoin="round"/><path d="M32,76 L32,42 L68,76 Z" fill="none" stroke="#16324f" stroke-width="3" stroke-linejoin="round"/><path d="M62,66 L92,66 L92,88" fill="none" stroke="#c62828" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><text x="10" y="16" font-size="15" fill="#123c8c" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">MT2</text><text x="10" y="96" font-size="15" fill="#123c8c" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">MT1</text><text x="88" y="100" font-size="17" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">G</text></g>
+<polyline points="120,60 120,90" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="120" cy="60" r="5.5" fill="#16324f"/>
+<circle cx="120" cy="190" r="5.5" fill="#16324f"/>
+<polyline points="120,290 120,370" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="120" cy="370" r="5.5" fill="#16324f"/>
+<g transform="translate(170,130) rotate(0,50,50) translate(0,0) scale(1)"><path d="M0,50 L20,50 L26,32 L36,68 L46,32 L56,68 L66,32 L74,50 L100,50" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="220" y="150" font-size="16" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">R 220 Ω</text>
+<g transform="translate(270,130) rotate(0,50,50) translate(0,0) scale(1)"><path d="M0,50 L20,50 L26,32 L36,68 L46,32 L56,68 L66,32 L74,50 L100,50" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M50,100 L50,74" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M42,80 L50,70 L58,80 Z" fill="#16324f"/></g>
+<text x="320" y="150" font-size="16" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">pot 500 k</text>
+<polyline points="120,190 155,190 155,180 170,180" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="270" cy="180" r="5.5" fill="#16324f"/>
+<g transform="translate(270,230) rotate(0,50,50) translate(0,0) scale(1)"><path d="M34,26 L34,60 L66,26 Z" fill="none" stroke="#16324f" stroke-width="3"/><path d="M34,74 L34,40 L66,74 Z" fill="none" stroke="#16324f" stroke-width="3"/><path d="M50,0 L50,26 M50,74 L50,100" fill="none" stroke="#16324f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="288" y="285.6" font-size="16" fill="#c62828" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">DIAC</text>
+<g transform="translate(330,230) rotate(0,50,50) translate(0,0) scale(1)"><path d="M50,0 L50,38 M22,38 L78,38 M22,62 L78,62 M50,62 L50,100" fill="none" stroke="#16324f" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="422" y="285.6" font-size="16" fill="#c62828" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">0.1 µF</text>
+<circle cx="320" cy="230" r="5.5" fill="#16324f"/>
+<polyline points="320,230 380,230" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="380" cy="230" r="5.5" fill="#16324f"/>
+<polyline points="380,330 380,370" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="380" cy="370" r="5.5" fill="#16324f"/>
+<polyline points="320,330 320,352 162,352 162,278" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="320" cy="352" r="5.5" fill="#16324f"/>
+<text x="390" y="424" font-size="14" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Pot sets the firing angle → power in the load</text>
+</g>
+</svg>
+<figcaption>Fig. 19.2 &#8212; TRIAC symbol and the classic TRIAC-DIAC dimmer circuit</figcaption>
+</figure>
+
+
+<h2><span class="no">4</span>MOSFET (Power MOSFET)</h2>
+<p class="q">A MOSFET (Metal Oxide Semiconductor Field Effect Transistor) is a
+<span class="b">voltage controlled</span> device with three terminals: <span class="b">Gate (G), Drain (D)
+and Source (S)</span>. The gate is insulated from the channel by a very thin layer of silicon dioxide, so the
+<span class="b">input impedance is extremely high</span> (mega ohms) and the gate draws almost no current.
+When the gate-source voltage V<sub>GS</sub> exceeds the threshold voltage (about 2 to 4 V), a channel is
+formed and the drain current flows, turning the device ON.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 390" role="img" aria-label="Fig. 19.3 &#8212; MOSFET used as a switch to drive a DC motor with PWM" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<polyline points="40,60 740,60" style="fill:none;stroke:#c62828;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="390" y="86" font-size="15" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">+12 V</text>
+<polyline points="40,330 740,330" style="fill:none;stroke:#123c8c;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="390" y="356" font-size="15" fill="#123c8c" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">0 V</text>
+<g transform="translate(230,90) rotate(0,50,50) translate(0,0) scale(1)"><circle cx="50" cy="50" r="30" fill="#fffdf3" stroke="#16324f" stroke-width="3.2"/><text x="50" y="62" font-size="28" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">M</text><path d="M50,0 L50,20 M50,80 L50,100" fill="none" stroke="#16324f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="324" y="145.6" font-size="16" fill="#c62828" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">DC motor</text>
+<polyline points="280,60 280,90" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="280" cy="60" r="5.5" fill="#16324f"/>
+<g transform="translate(150,90) rotate(180,50,50) translate(0,0) scale(1)"><path d="M32,30 L68,30 L50,64 Z" fill="#16324f" stroke="#16324f" stroke-width="2"/><path d="M50,0 L50,30 M30,66 L70,66 M50,66 L50,100" fill="none" stroke="#16324f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="166" y="145.6" font-size="16" fill="#c62828" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">freewheel 1N4007</text>
+<polyline points="200,90 200,60" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="200" cy="60" r="5.5" fill="#16324f"/>
+<circle cx="280" cy="190" r="5.5" fill="#16324f"/>
+<polyline points="200,190 280,190" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<g transform="translate(230,190) rotate(0,50,50) translate(0,0) scale(1)"><path d="M0,50 L36,50" fill="none" stroke="#16324f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M42,22 L42,78" fill="none" stroke="#16324f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M52,22 L52,42 M52,58 L52,78" fill="none" stroke="#16324f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M52,32 L78,32 L78,0" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M52,68 L78,68 L78,100" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M52,50 L78,50" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M60,50 L72,44 L72,56 Z" fill="#16324f"/><text x="88" y="20" font-size="16" fill="#123c8c" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">D</text><text x="88" y="92" font-size="16" fill="#123c8c" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">S</text><text x="12" y="40" font-size="16" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">G</text></g>
+<polyline points="280,190 308,190" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="280" cy="190" r="5.5" fill="#16324f"/>
+<polyline points="308,290 308,330" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="308" cy="330" r="5.5" fill="#16324f"/>
+<g transform="translate(130,190) rotate(0,50,50) translate(0,0) scale(1)"><path d="M0,50 L20,50 L26,32 L36,68 L46,32 L56,68 L66,32 L74,50 L100,50" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="180" y="210" font-size="16" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">gate R</text>
+<rect x="20" y="200" width="90" height="80" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="65" y="235.645" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">µC</text><text x="65" y="253.195" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">PWM</text>
+<polyline points="110,240 130,240" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="230" cy="240" r="5.5" fill="#16324f"/>
+<text x="118" y="300" font-size="12" fill="#b45309" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">PWM</text>
+<text x="390" y="386" font-size="14" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Vgs &#62; threshold → channel forms → motor runs (PWM speed)</text>
+</g>
+</svg>
+<figcaption>Fig. 19.3 &#8212; MOSFET used as a switch to drive a DC motor with PWM</figcaption>
+</figure>
+
+<h2><span class="no">5</span>Comparison</h2>
+<div class="tw"><table>
+<tr><th>Parameter</th><th>SCR</th><th>TRIAC</th><th>MOSFET</th></tr>
+<tr><td>Terminals</td><td>Anode, Cathode, Gate</td><td>MT1, MT2, Gate</td><td>Drain, Source, Gate</td></tr>
+<tr><td>Conduction</td><td>One direction only</td><td>Both directions</td><td>One direction (body diode)</td></tr>
+<tr><td>Control</td><td>Current triggered, latching</td><td>Current triggered, latching</td>
+<td>Voltage controlled, not latching</td></tr>
+<tr><td>Turn OFF</td><td>Commutation needed</td><td>Natural at AC zero crossing</td><td>Simply make V<sub>GS</sub> = 0</td></tr>
+<tr><td>Frequency</td><td>Low (up to a few kHz)</td><td>Low (mains frequency)</td><td>Very high (100 kHz to MHz)</td></tr>
+<tr><td>Typical use</td><td>DC motor control, battery charger, HVDC</td><td>Light dimmer, fan regulator, AC heater</td>
+<td>SMPS, motor drive, DC-DC converter, relay drive</td></tr>
+</table></div>
+<div class="tip"><span class="cap">Remember</span>
+SCR and TRIAC are <b>latching (semi-controlled)</b> switches used mainly on <b>AC mains</b>.
+MOSFET is a <b>fully controlled</b> high speed switch used in <b>low voltage DC</b> circuits and PWM
+applications. A MOSFET has a very high input impedance, so a microcontroller pin can drive it directly
+through a small resistor.</div>
+
+<!--EXTRAS-->
+<h2><span class="no">6</span>Worked numericals</h2>
+
+<div class="formula"><span class="b">Problem 1.</span> A 230 V, 50 Hz supply feeds a resistive heater through a TRIAC at firing angle &alpha; = 90&deg;. Find the RMS load voltage and power if R = 48.4 &Omega;.</div>
+<p class="q"><span class="b">Solution.</span> V<sub>rms</sub> = (V<sub>m</sub>/&radic;2) &times; &radic;(1 &minus; &alpha;/&pi; + sin2&alpha;/(2&pi;)) with &alpha; in radians, &alpha; = &pi;/2. &radic;(1 &minus; 0.5 + 0) = &radic;0.5 = 0.707; V<sub>rms</sub> = 230 &times; 0.707 = 162.6 V. P = V&sup2;/R = 162.6&sup2; / 48.4 = 545 W (full-on would be 1100 W). <span class="hl">V<sub>rms</sub> = 162.6 V, P &asymp; 545 W.</span></p>
+<h2><span class="no">7</span>Viva questions and answers</h2>
+
+<p class="q"><span class="b">Q1. How does an SCR differ from a diode?</span><br><span class="o">A.</span> An SCR is a latching four-layer device: it only conducts after a gate pulse once anode is positive, and then stays on until current falls below holding level.</p>
+<p class="q"><span class="b">Q2. What is latching current versus holding current?</span><br><span class="o">A.</span> Latching current is the minimum anode current to keep the SCR on right after gate removal; holding current is the minimum to stay on once already latched.</p>
+<p class="q"><span class="b">Q3. Why can a TRIAC control AC but an SCR needs two for full control?</span><br><span class="o">A.</span> A TRIAC conducts both half-cycles with either gate polarity; a single SCR blocks one half-cycle, so back-to-back SCRs or a BRCS pair are used for full-wave control.</p>
+<p class="q"><span class="b">Q4. What does 'firing angle' mean?</span><br><span class="o">A.</span> The delay from the zero crossing of the AC waveform to the moment the device is triggered; it directly sets RMS power delivered.</p>
+<h2><span class="no">8</span>Summary</h2>
+
+<p class="q">SCRs, TRIACs and power MOSFETs form the core of electric power control: phase-controlled conduction for AC mains duty, high-frequency chopper switching for DC and inverter duty. Firing angle sets RMS output, duty cycle sets average output, and in both cases losses, heatsinking and protection snubbers must be sized with the same care as the switching device itself.</p>
+<h2><span class="no">9</span>Specifications at a glance</h2>
+
+<div class="tw"><table>
+<tr><th>Parameter</th><th>SCR (e.g. C106)</th><th>TRIAC (e.g. BTA16)</th><th>MOSFET (e.g. IRF540)</th></tr>
+<tr><td>Voltage rating</td><td>400&ndash;1600 V</td><td>400&ndash;800 V</td><td>55&ndash;600 V (low R<sub>DS</sub>)</td></tr>
+<tr><td>Current rating</td><td>10&ndash;100 A (heatsunk)</td><td>16&ndash;40 A</td><td>20&ndash;100 A pulsed</td></tr>
+<tr><td>Gate / drive</td><td>Pulse, few mA</td><td>Pulse, few mA</td><td>Voltage driven, 10 V gate, low charge</td></tr>
+<tr><td>Switching speed</td><td>Line frequency, &mu;s turn-off</td><td>Line frequency</td><td>ns &mdash; 100 kHz+ PWM</td></tr>
+</table></div>
+
+<div class="pager">
+<a href="18-control-valves.html">&#8592; Prev</a>
+<a class="home" href="index.html">&#8962; Index</a>
+<a href="20-magnetic-control-devices.html">Next &#8594;</a>
+</div>
+  <p class="sig">~ handwritten notes &middot; Sensors &amp; Process Control Systems &middot; save &amp; revise daily ~</p>
+</div>
+<script>
+/* pen-colour switch: recolours the body text only, diagrams keep their own ink */
+function ink(c){
+  var m = {brown:'#4a3728', red:'#9b1c1c', green:'#155724'};
+  document.body.style.color = m[c] || m.brown;
+  var bs = document.querySelectorAll('.btn');
+  for (var i = 0; i < bs.length; i++) { bs[i].classList.remove('active'); }
+  event.currentTarget.classList.add('active');
+}
+</script>
+</body>
+</html>

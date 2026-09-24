@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic 14 &middot; Sound Sensors | Sensors &amp; Process Control Systems Notes</title>
+<meta name="description" content="Handwritten study notes on Topic 14 &middot; Sound Sensors - Sensors and Process Control Systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&amp;family=Patrick+Hand&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23fdf9ec'/%3E%3Cpath d='M8 20h12l5-10 8 22 6-16 5 10h12' fill='none' stroke='%23123c8c' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 46h48' stroke='%23c62828' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/notes.css">
+</head>
+<body>
+<div class="paper">
+  <div class="topbar">
+    <span class="brand">Sensors &amp; Process Control</span>
+    <button class="btn" onclick="ink('brown')" title="blue-black ink">Blue</button>
+    <button class="btn" onclick="ink('red')" title="red pen">Red</button>
+    <button class="btn" onclick="ink('green')" title="green pen">Green</button>
+    <button class="btn" onclick="window.print()" title="print this note">Print</button>
+    <a class="btn" href="index.html" style="text-decoration:none">Index</a>
+  </div>
+  <span class="unit-tag">Unit I &middot; Fundamentals of Sensors</span>
+  <h1 class="title">Topic 14 &middot; Sound Sensors<span class="sub">Microphone Module, Sound Detector</span></h1>
+  <div class="rule"></div>
+
+<h2><span class="no">1</span>Introduction</h2>
+<div class="def"><span class="cap">Definition</span>
+A <b>sound sensor</b> is a device that detects <b>sound waves</b> (pressure variations in air) and converts
+them into an equivalent <b>electrical signal</b>. The device which does this conversion is called a
+<b>microphone</b> or acoustic transducer.</div>
+<p class="q">Sound is a mechanical longitudinal wave. Its important parameters are
+<span class="b">frequency</span> (20 Hz to 20 kHz for human hearing), <span class="b">amplitude</span>
+(loudness, measured in decibel dB) and <span class="b">waveform</span>. A sound sensor gives a voltage whose
+amplitude follows the loudness and whose waveform follows the sound pattern.</p>
+<h2><span class="no">2</span>Construction (electret condenser microphone)</h2>
+<p class="q">The most common sound sensor element is the <span class="b">electret condenser microphone</span>
+(ECM). It has a thin <span class="b">diaphragm</span> made of an electret material (permanently charged
+plastic film) placed very close to a fixed metal <span class="b">back plate</span>. Together they form a
+small capacitor. A <span class="b">JFET</span> is built inside the same capsule as an impedance converter.
+When sound waves strike the diaphragm it vibrates, the gap changes, the capacitance changes and a small
+alternating voltage appears. Because the output is only a few millivolts, an
+<span class="b">amplifier</span> is always required.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 300" role="img" aria-label="Fig. 14.1 &#8212; Sound sensor signal chain: microphone to microcontroller" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<rect x="40" y="75" width="110" height="64" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="95" y="102.31" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">microphone</text><text x="95" y="121.21" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">(capsule)</text>
+<rect x="202" y="75" width="110" height="64" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="257" y="111.76" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">amplifier</text>
+<path d="M154,107 L198,107" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<rect x="364" y="75" width="110" height="64" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="419" y="102.31" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">LM393</text><text x="419" y="121.21" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">comparator</text>
+<path d="M316,107 L360,107" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<rect x="526" y="75" width="110" height="64" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="581" y="111.76" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">µC</text>
+<path d="M478,107 L522,107" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<path d="M154,107 L198,107" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="176" y="63" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">mV signal</text>
+<path d="M316,107 L360,107" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="338" y="63" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">DO</text>
+<path d="M478,107 L522,107" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<path d="M8,107 L36,107" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="95" y="63" font-size="12" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">sound waves</text>
+<rect x="80" y="175" width="280" height="60" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="220" y="200.645" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">AO : continuous analogue level</text><text x="220" y="218.195" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">DO : 0 / 1 above threshold</text>
+<rect x="400" y="175" width="300" height="60" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="550" y="200.645" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">blue preset sets the DO threshold</text><text x="550" y="218.195" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">on the sensor module</text>
+<text x="390" y="272" font-size="16" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">microphone → amplifier → threshold → µC</text>
+</g>
+</svg>
+<figcaption>Fig. 14.1 &#8212; Sound sensor signal chain: microphone to microcontroller</figcaption>
+</figure>
+
+<h2><span class="no">3</span>Working</h2>
+<p class="q">Sound waves make the diaphragm vibrate at the same frequency. Since the capacitance of the
+microphone is C = &epsilon;A/d, a change of the gap d produces a change of capacitance and hence a small
+AC voltage. This signal is amplified by a transistor or op-amp. In the popular sound sensor module
+(LM393 based), the amplified signal goes to the comparator which compares it with a reference set by the
+preset. So the module gives two outputs:</p>
+<ul class="dot">
+  <li><span class="b">AO (analog output)</span> &mdash; voltage proportional to the loudness, read by the ADC.</li>
+  <li><span class="b">DO (digital output)</span> &mdash; HIGH when sound is below the set level and LOW when
+      the sound crosses it (or the reverse, depending on the module).</li>
+</ul>
+<h2><span class="no">4</span>Other sound sensors</h2>
+<div class="tw"><table>
+<tr><th>Sensor</th><th>Principle</th><th>Use</th></tr>
+<tr><td>Dynamic (moving coil) microphone</td><td>Coil moves in a magnetic field</td><td>Stage, studio</td></tr>
+<tr><td>Condenser / electret microphone</td><td>Capacitance change</td><td>Mobile, laptops, sensor modules</td></tr>
+<tr><td>Piezoelectric microphone</td><td>Charge on a crystal</td><td>Contact mics, knock sensors</td></tr>
+<tr><td>MEMS microphone</td><td>Micro-machined diaphragm + IC</td><td>Smartphones, voice assistants</td></tr>
+<tr><td>Ultrasonic transducer (40 kHz)</td><td>Piezoelectric, beyond hearing</td><td>Distance measurement, pest repeller</td></tr>
+</table></div>
+<h2><span class="no">5</span>Applications</h2>
+<ul class="arr">
+  <li><span class="b">Voice controlled systems</span> &mdash; clapping switch, voice assistant, speech
+      recognition.</li>
+  <li><span class="b">Noise level monitoring</span> in industries and near highways (sound level meter).</li>
+  <li>Machine fault detection by listening to abnormal noise.</li>
+  <li>Baby monitor, burglar alarm, ultrasonic distance measurement.</li>
+  <li>Hearing aids and public address systems.</li>
+</ul>
+<div class="tip"><span class="cap">Note for the exam</span>
+Sound sensor = <b>acoustic transducer</b>. Its important specifications are <b>sensitivity</b>
+(mV/Pa), <b>frequency response</b> (Hz), <b>signal to noise ratio</b> (dB) and <b>directivity</b>.</div>
+
+<!--EXTRAS-->
+<h2><span class="no">6</span>Worked numericals</h2>
+
+<div class="formula"><span class="b">Problem 1.</span> A microphone with sensitivity &minus;44 dBV/Pa (re 1 V/Pa) hears 94 dB SPL. Find its output voltage, given 94 dB SPL &asymp; 1 Pa.</div>
+<p class="q"><span class="b">Solution.</span> &minus;44 dB means V = 10<sup>&minus;44/20</sup> = 6.31&times;10<sup>&minus;3</sup> V per Pa. At 1 Pa: V = 6.31 mV. Doubling pressure adds 6 dB, so 100 dB &rArr; 2 Pa &rArr; 12.6 mV. <span class="hl">V<sub>out</sub> &asymp; 6.3 mV at 94 dB SPL.</span></p>
+<div class="formula"><span class="b">Problem 2.</span> Two machines produce 85 dB and 88 dB at a workstation. Find the combined level and check it against a 90 dB exposure limit.</div>
+<p class="q"><span class="b">Solution.</span> Add intensities: ratio = 10<sup>(88&minus;85)/10</sup> = 10<sup>0.3</sup> = 2.0. Combined = 10 lg(10<sup>8.5</sup> + 10<sup>8.8</sup>) = 88 + 10 lg(1 + 0.5) = 89.76 dB 89.76 dB &lt; 90 dB limit &mdash; margin is only 0.24 dB, so any addition breaches it. <span class="hl">Combined &asymp; 89.8 dB (just under the 90 dB limit).</span></p>
+<div class="formula"><span class="b">Problem 3.</span> A sound level meter on A-weighting shows 78 dB(A) and the dose timer runs 8 h. The permissible 8-h level is 85 dB(A). Is the dose within limit? By how much can level rise for the same dose?</div>
+<p class="q"><span class="b">Solution.</span> Dose ratio = 10<sup>(78&minus;85)/5</sup> = 10<sup>&minus;1.4</sup> = 0.040 of allowable &mdash; very safe. Exchange rate 3 dB: level could rise 7 dB above 78 &rArr; 85 dB(A) at same time. NIOSH allows exactly 85 dB(A) for 8 h; OSHA uses 90 dB(A) with 5 dB rule. <span class="hl">Dose is about 4 % of limit; safe to 85 dB(A) for 8 h.</span></p>
+<h2><span class="no">7</span>Viva questions and answers</h2>
+
+<p class="q"><span class="b">Q1. What is the working principle of an electret condenser microphone?</span><br><span class="o">A.</span> A permanently charged electret diaphragm forms a capacitor with a back plate; sound moves the diaphragm, changing capacitance and current in the JFET buffer.</p>
+<p class="q"><span class="b">Q2. Why are measurement microphones calibrated with a pistonphone?</span><br><span class="o">A.</span> A pistonphone injects a known 114 or 94 dB reference tone so the whole chain is verified before and after a survey.</p>
+<p class="q"><span class="b">Q3. What is the difference between dB SPL and dB sound level?</span><br><span class="o">A.</span> dB SPL is the physical pressure level referenced to 20 &micro;Pa; sound level meters apply frequency weightings (A, C) and time weightings before display.</p>
+<p class="q"><span class="b">Q4. Why is A-weighting used for hearing-risk surveys?</span><br><span class="o">A.</span> The ear is less sensitive at low frequencies; A-weighting mirrors that response and correlates better with noise-induced hearing loss.</p>
+<p class="q"><span class="b">Q5. What causes microphone self-noise?</span><br><span class="o">A.</span> Thermal and electronic noise in the diaphragm and preamplifier sets the floor for quiet measurements, quoted as dB(A) or &micro;V rms.</p>
+<p class="q"><span class="b">Q6. Where are MEMS microphones replacing electrets?</span><br><span class="o">A.</span> In phones, headsets and compact IoT audio &mdash; they reflow-solder like any SMD part and tolerate automated assembly.</p>
+<h2><span class="no">8</span>Summary</h2>
+
+<p class="q">Sound sensors convert pressure fluctuations at a diaphragm into electrical signals: electret and MEMS microphones for communication, polarised measurement microphones for instrumentation. Sensitivity in dBV/Pa, self-noise, weighting filters and time response define meter quality, and correct calibration with a pistonphone plus proper windshielding define field accuracy. Combining levels logarithmically, not arithmetically, is the calculation every noise survey depends on.</p>
+<h2><span class="no">9</span>Specifications at a glance</h2>
+
+<div class="tw"><table>
+<tr><th>Parameter</th><th>Electret mic (ECM)</th><th>MEMS mic</th><th>Class 2 sound level meter</th></tr>
+<tr><td>Sensitivity</td><td>&minus;35 to &minus;44 dBV/Pa</td><td>&minus;26 to &minus;38 dBV/Pa</td><td>Defined by IEC 61672</td></tr>
+<tr><td>Frequency range</td><td>50 Hz &ndash; 16 kHz</td><td>100 Hz &ndash; 10 kHz</td><td>20 Hz &ndash; 20 kHz (&plusmn;1 dB)</td></tr>
+<tr><td>Supply</td><td>1.5&ndash;10 V with JFET</td><td>1.8&ndash;3.6 V</td><td>Internal battery</td></tr>
+<tr><td>Self-noise</td><td>30&ndash;40 dB(A)</td><td>25&ndash;35 dB(A)</td><td>Depends on class</td></tr>
+<tr><td>Weighting</td><td>None (raw audio)</td><td>None</td><td>A / C / Z selectable</td></tr>
+<tr><td>Typical use</td><td>Voice recorders, intercoms</td><td>Phones, wearables</td><td>Occupational noise surveys</td></tr>
+</table></div>
+
+<div class="pager">
+<a href="13-soil-smoke-sensors.html">&#8592; Prev</a>
+<a class="home" href="index.html">&#8962; Index</a>
+<a href="15-smart-sensors.html">Next &#8594;</a>
+</div>
+  <p class="sig">~ handwritten notes &middot; Sensors &amp; Process Control Systems &middot; save &amp; revise daily ~</p>
+</div>
+<script>
+/* pen-colour switch: recolours the body text only, diagrams keep their own ink */
+function ink(c){
+  var m = {brown:'#4a3728', red:'#9b1c1c', green:'#155724'};
+  document.body.style.color = m[c] || m.brown;
+  var bs = document.querySelectorAll('.btn');
+  for (var i = 0; i < bs.length; i++) { bs[i].classList.remove('active'); }
+  event.currentTarget.classList.add('active');
+}
+</script>
+</body>
+</html>

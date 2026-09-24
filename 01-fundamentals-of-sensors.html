@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic 1 &middot; Introduction to Sensors | Sensors &amp; Process Control Systems Notes</title>
+<meta name="description" content="Handwritten study notes on Topic 1 &middot; Introduction to Sensors - Sensors and Process Control Systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&amp;family=Patrick+Hand&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23fdf9ec'/%3E%3Cpath d='M8 20h12l5-10 8 22 6-16 5 10h12' fill='none' stroke='%23123c8c' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 46h48' stroke='%23c62828' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/notes.css">
+</head>
+<body>
+<div class="paper">
+  <div class="topbar">
+    <span class="brand">Sensors &amp; Process Control</span>
+    <button class="btn" onclick="ink('brown')" title="blue-black ink">Blue</button>
+    <button class="btn" onclick="ink('red')" title="red pen">Red</button>
+    <button class="btn" onclick="ink('green')" title="green pen">Green</button>
+    <button class="btn" onclick="window.print()" title="print this note">Print</button>
+    <a class="btn" href="index.html" style="text-decoration:none">Index</a>
+  </div>
+  <span class="unit-tag">Unit I &middot; Fundamentals of Sensors</span>
+  <h1 class="title">Topic 1 &middot; Introduction to Sensors<span class="sub">Need, Definition, Types of Sensors</span></h1>
+  <div class="rule"></div>
+
+<h2><span class="no">1</span>Introduction &mdash; Why do we need sensors?</h2>
+<p class="q">Every automatic system in the world, from a small water level controller in our house to a
+huge chemical plant, works on one simple idea: <span class="hl">first measure, then decide, then act</span>.
+The part which does the "measuring" job is the <span class="b">sensor</span>. Without a sensor the
+controller is like a person with closed eyes &mdash; it cannot know what is happening in the process, so it
+cannot take a correct decision.</p>
+<p class="q">The <span class="o">need of sensors</span> can be written in the following simple points:</p>
+<ul class="tick">
+  <li>To <span class="b">measure a physical quantity</span> (temperature, pressure, level, flow, position,
+      force etc.) which the human eye cannot read continuously.</li>
+  <li>To convert that quantity into an <span class="b">electrical signal</span> which wires, controllers and
+      computers can understand.</li>
+  <li>To give <span class="b">safety</span> &mdash; for example a gas sensor alarms before a leakage becomes
+      dangerous, an over-temperature sensor cuts off a heater before the vessel bursts.</li>
+  <li>To give <span class="b">quality control</span> &mdash; a process runs correctly only when its
+      temperature, pH, pressure and flow stay inside limits.</li>
+  <li>To give <span class="b">feedback</span> to the controller, so that automatic (closed loop) control
+      becomes possible.</li>
+  <li>To <span class="b">record data</span> for study, billing and troubleshooting.</li>
+</ul>
+
+<h2><span class="no">2</span>Definition of Sensor, Transducer and Transmitter</h2>
+<div class="def"><span class="cap">Definition &mdash; Sensor</span>
+A <b>sensor</b> is a device that <b>senses or detects</b> a physical quantity or a chemical condition of the
+environment and gives an <b>output signal</b> (mostly electrical) which is a function of that quantity.
+In simple words, a sensor is the <b>sense organ</b> of a machine.</div>
+<div class="def"><span class="cap">Definition &mdash; Transducer</span>
+A <b>transducer</b> is a device which <b>converts one form of energy into another form of energy</b>.
+Example: a microphone converts sound energy into electrical energy.</div>
+<div class="note"><span class="cap">Note (very often asked in exam)</span>
+Every sensor is a transducer, but <b>every transducer is not a sensor</b>. A loudspeaker is a transducer
+(electrical &rarr; sound) but it is not a sensor. A sensor always takes information <b>from</b> the process.
+A <b>transmitter</b> is a transducer plus signal conditioning circuit which gives a <b>standard output</b>
+such as 4&ndash;20 mA or 0&ndash;10 V so that the signal can travel far without noise.</div>
+
+<h3>Basic building blocks of a sensor system</h3>
+<p class="q">Any measuring system can be drawn as three blocks in a line: the <span class="b">sensing
+element</span> which faces the process, the <span class="b">conversion element</span> which makes the
+electrical signal, and the <span class="b">manipulation / signal conditioning element</span> which cleans and
+scales the signal before it goes to the display or controller.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 250" role="img" aria-label="Fig. 1.1 &#8212; Block diagram of a measuring system (sensor chain)" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<rect x="40" y="60" width="110" height="64" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="95" y="86.975" font-size="15" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Sensing</text><text x="95" y="107.225" font-size="15" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">element</text>
+<rect x="202" y="60" width="110" height="64" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="257" y="86.975" font-size="15" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Conversion</text><text x="257" y="107.225" font-size="15" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">element</text>
+<path d="M154,92 L198,92" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<rect x="364" y="60" width="117.6" height="64" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="422.8" y="86.975" font-size="15" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Signal</text><text x="422.8" y="107.225" font-size="15" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">conditioning</text>
+<path d="M316,92 L360,92" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<rect x="533.6" y="60" width="110" height="64" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="588.6" y="86.975" font-size="15" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Display /</text><text x="588.6" y="107.225" font-size="15" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Controller</text>
+<path d="M485.6,92 L529.6,92" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<path d="M8,92 L36,92" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="83" y="34" font-size="14" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">physical quantity</text>
+<text x="176" y="52" font-size="12" fill="#1b7a3d" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">raw signal</text>
+<text x="507.6" y="52" font-size="12" fill="#1b7a3d" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">clean signal</text>
+<text x="95" y="150" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">(faces the process)</text>
+<text x="257" y="150" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">mech → electrical</text>
+<text x="422.8" y="150" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">amplify, filter, scale</text>
+<text x="588.6" y="150" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">gives the reading</text>
+<text x="390" y="205" font-size="17" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">A complete measuring system (measuring chain)</text>
+</g>
+</svg>
+<figcaption>Fig. 1.1 &#8212; Block diagram of a measuring system (sensor chain)</figcaption>
+</figure>
+
+
+<h2><span class="no">3</span>Types of Sensors (Classification)</h2>
+<p class="q">Sensors are classified in many ways. The most common classification is on the basis of
+<span class="b">what they measure</span>. A second useful classification is <span class="b">active versus
+passive</span> and <span class="b">analog versus digital</span>.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 300" role="img" aria-label="Fig. 1.2 &#8212; Classification tree of sensors" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<rect x="330" y="36" width="120" height="36" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="390" y="59.78" font-size="17" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">SENSORS</text>
+<rect x="70" y="108" width="140" height="36" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="140" y="131.1" font-size="15" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">By quantity</text>
+<rect x="320" y="108" width="140" height="36" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="390" y="131.1" font-size="15" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">By power</text>
+<rect x="570" y="108" width="140" height="36" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="640" y="131.1" font-size="15" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">By output</text>
+<path d="M390,72 L390,90 M140,90 L640,90 M140,90 L140,108 M390,90 L390,108 M640,90 L640,108" style="fill:none;stroke:#16324f;stroke-width:2.4;stroke-linecap:round"/>
+<path d="M140,144 L140,160 M390,144 L390,160 M640,144 L640,160" style="fill:none;stroke:#16324f;stroke-width:2.4;stroke-linecap:round"/>
+<rect x="40" y="160" width="200" height="120" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="140" y="198.095" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Temperature, Pressure</text><text x="140" y="215.645" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Level, Flow, Force, Torque</text><text x="140" y="233.195" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Position, Displacement</text><text x="140" y="250.745" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Humidity, pH, Gas</text>
+<rect x="280" y="160" width="220" height="120" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="390" y="198.095" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Active : own output energy</text><text x="390" y="215.645" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">(thermocouple, piezo)</text><text x="390" y="233.195" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Passive : needs ext. source</text><text x="390" y="250.745" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">(LDR, thermistor, gauge)</text>
+<rect x="540" y="160" width="200" height="120" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="640" y="198.095" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Analog : continuous value</text><text x="640" y="215.645" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">(LM35, LVDT, LDR)</text><text x="640" y="233.195" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Digital : pulses / bits</text><text x="640" y="250.745" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">(encoder, DHT11, flow)</text>
+</g>
+</svg>
+<figcaption>Fig. 1.2 &#8212; Classification tree of sensors</figcaption>
+</figure>
+
+<div class="tw"><table>
+<tr><th>Basis</th><th>Type</th><th>Example</th></tr>
+<tr><td>Quantity measured</td><td>Temperature, pressure, level, flow, displacement, force, torque, humidity,
+pH, gas, light, sound, vibration</td><td>LM35, Bourdon gauge, DHT11, MQ-2, LDR</td></tr>
+<tr><td>Power requirement</td><td><b>Active</b> (self generating, no external supply needed)</td>
+<td>Thermocouple, piezoelectric, photovoltaic cell</td></tr>
+<tr><td>Power requirement</td><td><b>Passive</b> (needs external supply / excitation)</td>
+<td>Thermistor, LDR, strain gauge, LVDT</td></tr>
+<tr><td>Output signal</td><td><b>Analog</b> (continuous voltage/current/resistance)</td><td>LM35, LVDT, LDR</td></tr>
+<tr><td>Output signal</td><td><b>Digital</b> (pulses, serial data)</td><td>DHT11, rotary encoder, smart sensor</td></tr>
+<tr><td>Contact with process</td><td>Contact / Non-contact</td><td>Thermocouple (contact), IR pyrometer (non-contact)</td></tr>
+<tr><td>Intelligence</td><td>Conventional / <b>Smart</b> sensor</td><td>Simple LDR / DHT11 with inbuilt &micro;C</td></tr>
+</table></div>
+
+<h2><span class="no">4</span>How a sensor is studied (method for every topic)</h2>
+<p class="q">For every sensor in this unit we shall follow the same four headings, which is also the pattern
+followed in the university question paper:</p>
+<ol>
+  <li><span class="g">Diagram</span> &mdash; the physical construction and the electrical circuit.</li>
+  <li><span class="g">Construction</span> &mdash; which materials and parts are used.</li>
+  <li><span class="g">Working</span> &mdash; the principle on which it converts the quantity into a signal.</li>
+  <li><span class="g">Applications</span> &mdash; where it is actually used in industry and daily life.</li>
+</ol>
+<div class="tip"><span class="cap">Remember</span>
+A sensor must be (i) <b>sensitive</b> only to the quantity to be measured, (ii) <b>fast</b> enough,
+(iii) <b>rugged</b> enough to survive the plant atmosphere, and (iv) <b>cheap</b> enough to be used in
+large numbers. No sensor is perfect; selecting a sensor is always a <b>compromise</b> between accuracy,
+speed, cost and life.</div>
+
+<!--EXTRAS-->
+<h2><span class="no">5</span>Worked numericals</h2>
+
+<div class="formula"><span class="b">Problem 1.</span> An ammeter has a range of 0&ndash;10 A and is marked accuracy class 0.5. Find the limiting error when it reads 6 A.</div>
+<p class="q"><span class="b">Solution.</span> Maximum permissible error = 0.5 % of full scale = 0.5 &times; 10 / 100 = 0.05 A. So the true value lies between 6.00 &minus; 0.05 = 5.95 A and 6.00 + 0.05 = 6.05 A. Percentage error at this reading = 0.05 / 6.00 &times; 100 = 0.83 %. <span class="hl">Error = &plusmn;0.05 A (0.83 % at the 6 A reading).</span></p>
+<h2><span class="no">6</span>Viva questions and answers</h2>
+
+<p class="q"><span class="b">Q1. What is the difference between a sensor and a transducer?</span><br><span class="o">A.</span> A sensor directly senses the physical quantity; a transducer converts one form of energy into another. Many books use the two words loosely, but every transducer that also senses is treated as a sensor.</p>
+<p class="q"><span class="b">Q2. Why is a transmitter used ahead of a controller?</span><br><span class="o">A.</span> To convert the weak sensor signal into a standard, noise-resistant signal such as 4&ndash;20 mA or 1&ndash;5 V so it can travel long cable lengths without loss.</p>
+<h2><span class="no">7</span>Summary</h2>
+
+<p class="q">In this topic we built the foundation for the whole subject: a sensor is the measuring eye of an automatic system, the measurement chain adds error block by block, and instruments are specified by range, span, accuracy class and uncertainty. Choosing a sensor is a four-question exercise &mdash; quantity, range, tolerance and output form &mdash; and every later topic on temperature, pressure, flow or control simply applies this same framework to one physical quantity at a time.</p>
+<h2><span class="no">8</span>Specifications at a glance</h2>
+
+<div class="tw"><table>
+<tr><th>Parameter</th><th>Typical specification</th><th>Meaning</th></tr>
+<tr><td>Input range</td><td>0&ndash;100 of the measured quantity</td><td>Safe measurable span</td></tr>
+<tr><td>Span</td><td>URV &minus; LRV</td><td>Denominator of all % errors</td></tr>
+<tr><td>Accuracy class</td><td>0.1, 0.2, 0.5, 1.0, 1.5, 2.5</td><td>Max error as % of full scale</td></tr>
+<tr><td>Uncertainty</td><td>&plusmn;0.5 % of span</td><td>Guaranteed error band</td></tr>
+<tr><td>Output signal</td><td>4&ndash;20 mA, 0&ndash;5 V, digital</td><td>What the controller receives</td></tr>
+</table></div>
+
+<div class="pager">
+<span></span>
+<a class="home" href="index.html">&#8962; Index</a>
+<a href="02-temperature-sensors.html">Next &#8594;</a>
+</div>
+  <p class="sig">~ handwritten notes &middot; Sensors &amp; Process Control Systems &middot; save &amp; revise daily ~</p>
+</div>
+<script>
+/* pen-colour switch: recolours the body text only, diagrams keep their own ink */
+function ink(c){
+  var m = {brown:'#4a3728', red:'#9b1c1c', green:'#155724'};
+  document.body.style.color = m[c] || m.brown;
+  var bs = document.querySelectorAll('.btn');
+  for (var i = 0; i < bs.length; i++) { bs[i].classList.remove('active'); }
+  event.currentTarget.classList.add('active');
+}
+</script>
+</body>
+</html>

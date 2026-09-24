@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic 21 &middot; Electromechanical Motors | Sensors &amp; Process Control Systems Notes</title>
+<meta name="description" content="Handwritten study notes on Topic 21 &middot; Electromechanical Motors - Sensors and Process Control Systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&amp;family=Patrick+Hand&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23fdf9ec'/%3E%3Cpath d='M8 20h12l5-10 8 22 6-16 5 10h12' fill='none' stroke='%23123c8c' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 46h48' stroke='%23c62828' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/notes.css">
+</head>
+<body>
+<div class="paper">
+  <div class="topbar">
+    <span class="brand">Sensors &amp; Process Control</span>
+    <button class="btn" onclick="ink('brown')" title="blue-black ink">Blue</button>
+    <button class="btn" onclick="ink('red')" title="red pen">Red</button>
+    <button class="btn" onclick="ink('green')" title="green pen">Green</button>
+    <button class="btn" onclick="window.print()" title="print this note">Print</button>
+    <a class="btn" href="index.html" style="text-decoration:none">Index</a>
+  </div>
+  <span class="unit-tag">Unit II &middot; Actuators</span>
+  <h1 class="title">Topic 21 &middot; Electromechanical Motors<span class="sub">Servo, DC, AC and Stepper Motors</span></h1>
+  <div class="rule"></div>
+
+<h2><span class="no">1</span>Introduction</h2>
+<p class="q">An <span class="b">electromechanical motor</span> is an actuator which converts
+<span class="b">electrical energy into mechanical rotational energy</span>. It works on the principle that a
+current carrying conductor placed in a magnetic field experiences a force
+(F = B I L). Motors are the most widely used actuators in industry &mdash; pumps, fans, compressors,
+conveyors, robots and machine tools are all driven by motors.</p>
+<div class="tw"><table>
+<tr><th>Motor</th><th>Supply</th><th>Speed control</th><th>Position control</th><th>Typical use</th></tr>
+<tr><td>DC motor</td><td>DC</td><td>Very easy (armature voltage / PWM)</td><td>Needs encoder feedback</td>
+<td>Toys, robots, conveyors, fans</td></tr>
+<tr><td>Servo motor</td><td>DC + control pulse</td><td>Built in</td><td>Built in (closed loop)</td>
+<td>Robotic arm, RC models, CNC</td></tr>
+<tr><td>Stepper motor</td><td>DC pulses</td><td>By pulse rate</td><td>Open loop, step by step</td>
+<td>3D printer, CNC, printer head</td></tr>
+<tr><td>AC induction motor</td><td>AC single / three phase</td><td>VFD needed</td><td>Difficult</td>
+<td>Pumps, compressors, machine tools</td></tr>
+</table></div>
+
+<h2><span class="no">2</span>DC Motor</h2>
+<p class="q"><span class="g">Construction:</span> It has a <span class="b">stator</span> (field magnets or
+field winding) and a <span class="b">rotor (armature)</span> carrying the winding. The
+<span class="b">commutator</span> and <span class="b">brushes</span> reverse the direction of the armature
+current every half revolution so that the torque remains in the same direction.</p>
+<p class="q"><span class="g">Working:</span> The speed of a DC motor is proportional to the applied armature
+voltage and the torque is proportional to the armature current (N &prop; V, T &prop; I<sub>a</sub>). So speed
+is controlled easily by varying the armature voltage, which in modern circuits is done by
+<span class="b">PWM using a MOSFET or an H-bridge driver (L293D, L298N)</span>. Reversing the polarity
+reverses the direction.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 350" role="img" aria-label="Fig. 21.1 &#8212; DC motor driven through an H-bridge with PWM speed control" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<rect x="30" y="70" width="160" height="90" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="110" y="110.645" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">microcontroller</text><text x="110" y="128.195" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">IN1 IN2 EN</text>
+<path d="M190,115 L246,115" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="218" y="99" font-size="12" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">logic</text>
+<rect x="250" y="60" width="210" height="115" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="355" y="112.475" font-size="15" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">L293D</text><text x="355" y="132.725" font-size="15" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">H-bridge driver</text>
+<path d="M460,115 L516,115" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="488" y="99" font-size="12" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">motor leads</text>
+<rect x="520" y="70" width="170" height="90" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="605" y="109.975" font-size="15" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">DC motor</text><text x="605" y="130.225" font-size="15" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">+12 V supply</text>
+<rect x="40" y="200" width="400" height="110" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="240" y="224.32" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">IN1   IN2   EN      motor</text><text x="240" y="241.87" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal"> 0      0    x       stop</text><text x="240" y="259.42" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal"> 1      0    1      forward</text><text x="240" y="276.97" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal"> 0      1    1      reverse</text><text x="240" y="294.52" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal"> x      x   PWM      speed</text>
+<rect x="470" y="200" width="270" height="110" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="605" y="233.095" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">EN pin gives PWM</text><text x="605" y="250.645" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">→ speed control</text><text x="605" y="268.195" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">IN1 / IN2 give direction</text><text x="605" y="285.745" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">12 V separate from 5 V logic</text>
+<text x="390" y="338" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">H-bridge : four switches flip the motor polarity</text>
+</g>
+</svg>
+<figcaption>Fig. 21.1 &#8212; DC motor driven through an H-bridge with PWM speed control</figcaption>
+</figure>
+
+
+<h2><span class="no">3</span>Servo Motor</h2>
+<p class="q"><span class="g">Construction:</span> A servo motor is a small package containing a
+<span class="b">DC motor</span>, a <span class="b">gear train</span> (to increase the torque), a
+<span class="b">potentiometer</span> connected to the output shaft (position feedback), a
+<span class="b">control board</span> and three wires &mdash; red (V<sub>CC</sub> +5 V), black or brown
+(GND) and yellow or orange (control signal). Standard servos rotate from 0&deg; to 180&deg;; continuous
+rotation servos rotate fully.</p>
+<p class="q"><span class="g">Working:</span> The control signal is a <span class="b">PWM pulse of 50 Hz
+(20 ms period)</span>. The width of the pulse decides the angle: <span class="b">1 ms &rarr; 0&deg;,
+1.5 ms &rarr; 90&deg;, 2 ms &rarr; 180&deg;</span>. Inside the servo the potentiometer tells the actual
+shaft angle; the control board compares it with the demanded angle and drives the motor until the error
+becomes zero. This is a <span class="hl">closed loop position control system built inside the
+servo</span>.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 340" role="img" aria-label="Fig. 21.2 &#8212; Servo motor and its PWM angle control signal" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<rect x="360" y="35" width="400" height="220" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<rect x="20" y="35" width="310" height="220" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<text x="175" y="57" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">servo motor</text>
+<g transform="translate(110,130) rotate(0,50,50) translate(0,0) scale(1)"><rect x="12" y="26" width="76" height="52" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="3"/><circle cx="50" cy="26" r="11" fill="#fffdf3" stroke="#16324f" stroke-width="3"/><path d="M26,78 L26,100 M50,78 L50,100 M74,78 L74,100" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="26" y="62" font-size="14" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">V</text><text x="50" y="62" font-size="14" fill="#b45309" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">S</text><text x="74" y="62" font-size="14" fill="#123c8c" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">G</text></g>
+<polyline points="136,230 136,248" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<polyline points="160,230 160,248" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<polyline points="184,230 184,248" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="136" y="266" font-size="12" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">V +5 V</text>
+<text x="160" y="288" font-size="12" fill="#b45309" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">S PWM</text>
+<text x="184" y="310" font-size="12" fill="#123c8c" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">GND</text>
+<text x="160" y="95" font-size="12" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">closed loop : pot feedback inside</text>
+<text x="560" y="57" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">PWM signal for angle control</text>
+<path d="M400,190 L400,110 L455,110 L455,190 L560,190 L560,110 L640,110 L640,190 L730,190" style="fill:none;stroke:#c62828;stroke-width:3;stroke-linecap:round"/>
+<path d="M400,210 L730,210" style="fill:none;stroke:#16324f;stroke-width:2;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="427" y="100" font-size="12" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">1 ms</text>
+<text x="597" y="100" font-size="12" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">2 ms</text>
+<text x="500" y="232" font-size="12" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">period 20 ms (50 Hz)</text>
+<text x="385" y="118" font-size="12" fill="#16324f" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">0°</text>
+<text x="385" y="205" font-size="12" fill="#16324f" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">180°</text>
+<text x="390" y="300" font-size="14" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">1.5 ms → 90° ; pulse width sets the angle</text>
+<text x="390" y="328" font-size="13" fill="#b45309" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">applications : robotic arm, RC aircraft, CNC</text>
+</g>
+</svg>
+<figcaption>Fig. 21.2 &#8212; Servo motor and its PWM angle control signal</figcaption>
+</figure>
+
+
+<h2><span class="no">4</span>Stepper Motor</h2>
+<p class="q"><span class="g">Construction:</span> A stepper motor has a <span class="b">stator with several
+poles</span> carrying concentrated windings and a <span class="b">rotor with a toothed iron wheel</span>
+(variable reluctance type) or a <span class="b">permanent magnet</span>. It has 4, 6 or 8 leads &mdash; a
+unipolar motor has 5 or 6 wires and a bipolar motor has 4 wires. The common step angles are
+<span class="b">1.8&deg; (200 steps per revolution)</span> and 7.5&deg; (48 steps).</p>
+<p class="q"><span class="g">Working:</span> The stator coils are energised in a fixed sequence. Each
+energising pattern pulls the rotor teeth into alignment, so the shaft moves by one
+<span class="b">step</span>. By counting the number of steps we know the exact angular position
+<span class="hl">without any feedback (open loop)</span>, and by changing the step rate we control the speed.
+The energising sequence is given by a driver such as the <span class="b">ULN2003</span> or
+<span class="b">A4988 / DRV8825</span>.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 330" role="img" aria-label="Fig. 21.3 &#8212; Stepper motor with ULN2003 driver and energising sequence" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<rect x="40" y="70" width="190" height="105" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="135" y="117.81" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">ULN2003</text><text x="135" y="136.71" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">darlington array</text>
+<g transform="translate(290,90) rotate(0,50,50) translate(0,0) scale(1)"><circle cx="50" cy="50" r="30" fill="#fffdf3" stroke="#16324f" stroke-width="3.2"/><text x="50" y="58" font-size="16" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">STP</text><path d="M8,22 L28,36 M8,78 L28,64 M92,22 L72,36 M92,78 L72,64" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="340" y="88" font-size="16" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">stepper (28BYJ-48)</text>
+<polyline points="230,105 265,105 265,110 290,110" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<polyline points="230,145 265,145 265,170 290,170" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="258" y="128" font-size="12" fill="#123c8c" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">IN1–IN4</text>
+<rect x="460" y="70" width="280" height="125" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="600" y="110.595" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">sequence :</text><text x="600" y="128.145" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">1000 / 0100 / 0010 / 0001</text><text x="600" y="145.695" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">half stepping doubles the</text><text x="600" y="163.245" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">resolution (4096 steps/rev)</text>
+<rect x="40" y="215" width="400" height="85" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="240" y="235.595" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">step angle 5.625° / 64 gear ratio</text><text x="240" y="253.145" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">→ 0.0879° per step</text><text x="240" y="270.695" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">applications : 3D printer, robotic</text><text x="240" y="288.245" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">gripper, textile machines</text>
+<rect x="470" y="215" width="270" height="85" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="605" y="244.37" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">ULN2003 : 7 darlington channels</text><text x="605" y="261.92" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">handles 500 mA per coil</text><text x="605" y="279.47" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">common freewheel diodes inside</text>
+<text x="390" y="322" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">IN1–IN4 sequence rotates the stepper</text>
+</g>
+</svg>
+<figcaption>Fig. 21.3 &#8212; Stepper motor with ULN2003 driver and energising sequence</figcaption>
+</figure>
+
+
+<h2><span class="no">5</span>AC Motor (Induction Motor)</h2>
+<p class="q"><span class="g">Construction:</span> It has a <span class="b">stator</span> with a three phase
+(or single phase) distributed winding and a <span class="b">rotor</span> which is either a
+<span class="b">squirrel cage</span> (aluminium or copper bars short circuited by end rings &mdash; 90 % of
+industrial motors) or a <span class="b">wound rotor</span> (slip ring type).</p>
+<p class="q"><span class="g">Working:</span> When a three phase supply is given to the stator, a
+<span class="b">rotating magnetic field (RMF)</span> is produced which rotates at the synchronous speed
+N<sub>s</sub> = 120 f / P. This RMF cuts the rotor bars, an EMF and hence a current is induced in them
+(transformer action), and the current carrying rotor conductors in the magnetic field experience a force.
+The rotor therefore starts rotating in the same direction as the RMF but always at a slightly lower speed.
+The difference is called <span class="b">slip</span>.</p>
+<div class="formula">N<sub>s</sub> = 120 f / P &nbsp;&nbsp;&nbsp; s = (N<sub>s</sub> &minus; N) / N<sub>s</sub>
+&nbsp;&nbsp;&nbsp; N = N<sub>s</sub>(1 &minus; s)</div>
+<p class="q">Speed control of an induction motor is done by a <span class="b">VFD (variable frequency
+drive)</span> which changes the supply frequency while keeping V/f constant.</p>
+<div class="tw"><table>
+<tr><th>Point</th><th>Servo motor</th><th>Stepper motor</th></tr>
+<tr><td>Control</td><td>Closed loop (feedback)</td><td>Open loop (counting steps)</td></tr>
+<tr><td>Motion</td><td>Smooth continuous rotation</td><td>Discrete steps</td></tr>
+<tr><td>Speed</td><td>High (3000 to 6000 rpm)</td><td>Low to medium</td></tr>
+<tr><td>Torque at high speed</td><td>High</td><td>Falls sharply</td></tr>
+<tr><td>Cost</td><td>High</td><td>Low</td></tr>
+<tr><td>Use</td><td>Robots, CNC axis, high precision</td><td>3D printer, printer, simple positioning</td></tr>
+</table></div>
+
+<!--EXTRAS-->
+<h2><span class="no">6</span>Worked numericals</h2>
+
+<div class="formula"><span class="b">Problem 1.</span> A 4-pole induction motor runs at 1440 rpm on 50 Hz supply. Find synchronous speed and slip.</div>
+<p class="q"><span class="b">Solution.</span> N<sub>s</sub> = 120 f / P = 120 &times; 50 / 4 = 1500 rpm. Slip s = (1500 &minus; 1440)/1500 = 0.04 = 4 %. <span class="hl">N<sub>s</sub> = 1500 rpm, slip = 4 %.</span></p>
+<h2><span class="no">7</span>Viva questions and answers</h2>
+
+<p class="q"><span class="b">Q1. Why does an induction motor always run below synchronous speed?</span><br><span class="o">A.</span> Torque needs relative motion (slip); at synchronous speed no current is induced and torque is zero.</p>
+<p class="q"><span class="b">Q2. What is pull-out torque?</span><br><span class="o">A.</span> Maximum torque before the motor stalls; steppers lose steps beyond it.</p>
+<h2><span class="no">8</span>Summary</h2>
+
+<p class="q">Actuator motors span induction machines for general speed control, DC and brushless DC for wide range torque, steppers for open-loop positioning and servos for closed-loop precision.</p>
+<h2><span class="no">9</span>Specifications at a glance</h2>
+
+<div class="tw"><table>
+<tr><th>Parameter</th><th>3-ph induction</th><th>Stepper (NEMA 17)</th><th>Servo (with encoder)</th></tr>
+<tr><td>Speed control</td><td>VFD, pole change</td><td>Pulse rate (open loop)</td><td>Closed-loop drive</td></tr>
+<tr><td>Position info</td><td>None (open loop)</td><td>Counted steps</td><td>Encoder absolute/incremental</td></tr>
+</table></div>
+
+<div class="pager">
+<a href="20-magnetic-control-devices.html">&#8592; Prev</a>
+<a class="home" href="index.html">&#8962; Index</a>
+<a href="22-process-control-systems.html">Next &#8594;</a>
+</div>
+  <p class="sig">~ handwritten notes &middot; Sensors &amp; Process Control Systems &middot; save &amp; revise daily ~</p>
+</div>
+<script>
+/* pen-colour switch: recolours the body text only, diagrams keep their own ink */
+function ink(c){
+  var m = {brown:'#4a3728', red:'#9b1c1c', green:'#155724'};
+  document.body.style.color = m[c] || m.brown;
+  var bs = document.querySelectorAll('.btn');
+  for (var i = 0; i < bs.length; i++) { bs[i].classList.remove('active'); }
+  event.currentTarget.classList.add('active');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic 25 &middot; Discontinuous Controller Modes | Sensors &amp; Process Control Systems Notes</title>
+<meta name="description" content="Handwritten study notes on Topic 25 &middot; Discontinuous Controller Modes - Sensors and Process Control Systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&amp;family=Patrick+Hand&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23fdf9ec'/%3E%3Cpath d='M8 20h12l5-10 8 22 6-16 5 10h12' fill='none' stroke='%23123c8c' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 46h48' stroke='%23c62828' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/notes.css">
+</head>
+<body>
+<div class="paper">
+  <div class="topbar">
+    <span class="brand">Sensors &amp; Process Control</span>
+    <button class="btn" onclick="ink('brown')" title="blue-black ink">Blue</button>
+    <button class="btn" onclick="ink('red')" title="red pen">Red</button>
+    <button class="btn" onclick="ink('green')" title="green pen">Green</button>
+    <button class="btn" onclick="window.print()" title="print this note">Print</button>
+    <a class="btn" href="index.html" style="text-decoration:none">Index</a>
+  </div>
+  <span class="unit-tag">Unit IV &middot; Controller Modes</span>
+  <h1 class="title">Topic 25 &middot; Discontinuous Controller Modes<span class="sub">Two Position and Multi Position Modes</span></h1>
+  <div class="rule"></div>
+
+<h2><span class="no">1</span>What are controller modes?</h2>
+<p class="q">The <span class="b">mode of a controller</span> is the way in which the controller output changes
+in response to the error. The modes are of two broad classes:</p>
+<ul class="dot">
+  <li><span class="b">Discontinuous (discrete) modes</span> &mdash; the output can take only a few discrete
+      values, normally ON or OFF. Two position and multi position modes belong to this class.</li>
+  <li><span class="b">Continuous (analog) modes</span> &mdash; the output can take any value within its
+      range and varies continuously with the error. P, I, D, PI, PD and PID belong to this class.</li>
+</ul>
+
+<h2><span class="no">2</span>Two position (ON-OFF / bang-bang) mode</h2>
+<div class="def"><span class="cap">Definition</span>
+In the <b>two position mode</b> the controller output has only <b>two states</b> &mdash; fully ON (100 %) or
+fully OFF (0 %). The output switches from one state to the other when the error changes sign.</div>
+<div class="formula">If e &gt; 0 &rarr; output = 100 % (ON) &nbsp;&nbsp;&nbsp; If e &lt; 0 &rarr; output = 0 %
+(OFF)</div>
+<p class="q">If the switching happens exactly at the set point, the output will chatter rapidly because of
+the noise and small variations. To avoid this, a <span class="b">differential gap (dead band or
+hysteresis)</span> is introduced: the output switches ON at a lower limit and OFF at an upper limit. The
+process variable therefore <span class="b">oscillates continuously</span> between the two limits &mdash; this
+oscillation is called <span class="b">cycling</span> and cannot be eliminated in two position control.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 330" role="img" aria-label="Fig. 25.1 &#8212; Two position (ON-OFF) control with differential gap and the resulting cycling" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<rect x="20" y="175" width="740" height="120" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<rect x="20" y="35" width="740" height="120" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<text x="390" y="57" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">controller output</text>
+<path d="M70,135 L70,65" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<path d="M70,135 L730,135" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="400" y="153" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">error</text>
+<text x="60" y="59" font-size="14" fill="#16324f" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">output</text>
+<path d="M150,80 L390,80 L390,125 L640,125" style="fill:none;stroke:#c62828;stroke-width:3;stroke-linecap:round"/>
+<text x="210" y="70" font-size="11" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">100 % (ON)</text>
+<text x="560" y="115" font-size="11" fill="#123c8c" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">0 % (OFF)</text>
+<path d="M360,60 L360,145" style="fill:none;stroke:#b45309;stroke-width:1.4;stroke-linecap:round;stroke-dasharray:3 3"/>
+<path d="M420,60 L420,145" style="fill:none;stroke:#b45309;stroke-width:1.4;stroke-linecap:round;stroke-dasharray:3 3"/>
+<text x="390" y="98" font-size="11" fill="#b45309" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">differential gap</text>
+<text x="390" y="197" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">process variable response</text>
+<path d="M70,275 L70,200" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<path d="M70,275 L730,275" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="400" y="293" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">time</text>
+<text x="60" y="194" font-size="14" fill="#16324f" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">PV</text>
+<path d="M80,230 L720,230" style="fill:none;stroke:#123c8c;stroke-width:1.8;stroke-linecap:round;stroke-dasharray:6 4"/>
+<text x="715" y="222" font-size="11" fill="#123c8c" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">SP</text>
+<path d="M80,255 C150,250 200,215 280,212 C360,209 420,248 500,252 C580,255 650,222 715,218" style="fill:none;stroke:#c62828;stroke-width:3;stroke-linecap:round"/>
+<text x="575" y="268" font-size="11" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">cycling between the two limits</text>
+<text x="415" y="320" font-size="14" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">two position control with differential gap</text>
+</g>
+</svg>
+<figcaption>Fig. 25.1 &#8212; Two position (ON-OFF) control with differential gap and the resulting cycling</figcaption>
+</figure>
+
+<div class="tw"><table>
+<tr><th>Advantages</th><th>Disadvantages</th></tr>
+<tr><td>Very simple and cheap (relay, thermostat)</td><td>Continuous cycling around the set point</td></tr>
+<tr><td>Easy to understand and maintain</td><td>Wear and tear of the contacts and the final element</td></tr>
+<tr><td>No tuning required</td><td>Not suitable for processes with large lag</td></tr>
+<tr><td>Sufficient where wide tolerance is acceptable</td><td>Cannot give accurate control</td></tr>
+</table></div>
+<p class="q"><span class="g">Applications:</span> Domestic refrigerator and air conditioner thermostat, room
+heater, geyser, water tank pump ON/OFF by float switch, oven thermostat, iron box, soldering station.</p>
+
+<h2><span class="no">3</span>Multi position mode</h2>
+<div class="def"><span class="cap">Definition</span>
+In the <b>multi position mode</b> the controller output can take <b>more than two (but a finite number of)
+discrete values</b>, for example 0 %, 25 %, 50 %, 75 % and 100 %. The output changes in steps as the error
+increases.</div>
+<p class="q">It is an improvement over the two position mode. Because the output is not always fully ON, the
+process is not driven so hard and the <span class="b">amplitude of cycling is much reduced</span>. As the
+number of positions increases, the response comes closer to proportional control; in the limit, when the
+number of positions becomes infinite, the multi position mode becomes a proportional mode.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 310" role="img" aria-label="Fig. 25.2 &#8212; Multi position control characteristic approaching proportional control" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<path d="M130,230 L130,50" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<path d="M130,230 L710,230" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="420" y="254" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">error</text>
+<text x="118" y="44" font-size="14" fill="#16324f" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">output %</text>
+<path d="M150,215 L250,215 L250,180 L350,180 L350,145 L450,145 L450,110 L550,110 L550,75 L650,75" style="fill:none;stroke:#c62828;stroke-width:3;stroke-linecap:round"/>
+<path d="M150,220 L680,60" style="fill:none;stroke:#123c8c;stroke-width:2.4;stroke-linecap:round;stroke-dasharray:7 5"/>
+<text x="215" y="200" font-size="11" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">25 %</text>
+<text x="315" y="165" font-size="11" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">50 %</text>
+<text x="415" y="130" font-size="11" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">75 %</text>
+<text x="620" y="68" font-size="11" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">100 %</text>
+<text x="155" y="232" font-size="11" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">0 %</text>
+<rect x="430" y="175" width="270" height="60" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="565" y="192.88" font-size="12" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">solid : multi position mode</text><text x="565" y="209.08" font-size="12" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">dashed : proportional</text><text x="565" y="225.28" font-size="12" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">more positions → closer to P</text>
+<text x="415" y="278" font-size="14" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">multi position control approaches proportional control</text>
+</g>
+</svg>
+<figcaption>Fig. 25.2 &#8212; Multi position control characteristic approaching proportional control</figcaption>
+</figure>
+
+<ul class="arr">
+  <li>Used where a single valve has several fixed positions or where several valves or heaters are switched
+      in steps (for example 4 heaters of 25 % each).</li>
+  <li>Multi stage air conditioners and multi speed fan controllers.</li>
+  <li>Stepper motor based valve positioning.</li>
+  <li>Batch heating where different power levels are needed at different stages.</li>
+</ul>
+<div class="tw"><table>
+<tr><th>Basis</th><th>Two position mode</th><th>Multi position mode</th></tr>
+<tr><td>Output states</td><td>Two (ON / OFF)</td><td>More than two, finite</td></tr>
+<tr><td>Cycling amplitude</td><td>Large</td><td>Smaller</td></tr>
+<tr><td>Accuracy</td><td>Poor</td><td>Better</td></tr>
+<tr><td>Cost and complexity</td><td>Lowest</td><td>Moderate</td></tr>
+<tr><td>Example</td><td>Thermostat, float switch</td><td>Stepped heater controller, multi speed fan</td></tr>
+</table></div>
+<div class="tip"><span class="cap">When to use discontinuous modes?</span>
+When the process is <b>slow</b>, the tolerance is <b>wide</b>, the cost must be <b>low</b> and the final
+control element can work only in ON/OFF fashion (relay, solenoid valve, contactor).</div>
+
+<!--EXTRAS-->
+<h2><span class="no">4</span>Worked numericals</h2>
+
+<div class="formula"><span class="b">Problem 1.</span> A heater thermostat switches ON at 48 &deg;C and OFF at 52 &deg;C. Find the differential gap, average temperature bias if the process ramps linearly between extremes, and the cycle energy implication for a 3 kW heater with 5 min on / 15 min off.</div>
+<p class="q"><span class="b">Solution.</span> Differential gap = 52 &minus; 48 = 4 &deg;C (&plusmn;2 &deg;C around 50 &deg;C). Set point usually marked at midpoint 50 &deg;C; mean follows mid-gap. Duty = 5/(5+15) = 25 %; average heating power = 3 &times; 0.25 = 750 W. <span class="hl">Gap = 4 &deg;C; average power = 750 W at 25 % duty.</span></p>
+<h2><span class="no">5</span>Viva questions and answers</h2>
+
+<p class="q"><span class="b">Q1. What is differential gap?</span><br><span class="o">A.</span> The difference between the switch-on and switch-off values of a two-position controller; it prevents excessively rapid cycling.</p>
+<p class="q"><span class="b">Q2. Why is a two-position loop always oscillatory?</span><br><span class="o">A.</span> The output can only be fully on or off, so the process variable must swing between the two trip points; true steady state is impossible.</p>
+<p class="q"><span class="b">Q3. How is set point related to the switch points?</span><br><span class="o">A.</span> It is normally the mid-gap value; switching occurs symmetrically above and below it unless the scheme is offset for load reasons.</p>
+<p class="q"><span class="b">Q4. Where is two-position control still preferred today?</span><br><span class="o">A.</span> Domestic heating and refrigeration, small ovens, air compressors and any place where a proportional loop would be uneconomic.</p>
+<p class="q"><span class="b">Q5. What is the risk of too small a differential gap?</span><br><span class="o">A.</span> Rapid cycling that burns out contactors, contactors and motors, and wears mechanical elements &mdash; the classic short-cycle failure.</p>
+<p class="q"><span class="b">Q6. How does three-position control differ?</span><br><span class="o">A.</span> It adds a neutral middle state with drive in either direction, approximating proportional action with two thresholds.</p>
+<h2><span class="no">6</span>Summary</h2>
+
+<p class="q">Discontinuous control switches output between fixed states: two-position with a differential gap for simple regulation, multi-position for graduated response. The differential gap sets the amplitude of the unavoidable oscillation and protects equipment from short cycling, while the midpoint defines the apparent set point. These loops are cheap, robust and perfectly adequate wherever a few degrees or a few percent of swing is acceptable.</p>
+<h2><span class="no">7</span>Specifications at a glance</h2>
+
+<div class="tw"><table>
+<tr><th>Parameter</th><th>Typical ON-OFF setting</th><th>Remark</th></tr>
+<tr><td>Set point</td><td>Mid-gap value</td><td>Marked on dial or HMI</td></tr>
+<tr><td>Differential gap</td><td>1&ndash;10 &deg;C or 2&ndash;10 % span</td><td>Equipment protection + stability</td></tr>
+<tr><td>Output</td><td>Discrete: energised / de-energised</td><td>Relay, contactor, SSR</td></tr>
+<tr><td>Cycle period</td><td>Minutes (process dependent)</td><td>Too short = wear</td></tr>
+<tr><td>Oscillation amplitude</td><td>&asymp; differential gap</td><td>Inherent, cannot be tuned away</td></tr>
+<tr><td>Minimum off time</td><td>Compressor/driver protection</td><td>3&ndash;5 min typical for refrigeration</td></tr>
+<tr><td>Multi-position band</td><td>&plusmn; dead zone + 2 drive states</td><td>Damper and heater banks</td></tr>
+</table></div>
+
+<div class="pager">
+<a href="24-control-system-parameters.html">&#8592; Prev</a>
+<a class="home" href="index.html">&#8962; Index</a>
+<a href="26-continuous-controller-modes.html">Next &#8594;</a>
+</div>
+  <p class="sig">~ handwritten notes &middot; Sensors &amp; Process Control Systems &middot; save &amp; revise daily ~</p>
+</div>
+<script>
+/* pen-colour switch: recolours the body text only, diagrams keep their own ink */
+function ink(c){
+  var m = {brown:'#4a3728', red:'#9b1c1c', green:'#155724'};
+  document.body.style.color = m[c] || m.brown;
+  var bs = document.querySelectorAll('.btn');
+  for (var i = 0; i < bs.length; i++) { bs[i].classList.remove('active'); }
+  event.currentTarget.classList.add('active');
+}
+</script>
+</body>
+</html>

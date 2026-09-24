@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic 26 &middot; Continuous Controller Modes | Sensors &amp; Process Control Systems Notes</title>
+<meta name="description" content="Handwritten study notes on Topic 26 &middot; Continuous Controller Modes - Sensors and Process Control Systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&amp;family=Patrick+Hand&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23fdf9ec'/%3E%3Cpath d='M8 20h12l5-10 8 22 6-16 5 10h12' fill='none' stroke='%23123c8c' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 46h48' stroke='%23c62828' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/notes.css">
+</head>
+<body>
+<div class="paper">
+  <div class="topbar">
+    <span class="brand">Sensors &amp; Process Control</span>
+    <button class="btn" onclick="ink('brown')" title="blue-black ink">Blue</button>
+    <button class="btn" onclick="ink('red')" title="red pen">Red</button>
+    <button class="btn" onclick="ink('green')" title="green pen">Green</button>
+    <button class="btn" onclick="window.print()" title="print this note">Print</button>
+    <a class="btn" href="index.html" style="text-decoration:none">Index</a>
+  </div>
+  <span class="unit-tag">Unit IV &middot; Controller Modes</span>
+  <h1 class="title">Topic 26 &middot; Continuous Controller Modes<span class="sub">P, I and D Control</span></h1>
+  <div class="rule"></div>
+
+<h2><span class="no">1</span>Introduction</h2>
+<p class="q">In <span class="b">continuous controller modes</span> the output of the controller can take
+<span class="hl">any value</span> within its range (0 to 100 %) and it changes continuously in proportion to
+the error. These modes are used where accurate and smooth control is needed. There are three basic modes
+&mdash; <span class="r">proportional (P)</span>, <span class="r">integral (I)</span> and
+<span class="r">derivative (D)</span> &mdash; which are combined to give PI, PD and PID modes.</p>
+<div class="formula">General controller equation : &nbsp; m(t) = K<sub>p</sub> e(t) +
+(K<sub>p</sub>/T<sub>i</sub>) &int; e dt + K<sub>p</sub> T<sub>d</sub> (de/dt) + m<sub>0</sub></div>
+
+<h2><span class="no">2</span>Proportional control mode (P)</h2>
+<div class="def"><span class="cap">Definition</span>
+In proportional mode the <b>controller output is directly proportional to the error</b> at every instant.<br>
+<b>m = K<sub>p</sub> e + m<sub>0</sub></b> where K<sub>p</sub> is the proportional gain and m<sub>0</sub> is
+the output when the error is zero (bias).</div>
+<p class="q">The proportional band (PB) is the change of error needed to drive the output through its full
+range: PB = 100 / K<sub>p</sub>. A large K<sub>p</sub> (narrow PB) gives a fast response but a large risk of
+oscillation; a small K<sub>p</sub> (wide PB) gives a slow but stable response.</p>
+<p class="q"><span class="b">The main drawback is OFFSET.</span> Suppose the load on the process increases.
+The PV falls, an error is produced and the controller increases the output. But for the output to stay
+increased, the error must remain &mdash; so the PV settles at a value <span class="hl">slightly below the set
+point</span>. This permanent difference between the SP and the PV is called
+<span class="b">offset or residual error</span>. Proportional control can never remove the offset; it only
+reduces it when K<sub>p</sub> is increased.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 310" role="img" aria-label="Fig. 26.1 &#8212; Proportional control leaves a permanent offset" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<path d="M130,225 L130,50" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<path d="M130,225 L710,225" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="420" y="249" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">time</text>
+<text x="118" y="44" font-size="14" fill="#16324f" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">PV</text>
+<path d="M140,90 L700,90" style="fill:none;stroke:#123c8c;stroke-width:2;stroke-linecap:round;stroke-dasharray:7 5"/>
+<text x="695" y="80" font-size="12" fill="#123c8c" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">set point</text>
+<path d="M140,205 C220,180 300,130 390,122 C480,114 560,120 690,120" style="fill:none;stroke:#c62828;stroke-width:3;stroke-linecap:round"/>
+<path d="M560,90 L560,120" style="fill:none;stroke:#b45309;stroke-width:2;stroke-linecap:round;marker-end:url(#arw)"/>
+<path d="M560,90 L560,120" style="fill:none;stroke:#b45309;stroke-width:1.6;stroke-linecap:round;stroke-dasharray:3 3"/>
+<text x="575" y="108" font-size="12" fill="#b45309" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">offset (residual error)</text>
+<text x="300" y="155" font-size="11" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">PV rises, then stops short of SP</text>
+<text x="415" y="278" font-size="14" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">proportional control leaves a permanent offset</text>
+</g>
+</svg>
+<figcaption>Fig. 26.1 &#8212; Proportional control leaves a permanent offset</figcaption>
+</figure>
+
+<div class="tw"><table>
+<tr><th>Advantages</th><th>Disadvantages</th></tr>
+<tr><td>Simple, fast response to error</td><td>Offset (steady state error) always remains</td></tr>
+<tr><td>Stable and easy to tune</td><td>Large K<sub>p</sub> causes oscillation</td></tr>
+<tr><td>Good for load changes that are not frequent</td><td>Cannot track a changing set point without error</td></tr>
+</table></div>
+<p class="q"><span class="g">Application:</span> Level control of a tank (a small offset is acceptable),
+pressure control, flow control where fast response is more important than zero error.</p>
+
+<h2><span class="no">3</span>Integral control mode (I)</h2>
+<div class="def"><span class="cap">Definition</span>
+In integral mode the <b>controller output is proportional to the integral (sum) of the error with respect to
+time</b>.<br>
+<b>m = K<sub>i</sub> &int; e dt + m<sub>0</sub></b></div>
+<p class="q">This means the output keeps changing as long as any error exists. Even a very small error, if
+it persists, will slowly build up the output until the error becomes zero. Therefore
+<span class="hl">integral action eliminates the offset completely</span>. Integral action is also called
+<span class="b">reset action</span> and is expressed as <span class="b">repeats per minute</span> or as the
+integral time T<sub>i</sub>.</p>
+<p class="q"><span class="g">Drawbacks:</span> (1) It is <span class="b">slow</span> &mdash; it cannot give
+an immediate response to a sudden error. (2) It produces <span class="b">overshoot and oscillation</span>
+because the accumulated action takes time to come down. (3) If the actuator saturates, the integral term
+keeps increasing &mdash; this is the well known <span class="b">integral wind-up</span>, which is prevented
+by anti-windup circuits. Integral action is therefore <span class="b">never used alone</span>.</p>
+
+<h2><span class="no">4</span>Derivative control mode (D)</h2>
+<div class="def"><span class="cap">Definition</span>
+In derivative mode the <b>controller output is proportional to the rate of change of the error</b>.<br>
+<b>m = K<sub>d</sub> (de/dt) + m<sub>0</sub></b></div>
+<p class="q">Derivative action looks at <span class="b">how fast</span> the error is changing and
+<span class="hl">anticipates</span> the future error. If the PV is approaching the set point very fast, the
+derivative action reduces the output in advance and thereby <span class="b">reduces the overshoot</span> and
+improves the stability. Derivative action is also called <span class="b">rate action</span>.</p>
+<p class="q"><span class="g">Drawbacks:</span> (1) For a <span class="b">constant error</span> the rate of
+change is zero, so the derivative output is zero &mdash; it cannot remove the offset. (2) It
+<span class="b">amplifies noise</span>, so it is not used in fast and noisy loops such as flow control.
+(3) A sudden step change of set point gives a very large derivative kick. Therefore derivative action is
+always used together with proportional action.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 310" role="img" aria-label="Fig. 26.2 &#8212; Proportional action gives an instant step, integral action gives a ramp" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<rect x="400" y="35" width="360" height="210" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<rect x="20" y="35" width="350" height="210" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<text x="195" y="57" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">proportional action</text>
+<path d="M70,200 L70,75" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<path d="M70,200 L345,200" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="207.5" y="226" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">t</text>
+<text x="58" y="69" font-size="14" fill="#16324f" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">output</text>
+<path d="M78,175 L160,175 L160,95 L340,95" style="fill:none;stroke:#c62828;stroke-width:3;stroke-linecap:round"/>
+<text x="240" y="82" font-size="11" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">instant step ∝ error</text>
+<path d="M78,140 L340,140" style="fill:none;stroke:#123c8c;stroke-width:1.6;stroke-linecap:round;stroke-dasharray:5 4"/>
+<text x="95" y="132" font-size="11" fill="#123c8c" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">error</text>
+<text x="580" y="57" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">integral action</text>
+<path d="M450,200 L450,75" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<path d="M450,200 L730,200" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="590" y="226" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">t</text>
+<text x="438" y="69" font-size="14" fill="#16324f" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">output</text>
+<path d="M458,185 L720,95" style="fill:none;stroke:#6d28d9;stroke-width:3;stroke-linecap:round"/>
+<text x="560" y="128" font-size="11" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">ramp while error persists</text>
+<path d="M458,185 L560,185" style="fill:none;stroke:#123c8c;stroke-width:1.6;stroke-linecap:round;stroke-dasharray:5 4"/>
+<text x="500" y="177" font-size="11" fill="#123c8c" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">constant error</text>
+<rect x="40" y="260" width="700" height="45" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="390" y="286.92" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">P : instant but leaves offset    I : slow but removes offset entirely</text>
+</g>
+</svg>
+<figcaption>Fig. 26.2 &#8212; Proportional action gives an instant step, integral action gives a ramp</figcaption>
+</figure>
+
+<div class="tw"><table>
+<tr><th>Mode</th><th>Output depends on</th><th>Main advantage</th><th>Main drawback</th><th>Used for</th></tr>
+<tr><td><b>P</b></td><td>Size of the error</td><td>Fast response</td><td>Offset remains</td><td>Level, pressure,
+flow</td></tr>
+<tr><td><b>I</b></td><td>Sum (duration) of the error</td><td>Removes offset</td><td>Slow, overshoot,
+wind-up</td><td>Combined with P</td></tr>
+<tr><td><b>D</b></td><td>Rate of change of the error</td><td>Reduces overshoot, adds stability</td>
+<td>No action for constant error, amplifies noise</td><td>Temperature, slow processes</td></tr>
+</table></div>
+<div class="tip"><span class="cap">Remember in one line</span>
+<b>P</b> looks at the <b>present</b> error, <b>I</b> looks at the <b>past</b> (accumulated) error, and
+<b>D</b> looks at the <b>future</b> (predicted) error.</div>
+
+<!--EXTRAS-->
+<h2><span class="no">5</span>Worked numericals</h2>
+
+<div class="formula"><span class="b">Problem 1.</span> A PID controller has K<sub>c</sub> = 2.0 %/%, T<sub>i</sub> = 0.5 min, T<sub>d</sub> = 0.1 min. At one instant e = 3 %, de/dt = 5 %/min and &int;e dt = 6 %&middot;min. Find controller output.</div>
+<p class="q"><span class="b">Solution.</span> P term = K<sub>c</sub> e = 2.0 &times; 3 = 6 %. I term = K<sub>c</sub> (&int;e dt)/T<sub>i</sub> = 2.0 &times; 6/0.5 = 24 %. D term = K<sub>c</sub> T<sub>d</sub> de/dt = 2.0 &times; 0.1 &times; 5 = 1 %. u = 6 + 24 + 1 = 31 % (plus bias if used). <span class="hl">u = 31 %.</span></p>
+<h2><span class="no">6</span>Viva questions and answers</h2>
+
+<p class="q"><span class="b">Q1. Why does proportional-only control leave an offset?</span><br><span class="o">A.</span> Output must change to correct error, but a changed output requires some persistent error to sustain it &mdash; so error never reaches zero.</p>
+<p class="q"><span class="b">Q2. What does integral action do to stability?</span><br><span class="o">A.</span> It adds phase lag and can cause slow hunting if too fast; its benefit is eliminating offset and rejecting steady load changes.</p>
+<h2><span class="no">7</span>Summary</h2>
+
+<p class="q">Continuous controller modes provide proportional action for immediate response, integral action for offset-free accuracy, and derivative action for damping. Gain and proportional band are reciprocal views of P strength; reset rate and T<sub>i</sub> set how fast offset vanishes; rate and T<sub>d</sub> set how much the controller anticipates.</p>
+<h2><span class="no">8</span>Specifications at a glance</h2>
+
+<div class="tw"><table>
+<tr><th>Mode</th><th>Tuning parameter</th><th>Main effect</th><th>Main risk</th></tr>
+<tr><td>Proportional</td><td>K<sub>c</sub> or PB</td><td>Speed of immediate correction</td><td>Offset if too small, oscillation if too big</td></tr>
+<tr><td>Integral</td><td>T<sub>i</sub> or repeats/min</td><td>Removes offset, rejects load change</td><td>Windup, slow oscillation</td></tr>
+<tr><td>Derivative</td><td>T<sub>d</sub> or rate</td><td>Damps, reduces overshoot</td><td>Amplifies noise</td></tr>
+</table></div>
+
+<div class="pager">
+<a href="25-discontinuous-controller-modes.html">&#8592; Prev</a>
+<a class="home" href="index.html">&#8962; Index</a>
+<a href="27-composite-controller-modes.html">Next &#8594;</a>
+</div>
+  <p class="sig">~ handwritten notes &middot; Sensors &amp; Process Control Systems &middot; save &amp; revise daily ~</p>
+</div>
+<script>
+/* pen-colour switch: recolours the body text only, diagrams keep their own ink */
+function ink(c){
+  var m = {brown:'#4a3728', red:'#9b1c1c', green:'#155724'};
+  document.body.style.color = m[c] || m.brown;
+  var bs = document.querySelectorAll('.btn');
+  for (var i = 0; i < bs.length; i++) { bs[i].classList.remove('active'); }
+  event.currentTarget.classList.add('active');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic 12 &middot; Humidity and pH Sensors | Sensors &amp; Process Control Systems Notes</title>
+<meta name="description" content="Handwritten study notes on Topic 12 &middot; Humidity and pH Sensors - Sensors and Process Control Systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&amp;family=Patrick+Hand&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23fdf9ec'/%3E%3Cpath d='M8 20h12l5-10 8 22 6-16 5 10h12' fill='none' stroke='%23123c8c' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 46h48' stroke='%23c62828' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/notes.css">
+</head>
+<body>
+<div class="paper">
+  <div class="topbar">
+    <span class="brand">Sensors &amp; Process Control</span>
+    <button class="btn" onclick="ink('brown')" title="blue-black ink">Blue</button>
+    <button class="btn" onclick="ink('red')" title="red pen">Red</button>
+    <button class="btn" onclick="ink('green')" title="green pen">Green</button>
+    <button class="btn" onclick="window.print()" title="print this note">Print</button>
+    <a class="btn" href="index.html" style="text-decoration:none">Index</a>
+  </div>
+  <span class="unit-tag">Unit I &middot; Fundamentals of Sensors</span>
+  <h1 class="title">Topic 12 &middot; Humidity and pH Sensors<span class="sub">DHT11 and Glass Electrode pH Sensor</span></h1>
+  <div class="rule"></div>
+
+<h2><span class="no">1</span>Humidity Sensors &mdash; Introduction</h2>
+<p class="q"><span class="b">Humidity</span> is the amount of water vapour present in the air.
+<span class="b">Absolute humidity</span> is the mass of vapour per unit volume (g/m&sup3;) and
+<span class="b">relative humidity (RH)</span> is the ratio of the actual vapour content to the maximum
+possible content at that temperature, expressed in percent. Most sensors measure RH.
+Humidity measurement is important in air conditioning, textile mills, food storage, green houses,
+pharmaceutical and paper industries.</p>
+<h2><span class="no">2</span>DHT11 Humidity and Temperature Sensor</h2>
+<h3>2.1 Construction</h3>
+<p class="q">The DHT11 is a small blue plastic package which contains three parts on a tiny PCB:
+a <span class="b">resistive type humidity sensing element</span>, an <span class="b">NTC thermistor</span>
+for temperature, and an <span class="b">8 bit microcontroller</span> which converts the analog signals into
+a digital serial data stream. Because the conversion happens inside the sensor, the DHT11 is called a
+<span class="hl">smart / digital sensor</span>. It has 4 pins out of which only 3 are used.</p>
+<div class="tw"><table>
+<tr><th>Parameter</th><th>Value</th></tr>
+<tr><td>Humidity range / accuracy</td><td>20 to 90 % RH, &plusmn;5 % RH</td></tr>
+<tr><td>Temperature range / accuracy</td><td>0 to 50 &deg;C, &plusmn;2 &deg;C</td></tr>
+<tr><td>Supply</td><td>3 to 5.5 V DC (5 V typical)</td></tr>
+<tr><td>Sampling rate</td><td>Once every 1 second (1 Hz)</td></tr>
+<tr><td>Output</td><td>40 bit serial single-bus digital data</td></tr>
+</table></div>
+
+<figure class="fig">
+<svg viewBox="0 0 780 380" role="img" aria-label="Fig. 12.1 &#8212; DHT11 connection with pull-up resistor and decoupling capacitor" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<polyline points="40,60 740,60" style="fill:none;stroke:#c62828;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="390" y="86" font-size="15" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">+5 V</text>
+<polyline points="40,310 740,310" style="fill:none;stroke:#123c8c;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="390" y="336" font-size="15" fill="#123c8c" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">0 V rail</text>
+<g transform="translate(150,50) rotate(0,50,50) translate(0,0) scale(1)"><rect x="6" y="10" width="88" height="62" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="3"/><text x="50" y="30" font-size="16" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">DHT11</text><text x="50" y="48" font-size="10" fill="#123c8c" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">1 VCC   2 DATA</text><text x="50" y="62" font-size="10" fill="#123c8c" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">3 NC    4 GND</text><path d="M10,72 L10,100 M30,72 L30,100 M50,72 L50,100 M70,72 L70,100" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g transform="translate(90,210) rotate(0,50,50) translate(0,0) scale(1)"><path d="M50,0 L50,38 M22,38 L78,38 M22,62 L78,62 M50,62 L50,100" fill="none" stroke="#16324f" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="98" y="265.6" font-size="16" fill="#c62828" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">100 nF</text>
+<g transform="translate(290,70) rotate(0,50,50) translate(0,0) scale(1)"><path d="M50,0 L50,20 L32,26 L68,36 L32,46 L68,56 L32,66 L68,74 L50,80 L50,100" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="374" y="125.6" font-size="16" fill="#c62828" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">10 kΩ pull-up</text>
+<polyline points="140,210 140,60" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="140" cy="60" r="5.5" fill="#16324f"/>
+<polyline points="160,150 160,180 140,180" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="140" cy="180" r="5.5" fill="#16324f"/>
+<polyline points="140,210 140,180" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="140" cy="180" r="5.5" fill="#16324f"/>
+<polyline points="340,60 340,70" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="340" cy="60" r="5.5" fill="#16324f"/>
+<rect x="500" y="80" width="220" height="80" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="610" y="125.1" font-size="15" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">µC / Arduino</text>
+<polyline points="180,150 180,200 480,200 480,120 500,120" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<polyline points="340,170 340,200" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="340" cy="200" r="5.5" fill="#16324f"/>
+<circle cx="180" cy="200" r="5.5" fill="#16324f"/>
+<polyline points="220,150 220,310" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="220" cy="310" r="5.5" fill="#16324f"/>
+<circle cx="140" cy="310" r="5.5" fill="#16324f"/>
+<text x="300" y="188" font-size="12" fill="#1b7a3d" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">single-wire DATA</text>
+<text x="390" y="276" font-size="14" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">4.7 kΩ to 10 kΩ pull-up on DATA is compulsory</text>
+</g>
+</svg>
+<figcaption>Fig. 12.1 &#8212; DHT11 connection with pull-up resistor and decoupling capacitor</figcaption>
+</figure>
+
+<h3>2.2 Working</h3>
+<p class="q">The humidity sensing element is a resistive material whose resistance changes with the moisture
+absorbed from the air; the NTC thermistor gives the temperature. The internal microcontroller reads both,
+calculates RH and temperature and sends them as <span class="b">40 bits</span> on a single wire:
+8 bit humidity integer + 8 bit humidity decimal + 8 bit temperature integer + 8 bit temperature decimal
++ 8 bit checksum. The communication is started by the microcontroller, which pulls the line LOW for at
+least 18 ms and then releases it; the DHT11 answers with a response pulse and then the data. Each bit is a
+26&ndash;28 &micro;s LOW followed by a HIGH whose length decides 0 (26 &micro;s) or 1 (70 &micro;s).</p>
+<h3>2.3 Applications</h3>
+<ul class="arr">
+  <li>Automatic air conditioners, de-humidifiers and coolers.</li>
+  <li>Weather stations and green house climate control.</li>
+  <li>Textile, paper and pharmaceutical humidity control.</li>
+  <li>Food and cold storage monitoring, incubators.</li>
+</ul>
+<div class="note"><span class="cap">DHT11 vs DHT22</span>
+DHT22 (AM2302) has the same interface but a better range (&minus;40 to 80 &deg;C, 0 to 100 % RH) and better
+accuracy (&plusmn;0.5 &deg;C). If the project needs accurate readings, always prefer DHT22.</div>
+
+<h2><span class="no">3</span>pH Sensor</h2>
+<h3>3.1 Introduction</h3>
+<p class="q"><span class="b">pH</span> tells how acidic or alkaline a solution is. The scale runs from
+0 (strongly acidic) to 14 (strongly alkaline); 7 is neutral (pure water). Mathematically
+pH = &minus;log&#8321;&#8320;[H&#8314;]. pH control is very important in water treatment, chemical dosing,
+food and dairy industries, swimming pools, hydroponics and electroplating.</p>
+<h3>3.2 Construction</h3>
+<p class="q">A pH sensor consists of a <span class="b">measuring (glass) electrode</span> and a
+<span class="b">reference electrode</span>, both dipped in the test solution. The glass electrode has a very
+thin (0.1 mm) special glass bulb filled with a buffer solution of known pH and a silver-silver chloride
+wire inside it. The reference electrode contains a stable electrolyte (KCl) and gives a constant potential.
+A combination probe has both electrodes in one body. The signal produced is a very small DC voltage, so a
+<span class="b">high input impedance buffer amplifier</span> (input impedance greater than 10&sup1;&sup2; &#937;)
+is compulsory.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 340" role="img" aria-label="Fig. 12.2 &#8212; pH glass electrode with buffer amplifier and the pH scale" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<rect x="40" y="70" width="130" height="90" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="105" y="100.86" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">glass +</text><text x="105" y="119.76" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">reference</text><text x="105" y="138.66" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">electrodes</text>
+<path d="M170,115 L216,115" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<rect x="220" y="70" width="220" height="90" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="330" y="110.31" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">buffer amp</text><text x="330" y="129.21" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Zin &#62; 10¹² Ω</text>
+<path d="M440,115 L510,115" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="475" y="99" font-size="13" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">to ADC</text>
+<text x="140" y="55" font-size="12" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">low pH → +mV</text>
+<text x="430" y="55" font-size="12" fill="#1b7a3d" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">pH 7 → 0 mV</text>
+<text x="390" y="205" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">pH scale</text>
+<rect x="155" y="225" width="80.84" height="38" rx="8" fill="#fffdf3" stroke="#c62828" stroke-width="2.6"/><text x="195.42" y="248.42" font-size="13" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">0  acidic</text>
+<rect x="241.84" y="225" width="26.76" height="38" rx="8" fill="#fffdf3" stroke="#b45309" stroke-width="2.6"/><text x="255.22" y="248.42" font-size="13" fill="#b45309" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">4</text>
+<rect x="274.6" y="225" width="87.6" height="38" rx="8" fill="#fffdf3" stroke="#1b7a3d" stroke-width="2.6"/><text x="318.4" y="248.42" font-size="13" fill="#1b7a3d" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">7  neutral</text>
+<rect x="368.2" y="225" width="33.52" height="38" rx="8" fill="#fffdf3" stroke="#123c8c" stroke-width="2.6"/><text x="384.96" y="248.42" font-size="13" fill="#123c8c" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">11</text>
+<rect x="407.72" y="225" width="101.12" height="38" rx="8" fill="#fffdf3" stroke="#6d28d9" stroke-width="2.6"/><text x="458.28" y="248.42" font-size="13" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">14  alkaline</text>
+<text x="390" y="305" font-size="16" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">slope = 59.16 mV per pH unit (25 °C)</text>
+</g>
+</svg>
+<figcaption>Fig. 12.2 &#8212; pH glass electrode with buffer amplifier and the pH scale</figcaption>
+</figure>
+
+<h3>3.3 Working</h3>
+<p class="q">Hydrogen ions from the test solution interact with the outer surface of the glass bulb. This
+creates a potential difference across the thin glass membrane. The reference electrode provides a fixed
+reference potential. The measured voltage is therefore directly proportional to the pH of the solution and
+changes by 59.16 mV for each pH unit at 25 &deg;C. Because the voltage changes with temperature, good pH
+meters have <span class="b">automatic temperature compensation (ATC)</span>.</p>
+<div class="formula">E = E&#8320; &minus; (2.303 R T / F) &times; pH &nbsp;&nbsp;&rarr;&nbsp;
+59.16 mV per pH at 25 &deg;C</div>
+<h3>3.4 Calibration and Applications</h3>
+<p class="q">The probe is calibrated with <span class="b">standard buffer solutions of pH 4, 7 and 9.2</span>
+(two point calibration). Without calibration the reading drifts within a few weeks. Applications: water
+treatment plants, swimming pool control, dairy and beverage industry, soil testing, hydroponics,
+electroplating bath control and effluent (ETP) monitoring.</p>
+<div class="warn"><span class="cap">Care</span>
+The glass bulb is <b>very fragile</b>. Keep the probe wet (in KCl solution) when not in use, never let it
+dry out, and never touch the bulb with fingers or a cloth.</div>
+
+<!--EXTRAS-->
+<h2><span class="no">4</span>Worked numericals</h2>
+
+<div class="formula"><span class="b">Problem 1.</span> A DHT11 returns raw humidity count 980 on its internal scale where 0&ndash;1023 maps to 20&ndash;80 %RH (factory-scaled). Find the humidity.</div>
+<p class="q"><span class="b">Solution.</span> Fraction = 980/1023 = 0.958. RH = 20 + 0.958 &times; (80 &minus; 20) = 20 + 57.5 RH &asymp; 77.5 % &mdash; realistically the module itself prints %RH directly. <span class="hl">RH &asymp; 77 % (module output is usually already in %RH).</span></p>
+<h2><span class="no">5</span>Viva questions and answers</h2>
+
+<p class="q"><span class="b">Q1. What does %RH mean?</span><br><span class="o">A.</span> Relative humidity: the water vapour present compared with the maximum the air could hold at that temperature, expressed in percent.</p>
+<p class="q"><span class="b">Q2. Why are polymer humidity sensors temperature sensitive?</span><br><span class="o">A.</span> Adsorption equilibrium shifts with temperature, so RH elements need temperature compensation to give correct %RH.</p>
+<p class="q"><span class="b">Q3. What is the Nernst slope for pH?</span><br><span class="o">A.</span> 2.303 RT/F &asymp; 59.16 mV per pH unit at 25 &deg;C; it is the electrode's millivolts-per-pH sensitivity.</p>
+<p class="q"><span class="b">Q4. How should a pH electrode be stored?</span><br><span class="o">A.</span> Always in pH 4 or pH 7 storage solution, never in distilled water, which leaches ions from the glass and shortens life.</p>
+<h2><span class="no">6</span>Summary</h2>
+
+<p class="q">Humidity sensing relies on the water affinity of a polymer or oxide layer, and pH sensing on the potential developed across a selective glass membrane. Both outputs are chemistry-dependent, temperature-dependent and ageing, so calibration intervals and correct storage matter as much as the initial selection.</p>
+<h2><span class="no">7</span>Specifications at a glance</h2>
+
+<div class="tw"><table>
+<tr><th>Parameter</th><th>DHT11</th><th>Industrial humidity element</th><th>pH electrode</th></tr>
+<tr><td>Range</td><td>20&ndash;80 %RH, 0&ndash;50 &deg;C</td><td>0&ndash;100 %RH</td><td>0&ndash;14 pH</td></tr>
+<tr><td>Accuracy</td><td>&plusmn;5 %RH, &plusmn;2 &deg;C</td><td>&plusmn;1&ndash;3 %RH</td><td>&plusmn;0.01&ndash;0.1 pH</td></tr>
+<tr><td>Output</td><td>Digital single wire</td><td>Capacitance / voltage</td><td>&plusmn;59 mV/pH</td></tr>
+</table></div>
+
+<div class="pager">
+<a href="11-level-flow-sensors.html">&#8592; Prev</a>
+<a class="home" href="index.html">&#8962; Index</a>
+<a href="13-soil-smoke-sensors.html">Next &#8594;</a>
+</div>
+  <p class="sig">~ handwritten notes &middot; Sensors &amp; Process Control Systems &middot; save &amp; revise daily ~</p>
+</div>
+<script>
+/* pen-colour switch: recolours the body text only, diagrams keep their own ink */
+function ink(c){
+  var m = {brown:'#4a3728', red:'#9b1c1c', green:'#155724'};
+  document.body.style.color = m[c] || m.brown;
+  var bs = document.querySelectorAll('.btn');
+  for (var i = 0; i < bs.length; i++) { bs[i].classList.remove('active'); }
+  event.currentTarget.classList.add('active');
+}
+</script>
+</body>
+</html>

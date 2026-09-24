@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic 10 &middot; Position and Motion Sensors | Sensors &amp; Process Control Systems Notes</title>
+<meta name="description" content="Handwritten study notes on Topic 10 &middot; Position and Motion Sensors - Sensors and Process Control Systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&amp;family=Patrick+Hand&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23fdf9ec'/%3E%3Cpath d='M8 20h12l5-10 8 22 6-16 5 10h12' fill='none' stroke='%23123c8c' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 46h48' stroke='%23c62828' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/notes.css">
+</head>
+<body>
+<div class="paper">
+  <div class="topbar">
+    <span class="brand">Sensors &amp; Process Control</span>
+    <button class="btn" onclick="ink('brown')" title="blue-black ink">Blue</button>
+    <button class="btn" onclick="ink('red')" title="red pen">Red</button>
+    <button class="btn" onclick="ink('green')" title="green pen">Green</button>
+    <button class="btn" onclick="window.print()" title="print this note">Print</button>
+    <a class="btn" href="index.html" style="text-decoration:none">Index</a>
+  </div>
+  <span class="unit-tag">Unit I &middot; Fundamentals of Sensors</span>
+  <h1 class="title">Topic 10 &middot; Position and Motion Sensors<span class="sub">Potentiometric, Inductive, Hall Effect, Encoder</span></h1>
+  <div class="rule"></div>
+
+<h2><span class="no">1</span>Position Sensors</h2>
+<div class="def"><span class="cap">Definition</span>
+A <b>position sensor</b> detects the <b>location</b> of an object with respect to a reference point and
+converts it into an electrical signal. Position may be <b>linear</b> (along a straight line) or
+<b>rotary / angular</b> (about an axis).</div>
+<p class="q">A position sensor is basically a displacement sensor used inside a <span class="b">feedback
+loop</span> of a control system. The most common ones are:</p>
+<div class="tw"><table>
+<tr><th>Sensor</th><th>Type</th><th>Principle</th><th>Output</th></tr>
+<tr><td>Potentiometric</td><td>Resistive, contact</td><td>Wiper divides the resistance track</td><td>Analog voltage</td></tr>
+<tr><td>LVDT</td><td>Inductive</td><td>Differential transformer</td><td>AC voltage (amplitude + phase)</td></tr>
+<tr><td>Hall effect</td><td>Magnetic</td><td>Voltage across a current carrying conductor in a magnetic field</td><td>Digital or analog</td></tr>
+<tr><td>Rotary encoder</td><td>Optical / magnetic</td><td>Slotted disc with LED-photodiode</td><td>Digital pulses (A, B, Z)</td></tr>
+<tr><td>Proximity (inductive / capacitive)</td><td>Non-contact</td><td>Eddy current or capacitance change</td><td>Digital ON / OFF</td></tr>
+<tr><td>Ultrasonic / IR</td><td>Non-contact</td><td>Time of flight of the wave</td><td>Distance in cm</td></tr>
+</table></div>
+<h3>1.1 Potentiometric position sensor</h3>
+<p class="q">A resistive track with a sliding wiper is used. The wiper is coupled to the moving object.
+The output voltage is V<sub>out</sub> = V<sub>in</sub> &times; (x / L), so the voltage is directly
+proportional to position. It is cheap and gives a large output, but the wiper wears out and the track gets
+noisy.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 780 330" role="img" aria-label="Fig. 10.1 &#8212; Potentiometric position sensor circuit" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<polyline points="40,60 740,60" style="fill:none;stroke:#c62828;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="390" y="86" font-size="15" fill="#c62828" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">5 V</text>
+<polyline points="40,250 740,250" style="fill:none;stroke:#123c8c;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="390" y="276" font-size="15" fill="#123c8c" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">0 V</text>
+<g transform="translate(170,110) rotate(0,50,50) translate(0,0) scale(1)"><path d="M0,50 L20,50 L26,32 L36,68 L46,32 L56,68 L66,32 L74,50 L100,50" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M50,100 L50,74" fill="none" stroke="#16324f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M42,80 L50,70 L58,80 Z" fill="#16324f"/></g>
+<text x="284" y="165.6" font-size="16" fill="#c62828" text-anchor="start" font-family="Caveat,cursive" font-weight="normal">resistive track (L)</text>
+<polyline points="170,160 170,60" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="170" cy="60" r="5.5" fill="#16324f"/>
+<polyline points="270,160 270,250" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<circle cx="270" cy="250" r="5.5" fill="#16324f"/>
+<g transform="translate(430,130) rotate(0,50,50) translate(0,0) scale(1)"><rect x="10" y="22" width="80" height="56" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="3"/><text x="50" y="55.95" font-size="17" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">ADC</text><path d="M0,50 L10,50 M90,50 L100,50" fill="none" stroke="#16324f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<polyline points="220,210 430,210 430,180" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+<text x="305" y="196" font-size="13" fill="#1b7a3d" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">wiper (x)</text>
+<text x="390" y="308" font-size="16" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">Vout = 5 × x / L   (joysticks, throttles)</text>
+</g>
+</svg>
+<figcaption>Fig. 10.1 &#8212; Potentiometric position sensor circuit</figcaption>
+</figure>
+
+<h3>1.2 Hall effect position sensor</h3>
+<p class="q">When a current carrying conductor is placed in a magnetic field, a voltage appears across it at
+right angles to both the current and the field: <span class="b">V<sub>H</sub> = (B I) / (n e t)</span>.
+A small Hall IC (A3144, SS49E) is kept near a rotating magnet. Whenever the magnet passes, the IC gives a
+pulse. Counting the pulses gives the position and speed &mdash; this is how the
+<span class="b">BLDC motor and the bicycle speedometer</span> work.</p>
+
+<h2><span class="no">2</span>Motion (Speed) Sensors</h2>
+<p class="q">Motion means the change of position with time, so a motion sensor measures
+<span class="b">speed</span> (rpm or m/s) and sometimes <span class="b">direction</span>. Important types:</p>
+<ul class="dot">
+  <li><span class="b">Tachogenerator (DC tachometer)</span> &mdash; a small DC generator coupled to the
+      shaft; the generated EMF is proportional to speed. Simple and rugged.</li>
+  <li><span class="b">Optical / magnetic encoder</span> &mdash; pulses counted per second give speed; two
+      channels 90&deg; apart give direction.</li>
+  <li><span class="b">Variable reluctance (VR) sensor</span> &mdash; a coil with a magnet placed near a
+      toothed wheel; each passing tooth induces a voltage pulse. Used as the crankshaft position sensor in
+      cars.</li>
+  <li><span class="b">Hall effect sensor</span> &mdash; digital, very reliable, used in BLDC motors.</li>
+  <li><span class="b">Accelerometer / gyro (IMU)</span> &mdash; measures linear acceleration and angular
+      velocity, used in drones and mobile phones.</li>
+</ul>
+
+<figure class="fig">
+<svg viewBox="0 0 780 310" role="img" aria-label="Fig. 10.2 &#8212; Optical encoder for position and motion (speed / direction) sensing" style="background:#fffef7;border-radius:12px">
+<defs>
+<marker id="arw" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1.5 L10,6 L1,10.5 Z" fill="#16324f"/></marker>
+<filter id="sk" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<g filter="url(#sk)">
+<rect x="450" y="30" width="310" height="220" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<rect x="20" y="30" width="400" height="220" rx="12" fill="none" stroke="#7d8ea3" stroke-width="2.4" stroke-dasharray="9 6"/>
+<text x="220" y="52" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">optical encoder</text>
+<path d="M103,145 A62,62 0 1 1 227,145 A62,62 0 1 1 103,145" style="fill:none;stroke:#16324f;stroke-width:3;stroke-linecap:round"/>
+<path d="M195,145 L227,145" style="fill:none;stroke:#16324f;stroke-width:2;stroke-linecap:round"/>
+<path d="M190.981,160 L218.694,176" style="fill:none;stroke:#16324f;stroke-width:2;stroke-linecap:round"/>
+<path d="M180,170.981 L196,198.694" style="fill:none;stroke:#16324f;stroke-width:2;stroke-linecap:round"/>
+<path d="M165,175 L165,207" style="fill:none;stroke:#16324f;stroke-width:2;stroke-linecap:round"/>
+<path d="M150,170.981 L134,198.694" style="fill:none;stroke:#16324f;stroke-width:2;stroke-linecap:round"/>
+<path d="M139.019,160 L111.306,176" style="fill:none;stroke:#16324f;stroke-width:2;stroke-linecap:round"/>
+<path d="M135,145 L103,145" style="fill:none;stroke:#16324f;stroke-width:2;stroke-linecap:round"/>
+<path d="M139.019,130 L111.306,114" style="fill:none;stroke:#16324f;stroke-width:2;stroke-linecap:round"/>
+<path d="M150,119.019 L134,91.3064" style="fill:none;stroke:#16324f;stroke-width:2;stroke-linecap:round"/>
+<path d="M165,115 L165,83" style="fill:none;stroke:#16324f;stroke-width:2;stroke-linecap:round"/>
+<path d="M180,119.019 L196,91.3064" style="fill:none;stroke:#16324f;stroke-width:2;stroke-linecap:round"/>
+<path d="M190.981,130 L218.694,114" style="fill:none;stroke:#16324f;stroke-width:2;stroke-linecap:round"/>
+<text x="165" y="150" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">disc</text>
+<rect x="255" y="75" width="145" height="45" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="327.5" y="102.26" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">LED</text>
+<rect x="255" y="165" width="145" height="45" rx="8" fill="#fffdf3" stroke="#16324f" stroke-width="2.6"/><text x="327.5" y="192.26" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">photodiode</text>
+<path d="M400,97 L430,97 L430,140 L400,140" style="fill:none;stroke:#c62828;stroke-width:2;stroke-linecap:round"/>
+<text x="418" y="130" font-size="11" fill="#c62828" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">slots</text>
+<text x="165" y="232" font-size="12" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">encoder disc with slots</text>
+<text x="605" y="52" font-size="15" fill="#6d28d9" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">channels</text>
+<path d="M490,175 L490,75" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<path d="M490,175 L740,175" style="fill:none;stroke:#16324f;stroke-width:2.6;stroke-linecap:round;marker-end:url(#arw)"/>
+<text x="615" y="199" font-size="14" fill="#16324f" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">time</text>
+<text x="478" y="69" font-size="14" fill="#16324f" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">pulses</text>
+<path d="M500,130 L530,130 L530,90 L570,90 L570,130 L610,130 L610,90 L650,90 L650,130 L690,130" style="fill:none;stroke:#c62828;stroke-width:2.6;stroke-linecap:round"/>
+<path d="M515,173 L545,173 L545,137 L585,137 L585,173 L625,173 L625,137 L665,137 L665,173 L705,173" style="fill:none;stroke:#123c8c;stroke-width:2.6;stroke-linecap:round"/>
+<text x="495" y="105" font-size="14" fill="#c62828" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">A</text>
+<text x="495" y="150" font-size="14" fill="#123c8c" text-anchor="end" font-family="Caveat,cursive" font-weight="normal">B</text>
+<text x="615" y="224" font-size="13" fill="#1b7a3d" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">pulses/s = speed</text>
+<text x="615" y="246" font-size="13" fill="#1b7a3d" text-anchor="middle" font-family="Caveat,cursive" font-weight="normal">phase of B vs A = direction</text>
+</g>
+</svg>
+<figcaption>Fig. 10.2 &#8212; Optical encoder for position and motion (speed / direction) sensing</figcaption>
+</figure>
+
+<div class="formula">Speed (rpm) = (pulses per second &times; 60) / (number of slots)</div>
+<h3>Applications</h3>
+<ul class="arr">
+  <li>CNC machines, robots, 3D printers &mdash; position feedback of axes.</li>
+  <li>Motor speed control in washing machines, fans, electric vehicles.</li>
+  <li>Crankshaft and camshaft position sensing in petrol and diesel engines.</li>
+  <li>Proximity switches on conveyor lines to count bottles or packets.</li>
+  <li>Parking sensors and drone altitude hold (ultrasonic).</li>
+</ul>
+
+<!--EXTRAS-->
+<h2><span class="no">3</span>Worked numericals</h2>
+
+<div class="formula"><span class="b">Problem 1.</span> A 10 k&Omega; linear potentiometer of travel 100 mm is fed with 5 V. The wiper is at 35 mm from the zero end. Find V<sub>out</sub>.</div>
+<p class="q"><span class="b">Solution.</span> V<sub>out</sub> = V<sub>in</sub> &times; x/L = 5 &times; 35/100 V<sub>out</sub> = 1.75 V Sensitivity = 5 V / 100 mm = 50 mV per mm. <span class="hl">V<sub>out</sub> = 1.75 V.</span></p>
+<div class="formula"><span class="b">Problem 2.</span> A 1024-pulse-per-revolution incremental encoder is read for 0.2 s and counts 1200 pulses. Find shaft speed in rpm.</div>
+<p class="q"><span class="b">Solution.</span> Revolutions = 1200 / 1024 = 1.1719 rev in 0.2 s. Speed = 1.1719 / 0.2 = 5.859 rev/s. rpm = 5.859 &times; 60 = 351.6 rpm. <span class="hl">N &asymp; 352 rpm.</span></p>
+<div class="formula"><span class="b">Problem 3.</span> A Hall sensor closes at B<sub>op</sub> = 35 mT with a magnet that decays 1.5 % per year. Estimate how many years before a 2 mm gap increase causes a miss, given field &prop; 1/r&sup3; from an initial gap of 4 mm.</div>
+<p class="q"><span class="b">Solution.</span> Field at 4 mm &rarr; 6 mm: ratio = (4/6)&sup3; = 0.296 &mdash; far below any margin. In practice a 25 % field margin is designed in, tolerating roughly 8 % gap growth. Gap grows mainly from vibration loosening, not from magnet ageing; check torque on brackets during PM. <span class="hl">Mechanical gap control matters more than magnet ageing &mdash; verify 4 mm gap in PM.</span></p>
+<h2><span class="no">4</span>Viva questions and answers</h2>
+
+<p class="q"><span class="b">Q1. Difference between absolute and incremental encoding?</span><br><span class="o">A.</span> Absolute encoders report the true angle at every instant, even after power loss; incremental encoders only count changes and need a reference at start-up.</p>
+<p class="q"><span class="b">Q2. What are quadrature signals?</span><br><span class="o">A.</span> Two pulse channels 90&deg; apart; their phase order reveals direction and combining edges gives 2&times; or 4&times; resolution.</p>
+<p class="q"><span class="b">Q3. How does a tachogenerator measure speed?</span><br><span class="o">A.</span> It is a small generator whose output voltage is proportional to shaft speed, giving an immediate analog rpm signal.</p>
+<p class="q"><span class="b">Q4. Why use a Hall sensor for speed pickup?</span><br><span class="o">A.</span> Non-contact, no wear, works through dust and oil where optical slotted wheels would clog.</p>
+<p class="q"><span class="b">Q5. What is homing in motion control?</span><br><span class="o">A.</span> Moving an axis to a fixed reference switch at start-up to establish the coordinate origin before absolute work begins.</p>
+<p class="q"><span class="b">Q6. Where are resolvers preferred over encoders?</span><br><span class="o">A.</span> In hot, vibrating environments such as traction motors &mdash; they are rugged rotating transformers with no optical parts.</p>
+<h2><span class="no">5</span>Summary</h2>
+
+<p class="q">Position sensing answers where and speed sensing answers how fast. Potentiometers give simple absolute voltage, Hall devices give contactless digital edges, and encoders give high-resolution quadrature counts for servo loops. Correct gaps, screened cables and a reliable homing procedure are what keep the numbers the controller sees equal to the real shaft or table position.</p>
+<h2><span class="no">6</span>Specifications at a glance</h2>
+
+<div class="tw"><table>
+<tr><th>Parameter</th><th>Linear pot</th><th>Incremental encoder</th><th>Hall speed sensor</th></tr>
+<tr><td>Type</td><td>Absolute analog</td><td>Incremental digital</td><td>Digital pulses</td></tr>
+<tr><td>Resolution</td><td>Continuous (noise limited)</td><td>e.g. 1024 ppr, 4&times; decode</td><td>1 per tooth</td></tr>
+<tr><td>Output</td><td>0&ndash;5 V</td><td>A/B/Z TTL or line driver</td><td>Open-collector square wave</td></tr>
+<tr><td>Speed limit</td><td>Wiper wear limits speed</td><td>Up to MHz class counting</td><td>Depends on gear tooth size</td></tr>
+<tr><td>Life</td><td>10<sup>6</sup> operations (wear)</td><td>Bearing life (no contact wear)</td><td>Effectively unlimited</td></tr>
+<tr><td>Typical use</td><td>Valve position, joysticks</td><td>CNC and robot axes</td><td>Wheel speed, crank position</td></tr>
+</table></div>
+
+<div class="pager">
+<a href="09-torque-pressure-sensors.html">&#8592; Prev</a>
+<a class="home" href="index.html">&#8962; Index</a>
+<a href="11-level-flow-sensors.html">Next &#8594;</a>
+</div>
+  <p class="sig">~ handwritten notes &middot; Sensors &amp; Process Control Systems &middot; save &amp; revise daily ~</p>
+</div>
+<script>
+/* pen-colour switch: recolours the body text only, diagrams keep their own ink */
+function ink(c){
+  var m = {brown:'#4a3728', red:'#9b1c1c', green:'#155724'};
+  document.body.style.color = m[c] || m.brown;
+  var bs = document.querySelectorAll('.btn');
+  for (var i = 0; i < bs.length; i++) { bs[i].classList.remove('active'); }
+  event.currentTarget.classList.add('active');
+}
+</script>
+</body>
+</html>
